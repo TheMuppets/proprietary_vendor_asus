@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<glgps xmlns="http://www.glpals.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.glpals.com/ glconfig.xsd" >
+  <!--HAL Confguration  -->
+  <hal
+       acPortName="/dev/ttyHS1"
+       lBaudRate="115200"
+       cLogEnabled="false"
+       acLogDirectory="/data/gps/log/"
+       gpioNStdbyPath="/sys/class/gpio/gpio162/value"
+       gpioDelayMs="120"
+       acNvStoDir="/data/gps/"
+       acNmeaOutName="/data/gps/nmea_out"
+       ctrlPipe="/data/gps/glgpsctrl"
+       SyncLto="true"
+       ltoFileName="lto2.dat"
+       acLtoDir="/data/gps/"
+       LbsSyncLtoThresholdDays="1"
+  />
+
+  <gll
+       LogPriMask="LOG_INFO"
+       LogFacMask="LOG_DEFAULT"
+       FrqPlan="FRQ_PLAN_26MHZ_2PPM"
+       RfType="GL_RF_4751_DANUBE_EXT_LNA"
+  />
+
+<job id="Periodic">
+    <task>
+        <req_pos/>
+    </task>
+</job>
+
+</glgps>
