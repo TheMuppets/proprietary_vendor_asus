@@ -24,6 +24,9 @@
 PRODUCT_COPY_FILES += \
     vendor/asus/tf300t/proprietary/bin/sensors-config:system/bin/sensors-config \
     vendor/asus/tf300t/proprietary/bin/glgps:system/bin/glgps \
+    vendor/asus/tf300t/proprietary/etc/enctune.conf:system/etc/enctune.conf \
+    vendor/asus/tf300t/proprietary/etc/asound.conf:system/etc/asound.conf \
+    vendor/asus/tf300t/proprietary/etc/dbus.conf:system/etc/dbus.conf \
     vendor/asus/tf300t/proprietary/etc/firmware/nvavp_os_0ff00000.bin:system/etc/firmware/nvavp_os_0ff00000.bin \
     vendor/asus/tf300t/proprietary/etc/firmware/nvavp_os_00001000.bin:system/etc/firmware/nvavp_os_00001000.bin \
     vendor/asus/tf300t/proprietary/etc/firmware/nvavp_os_e0000000.bin:system/etc/firmware/nvavp_os_e0000000.bin \
@@ -62,6 +65,8 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf300t/proprietary/lib/egl/libEGL_perfhud.so:system/lib/egl/libEGL_perfhud.so \
     vendor/asus/tf300t/proprietary/lib/egl/libGLESv1_CM_perfhud.so:system/lib/egl/libGLESv1_CM_perfhud.so \
     vendor/asus/tf300t/proprietary/lib/egl/libGLESv2_perfhud.so:system/lib/egl/libGLESv2_perfhud.so \
+    vendor/asus/tf300t/proprietary/lib/hw/audio.primary.tegra.so:system/lib/hw/audio.primary.tegra.so \
+    vendor/asus/tf300t/proprietary/lib/hw/audio_policy.tegra.so:system/lib/hw/audio_policy.tegra.so \
     vendor/asus/tf300t/proprietary/lib/hw/camera.tegra.so:system/lib/hw/camera.tegra.so \
     vendor/asus/tf300t/proprietary/lib/hw/gps.tegra.so:system/lib/hw/gps.tegra.so \
     vendor/asus/tf300t/proprietary/lib/hw/gralloc.tegra.so:system/lib/hw/gralloc.tegra.so \
@@ -71,6 +76,7 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf300t/proprietary/lib/libami.so:system/lib/libami.so \
     vendor/asus/tf300t/proprietary/lib/libami_sensor_mw.so:system/lib/libami_sensor_mw.so \
     vendor/asus/tf300t/proprietary/lib/libardrv_dynamic.so:system/lib/libardrv_dynamic.so \
+    vendor/asus/tf300t/proprietary/lib/libasound.so:system/lib/libasound.so \
     vendor/asus/tf300t/proprietary/lib/libcgdrv.so:system/lib/libcgdrv.so \
     vendor/asus/tf300t/proprietary/lib/libmllite.so:system/lib/libmllite.so \
     vendor/asus/tf300t/proprietary/lib/libmlplatform.so:system/lib/libmlplatform.so \
@@ -93,11 +99,13 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf300t/proprietary/lib/libnvmm_image.so:system/lib/libnvmm_image.so \
     vendor/asus/tf300t/proprietary/lib/libnvmmlite_audio.so:system/lib/libnvmmlite_audio.so \
     vendor/asus/tf300t/proprietary/lib/libnvmmlite_image.so:system/lib/libnvmmlite_image.so \
+    vendor/asus/tf300t/proprietary/lib/libnvmmlite_msaudio.so:system/lib/libnvmmlite_msaudio.so \
     vendor/asus/tf300t/proprietary/lib/libnvmmlite.so:system/lib/libnvmmlite.so \
     vendor/asus/tf300t/proprietary/lib/libnvmmlite_utils.so:system/lib/libnvmmlite_utils.so \
     vendor/asus/tf300t/proprietary/lib/libnvmmlite_video.so:system/lib/libnvmmlite_video.so \
     vendor/asus/tf300t/proprietary/lib/libnvmm_manager.so:system/lib/libnvmm_manager.so \
     vendor/asus/tf300t/proprietary/lib/libnvmm_misc.so:system/lib/libnvmm_misc.so \
+    vendor/asus/tf300t/proprietary/lib/libnvmm_msaudio.so:system/lib/libnvmm_msaudio.so \
     vendor/asus/tf300t/proprietary/lib/libnvmm_parser.so:system/lib/libnvmm_parser.so \
     vendor/asus/tf300t/proprietary/lib/libnvmm_service.so:system/lib/libnvmm_service.so \
     vendor/asus/tf300t/proprietary/lib/libnvmm.so:system/lib/libnvmm.so \
@@ -127,8 +135,26 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf300t/proprietary/lib/libnvwinsys.so:system/lib/libnvwinsys.so \
     vendor/asus/tf300t/proprietary/lib/libnvwsi.so:system/lib/libnvwsi.so \
     vendor/asus/tf300t/proprietary/lib/libstagefrighthw.so:system/lib/libstagefrighthw.so \
+    vendor/asus/tf300t/proprietary/lib/omxplayer.so:system/lib/omxplayer.so \
     vendor/asus/tf300t/proprietary/lib/libsensors.al3010.so:system/lib/libsensors.al3010.so \
     vendor/asus/tf300t/proprietary/lib/libsensors.isl29018.so:system/lib/libsensors.isl29018.so \
     vendor/asus/tf300t/proprietary/lib/libsensors.base.so:system/lib/libsensors.base.so \
     vendor/asus/tf300t/proprietary/lib/libsensors.isl29028.so:system/lib/libsensors.isl29028.so \
-    vendor/asus/tf300t/proprietary/lib/libsensors.mpl.so:system/lib/libsensors.mpl.so
+    vendor/asus/tf300t/proprietary/lib/libsensors.mpl.so:system/lib/libsensors.mpl.so \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
+    vendor/asus/tf300t/proprietary/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
