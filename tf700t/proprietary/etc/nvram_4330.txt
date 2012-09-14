@@ -1,0 +1,72 @@
+# Azurewave Release 2011/07/08
+# NB099H
+manfid=0x2d0
+prodid=0x0552
+vendid=0x14e4
+devid=0x4360
+boardtype=0x0547
+boardrev=0x18
+# this design has 2.4GHz SP3T switch
+boardflags=0x00080200
+nocrc=1
+xtalfreq=37400
+boardnum=22
+macaddr=00:11:22:33:44:55
+#nvram_override=1
+cckdigfilttype=4
+
+ag0=255
+aa2g=3
+aa5g=3
+ccode=ALL
+#pa0b0=0x1326 15p/0R
+pa0b0=0x1348
+pa0b1=0xfd98
+pa0b2=0xff78
+rssismf2g=0xa
+rssismc2g=0x3
+rssisav2g=0x7
+#rssi params for 5GHz
+rssismf5g=0x4
+rssismc5g=0x3
+rssisav5g=0x7
+#PA parameters for lower a-band CH36~64
+pa1lob0=0x11f0  
+#pa1lob0=0x1320
+pa1lob1=0xfdac
+pa1lob2=0xff4c
+#PA parameters for midband CH100~140
+pa1b0=0x1250
+#pa1b0=0x1330
+pa1b1=0xfda5
+pa1b2=0xff54
+#PA parameters for high band CH149~165
+pa1hib0=0x12a0
+#pa1hib0=0x13f0
+pa1hib1=0xfd9f
+pa1hib2=0xff53
+rxpo5g=0
+maxp2ga0=0x50
+maxp5ga0=0x30
+sromrev=3
+il0macaddr=00:11:22:33:44:55
+wl0id=0x431b
+cckPwrOffset=5
+ofdm2gpo=0x66666666
+mcs2gpo0=0x6666
+mcs2gpo1=0x6666
+swctrlmap_2g=0x84444484,0x82424282,0x84444484,0x414242,0x1ff
+swctrlmap_5g=0x90509050,0xa060a060,0xa060a060,0x414242,0x2f8
+rfreg033=0x19
+## TX MASK ##
+rfreg033_cck=0x1f
+
+dacrate2g=160
+txalpfbyp2g=1
+bphyscale=17
+cckPwrIdxCorr=-15
+pacalidx2g=45
+pacalidx5g=0
+txgaintbl=1
+triso2g=9
+muxenab=0x10
