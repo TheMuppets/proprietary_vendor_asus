@@ -17,9 +17,6 @@ PRODUCT_PACKAGES := \
     asound \
     btmacreader \
     camera.tegra3 \
-    glgps \
-    gps.tegra3 \
-    gpsconfig \
     keystore.grouper \
     libdrmwvmplugin \
     libpn544_fw \
@@ -27,5 +24,4 @@ PRODUCT_PACKAGES := \
     libwvm \
     sensors.grouper \
     sensors-config \
-    tf_daemon \
-    touch_fw
+    tf_daemon
