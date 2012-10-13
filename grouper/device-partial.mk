@@ -19,7 +19,6 @@ PRODUCT_PACKAGES := \
     camera.tegra3 \
     keystore.grouper \
     libdrmwvmplugin \
-    libpn544_fw \
     libsensors.lightsensor \
     libwvm \
     sensors.grouper \
