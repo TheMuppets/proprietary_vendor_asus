@@ -1,0 +1,149 @@
+# NVRAM file for Murata Type-VV (eLNA) modified from that for BCM94334FCAGB board rev P200 series
+# 5GHz FEM muRata MDFE2PFA-041
+# 2.4GHz FEM muRata MDFE2PFA-029
+
+manfid=0x2d0
+prodid=0x05c1
+vendid=0x14e4
+devid=0x4380
+boardtype=0x05de
+boardrev=0x1200
+boardnum=22
+macaddr=00:90:4c:c5:12:38
+sromrev=3
+#regrev=6
+#boardflags: 5GHz FEM: has ext 5GHz PA + LNA
+#            2.4GHz FEM: has ext 2.4GHz PA + LNA
+#            2.4GHz FEM: SP3T switch share with BT
+#            keep original 0x200
+boardflags=0x10081a00
+xtalfreq=37400
+nocrc=1
+ag0=0
+aa2g=1
+ccode=ALL
+pa0itssit=0x20
+# Revised PA parameters on 1/24/2012 by YS
+#PA parameters for 2.4GHz
+pa0b2=0xFF2D
+pa0b0=0x1766
+pa0b1=0xFD19
+tssifloor2g=40
+extpagain2g=2
+extpagain5g=2
+# rssi params for 2.4GHz
+rssismf2g=0x2
+rssismc2g=0x7
+rssisav2g=0x1
+cckPwrOffset=0
+# rssi params for 5GHz
+rssismf5g=0xf
+rssismc5g=0x9
+rssisav5g=0x1
+#PA parameters for lower a-band
+pa1lob2=0xFF3D
+pa1lob0=0x15D9
+pa1lob1=0xFD43
+tssifloor5gl=20
+#PA parameters for midband
+pa1b2=0xFF42
+pa1b0=0x1548
+pa1b1=0xFD4F
+tssifloor5gm=20
+#PA parameters for high band
+pa1hib2=0xFF3E
+pa1hib0=0x14E3
+pa1hib1=0xFD52
+tssifloor5gh=20
+rxpo5g=0
+maxp2ga0=0x48
+ofdm2gpo=0x66666666
+mcs2gpo0=0x8888
+mcs2gpo1=0x8888
+mcs2gpo4=0x8888
+mcs2gpo5=0x8888
+bw402gpo=0x4
+maxp5ga0=0x48
+maxp5gla0=0x48
+maxp5gha0=0x48
+ofdm5gpo=0x66666666
+ofdm5glpo=0x66666666
+ofdm5ghpo=0x66666666
+mcs5gpo0=0x8888
+mcs5gpo1=0x8888
+mcs5glpo0=0x8888
+mcs5glpo1=0x8888
+mcs5ghpo0=0x8888
+mcs5ghpo1=0x8888
+mcs5gpo4=0x8888
+mcs5gpo5=0x8888
+mcs5glpo4=0x8888
+mcs5glpo5=0x8888
+mcs5ghpo4=0x8888
+mcs5ghpo5=0x8888
+#bw405gpo=0x4
+#bw405glpo=0x4
+#bw405ghpo=0x4
+#il0macaddr=00:90:4c:c5:12:38
+#wl0id=0x431b
+pagc2g=0x10
+
+# muRata 2G FEM -029
+swctrlmap_2g=0x05050505,0x40400000,0x00000404,0x024000,0x1ff
+
+# muRata 5G FEM -041
+swctrlmap_5g=0x08080808,0x30301010,0x10100000,0x024000,0x238
+
+# parameter 'gain' has been renamed to 'elna_off_gain_idx_2g'
+elna_off_gain_idx_2g=30
+triso2g=8
+triso5g=5
+cckdigfilttype=24
+
+#muxenab=0x10 /* host wakeup GPIO 0*/
+#muxenab=0x08 /* jtag sel 0x00 - enable, 0x08 - disable*/ 
+muxenab=0x10
+
+####added_on01122012_fcnt#####
+#PwrOffset40mhz2g=4 
+PwrOffset40mhz5g=-13
+# Parameters for DAC2x mode and ALPF bypass
+dacrate2xen=1
+txalpfbyp=1
+txalpfpu=1
+ofdmdigfilttype2g=3
+ofdmdigfilttype5g=0
+ofdm40digfilttype=5
+
+## Renamed on 2/8/2012
+gain_settle_dly_2g=4
+
+## Added on 1/31/2012, modified on 2/27/2012
+noise_cal_po_2g=-1
+#noise_cal_po_40_2g=-1
+noise_cal_high_gain_2g=73
+noise_cal_nf_substract_val_2g=346
+
+## Added on 2/8/2012
+gain_settle_dly_5g=4
+noise_cal_po_5g=-1
+noise_cal_po_40_5g=-1
+noise_cal_high_gain_5g=73
+noise_cal_nf_substract_val_5g=346
+
+#parameter for ACR improvement -- Added on 2/8/2012
+aci_detect_en_2g=1
+
+## Added on 2/24/2012
+iqlocalidx5g=55
+lpbckmode5g=1 
+txiqlopapu5g=0
+iqcalidx5g=50
+txiqlopapu2g=0
+dlorange_lowlimit=5
+loflag=1
+dlocalidx5g=75
+
+## UMC specific
+dacpu.fab.4=1
+

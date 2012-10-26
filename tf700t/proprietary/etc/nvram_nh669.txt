@@ -38,3 +38,4 @@ bphyscale=17
 cckPwrIdxCorr=-15
 pacalidx2g=45
 txgaintbl=1
+muxenab=0x10
