@@ -104,14 +104,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/lib/hw/sensors6050.cardhu.so:system/lib/hw/sensors6050.cardhu.so \
     vendor/asus/tf700t/proprietary/lib/hw/sensors.cardhu.so:system/lib/hw/sensors.cardhu.so \
     vendor/asus/tf700t/proprietary/lib/hw/sensors_generic.cardhu.so:system/lib/hw/sensors_generic.cardhu.so \
-    vendor/asus/tf700t/proprietary/lib/mpu3050/libmllite.so:system/lib/mpu3050/libmllite.so \
-    vendor/asus/tf700t/proprietary/lib/mpu3050/libmlplatform.so:system/lib/mpu3050/libmlplatform.so \
-    vendor/asus/tf700t/proprietary/lib/mpu3050/libmplmpu.so:system/lib/mpu3050/libmplmpu.so \
-    vendor/asus/tf700t/proprietary/lib/mpu3050/libsensors.mpl3050.so:system/lib/mpu3050/libsensors.mpl3050.so \
-    vendor/asus/tf700t/proprietary/lib/mpu6050/libmllite.so:system/lib/mpu6050/libmllite.so \
-    vendor/asus/tf700t/proprietary/lib/mpu6050/libmlplatform.so:system/lib/mpu6050/libmlplatform.so \
-    vendor/asus/tf700t/proprietary/lib/mpu6050/libmplmpu.so:system/lib/mpu6050/libmplmpu.so \
-    vendor/asus/tf700t/proprietary/lib/mpu6050/libsensors.mpl6050.so:system/lib/mpu6050/libsensors.mpl6050.so \
     vendor/asus/tf700t/proprietary/lib/libasound.so:system/lib/libasound.so \
     vendor/asus/tf700t/proprietary/lib/libaudioavp.so:system/lib/libaudioavp.so \
     vendor/asus/tf700t/proprietary/lib/libami.so:system/lib/libami.so \
@@ -193,7 +185,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/lib/libsensors.isl29018.so:system/lib/libsensors.isl29018.so \
     vendor/asus/tf700t/proprietary/lib/libsensors.isl29028.so:system/lib/libsensors.isl29028.so \
     vendor/asus/tf700t/proprietary/lib/libsensors.ltr558als.so:system/lib/libsensors.ltr558als.so \
-    vendor/asus/tf700t/proprietary/lib/libsensors.mpl.so:system/lib/libsensors.mpl.so \
     vendor/asus/tf700t/proprietary/lib/libtjpg.so:system/lib/libtjpg.so \
     vendor/asus/tf700t/proprietary/lib/texfat.ko:system/lib/texfat.ko \
     vendor/asus/tf700t/proprietary/lib/tntfs.ko:system/lib/tntfs.ko \
