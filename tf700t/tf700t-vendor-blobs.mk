@@ -32,6 +32,7 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/bin/touch_fw_update:system/bin/touch_fw_update \
     vendor/asus/tf700t/proprietary/etc/asound.conf:system/etc/asound.conf \
     vendor/asus/tf700t/proprietary/etc/BtService.sh:system/etc/BtService.sh \
+    vendor/asus/tf700t/proprietary/etc/dbus.conf:system/etc/dbus.conf \
     vendor/asus/tf700t/proprietary/etc/enctune.conf:system/etc/enctune.conf \
     vendor/asus/tf700t/proprietary/etc/model_frontal.xml:system/etc/model_frontal.xml \
     vendor/asus/tf700t/proprietary/etc/nvaudio_conf_RT5631.xml:system/etc/nvaudio_conf_RT5631.xml \
