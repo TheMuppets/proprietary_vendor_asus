@@ -17,16 +17,6 @@ LOCAL_PATH := $(call my-dir)
 ifeq ($(TARGET_DEVICE),grouper)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := asound
-LOCAL_MODULE_OWNER := nvidia
-LOCAL_SRC_FILES := asound.conf
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_SUFFIX := .conf
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/etc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE := btmacreader   
 LOCAL_MODULE_OWNER := broadcom
 LOCAL_SRC_FILES := btmacreader
@@ -44,6 +34,16 @@ LOCAL_MODULE_SUFFIX := .so
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/hw
 include $(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := keystore.grouper
+LOCAL_MODULE_OWNER := asus
+LOCAL_SRC_FILES := keystore.grouper.so
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_PATH := \$(TARGET_OUT)/lib/hw
+include \$(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := libdrmwvmplugin   
