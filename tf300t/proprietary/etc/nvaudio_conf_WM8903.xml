@@ -99,6 +99,14 @@
           <ctl name="Speaker Switch" val="0"/>
         </path>
       </device>
+      <device name="dock">
+        <path name="on">
+          <ctl name="AUX Switch" val="1"/>
+        </path>
+        <path name="off">
+          <ctl name="AUX Switch" val="0"/>
+        </path>
+      </device>
     </playback>
 
     <capture>
