@@ -23,7 +23,6 @@
 
 PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/bin/brcm_patchram_plus:system/bin/brcm_patchram_plus \
-    vendor/asus/tf700t/proprietary/bin/bt_firmware_loader.sh:system/bin/bt_firmware_loader.sh \
     vendor/asus/tf700t/proprietary/bin/glgps:system/bin/glgps \
     vendor/asus/tf700t/proprietary/bin/rild:system/bin/rild \
     vendor/asus/tf700t/proprietary/bin/rm_ts_server:system/bin/rm_ts_server \
@@ -39,24 +38,14 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/etc/nvaudio_conf_RT5642.xml:system/etc/nvaudio_conf_RT5642.xml \
     vendor/asus/tf700t/proprietary/etc/nvaudio_conf_WM8903.xml:system/etc/nvaudio_conf_WM8903.xml \
     vendor/asus/tf700t/proprietary/etc/nvcamera.conf:system/etc/nvcamera.conf \
-    vendor/asus/tf700t/proprietary/etc/nvram_4329.txt:system/etc/nvram_4329.txt \
     vendor/asus/tf700t/proprietary/etc/nvram_4330.txt:system/etc/nvram_4330.txt \
     vendor/asus/tf700t/proprietary/etc/nvram_ah691.txt:system/etc/nvram_ah691.txt \
-    vendor/asus/tf700t/proprietary/etc/nvram_murata_4334.txt:system/etc/nvram_murata_4334.txt \
     vendor/asus/tf700t/proprietary/etc/nvram_murata.txt:system/etc/nvram_murata.txt \
-    vendor/asus/tf700t/proprietary/etc/nvram_nh615.txt:system/etc/nvram_nh615.txt \
-    vendor/asus/tf700t/proprietary/etc/nvram_nh660.txt:system/etc/nvram_nh660.txt \
     vendor/asus/tf700t/proprietary/etc/nvram_nh665.txt:system/etc/nvram_nh665.txt \
-    vendor/asus/tf700t/proprietary/etc/nvram_nh669.txt:system/etc/nvram_nh669.txt \
-    vendor/asus/tf700t/proprietary/etc/firmware/BCM43241B0_002.001.013.0024.0027.hcd:system/etc/firmware/BCM43241B0_002.001.013.0024.0027.hcd \
-    vendor/asus/tf700t/proprietary/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd \
-    vendor/asus/tf700t/proprietary/etc/firmware/BCM4329B1_002.002.023.0797.0879.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0879.hcd \
-    vendor/asus/tf700t/proprietary/etc/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
     vendor/asus/tf700t/proprietary/etc/firmware/BCM4330B1_002.001.003.0379.0390.hcd:system/etc/firmware/BCM4330B1_002.001.003.0379.0390.hcd \
     vendor/asus/tf700t/proprietary/etc/firmware/BCM4330B1_002.001.003.0609.0636.hcd:system/etc/firmware/BCM4330B1_002.001.003.0609.0636.hcd \
     vendor/asus/tf700t/proprietary/etc/firmware/BCM4330B1_002.001.003.0750.0820.hcd:system/etc/firmware/BCM4330B1_002.001.003.0750.0820.hcd \
     vendor/asus/tf700t/proprietary/etc/firmware/bcm4330.hcd:system/etc/firmware/bcm4330.hcd \
-    vendor/asus/tf700t/proprietary/etc/firmware/BCM4334B0_002.001.013.0258.0306.hcd:system/etc/firmware/BCM4334B0_002.001.013.0258.0306.hcd \
     vendor/asus/tf700t/proprietary/etc/firmware/nvavp_aud_ucode.bin:system/etc/firmware/nvavp_aud_ucode.bin \
     vendor/asus/tf700t/proprietary/etc/firmware/nvavp_os_0ff00000.bin:system/etc/firmware/nvavp_os_0ff00000.bin \
     vendor/asus/tf700t/proprietary/etc/firmware/nvavp_os_eff00000.bin:system/etc/firmware/nvavp_os_eff00000.bin \
@@ -101,7 +90,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/lib/hw/gralloc.tegra.so:system/lib/hw/gralloc.tegra.so \
     vendor/asus/tf700t/proprietary/lib/hw/hwcomposer.tegra.so:system/lib/hw/hwcomposer.tegra.so \
     vendor/asus/tf700t/proprietary/lib/hw/lights.cardhu.so:system/lib/hw/lights.cardhu.so \
-    vendor/asus/tf700t/proprietary/lib/hw/sensors6050.cardhu.so:system/lib/hw/sensors6050.cardhu.so \
     vendor/asus/tf700t/proprietary/lib/hw/sensors.cardhu.so:system/lib/hw/sensors.cardhu.so \
     vendor/asus/tf700t/proprietary/lib/hw/sensors_generic.cardhu.so:system/lib/hw/sensors_generic.cardhu.so \
     vendor/asus/tf700t/proprietary/lib/libasound.so:system/lib/libasound.so \
@@ -115,11 +103,8 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/lib/libmplmpu.so:system/lib/libmplmpu.so \
     vendor/asus/tf700t/proprietary/lib/libsensors.mpl3050.so:system/lib/libsensors.mpl3050.so \
     vendor/asus/tf700t/proprietary/lib/libmllite3050.so:system/lib/libmllite3050.so \
-    vendor/asus/tf700t/proprietary/lib/libmllite6050.so:system/lib/libmllite6050.so \
     vendor/asus/tf700t/proprietary/lib/libmlplatform3050.so:system/lib/libmlplatform3050.so \
-    vendor/asus/tf700t/proprietary/lib/libmlplatform6050.so:system/lib/libmlplatform6050.so \
     vendor/asus/tf700t/proprietary/lib/libmplmpu3050.so:system/lib/libmplmpu3050.so \
-    vendor/asus/tf700t/proprietary/lib/libmplmpu6050.so:system/lib/libmplmpu6050.so \
     vendor/asus/tf700t/proprietary/lib/libnvapputil.so:system/lib/libnvapputil.so \
     vendor/asus/tf700t/proprietary/lib/libnvasfparserhal.so:system/lib/libnvasfparserhal.so \
     vendor/asus/tf700t/proprietary/lib/libnvaudioservice.so:system/lib/libnvaudioservice.so \
@@ -180,7 +165,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/lib/libnvwsi.so:system/lib/libnvwsi.so \
     vendor/asus/tf700t/proprietary/lib/libstagefrighthw.so:system/lib/libstagefrighthw.so \
     vendor/asus/tf700t/proprietary/lib/libsensors.al3010.so:system/lib/libsensors.al3010.so \
-    vendor/asus/tf700t/proprietary/lib/libsensors.base6050.so:system/lib/libsensors.base6050.so \
     vendor/asus/tf700t/proprietary/lib/libsensors.base.so:system/lib/libsensors.base.so \
     vendor/asus/tf700t/proprietary/lib/libsensors.isl29018.so:system/lib/libsensors.isl29018.so \
     vendor/asus/tf700t/proprietary/lib/libsensors.isl29028.so:system/lib/libsensors.isl29028.so \
@@ -205,14 +189,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/usr/share/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
     vendor/asus/tf700t/proprietary/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
     vendor/asus/tf700t/proprietary/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf \
-    vendor/asus/tf700t/proprietary/vendor/firmware/fw_bcm4329_apsta.bin:system/vendor/firmware/fw_bcm4329_apsta.bin \
-    vendor/asus/tf700t/proprietary/vendor/firmware/fw_bcm4329.bin:system/vendor/firmware/fw_bcm4329.bin \
-    vendor/asus/tf700t/proprietary/vendor/firmware/bcm4324/fw_bcmdhd_apsta.bin:system/vendor/firmware/bcm4324/fw_bcmdhd_apsta.bin \
-    vendor/asus/tf700t/proprietary/vendor/firmware/bcm4324/fw_bcmdhd.bin:system/vendor/firmware/bcm4324/fw_bcmdhd.bin \
-    vendor/asus/tf700t/proprietary/vendor/firmware/bcm4324/fw_bcmdhd_p2p.bin:system/vendor/firmware/bcm4324/fw_bcmdhd_p2p.bin \
-    vendor/asus/tf700t/proprietary/vendor/firmware/bcm4329/fw_bcmdhd_apsta.bin:system/vendor/firmware/bcm4329/fw_bcmdhd_apsta.bin \
-    vendor/asus/tf700t/proprietary/vendor/firmware/bcm4329/fw_bcmdhd.bin:system/vendor/firmware/bcm4329/fw_bcmdhd.bin \
-    vendor/asus/tf700t/proprietary/vendor/firmware/bcm4329/fw_bcmdhd_p2p.bin:system/vendor/firmware/bcm4329/fw_bcmdhd_p2p.bin \
     vendor/asus/tf700t/proprietary/vendor/firmware/bcm4330/fw_bcmdhd_apsta.bin:system/vendor/firmware/bcm4330/fw_bcmdhd_apsta.bin \
     vendor/asus/tf700t/proprietary/vendor/firmware/bcm4330/fw_bcmdhd_b1.bin:system/vendor/firmware/bcm4330/fw_bcmdhd_b1.bin \
     vendor/asus/tf700t/proprietary/vendor/firmware/bcm4330/fw_bcmdhd.bin:system/vendor/firmware/bcm4330/fw_bcmdhd.bin \
