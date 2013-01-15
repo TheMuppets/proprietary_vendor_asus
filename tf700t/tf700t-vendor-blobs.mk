@@ -23,6 +23,7 @@
 
 PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/bin/brcm_patchram_plus:system/bin/brcm_patchram_plus \
+    vendor/asus/tf700t/proprietary/bin/btmacreader:system/bin/btmacreader \
     vendor/asus/tf700t/proprietary/bin/glgps:system/bin/glgps \
     vendor/asus/tf700t/proprietary/bin/rild:system/bin/rild \
     vendor/asus/tf700t/proprietary/bin/rm_ts_server:system/bin/rm_ts_server \
