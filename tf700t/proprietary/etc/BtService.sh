@@ -1,4 +1,4 @@
-#!/system/sbin/sh
+#!/system/bin/sh
 
 BT_Service="Bluetooth Service"
 LOG_TAG="BtService"
