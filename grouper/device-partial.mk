@@ -14,10 +14,8 @@
 
 # Asus blob(s) necessary for Grouper hardware
 PRODUCT_PACKAGES := \
-    asound \
     btmacreader \
     camera.tegra3 \
-    keystore.grouper \
     libdrmwvmplugin \
     libsensors.lightsensor \
     libwvm \
