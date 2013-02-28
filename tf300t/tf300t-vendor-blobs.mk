@@ -30,7 +30,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf300t/proprietary/etc/nvaudio_conf_WM8903.xml:system/etc/nvaudio_conf_WM8903.xml \
     vendor/asus/tf300t/proprietary/etc/nvcamera.conf:system/etc/nvcamera.conf \
     vendor/asus/tf300t/proprietary/etc/nvram_nh615.txt:system/etc/nvram_nh615.txt \
-    vendor/asus/tf300t/proprietary/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
     vendor/asus/tf300t/proprietary/lib/egl/libEGL_tegra.so:system/lib/egl/libEGL_tegra.so \
     vendor/asus/tf300t/proprietary/lib/egl/libGLESv1_CM_tegra.so:system/lib/egl/libGLESv1_CM_tegra.so \
     vendor/asus/tf300t/proprietary/lib/egl/libGLESv2_tegra.so:system/lib/egl/libGLESv2_tegra.so \
