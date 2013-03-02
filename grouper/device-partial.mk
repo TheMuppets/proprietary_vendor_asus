@@ -15,10 +15,9 @@
 # Asus blob(s) necessary for Grouper hardware
 PRODUCT_PACKAGES := \
     btmacreader \
-    camera.tegra3 \
-    libdrmwvmplugin \
-    libsensors.lightsensor \
-    libwvm \
-    sensors.grouper \
     sensors-config \
-    tf_daemon
+    camera.tegra3 \
+    sensors.grouper \
+    libsensors.lightsensor \
+    libdrmwvmplugin \
+    libwvm
