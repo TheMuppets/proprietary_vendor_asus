@@ -767,19 +767,6 @@ LOCAL_MODULE_OWNER := invensense
 include $(BUILD_PREBUILT)
 
 #--------------------------------------------------------------
-#  ELAN
-#--------------------------------------------------------------
-include $(CLEAR_VARS)
-LOCAL_MODULE := touch_fw
-LOCAL_SRC_FILES := touch_fw.ekt
-LOCAL_MODULE_SUFFIX := .ekt
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/firmware
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_OWNER := elan
-include $(BUILD_PREBUILT)
-
-#--------------------------------------------------------------
 #  NXP
 #--------------------------------------------------------------
 include $(CLEAR_VARS)
