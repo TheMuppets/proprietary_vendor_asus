@@ -16,7 +16,6 @@ boardnum=22
 cckdigfilttype=20             #20~26
 ag0=255
 aa2g=3
-ccode=ALL
 #pa0b0=0x13e1
 #pa0b1=0xfdab
 #pa0b2=0xff66

@@ -21,7 +21,6 @@ rssismf2g=0xa
 rssismc2g=0xb
 rssisav2g=0x3
 bxa2g=0
-ccode=ALL
 cctl=0x0
 cckdigfilttype=1
 ofdmdigfilttype=1
