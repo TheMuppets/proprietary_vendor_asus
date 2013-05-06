@@ -164,8 +164,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf700t/proprietary/lib/libtbb.so:system/lib/libtbb.so \
     vendor/asus/tf700t/proprietary/lib/libtinyalsa.so:system/lib/libtinyalsa.so \
     vendor/asus/tf700t/proprietary/lib/libtjpg.so:system/lib/libtjpg.so \
-    vendor/asus/tf700t/proprietary/lib/texfat.ko:system/lib/texfat.ko \
-    vendor/asus/tf700t/proprietary/lib/tntfs.ko:system/lib/tntfs.ko \
     vendor/asus/tf700t/proprietary/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
     vendor/asus/tf700t/proprietary/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
     vendor/asus/tf700t/proprietary/usr/share/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
