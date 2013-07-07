@@ -36,7 +36,6 @@ rssismc2g=0xb,0xb,0xa
 rssisav2g=0x3,0x3,0x3
 bxa2g=0
 # country code
-ccode=ALL
 cctl=0x0
 rxpo2g=0
 #macaddr=00:11:22:33:44:55
