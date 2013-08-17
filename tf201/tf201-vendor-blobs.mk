@@ -73,7 +73,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/tf201/proprietary/lib/libcgdrv.so:system/lib/libcgdrv.so \
     vendor/asus/tf201/proprietary/lib/libnvmmlite_image.so:system/lib/libnvmmlite_image.so \
     vendor/asus/tf201/proprietary/lib/libnvremoteprotocol.so:system/lib/libnvremoteprotocol.so \
-    vendor/asus/tf201/proprietary/lib/libEGL.so:system/lib/libEGL.so \
     vendor/asus/tf201/proprietary/lib/libnvmmlite_msaudio.so:system/lib/libnvmmlite_msaudio.so \
     vendor/asus/tf201/proprietary/lib/libnvrm_graphics.so:system/lib/libnvrm_graphics.so \
     vendor/asus/tf201/proprietary/lib/libami_sensor_mw.so:system/lib/libami_sensor_mw.so \
