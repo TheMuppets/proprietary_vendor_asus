@@ -108,4 +108,5 @@ usbepnum=0x2
 noisecaloffset=14
 noisecaloffset5g=14
 muxenab=0x10
+11n_disable=0x2
 
