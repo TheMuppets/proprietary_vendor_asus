@@ -85,7 +85,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/flo/proprietary/lib/libdss.so:system/lib/libdss.so \
     vendor/asus/flo/proprietary/lib/libdsucsd.so:system/lib/libdsucsd.so \
     vendor/asus/flo/proprietary/lib/libdsutils.so:system/lib/libdsutils.so \
-    vendor/asus/flo/proprietary/lib/libDxHdcp.so:system/lib/libDxHdcp.so \
     vendor/asus/flo/proprietary/lib/libgps.utils.so:system/lib/libgps.utils.so \
     vendor/asus/flo/proprietary/lib/libgsl.so:system/lib/libgsl.so \
     vendor/asus/flo/proprietary/lib/libI420colorconvert.so:system/lib/libI420colorconvert.so \
