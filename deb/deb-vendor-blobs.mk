@@ -56,25 +56,25 @@ PRODUCT_COPY_FILES += \
     vendor/asus/deb/proprietary/etc/firmware/vidcfw.elf:system/etc/firmware/vidcfw.elf \
     vendor/asus/deb/proprietary/etc/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
     vendor/asus/deb/proprietary/etc/gps.conf:system/etc/gps.conf \
-    vendor/asus/deb/proprietary/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
-    vendor/asus/deb/proprietary/lib/egl/libEGL_adreno.so:system/lib/egl/libEGL_adreno.so \
-    vendor/asus/deb/proprietary/lib/egl/libGLESv1_CM_adreno.so:system/lib/egl/libGLESv1_CM_adreno.so \
-    vendor/asus/deb/proprietary/lib/egl/libGLESv2_adreno.so:system/lib/egl/libGLESv2_adreno.so \
-    vendor/asus/deb/proprietary/lib/egl/libplayback_adreno.so:system/lib/egl/libplayback_adreno.so \
-    vendor/asus/deb/proprietary/lib/egl/libq3dtools_adreno.so:system/lib/egl/libq3dtools_adreno.so \
+    vendor/asus/deb/proprietary/vendor/lib/egl/eglsubAndroid.so:system/vendor/lib/egl/eglsubAndroid.so \
+    vendor/asus/deb/proprietary/vendor/lib/egl/libEGL_adreno.so:system/vendor/lib/egl/libEGL_adreno.so \
+    vendor/asus/deb/proprietary/vendor/lib/egl/libGLESv1_CM_adreno.so:system/vendor/lib/egl/libGLESv1_CM_adreno.so \
+    vendor/asus/deb/proprietary/vendor/lib/egl/libGLESv2_adreno.so:system/vendor/lib/egl/libGLESv2_adreno.so \
+    vendor/asus/deb/proprietary/vendor/lib/egl/libplayback_adreno.so:system/vendor/lib/egl/libplayback_adreno.so \
+    vendor/asus/deb/proprietary/vendor/lib/egl/libq3dtools_adreno.so:system/vendor/lib/egl/libq3dtools_adreno.so \
     vendor/asus/deb/proprietary/lib/hw/flp.msm8960.so:system/lib/hw/flp.msm8960.so \
     vendor/asus/deb/proprietary/lib/hw/gps.msm8960.so:system/lib/hw/gps.msm8960.so \
     vendor/asus/deb/proprietary/lib/hw/sensors.msm8960.so:system/lib/hw/sensors.msm8960.so \
     vendor/asus/deb/proprietary/lib/libacdbdata.so:system/lib/libacdbdata.so \
     vendor/asus/deb/proprietary/lib/libacdbloader.so:system/lib/libacdbloader.so \
-    vendor/asus/deb/proprietary/lib/libadreno_utils.so:system/lib/libadreno_utils.so \
+    vendor/asus/deb/proprietary/vendor/lib/libadreno_utils.so:system/vendor/lib/libadreno_utils.so \
     vendor/asus/deb/proprietary/lib/libAKM.so:system/lib/libAKM.so \
     vendor/asus/deb/proprietary/lib/libaudcal.so:system/lib/libaudcal.so \
     vendor/asus/deb/proprietary/lib/libaudioalsa.so:system/lib/libaudioalsa.so \
-    vendor/asus/deb/proprietary/lib/libC2D2.so:system/lib/libC2D2.so \
-    vendor/asus/deb/proprietary/lib/libc2d30-a3xx.so:system/lib/libc2d30-a3xx.so \
-    vendor/asus/deb/proprietary/lib/libc2d30.so:system/lib/libc2d30.so \
-    vendor/asus/deb/proprietary/lib/libCB.so:system/lib/libCB.so \
+    vendor/asus/deb/proprietary/vendor/lib/libC2D2.so:system/vendor/lib/libC2D2.so \
+    vendor/asus/deb/proprietary/vendor/lib/libc2d30-a3xx.so:system/vendor/lib/libc2d30-a3xx.so \
+    vendor/asus/deb/proprietary/vendor/lib/libc2d30.so:system/vendor/lib/libc2d30.so \
+    vendor/asus/deb/proprietary/vendor/lib/libCB.so:system/vendor/lib/libCB.so \
     vendor/asus/deb/proprietary/lib/libchromatix_ov5693_common.so:system/lib/libchromatix_ov5693_common.so \
     vendor/asus/deb/proprietary/lib/libchromatix_ov5693_default_video.so:system/lib/libchromatix_ov5693_default_video.so \
     vendor/asus/deb/proprietary/lib/libchromatix_ov5693_preview.so:system/lib/libchromatix_ov5693_preview.so \
@@ -92,10 +92,11 @@ PRODUCT_COPY_FILES += \
     vendor/asus/deb/proprietary/lib/libdsutils.so:system/lib/libdsutils.so \
     vendor/asus/deb/proprietary/lib/libDxHdcp.so:system/lib/libDxHdcp.so \
     vendor/asus/deb/proprietary/lib/libgps.utils.so:system/lib/libgps.utils.so \
-    vendor/asus/deb/proprietary/lib/libgsl.so:system/lib/libgsl.so \
+    vendor/asus/deb/proprietary/vendor/lib/libgsl.so:system/vendor/lib/libgsl.so \
     vendor/asus/deb/proprietary/lib/libI420colorconvert.so:system/lib/libI420colorconvert.so \
     vendor/asus/deb/proprietary/lib/libidl.so:system/lib/libidl.so \
-    vendor/asus/deb/proprietary/lib/libllvm-a3xx.so:system/lib/libllvm-a3xx.so \
+    vendor/asus/deb/proprietary/vendor/lib/libllvm-qcom.so:system/vendor/lib/libllvm-qcom.so \
+    vendor/asus/deb/proprietary/vendor/lib/libbccQTI.so:system/vendor/lib/libbccQTI.so \
     vendor/asus/deb/proprietary/lib/libloc_core.so:system/lib/libloc_core.so \
     vendor/asus/deb/proprietary/lib/libloc_eng.so:system/lib/libloc_eng.so \
     vendor/asus/deb/proprietary/lib/libmm-abl.so:system/lib/libmm-abl.so \
@@ -120,10 +121,10 @@ PRODUCT_COPY_FILES += \
     vendor/asus/deb/proprietary/lib/libQSEEComAPI.so:system/lib/libQSEEComAPI.so \
     vendor/asus/deb/proprietary/lib/libril-qc-qmi-1.so:system/lib/libril-qc-qmi-1.so \
     vendor/asus/deb/proprietary/lib/libril-qcril-hook-oem.so:system/lib/libril-qcril-hook-oem.so \
-    vendor/asus/deb/proprietary/lib/libRSDriver_adreno.so:system/lib/libRSDriver_adreno.so \
-    vendor/asus/deb/proprietary/lib/librs_adreno.so:system/lib/librs_adreno.so \
-    vendor/asus/deb/proprietary/lib/librs_adreno_sha1.so:system/lib/librs_adreno_sha1.so \
-    vendor/asus/deb/proprietary/lib/libsc-a3xx.so:system/lib/libsc-a3xx.so \
+    vendor/asus/deb/proprietary/vendor/lib/libRSDriver_adreno.so:system/vendor/lib/libRSDriver_adreno.so \
+    vendor/asus/deb/proprietary/vendor/lib/librs_adreno.so:system/vendor/lib/librs_adreno.so \
+    vendor/asus/deb/proprietary/vendor/lib/librs_adreno_sha1.so:system/vendor/lib/librs_adreno_sha1.so \
+    vendor/asus/deb/proprietary/vendor/lib/libsc-a3xx.so:system/vendor/lib/libsc-a3xx.so \
     vendor/asus/deb/proprietary/lib/libsensor1.so:system/lib/libsensor1.so \
     vendor/asus/deb/proprietary/lib/libsensor_reg.so:system/lib/libsensor_reg.so \
     vendor/asus/deb/proprietary/lib/libsensor_user_cal.so:system/lib/libsensor_user_cal.so \
