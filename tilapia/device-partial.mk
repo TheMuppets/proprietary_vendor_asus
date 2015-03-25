@@ -14,6 +14,7 @@
 
 # Asus blob(s) necessary for Grouper hardware
 PRODUCT_PACKAGES := \
+    btmacreader \
     sensors-config \
     apns-conf \
     camera.tegra3 \
