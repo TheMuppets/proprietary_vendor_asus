@@ -728,10 +728,8 @@ PRODUCT_COPY_FILES += \
     vendor/asus/mofd-common/proprietary/vendor/firmware/telephony/zx550ml_TW_726x.tlv:system/vendor/firmware/telephony/zx550ml_TW_726x.tlv \
     vendor/asus/mofd-common/proprietary/vendor/firmware/telephony/zx550ml_WW_726x.tlv:system/vendor/firmware/telephony/zx550ml_WW_726x.tlv \
     vendor/asus/mofd-common/proprietary/etc/sensor_hal_config_default.xml:system/etc/sensor_hal_config_default.xml \
-    vendor/asus/mofd-common/proprietary/lib/arm/libnetd_client.so:system/lib/arm/libnetd_client.so \
     vendor/asus/mofd-common/proprietary/lib/hw/sensors.mofd_v1.so:system/lib/hw/sensors.mofd_v1.so \
     vendor/asus/mofd-common/proprietary/lib/libcontextarbitor.so:system/lib/libcontextarbitor.so \
-    vendor/asus/mofd-common/proprietary/lib/libnetd_client.so:system/lib/libnetd_client.so \
     vendor/asus/mofd-common/proprietary/lib/libsensorhub.so:system/lib/libsensorhub.so \
     vendor/asus/mofd-common/proprietary/lib/libvirtualsensors.so:system/lib/libvirtualsensors.so \
     vendor/asus/mofd-common/proprietary/etc/wifi/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
