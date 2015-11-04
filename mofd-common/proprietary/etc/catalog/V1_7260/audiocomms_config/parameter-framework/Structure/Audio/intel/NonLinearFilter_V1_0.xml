@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="NonLinearFilter" Mapping="ByteControlWithLength:%1 %2 %3 params nlf">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="NLF version: 0 is v1.0"/>
+        <IntegerParameter Name="filter_len" ArrayLength="7" Size="16" Min="0" Max="100"
+            Description="Filter length of Filter1 applied on x^(index array). Class 2 parameter. Default=0"/>
+        <IntegerParameter Name="pre_shl" Size="16" Min="-5" Max="5" Signed="true"
+            Description="Number of left shifts applied on samples before non-linear filtering (pre-scaling of x). Class 2 parameter."/>
+        <IntegerParameter Name="post_shl" Size="16" Min="-5" Max="5" Signed="true"
+            Description="Number of left shifts applied on samples after non-linear filtering (post-scaling of polynomial). Class 2 parameter.Default=0"/>
+        <IntegerParameter Name="filter_shl" ArrayLength="7" Size="16" Min="-10" Max="10" Signed="true"
+            Description="Number of left shifts applied on the signal y(index array) = Filter(index array)) * x^(index array)). Class 2 parameter. Default=0"/>
+        <FixedPointParameter Name="data" ArrayLength="100" Size="16" Integral="0" Fractional="15"
+            Description="NLF Filter data. Class 2 parameter. Default=0"/>
+    </ComponentType>
+</ComponentTypeSet>

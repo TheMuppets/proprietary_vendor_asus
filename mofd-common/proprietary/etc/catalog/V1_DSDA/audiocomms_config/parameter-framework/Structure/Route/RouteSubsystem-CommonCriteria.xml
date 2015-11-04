@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentLibrary>
+    <ComponentTypeSet>
+
+        <ComponentType Name="Mode" Mapping="Type:ModeType,Inclusive:0">
+            <EnumParameter Name="mode" Size="32" Mapping="Criterion">
+                <ValuePair Literal="Normal" Numerical="0"/>
+                <ValuePair Literal="RingTone" Numerical="1"/>
+                <ValuePair Literal="InCsvCall" Numerical="2"/>
+                <ValuePair Literal="InVoipCall" Numerical="3"/>
+                <ValuePair Literal="InImsCall" Numerical="4"/>
+            </EnumParameter>
+        </ComponentType>
+
+        <!-- The name of each device must match the name of the Audio PFW input device
+        criterion as this parameter will feed the associated criterion. -->
+        <ComponentType Name="InputDevices" Mapping="Type:InputDevicesType,Inclusive:1">
+            <BitParameterBlock Name="mask" Size="32" Mapping="Criterion">
+                <BitParameter Name="Communication" Size="1" Pos="0"/>
+                <BitParameter Name="Ambient" Size="1" Pos="1"/>
+                <BitParameter Name="Main" Size="1" Pos="2"/>
+                <BitParameter Name="SCO_Headset" Size="1" Pos="3"/>
+                <BitParameter Name="Headset" Size="1" Pos="4"/>
+                <BitParameter Name="AuxDigital" Size="1" Pos="5"/>
+                <BitParameter Name="VoiceCall" Size="1" Pos="6"/>
+                <BitParameter Name="Back" Size="1" Pos="7"/>
+                <BitParameter Name="RemoteSubmix" Size="1" Pos="8"/>
+                <BitParameter Name="AnlgDockHeadset" Size="1" Pos="9"/>
+                <BitParameter Name="DgtlDockHeadset" Size="1" Pos="10"/>
+                <BitParameter Name="UsbAccessory" Size="1" Pos="11"/>
+                <BitParameter Name="UsbDevice" Size="1" Pos="12"/>
+                <BitParameter Name="FmTuner" Size="1" Pos="13"/>
+                <BitParameter Name="TvTuner" Size="1" Pos="14"/>
+                <BitParameter Name="Line" Size="1" Pos="15"/>
+                <BitParameter Name="Spdif" Size="1" Pos="16"/>
+                <BitParameter Name="BluetoothA2dp" Size="1" Pos="17"/>
+                <BitParameter Name="Loopback" Size="1" Pos="18"/>
+            </BitParameterBlock>
+        </ComponentType>
+
+        <!-- The name of each device must match the name of the Audio PFW output device
+        criterion as this parameter will feed the associated criterion. -->
+        <ComponentType Name="OutputDevices" Mapping="Type:OutputDevicesType,Inclusive:1">
+            <BitParameterBlock Name="mask" Size="32" Mapping="Criterion">
+                <BitParameter Name="Earpiece" Size="1" Pos="0"/>
+                <BitParameter Name="IHF" Size="1" Pos="1"/>
+                <BitParameter Name="Headset" Size="1" Pos="2"/>
+                <BitParameter Name="Headphones" Size="1" Pos="3"/>
+                <BitParameter Name="SCO" Size="1" Pos="4"/>
+                <BitParameter Name="SCO_Headset" Size="1" Pos="5"/>
+                <BitParameter Name="SCO_CarKit" Size="1" Pos="6"/>
+                <BitParameter Name="A2dp" Size="1" Pos="7"/>
+                <BitParameter Name="A2dpHeadphones" Size="1" Pos="8"/>
+                <BitParameter Name="A2dpSpeaker" Size="1" Pos="9"/>
+                <BitParameter Name="AuxDigital" Size="1" Pos="10"/>
+                <BitParameter Name="AnlgDockHeadset" Size="1" Pos="11"/>
+                <BitParameter Name="DgtlDockHeadset" Size="1" Pos="12"/>
+                <BitParameter Name="UsbAccessory" Size="1" Pos="13"/>
+                <BitParameter Name="UsbDevice" Size="1" Pos="14"/>
+                <BitParameter Name="RemoteSubmix" Size="1" Pos="15"/>
+                <BitParameter Name="TelephonyTx" Size="1" Pos="16"/>
+                <BitParameter Name="Line" Size="1" Pos="17"/>
+                <BitParameter Name="HdmiArc" Size="1" Pos="18"/>
+                <BitParameter Name="Spdif" Size="1" Pos="19"/>
+                <BitParameter Name="Fm" Size="1" Pos="20"/>
+                <BitParameter Name="AuxLine" Size="1" Pos="21"/>
+                <BitParameter Name="SpeakerSafe" Size="1" Pos="22"/>
+            </BitParameterBlock>
+        </ComponentType>
+
+        <ComponentType Name="Band" Mapping="Type:BandType,Inclusive:0">
+            <EnumParameter Name="band" Size="32" Mapping="Criterion">
+                <ValuePair Literal="Unknown" Numerical="0"/>
+                <ValuePair Literal="NB" Numerical="1"/>
+                <ValuePair Literal="WB" Numerical="2"/>
+                <ValuePair Literal="SuperWB" Numerical="3"/>
+            </EnumParameter>
+        </ComponentType>
+
+        <ComponentType Name="InputSources" Mapping="Type:InputSourcesType,Inclusive:1">
+            <BitParameterBlock Name="mask" Size="32" Mapping="Criterion">
+                <BitParameter Name="Default" Size="1" Pos="0"/>
+                <BitParameter Name="Mic" Size="1" Pos="1"/>
+                <BitParameter Name="VoiceUplink" Size="1" Pos="2"/>
+                <BitParameter Name="VoiceDownlink" Size="1" Pos="3"/>
+                <BitParameter Name="VoiceCall" Size="1" Pos="4"/>
+                <BitParameter Name="Camcorder" Size="1" Pos="5"/>
+                <BitParameter Name="VoiceRecognition" Size="1" Pos="6"/>
+                <BitParameter Name="VoiceCommunication" Size="1" Pos="7"/>
+                <BitParameter Name="RemoteSubmix" Size="1" Pos="8"/>
+                <BitParameter Name="Hotword" Size="1" Pos="9"/>
+            </BitParameterBlock>
+        </ComponentType>
+
+        <!-- Duplicated definition of input sources... This
+        is needed because of how the route plugin will use the 'Criterion'
+        objects: the 'Criterion' instanciation mapping must be put on the
+        ParameterBlock -->
+        <ComponentType Name="InputSources_">
+            <BitParameterBlock Name="input_sources" Size="32">
+                <BitParameter Name="default" Size="1" Pos="0"/>
+                <BitParameter Name="mic" Size="1" Pos="1"/>
+                <BitParameter Name="voice_uplink" Size="1" Pos="2"/>
+                <BitParameter Name="voice_downlink" Size="1" Pos="3"/>
+                <BitParameter Name="voice_call" Size="1" Pos="4"/>
+                <BitParameter Name="camcorder" Size="1" Pos="5"/>
+                <BitParameter Name="voice_recognition" Size="1" Pos="6"/>
+                <BitParameter Name="voice_communication" Size="1" Pos="7"/>
+                <BitParameter Name="remote_submix" Size="1" Pos="8"/>
+                <BitParameter Name="hotword" Size="1" Pos="9"/>
+            </BitParameterBlock>
+        </ComponentType>
+
+        <ComponentType Name="OutputFlags" Mapping="Type:OutputFlagsType,Inclusive:1">
+            <BitParameterBlock Name="mask" Size="32" Mapping="Criterion">
+                <BitParameter Name="direct" Size="1" Pos="0"/>
+                <BitParameter Name="primary" Size="1" Pos="1"/>
+                <BitParameter Name="fast" Size="1" Pos="2"/>
+                <BitParameter Name="deep_buffer" Size="1" Pos="3"/>
+                <BitParameter Name="compress_offload" Size="1" Pos="4"/>
+                <BitParameter Name="non_blocking" Size="1" Pos="5"/>
+                <BitParameter Name="hw_av_sync" Size="1" Pos="6"/>
+            </BitParameterBlock>
+        </ComponentType>
+
+        <!-- Duplicated definition of output flags ... This
+        is needed because of how the route plugin will use the 'Criterion'
+        objects: the 'Criterion' instanciation mapping must be put on the
+        ParameterBlock -->
+        <ComponentType Name="OutputFlags_">
+            <BitParameterBlock Name="output_flags" Size="32">
+                <BitParameter Name="direct" Size="1" Pos="0"/>
+                <BitParameter Name="primary" Size="1" Pos="1"/>
+                <BitParameter Name="fast" Size="1" Pos="2"/>
+                <BitParameter Name="deep_buffer" Size="1" Pos="3"/>
+                <BitParameter Name="compress_offload" Size="1" Pos="4"/>
+                <BitParameter Name="non_blocking" Size="1" Pos="5"/>
+                <BitParameter Name="hw_av_sync" Size="1" Pos="6"/>
+            </BitParameterBlock>
+        </ComponentType>
+
+        <ComponentType Name="TtyDirection" Mapping="Type:TtyDirectionType,Inclusive:1">
+            <BitParameterBlock Name="mask" Size="32" Mapping="Criterion">
+                <BitParameter Name="Downlink" Size="1" Pos="0"/>
+                <BitParameter Name="Uplink" Size="1" Pos="1"/>
+            </BitParameterBlock>
+        </ComponentType>
+
+        <ComponentType Name="Boolean" Mapping="Type:BooleanType,Inclusive:0">
+            <EnumParameter Name="boolean" Size="32" Mapping="Criterion">
+                <ValuePair Literal="False" Numerical="0"/>
+                <ValuePair Literal="True" Numerical="1"/>
+            </EnumParameter>
+        </ComponentType>
+
+        <ComponentType Name="State" Mapping="Type:StateType,Inclusive:0">
+            <EnumParameter Name="state" Size="32" Mapping="Criterion">
+                <ValuePair Literal="Off" Numerical="0"/>
+                <ValuePair Literal="On" Numerical="1"/>
+            </EnumParameter>
+        </ComponentType>
+
+        <ComponentType Name="Preprocessing" Mapping="Type:PreProcessingType,Inclusive:1">
+            <BitParameterBlock Name="mask" Size="32" Mapping="Criterion">
+                <BitParameter Name="Aec" Size="1" Pos="0"/>
+                <BitParameter Name="Agc" Size="1" Pos="1"/>
+                <BitParameter Name="Ns" Size="1" Pos="2"/>
+                <BitParameter Name="Bmf" Size="1" Pos="3"/>
+                <BitParameter Name="Wnr" Size="1" Pos="4"/>
+            </BitParameterBlock>
+        </ComponentType>
+
+        <ComponentType Name="PlatformCriteria">
+            <Component Name="mode" Type="Mode" Mapping="Name:Mode"/>
+            <Component Name="input_devices" Type="InputDevices" Mapping="Name:SelectedInputDevice"/>
+            <Component Name="output_devices" Type="OutputDevices" Mapping="Name:SelectedOutputDevice"/>
+            <Component Name="band_type" Type="Band" Mapping="Name:BandType"/>
+            <Component Name="screen_state" Type="State" Mapping="Name:ScreenState"/>
+            <Component Name="fm_mode" Type="State" Mapping="Name:FmMode"/>
+            <Component Name="input_sources" Type="InputSources" Mapping="Name:AudioSource"/>
+            <Component Name="output_flags" Type="OutputFlags" Mapping="Name:OutputFlags"/>
+            <Component Name="bt_headset_nrec" Type="Boolean" Mapping="Name:BtHeadsetNrEc"/>
+            <Component Name="bt_headset_band" Type="Band" Mapping="Name:BtHeadsetBandType"/>
+            <Component Name="hac_mode" Type="State" Mapping="Name:HAC"/>
+            <Component Name="tty_direction" Type="TtyDirection" Mapping="Name:TTYDirection"/>
+            <Component Name="bypass_non_linear_pp" Type="State" Mapping="Name:BypassNonLinearPp"/>
+            <Component Name="bypass_linear_pp" Type="State" Mapping="Name:BypassLinearPp"/>
+            <Component Name="mic_mute" Type="State" Mapping="Name:MicMute"/>
+            <Component Name="preproc_enabled" Type="Preprocessing" Mapping="Name:PreProcEnabled"/>
+        </ComponentType>
+
+    </ComponentTypeSet>
+</ComponentLibrary>

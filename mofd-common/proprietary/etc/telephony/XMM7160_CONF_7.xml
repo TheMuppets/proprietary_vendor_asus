@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE author [
+	   <!ENTITY channels_default SYSTEM "channels_default.xml" >
+]>
+
+<telephony_config>
+	<modems_info>
+		<modem_info>
+			<core
+				name="7160"
+				flashless="false"
+				secured="false"
+				ipc="usb"
+				ipcLogging="usb"
+				ipcDump="usb"
+				swRevision="1.2"
+				hwRevision="35"
+			/>
+			<modules
+				mmgr_xml="mmgr_7160_conf_7.xml"
+				rril_txt="rril_7160_conf_3.txt"
+			/>
+			<tlvs_info>
+				<tlv_info
+					filename="1024_7160_family.tlv"
+				/>
+				<tlv_info
+					filename="1024_agps_blanking.tlv"
+				/>
+				<tlv_info
+					filename="1024_csd_off.tlv"
+				/>
+				<tlv_info
+					filename="1024_fast_core_dump_off.tlv"
+				/>
+				<tlv_info
+					filename="1024_csg_off.tlv"
+				/>
+				<tlv_info
+					filename="1024_2g_multislot_power.tlv"
+				/>
+				<tlv_info
+					filename="1024_4g_multislot_power.tlv"
+				/>
+				<tlv_info
+					filename="1024_multislot_off.tlv"
+				/>
+				<tlv_info
+					filename="1024_out_of_band_on.tlv"
+				/>
+				<tlv_info
+					filename="1024_rx_diversity.tlv"
+				/>
+			</tlvs_info>
+			&channels_default;
+		</modem_info>
+	</modems_info>
+</telephony_config>

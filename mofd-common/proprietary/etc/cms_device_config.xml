@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Current Management service Configuration File -->
+<!-- List of devices and their throttling values for each state in a trigger -->
+<!-- Intel Corporation 2013 -->
+<cmsDeviceConfig>
+	<contributingDevice>
+		<devName>audio</devName>
+		<devID>1</devID>
+		<throttleTrigger>
+			<name>battLevel</name>
+			<normal>0</normal>
+			<warning>1</warning>
+			<alert>2</alert>
+			<critical>2</critical>
+		</throttleTrigger>
+	</contributingDevice>
+	<contributingDevice>
+		<devName>camera</devName>
+		<devID>2</devID>
+		<throttleTrigger>
+			<name>battLevel</name>
+			<normal>0</normal>
+			<warning>3</warning>
+			<alert>3</alert>
+			<critical>3</critical>
+		</throttleTrigger>
+		<throttleTrigger>
+			<name>battTemp</name>
+			<normal>0</normal>
+			<warning>1</warning>
+			<alert>2</alert>
+			<critical>3</critical>
+		</throttleTrigger>
+	</contributingDevice>
+	<contributingDevice>
+		<devName>display</devName>
+		<devID>3</devID>
+		<throttleTrigger>
+			<name>battLevel</name>
+			<normal>0</normal>
+			<warning>1</warning>
+			<alert>2</alert>
+			<critical>2</critical>
+		</throttleTrigger>
+	</contributingDevice>
+	<contributingDevice>
+		<devName>otg</devName>
+		<devID>4</devID>
+		<throttleTrigger>
+			<name>battLevel</name>
+			<normal>0</normal>
+			<warning>1</warning>
+			<alert>2</alert>
+			<critical>2</critical>
+		</throttleTrigger>
+	</contributingDevice>
+	<contributingDevice>
+		<devName>vibra</devName>
+		<devID>5</devID>
+		<throttleTrigger>
+			<name>battLevel</name>
+			<normal>0</normal>
+			<warning>1</warning>
+			<alert>2</alert>
+			<critical>3</critical>
+		</throttleTrigger>
+	</contributingDevice>
+</cmsDeviceConfig>

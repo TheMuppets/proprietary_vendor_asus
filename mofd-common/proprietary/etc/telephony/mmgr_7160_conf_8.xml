@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE author [
+	<!ENTITY firmware SYSTEM "mmgr_fw_default.xml" >
+]>
+
+<mmgr_config>
+	&firmware;
+	<modem_link>
+		<flash_ebl>
+			<link_usb device="![CDATA[/dev/ttyACM0]]" pid="0x0716" vid="0x8087"/>
+		</flash_ebl>
+		<flash_fw>
+			<link_usb device="![CDATA[/dev/ttyACM0]]" pid="0x0716" vid="0x8087"/>
+		</flash_fw>
+		<baseband>
+			<link_usb device="![CDATA[/dev/ttyACM0]]" pid="0x0443" vid="0x1519"/>
+		</baseband>
+		<power
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:14.0/L2_autosuspend_enable]]"
+			on="1"
+			off="0"
+		/>
+		<reconfig_usb>
+			<link_usb device="![CDATA[/dev/ttyACM0]]" pid="0x0911" vid="0x8087"/>
+		</reconfig_usb>
+		<link_ctrl
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:14.0/hsic_enable]]"
+			on="1"
+			off="0"
+			reset="1"
+		/>
+	</modem_link>
+	<mdm_ctrl
+		path="/dev/mdm_ctrl0"
+		type="ioctl"
+		board="ngff"
+		pwr_on_ctrl="gpio"
+		usb_hub_ctrl="false"
+	/>
+	<modem_comm>
+		<mux
+			frame_size="1509"
+			retry="24"
+		/>
+	</modem_comm>
+	<modem_timings
+		ipc_ready="10"
+		cd_ipc_reset="10"
+		cd_ipc_ready="10"
+		mdm_flash="15"
+		fmmo="30"
+	/>
+	<modem_recovery
+		enable="true"
+		cold_reset="5"
+		platform_reboot="1"
+		reset="600"
+		delay_before_reboot="1"
+		cold_reset_timeout="10"
+		shutdown_timeout="1"
+	/>
+	<clients_config max="12"/>
+	<mcdr>
+		<general
+			enable="true"
+			protocol="ymodem"
+			folder="/logs/modemcrash"
+			timeout="180"
+			enable_cd_log="false"
+		/>
+		<link>
+			<link_usb device="![CDATA[/dev/ttyACM0]]" pid="0xF000" vid="0x1519"/>
+		</link>
+		<power
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:14.0/L2_autosuspend_enable]]"
+			on="1"
+			off="0"
+		/>
+		<link_ctrl
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:14.0/hsic_enable]]"
+			on="1"
+			off="0"
+			reset="1"
+		/>
+	</mcdr>
+</mmgr_config>

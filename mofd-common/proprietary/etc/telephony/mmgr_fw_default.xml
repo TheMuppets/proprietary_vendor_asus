@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<firmware>
+	<folders
+		input="![CDATA[/system/vendor/firmware/telephony]]"
+		runtime="![CDATA[/config/telephony]]"
+		factory="![CDATA[/factory/telephony]]"
+		injection="![CDATA[/cache/telephony]]"
+	/>
+	<nvm
+		calib="calib.nvm"
+		static="static.nvm"
+		dynamic="dynamic.nvm"
+	/>
+	<rnd
+		certificate="rnd_cert.bin"
+	/>
+</firmware>

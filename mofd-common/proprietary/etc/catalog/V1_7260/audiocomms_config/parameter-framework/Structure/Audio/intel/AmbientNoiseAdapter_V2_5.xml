@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="AmbiantNoiseAdapter" Mapping="ByteControlWithLength:%1 %2 %3 params ana">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+                              Description="ANA version: 0 is v2.5 (default)"/>
+        <FixedPointParameter Name="mult_ctr" Size="16" Integral="4" Fractional="11"
+                Description="Factor to determine noise activity for updating the noise estimation. Class I. Min=0x0800 Max=0x4000 Default=0x1000"/>
+        <FixedPointParameter Name="noise_thr1" Size="16" Integral="7" Fractional="8"
+                Description="Noise level threshold at which ANA start to work. Class I. Min=0xA000 Max=0x0000 Default=0xC700"/>
+        <FixedPointParameter Name="noise_thr2" Size="16" Integral="7" Fractional="8"
+                Description="Noise threshold for second segment of gain estimation. Class I. Min=0xA000 Max=0x0000 Default=0xCE00"/>
+        <FixedPointParameter Name="ratio_1" Size="16" Integral="0" Fractional="15"
+                Description="Slope of the gain estimation for lower noise. Class I. Min=0x0000 Max=0x7FFF Default=0x4000"/>
+        <FixedPointParameter Name="ratio_2" Size="16" Integral="0" Fractional="15"
+                Description="Slope of the gain estimation for higher noise. Class I. Min=0x0000 Max=0x7FFF Default=0x2AAA"/>
+        <FixedPointParameter Name="lb_l_a" Size="16" Integral="7" Fractional="8"
+                Description="Threshold for expander (low band or single band compressor). Class I. Min=0xA000 Max=0x0000 Default=0xCC00"/>
+        <FixedPointParameter Name="lb_l_b" Size="16" Integral="7" Fractional="8"
+                Description="Threshold for compression factor to update control signal during noise activity (low band or single band compressor). Class I. Min=0xA000 Max=0x0000 Default=0xEA00"/>
+        <FixedPointParameter Name="lb_g_comp" Size="16" Integral="7" Fractional="8"
+                Description="Gain at L_B (low band or single band compressor). Class I. Min=0xA000 Max=0x6000 Default=0x1000"/>
+        <FixedPointParameter Name="lb_r_infa" Size="16" Integral="7" Fractional="8"
+                Description="Number of left shifts in minimum detector for falling signals (low band or single band compressor). Class I. Min=0x0000 Max=0x394A Default=0x01CD"/>
+        <FixedPointParameter Name="lb_r_ab" Size="16" Integral="7" Fractional="8"
+                Description="Slope for input level greater than L_A and lower than L_B (low band or single band compressor). Class I. Min=0x0000 Max=0x394A Default=0x00F3"/>
+        <FixedPointParameter Name="lb_r_b0" Size="16" Integral="7" Fractional="8"
+                Description="Slope for input level > L_B (low band or single band compressor). Class I. Min=0x0000 Max=0x394A Default=0x004D"/>
+        <FixedPointParameter Name="hb_l_a" Size="16" Integral="7" Fractional="8"
+                Description="Threshold for expander (high band). Class I. Min=0xA000 Max=0x0000 Default=0xBA00"/>
+        <FixedPointParameter Name="hb_l_b" Size="16" Integral="7" Fractional="8"
+                Description="Threshold for compression factor to update control signal during noise activity (high band). Class I  Min=0xA000 Max=0x0000. Default=0xDD00"/>
+        <FixedPointParameter Name="hb_g_comp" Size="16" Integral="7" Fractional="8"
+                Description="Gain at L_B (high band). Class I. Min=0xA000 Max=0x6000 Default=0x1800"/>
+        <FixedPointParameter Name="hb_r_infa" Size="16" Integral="7" Fractional="8"
+                Description="Number of left shifts in minimum detector for falling signals (high band). Class I. Min=0x0000 Max=0x394A Default=0x01CD"/>
+        <FixedPointParameter Name="hb_r_ab" Size="16" Integral="7" Fractional="8"
+                Description="Slope for input level greater than L_A and lower than L_B (high band). Class I. Min=0x0000 Max=0x394A Default=0x00F3"/>
+        <FixedPointParameter Name="hb_r_b0" Size="16" Integral="7" Fractional="8"
+                Description="Slope for input level > L_B (high band). Class I. Min=0x0000 Max=0x394A Default=0x004D"/>
+        <IntegerParameter Name="m" Size="16" Min="1" Max="32"
+                Description="Subframe size to compute 'energy' of UL signal. Class II. Default=0x0010"/>
+        <FixedPointParameter Name="env_decay" Size="16" Integral="0" Fractional="15"
+                Description="Time constant for envelope estimation during energy decrease. Class II. Min=0x0000 Max=0x7FFF Default=0x77BE"/>
+        <FixedPointParameter Name="env_attack" Size="16" Integral="0" Fractional="15"
+                Description="Time constant for envelope estimation during energy increase. Class II. Min=0x0000 Max=0x7FFF Default=0x68CB"/>
+        <FixedPointParameter Name="n_decay" Size="16" Integral="0" Fractional="15"
+                Description="Time constant for noise estimation when energy of signal decreased. Class II. Min=0x0000 Max=0x7FFF Default=0x7EB9"/>
+        <FixedPointParameter Name="n_attack" Size="16" Integral="0" Fractional="15"
+                Description="Time constant for noise estimation when energy of signal increased. Class II. Min=0x0000 Max=0x7FFF Default=0x7FF6"/>
+        <FixedPointParameter Name="update_ctr" Size="16" Integral="1" Fractional="14"
+                Description="Factor to update control signal during noise activity. Class II. Min=0x4000 Max=0x7FFF Default=0x4052"/>
+        <FixedPointParameter Name="ctr_decay" Size="16" Integral="0" Fractional="15"
+                Description="Factor to decrease the ctr variable when the envelope is lower than ctr. Class II. Min=0x0000 Max=0x7FFF Default=0x0000"/>
+    </ComponentType>
+</ComponentTypeSet>

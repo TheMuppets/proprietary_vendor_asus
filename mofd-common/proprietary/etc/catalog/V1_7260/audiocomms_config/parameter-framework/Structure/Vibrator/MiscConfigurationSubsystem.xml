@@ -1,0 +1,10 @@
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Schemas/Subsystem.xsd" Name="Configuration" Type="Virtual" Endianness="Little">
+    <ComponentLibrary>
+        <ComponentType Name="VibratorConfig">
+            <IntegerParameter Name="min_vibration_duration" Size="8" Min="0" Max="100" Signed="false"/>
+        </ComponentType>
+    </ComponentLibrary>
+    <InstanceDefinition>
+        <Component Name="vibrator" Type="VibratorConfig"/>
+    </InstanceDefinition>
+</Subsystem>

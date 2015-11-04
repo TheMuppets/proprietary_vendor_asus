@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="MultibandDynamicRangeProcessor" Mapping="ByteControlWithLength:%1 %2 %3 params mdrp">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="MDRP version: 0 is v1.0"/>
+        <EnumParameter Name="sub_frame_length" Size="16" Description="Length of a sub-frame for each DRP gain computation. Class 1 parameter. Default=8">
+            <ValuePair Literal="2" Numerical="2"/>
+            <ValuePair Literal="4" Numerical="4"/>
+            <ValuePair Literal="8" Numerical="8"/>
+            <ValuePair Literal="10" Numerical="10"/>
+            <ValuePair Literal="20" Numerical="20"/>
+            <ValuePair Literal="40" Numerical="40"/>
+        </EnumParameter>
+        <IntegerParameter Name="look_ahead_length" Size="16" Min="0" Max="32"
+            Description="Length of look-ahead buffer. Class 1 parameter. Default=8"/>
+        <EnumParameter Name="sub_bands_number" Size="16" Description="Number of sub-bands. Class 1 parameter. Default=4">
+            <ValuePair Literal="no_processing" Numerical="0"/>
+            <ValuePair Literal="single_band_DRP" Numerical="1"/>
+            <ValuePair Literal="dual_band_DRP" Numerical="2"/>
+            <ValuePair Literal="triple_band_DRP" Numerical="3"/>
+            <ValuePair Literal="quad_band_DRP" Numerical="4"/>
+        </EnumParameter>
+        <IntegerParameter Name="dc_remover_shift" Size="16" Min="0" Max="32"
+            Description="DC remover high-pass filter coefficient. Class 2 parameter. Default=7"/>
+        <FixedPointParameter Name="band12_coef" ArrayLength="7" Size="16" Integral="0" Fractional="15"
+            Description="Coefficient for cross-over filter separating sub-bands 1 and 2. Class 1 parameter. Default=-13573"/>
+        <FixedPointParameter Name="band23_coef" ArrayLength="7" Size="16" Integral="0" Fractional="15"
+            Description="Coefficient for cross-over filter separating sub-bands 2 and 3. Class 1 parameter. Default=0"/>
+        <FixedPointParameter Name="band34_coef" ArrayLength="7" Size="16" Integral="0" Fractional="15"
+            Description="Coefficient for cross-over filter separating sub-bands 3 and 4. Class 1 parameter. Default=13573"/>
+        <ParameterBlock Name="band_timings" ArrayLength="4">
+            <FixedPointParameter Name="rms_attack" Size="16" Integral="0" Fractional="15"
+                Description="Attack time for the RMS level measurement in sub-band. Class 1 parameter. Default=17584"/>
+            <FixedPointParameter Name="rms_release" Size="16" Integral="0" Fractional="15"
+                Description="Release time for the RMS level measurement in sub-band. Class 1 parameter. Default=1598"/>
+            <FixedPointParameter Name="gain_attack" Size="16" Integral="0" Fractional="15"
+                Description="Attack time for the gain smoothing in sub-band. Class 1 parameter. Default=10803"/>
+            <FixedPointParameter Name="gain_release" Size="16" Integral="0" Fractional="15"
+                Description="Release time for the gain smoothing in sub-band. Class 1 parameter. Default=649"/>
+        </ParameterBlock>
+        <ParameterBlock Name="band_params" ArrayLength="4">
+            <FixedPointParameter Name="la" Size="16" Integral="7" Fractional="8"
+                Description="Power threshold for upper knee point A in sub-band. Class 1 parameter. Default=-17920"/>
+            <FixedPointParameter Name="lb" Size="16" Integral="7" Fractional="8"
+                Description="Power threshold for upper knee point B in sub-band. Class 1 parameter. Default=-8960"/>
+            <FixedPointParameter Name="g_comp" Size="16" Integral="7" Fractional="8"
+                Description="Output compensation gain at knee point B in sub-band. Class 1 parameter. Default=2048"/>
+            <FixedPointParameter Name="r_inf_a" Size="16" Integral="7" Fractional="8"
+                Description="Slope of compression profile for input level less than LA in sub-band. Class 1 parameter. Default=512"/>
+            <FixedPointParameter Name="r_ab" Size="16" Integral="7" Fractional="8"
+                Description="Slope of compression profile for input level LA and LB in sub-band. Class 1 parameter. Default=256"/>
+            <FixedPointParameter Name="r_bo" Size="16" Integral="7" Fractional="8"
+                Description="Slope of compression profile for input level greater than LB in sub-band. Class 1 parameter. Default=76"/>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>
+

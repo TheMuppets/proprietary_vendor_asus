@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Schemas/Subsystem.xsd" Name="POWER" Type="POWER" Endianness="Little">
+	<ComponentLibrary>
+		<ComponentType Name="WAKE_LOCK_ENABLE_TYPE">
+			<BooleanParameter Name="LOCKED" Mapping="Wakelock:%1WakeLock"/>
+		</ComponentType>
+		<ComponentType Name="WAKE_LOCK_TYPE">
+			<Component Name="PARTIAL" Type="WAKE_LOCK_ENABLE_TYPE" Mapping="WakelockType:Partial,Amend1:AudioPartial"/>
+		</ComponentType>
+	</ComponentLibrary>
+
+	<InstanceDefinition>
+		<Component Name="WAKE_LOCK" Type="WAKE_LOCK_TYPE"/>
+	</InstanceDefinition>
+</Subsystem>

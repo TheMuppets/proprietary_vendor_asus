@@ -1,0 +1,2 @@
+# Disable AP-centric IMS
+persist.ims_support=0

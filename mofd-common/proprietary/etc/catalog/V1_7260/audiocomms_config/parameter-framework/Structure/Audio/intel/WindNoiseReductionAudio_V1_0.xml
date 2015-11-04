@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="WnrAudioChannelConfig">
+        <ParameterBlock Name="er">
+            <FixedPointParameter Name="min" Size="16" Integral="4" Fractional="11"
+                Description="Lower threshold for energy ratio computation. Class 2 parameter. Default value: 410"/>
+            <FixedPointParameter Name="max" Size="16" Integral="4" Fractional="11"
+                Description="Upper threshold for energy ratio computation. Class 2 parameter. Default value: 20480"/>
+        </ParameterBlock>
+        <ParameterBlock Name="bin">
+            <IntegerParameter Name="low" Size="16" Min="0" Max="128"
+                Description="Low cut-off frequency used in the energy ratio test. Class 2 parameter. Default value: 16"/>
+            <IntegerParameter Name="mid" Size="16" Min="0" Max="128"
+                Description="Mid cut-off frequency used in energy ratio test. Class 2 parameter. Default value: 32"/>
+            <IntegerParameter Name="high" Size="16" Min="0" Max="128"
+                Description="Upper cut-off frequency used in the energy ratio test. Class 2 parameter. Default value: 128"/>
+        </ParameterBlock>
+        <ParameterBlock Name="centroid_range">
+            <IntegerParameter Name="low" Size="16" Min="0" Max="128"
+                Description="Lower cut-off frequency for centroid computation. Set to microphone cut-off frequency.
+                Class 1 parameter. Default value: 2"/>
+            <IntegerParameter Name="high" Size="16" Min="0" Max="128"
+                Description="Upper cut-off frequency for centroid computation. Class 2 parameter. Default value: 32"/>
+        </ParameterBlock>
+        <ParameterBlock Name="centr">
+            <FixedPointParameter Name="min" Size="16" Integral="5" Fractional="10"
+                Description="Lower threshold for centroid comparison. Threshold Power of loudspeaker. Class 1 parameter. Default value: 4915"/>
+            <FixedPointParameter Name="max" Size="16" Integral="5" Fractional="10"
+                Description="Upper threshold for centroid comparison. Class 1 parameter. Default value: 11469"/>
+        </ParameterBlock>
+        <ParameterBlock Name="alpha">
+            <FixedPointParameter Name="dec" Size="16" Integral="0" Fractional="15"
+                Description="Smoothing factor for decreasing values. Class 2 parameter. Default value: 1638"/>
+            <FixedPointParameter Name="inc" Size="16" Integral="0" Fractional="15"
+                Description="Smoothing factor for increasing values. Class 2 parameter. Default value: 6554"/>
+        </ParameterBlock>
+        <IntegerParameter Name="peak_min" Size="16" Min="0" Max="6"
+            Description="Lowest frequency used in the minima search for weighting the noise estimate.
+            Should correspond to the microphone’s cut-off frequency. Class 1 parameter. Default value: 0"/>
+        <FixedPointParameter Name="peak_threshold" Size="16" Integral="4" Fractional="11"
+            Description="Threshold power difference for local minima search. Class 2 parameter. Default value: 102"/>
+        <FixedPointParameter Name="alpha_poly_max" Size="16" Integral="1" Fractional="14"
+            Description="Maximum value of alpha for polynomial fitting. This value adjusts the allowable steepness of the noise estimate.
+            Class 1 parameter. Default value: -8192"/>
+        <ParameterBlock Name="alpha_smooth">
+            <FixedPointParameter Name="max" Size="16" Integral="0" Fractional="15"
+                Description="Maximum smoothing factor for the noise estimation.
+                Upper value in the range of the adaptive smoothing factor used in the noise estimation. Class 2 parameter. Default value: 29491"/>
+            <FixedPointParameter Name="min" Size="16" Integral="0" Fractional="15"
+                Description="Minimum smoothing factor for the noise estimation.
+                Lower value in the range of the adaptive smoothing factor used in the noise estimation. Class 2 parameter. Default value: 3277"/>
+        </ParameterBlock>
+        <ParameterBlock Name="trans_range_sp_act">
+            <IntegerParameter Name="low" Size="16" Min="15" Max="30"
+                Description="Lower frequency threshold for noise estimate during speech activity.
+                Used to limit noise estimate above this frequency during speech activity. Class 2 parameter. Default value: 15"/>
+            <IntegerParameter Name="high" Size="16" Min="31" Max="62"
+                Description="Upper frequency threshold for noise estimate during speech activity.
+                Noise estimate set to 0 above this frequency during speech activity. Class 2 parameter. Default value: 31"/>
+        </ParameterBlock>
+        <ParameterBlock Name="trans_range_sp_non_act">
+            <IntegerParameter Name="low" Size="16" Min="63" Max="78"
+                Description="Lower frequency threshold for noise estimate during non-speech activity.
+                Used to limit noise estimate above this during non-speech activity. Class 2 parameter. Default value: 63"/>
+            <IntegerParameter Name="high" Size="16" Min="79" Max="128"
+                Description="Upper frequency threshold for noise estimate during non-speech activity.
+                Noise estimate set to 0 above this frequency during non-speech activity. Class 2 parameter. Default value: 79"/>
+        </ParameterBlock>
+        <FixedPointParameter Name="gain_min" Size="16" Integral="0" Fractional="15"
+            Description="Minimum gain value. Class 2 parameter. Default value: 0"/>
+        <IntegerParameter Name="hpf_bins" Size="16" Min="0" Max="6"
+            Description="Cut-off frequency of fixed high-pass filter. Class 2 parameter. Default value: 2"/>
+        <FixedPointParameter Name="g_min_hpf_bins" Size="16" Integral="0" Fractional="15"
+            Description="Gain minimum below high pass filter cut-off. Class 2 parameter. Default value: 3277"/>
+        <FixedPointParameter Name="gamma_nf" Size="16" Integral="2" Fractional="13"
+            Description="Weighting of the noise floor for comparison to current signal power. Class 2 parameter. Default value: 8192"/>
+        <FixedPointParameter Name="zeta_nf" Size="16" Integral="3" Fractional="12"
+            Description="Noise floor overestimation factor. Class 2 parameter. Default value: 12288"/>
+        <EnumParameter Name="noise_floor_usage" Size="16" Description="Flag used to turn ON and OFF the use of the noise floor.
+            Class 1 parameter. Default value: 1">
+            <ValuePair Literal="Disable" Numerical="0"/>
+            <ValuePair Literal="Enable" Numerical="1"/>
+        </EnumParameter>
+        <IntegerParameter Name="nr_init_count" Size="16" Min="0" Max="100"
+            Description="Initial minimum statistics skip parameter. Class 2 parameter. Default value: 30"/>
+        <IntegerParameter Name="min_stat_len" Size="16" Min="0" Max="20"
+            Description="Minimum statistics search window length. Class 1 parameter. Default value: 20"/>
+    </ComponentType>
+    <ComponentType Name="WindNoiseReductionAudio" Mapping="ByteControlWithLength:%1 %2 %3 params">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="WNR version: 0 is v1.0"/>
+        <EnumParameter Name="path_select" Size="16" Description="Index to classify parameters for speech and audio. Class 1 parameter. Default value: 0">
+            <ValuePair Literal="Speech Parameters for UL speech path WNR" Numerical="0"/>
+            <ValuePair Literal="Audio Parameters for WNR-Audio Left and right channels" Numerical="1"/>
+        </EnumParameter>
+        <EnumParameter Name="audio_mode" Size="16" Description="Choice to process different combination of stereo. Class 1 parameter.
+            Note: This parameter is used only when WNR_PathSelect is 1D. Ignored in case of PathSelect = 0D 0r 2D. Default value: 0">
+            <ValuePair Literal="Process left channel and leave right channel untouched" Numerical="0"/>
+            <ValuePair Literal="Process right channel and leave left channel untouched" Numerical="1"/>
+            <ValuePair Literal="Process stereo signal with left parameters applied on left channel and right parameters applied on right channels"
+                Numerical="2"/>
+            <ValuePair Literal="Process left channel and copy the same output on left and right channels" Numerical="3"/>
+        </EnumParameter>
+        <Component Name="left_channel" Type="WnrAudioChannelConfig"/>
+        <Component Name="right_channel" Type="WnrAudioChannelConfig"/>
+    </ComponentType>
+</ComponentTypeSet>

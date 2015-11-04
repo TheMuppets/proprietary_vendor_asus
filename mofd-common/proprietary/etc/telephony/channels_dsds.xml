@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<channels_info>
+	<channels>
+		<mmgr>
+			<mdm_custo device="![CDATA[/dev/gsmtty11]]"/>
+			<shutdown device="![CDATA[/dev/gsmtty11]]"/>
+			<cd_logs device="![CDATA[/dev/gsmtty11]]"/>
+			<secured device="![CDATA[/dev/gsmtty22]]"/>
+			<sanity_check device="![CDATA[/dev/gsmtty15]]"/>
+		</mmgr>
+		<nvm>
+			<nvm_sync device="![CDATA[/dev/gsmtty18]]"/>
+		</nvm>
+		<rril>
+			<monitoring device="![CDATA[/dev/gsmtty1]]"/>
+			<registration device="![CDATA[/dev/gsmtty2]]"/>
+			<settings device="![CDATA[/dev/gsmtty6]]"/>
+			<sim_toolkit device="![CDATA[/dev/gsmtty8]]"/>
+			<field_test device="![CDATA[/dev/gsmtty9]]"/>
+			<control device="![CDATA[/dev/gsmtty12]]"/>
+			<cops_commands device="![CDATA[/dev/gsmtty22]]"/>
+			<rfcoexistence device="![CDATA[/dev/gsmtty23]]"/>
+			<sms device="![CDATA[/dev/gsmtty25]]"/>
+			<packet_data_1 device="![CDATA[/dev/gsmtty3]]"/>
+			<packet_data_2 device="![CDATA[/dev/gsmtty4]]"/>
+			<packet_data_3 device="![CDATA[/dev/gsmtty15]]"/>
+			<packet_data_4 device="![CDATA[/dev/gsmtty16]]"/>
+			<packet_data_5 device="![CDATA[/dev/gsmtty17]]"/>
+		</rril>
+	</channels>
+	<channels>
+		<rril>
+			<monitoring device="![CDATA[/dev/gsmtty31]]"/>
+			<registration device="![CDATA[/dev/gsmtty32]]"/>
+			<settings device="![CDATA[/dev/gsmtty33]]"/>
+			<sim_toolkit device="![CDATA[/dev/gsmtty34]]"/>
+			<field_test device="![CDATA[/dev/gsmtty40]]"/>
+			<control device="![CDATA[/dev/gsmtty35]]"/>
+			<cops_commands device="![CDATA[/dev/gsmtty36]]"/>
+			<rfcoexistence device="![CDATA[/dev/gsmtty38]]"/>
+			<sms device="![CDATA[/dev/gsmtty37]]"/>
+			<packet_data_1 device="![CDATA[/dev/gsmtty26]]"/>
+			<packet_data_2 device="![CDATA[/dev/gsmtty27]]"/>
+			<packet_data_3 device="![CDATA[/dev/gsmtty28]]"/>
+			<packet_data_4 device="![CDATA[/dev/gsmtty29]]"/>
+			<packet_data_5 device="![CDATA[/dev/gsmtty30]]"/>
+		</rril>
+	</channels>
+</channels_info>

@@ -1,0 +1,5 @@
+# Disable IMS
+persist.ims_support=0
+
+# Activate DSDA
+persist.radio.multisim.config=dsda

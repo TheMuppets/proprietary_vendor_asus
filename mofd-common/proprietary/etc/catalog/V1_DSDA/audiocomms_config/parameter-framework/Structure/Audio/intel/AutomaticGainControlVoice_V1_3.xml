@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="AutomaticGainControlVoice" Mapping="ByteControlWithLength:%1 %2 %3 params agc">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+                          Description="This parameter controls the version of current AGC: 0 is v1.05; 1 is v1.1; 3 is v1.2; 5 is v1.1+v1.3; 7 is v1.2+v1.3"/>
+        <IntegerParameter Name="ld_add_gain" Size="16" Min="-16384" Max="16384" Signed="true"
+                          Description="This parameter overestimates the attenuation gain which was previously reduced by measured ambient noise floor. It is proportional to dB (for n dB enter 1024*n/6)."/>
+        <IntegerParameter Name="ld_gain_lo_lim" Size="16" Min="0" Max="16384"
+                          Description="This parameter forces some minimal gain whatever noise floor and echo measurements are.It is proportional to dB (for n dB enter 1024*n/6)."/>
+        <IntegerParameter Name="ld_gain_up_lim" Size="16" Min="0" Max="16384"
+                          Description="This parameter limits the attenuation. It is proportional to dB (for n dB enter 1024*n/6)."/>
+        <IntegerParameter Name="nr_shl_ri_min" Size="16" Min="-36" Max="36" Signed="true"
+                          Description="This parameter controls the microphone noise floor estimator. It smoothes the estimator for rising power."/>
+        <IntegerParameter Name="nr_shl_fa_min" Size="16" Min="-36" Max="36" Signed="true"
+                          Description="This parameter controls the microphone noise floor estimator. It smoothes the estimator for falling power."/>
+        <IntegerParameter Name="nr_shl_ri_max" Size="16" Min="-36" Max="36" Signed="true"
+                          Description="This parameter controls the mic speech and residual echo magnitude measurement. It smoothes the estimator for rising power."/>
+        <IntegerParameter Name="nr_shl_fa_max" Size="16" Min="-36" Max="36" Signed="true"
+                          Description="This parameter controls the mic speech and residual echo magnitude measurement. It smoothes the estimator for falling power."/>
+        <IntegerParameter Name="nr_shli_filt" Size="16" Min="-36" Max="36" Signed="true"
+                          Description="This parameter controls the switching speed of the gain. It smoothes the gain before gain is applied to the samples."/>
+        <IntegerParameter Name="trigger_offset" Size="16" Min="-16384" Max="16384" Signed="true"
+                          Description="This parameter adjusts the decision logic between double- talk and single-talk echo. It balances the amount of full- duplexness versus single echo attenuation during double- talk periods. It is proportional to dB (for n dB enter 1024*n/6)."/>
+        <EnumParameter Name="sub_frame_ratio_shifts" Size="16"
+                       Description="This parameter defines the number and length of sub- frames:">
+                       <ValuePair Literal="One sub-frame (sub-frame length is 20 ms)" Numerical="0"/>
+                       <ValuePair Literal="Two sub-frames (sub-frame length is 10 ms)" Numerical="1"/>
+                       <ValuePair Literal="Four sub-frames (sub-frame length is 5 ms)" Numerical="2"/>
+                       <ValuePair Literal="Eight sub-frames (sub-frame length is 2.5 ms)" Numerical="3"/>
+        </EnumParameter>
+        <IntegerParameter Name="far_shift_ri" Size="16" Min="-36" Max="36" Signed="true"
+                          Description="This parameter allows better echo estimation by considering the room acoustic reverberation. It smoothes the far-end power estimator for rising power."/>
+        <IntegerParameter Name="far_shift_fa" Size="16" Min="-36" Max="36" Signed="true"
+                          Description="This parameter allows better echo estimation by considering the room acoustic reverberation. It smoothes the far-end power estimator for falling power."/>
+        <IntegerParameter Name="far_power_center" Size="16" Min="0" Max="16384"
+                          Description="This parameter sets the threshold below which reference line power is over-estimated by 'Far Over Est R0' and above which it is over-estimated by 'Far Over Est R1'. It is proportional to dBFS (for n dBFS please enter 16384+1024*n/6, where n shall only be negative)."/>
+        <IntegerParameter Name="far_power_distorted" Size="16" Min="0" Max="16384"
+                          Description="Distortion threshold on far-end power. Class 1 parameter. Default=12288"/>
+        <FixedPointParameter Name="far_over_est_r0" Size="16" Integral="7" Fractional="8"
+                          Description="Lower over-estimation ratio. Class 1 parameter. Min=0 Max=14666 Default=256"/>
+        <FixedPointParameter Name="far_over_est_r1" Size="16" Integral="7" Fractional="8"
+                          Description="Middle over-estimation ratio. Class 1 parameter. Min=0 Max=14666 Default=282"/>
+        <FixedPointParameter Name="far_over_est_r2" Size="16" Integral="7" Fractional="8"
+                          Description="Upper over-estimation ratio. Class 1 parameter. Min=0 Max=14666 Default=307"/>
+        <IntegerParameter Name="trigger_shift_ri" Size="16" Min="-36" Max="36" Signed="true"
+                          Description="This parameter allows controlling gain release speed when near-talk appears or when echo is finished. It smooths the trigger signal when rising."/>
+        <IntegerParameter Name="trigger_shift_fa" Size="16" Min="-36" Max="36" Signed="true"
+                          Description="This parameter allows controlling gain trigger speed when echo is starting. It smooths the trigger signal when falling."/>
+        <IntegerParameter Name="trigger_over_est_ratio" Size="16" Min="0" Max="14666"
+                          Description="This parameter controls the attenuation gain regarding the signal-to-echo ratio. It is expressed in Q7,8 (for factor n please enter 256*n). "/>
+        <FixedPointParameter Name="miss_alignment_thresh" Size="16" Integral="5" Fractional="10"
+                          Description="This parameter limits the upper/lower boundaries of mis-alignment variable sent from AEC. It is expressed in Q5.10 format. Min=0 Max=32767" />
+        <FixedPointParameter Name="miss_alignment_mult" Size="16" Integral="2" Fractional="13"
+                          Description="This parameter acts as a over/under estimation for of mis-alignment variable sent from AEC. It is expressed in Q2.13 format. Min=0 Max=32767"/>
+        <FixedPointParameter Name="fb_coefs" Size="16" Integral="0" Fractional="15" ArrayLength="7"
+                          Description="Coefficient of the filter bank which separates the upper band (where AGC gain is applied) from the lower band (where no AGC is applied). It is expressed in Q0.15 format."/>
+    </ComponentType>
+</ComponentTypeSet>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../Schemas/ComponentLibrary.xsd">
+    <!-- Algorithms common definitions -->
+    <ComponentType Name="SwitchParam">
+        <EnumParameter Name="value" Size="16" Description="Module switch">
+            <ValuePair Literal="off" Numerical="0x00"/>
+            <ValuePair Literal="on" Numerical="0x03"/>
+        </EnumParameter>
+    </ComponentType>
+    <ComponentType Name="ConfParam">
+        <EnumParameter Name="value" Size="16" Description="Active channels">
+            <ValuePair Literal="mono" Numerical="0x00"/>
+            <ValuePair Literal="stereo" Numerical="0x01"/>
+        </EnumParameter>
+    </ComponentType>
+    <ComponentType Name="Biquad">
+        <FixedPointParameter Name="a1" Size="16" Integral="0" Fractional="15"
+            Description="Set the Biquad Coefficient a1"/>
+        <FixedPointParameter Name="b1" Size="16" Integral="0" Fractional="15"
+            Description="Set the Biquad Coefficient b1"/>
+        <FixedPointParameter Name="a2" Size="16" Integral="0" Fractional="15"
+            Description="Set the Biquad Coefficient a2"/>
+        <FixedPointParameter Name="b2" Size="16" Integral="0" Fractional="15"
+            Description="Set the Biquad Coefficient b2"/>
+        <FixedPointParameter Name="a0" Size="16" Integral="0" Fractional="15"
+            Description="Set the Biquad Coefficient a0"/>
+    </ComponentType>
+</ComponentLibrary>

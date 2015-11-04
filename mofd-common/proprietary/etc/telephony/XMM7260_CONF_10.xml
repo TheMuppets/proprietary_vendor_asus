@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE author [
+	   <!ENTITY channels_default SYSTEM "channels_default.xml" >
+]>
+
+<telephony_config>
+	<modems_info>
+		<modem_info>
+			<core
+				name="7260"
+				flashless="true"
+				secured="false"
+				ipc="usb"
+				ipcLogging="usb"
+				ipcDump="usb"
+				swRevision="1.0"
+				hwRevision="20"
+			/>
+			<modules
+				mmgr_xml="mmgr_7260_conf_4.xml"
+				rril_txt="rril_7260_conf_1.txt"
+			/>
+			<tlvs_info>
+				<tlv_info
+					filename="2048_7260_family.tlv"
+				/>
+				<tlv_info
+					filename="2048_multislot_off.tlv"
+				/>
+				<tlv_info
+					filename="2048_cat4.tlv"
+				/>
+				<tlv_info
+					filename="2048_rx_diversity.tlv"
+				/>
+				<tlv_info
+					filename="2048_csd_off.tlv"
+				/>
+				<tlv_info
+					filename="2048_2g_multislot_power.tlv"
+				/>
+				<tlv_info
+					filename="2048_out_of_band_on.tlv"
+				/>
+				<tlv_info
+					filename="2048_sim_detection_deactivate.tlv"
+				/>
+				<tlv_info
+					filename="2048_call_audio_latency_enable.tlv"
+				/>
+			</tlvs_info>
+			&channels_default;
+		</modem_info>
+	</modems_info>
+</telephony_config>

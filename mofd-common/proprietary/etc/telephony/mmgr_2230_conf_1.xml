@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE author [
+	<!ENTITY firmware SYSTEM "mmgr_fw_default.xml" >
+]>
+
+<mmgr_config>
+	&firmware;
+	<modem_link>
+		<flash_ebl>
+			<link_uart device="![CDATA[/dev/ttyMFD1]]" baudrate="921600"/>
+		</flash_ebl>
+		<flash_fw>
+			<link_spi device="![CDATA[/dev/ttyXMM0]]" high_speed="true"/>
+		</flash_fw>
+		<baseband>
+			<link_spi device="![CDATA[/dev/ttyXMM0]]" high_speed="false"/>
+		</baseband>
+		<power
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:04.2/power/control]]"
+			on="auto"
+			off="on"
+		/>
+	</modem_link>
+	<mdm_ctrl
+		path="/dev/mdm_ctrl1"
+		type="ioctl"
+		board="aob"
+		pwr_on_ctrl="gpio"
+		usb_hub_ctrl="false"
+	/>
+	<modem_comm>
+		<mux
+			frame_size="1509"
+			retry="24"
+		/>
+	</modem_comm>
+	<modem_timings
+		ipc_ready="55"
+		cd_ipc_ready="10"
+		mdm_flash="150"
+		fmmo="30"
+	/>
+	<modem_recovery
+		enable="true"
+		cold_reset="100"
+		platform_reboot="0"
+		reset="600"
+		delay_before_reboot="1"
+		cold_reset_timeout="10"
+		shutdown_timeout="1"
+	/>
+	<clients_config max="12"/>
+	<mcdr>
+		<general
+			enable="true"
+			protocol="lcdp"
+			folder="/logs/modemcrash/mmgr2"
+			timeout="180"
+			enable_cd_log="true"
+		/>
+		<link>
+			<link_uart device="![CDATA[/dev/ttyMFD1]]" baudrate="3000000"/>
+		</link>
+		<power
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:04.2/power/control]]"
+			on="auto"
+			off="on"
+		/>
+	</mcdr>
+</mmgr_config>

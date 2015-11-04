@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ParameterFrameworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Schemas/ParameterFrameworkConfiguration.xsd"
+    SystemClassName="Misc" ServerPort="5003" TuningAllowed="false">
+    <SubsystemPlugins>
+        <Location Folder="/system/lib/parameter-framework-plugins/Fs">
+            <Plugin Name="libfs-subsystem.so"/>
+        </Location>
+    </SubsystemPlugins>
+    <StructureDescriptionFileLocation Path="Structure/Vibrator/SysfsVibratorClass.xml"/>
+    <SettingsConfiguration>
+        <ConfigurableDomainsFileLocation Path="Settings/Vibrator/VibratorConfigurableDomains.xml"/>
+    </SettingsConfiguration>
+</ParameterFrameworkConfiguration>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="AutomaticGainControlAudio" Mapping="ByteControlWithLength:%1 %2 %3 params">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+                          Description="This parameter controls the version of current AGC: 0 is v1.0"/>
+        <FixedPointParameter Name="maximum_level" Size="32" Integral="17" Fractional="14"
+                          Description="The (absolute) level to which the signal peak is scaled by AGC specified in dB this is a value very close to, and less than 0. Min=-327680 Max=-164 Default=-164"/>
+        <FixedPointParameter Name="gain_attack_rate" Size="32" Integral="17" Fractional="14"
+                          Description="Rate in dB per millisecs at which gain can increase inside the module (Range 0.001 to 10). Min=16 Max=163840 Default=16"/>
+        <FixedPointParameter Name="gain_decay_rate" Size="32" Integral="17" Fractional="14"
+                          Description="Rate in dB per millisecs at which gain can decrease inside the module (Range 0.001 to 10).  Min=16 Max=163840 Default=163840"/>
+        <FixedPointParameter Name="silence_threshold" Size="32"  Integral="17" Fractional="14"
+                          Description="The level below which the input is assumed to be background noise.(Range -96 to -20). Min=-1572864 Max=-327680 Default=-1572864"/>
+        <FixedPointParameter Name="stream_gap_threshold" Size="32" Integral="17" Fractional="14"
+                          Description="Silence duration in seconds beyond which a new stream is assumed to have started.(Range 0.3 to 10). Min=9830 Max=327680 Default=9830"/>
+        <FixedPointParameter Name="gain_limit" Size="32" Integral="17" Fractional="14"
+                          Description="The maximum permitted gain in dB.(Range 5 to 60). Min=81920 Max=983040 Default=573440"/>
+        <FixedPointParameter Name="gain_hold_time" Size="32" Integral="17" Fractional="14"
+                          Description="Time in seconds following a gain setting over which it is not allowed to rise (Hysteresis time). (Range 0.001 to 2). Min=33 Max=65536 Default=65536"/>
+        <FixedPointParameter Name="gain_initial" Size="32" Integral="17" Fractional="14"
+                          Description="Initial gain setting in absolute terms.(Range 6 to 8). Min=98304 Max=131072 Default=98304"/>
+        <FixedPointParameter Name="spurious_peak_threshold" Size="32" Integral="17" Fractional="14"
+                          Description="Peak to mse ratio for detecting spurious peaks in the audio signal. Min=4 Max=500 Default=4"/>
+    </ComponentType>
+</ComponentTypeSet>
+

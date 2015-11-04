@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Schemas/Subsystem.xsd" Name="IMC" Type="XMM" Endianness="Little" Mapping="ModemName:xmm1,LibraryName:libmamgr-xmm.so">
+    <ComponentLibrary>
+        <!-- GENERAL -->
+        <ComponentType Name="DESTINATION_TYPE">
+            <ParameterBlock Name="VOLUME" Mapping="Volume">
+                <IntegerParameter Name="LEVEL" Size="8" Min="0" Max="100" Description="Step size: 0,5dB ; 0 is mute, 100 is +6dB">
+                    <LinearAdaptation SlopeNumerator="48" SlopeDenominator="1" Offset="40"/>
+                </IntegerParameter>
+                <BooleanParameter Name="MUTED"/>
+            </ParameterBlock>
+        </ComponentType>
+        <ComponentType Name="SOURCE_TYPE" Extends="DESTINATION_TYPE">
+            <BooleanParameter Name="ENABLED" Mapping="EnableSource"/>
+        </ComponentType>
+        <!-- I2S PORTS COMPONENT LIBRARY -->
+        <ComponentType Name="I2S_DESTINATION" Extends="DESTINATION_TYPE">
+            <ParameterBlock Name="CONFIG" Mapping="I2SPortConfig">
+                <IntegerParameter Name="CLOCK" Size="8" Min="0" Max="1"/>
+                <BooleanParameter Name="SLAVE"/>
+                <EnumParameter Name="SAMPLING_RATE" Size="8" Description="Sampling rate frequency (f) in kHz">
+                    <ValuePair Literal="f8" Numerical="0"/>
+                    <ValuePair Literal="f11.025" Numerical="1"/>
+                    <ValuePair Literal="f12" Numerical="2"/>
+                    <ValuePair Literal="f16" Numerical="3"/>
+                    <ValuePair Literal="f22.05" Numerical="4"/>
+                    <ValuePair Literal="f24" Numerical="5"/>
+                    <ValuePair Literal="f32" Numerical="6"/>
+                    <ValuePair Literal="f44.1" Numerical="7"/>
+                    <ValuePair Literal="f48" Numerical="8"/>
+                    <ValuePair Literal="f96" Numerical="9"/>
+                    <ValuePair Literal="f192" Numerical="10"/>
+                </EnumParameter>
+                <EnumParameter Name="QUANTIZATION" Size="8" Description="Size (s) of quantization in bits">
+                    <ValuePair Literal="s16" Numerical="0"/>
+                    <ValuePair Literal="s18" Numerical="1"/>
+                    <ValuePair Literal="s20" Numerical="2"/>
+                    <ValuePair Literal="s24" Numerical="3"/>
+                    <ValuePair Literal="s32" Numerical="4"/>
+                    <ValuePair Literal="s48" Numerical="5"/>
+                    <ValuePair Literal="s64" Numerical="6"/>
+                </EnumParameter>
+                <EnumParameter Name="TRANSMISSION_MODE" Size="8">
+                    <ValuePair Literal="PCM" Numerical="0"/>
+                    <ValuePair Literal="I2S" Numerical="1"/>
+                    <ValuePair Literal="PCM_BURST" Numerical="2"/>
+                </EnumParameter>
+                <EnumParameter Name="I2S_SETTINGS" Size="8">
+                    <ValuePair Literal="NORMAL" Numerical="0"/>
+                    <ValuePair Literal="SPECIAL1" Numerical="1"/>
+                    <ValuePair Literal="SPECIAL2" Numerical="2"/>
+                </EnumParameter>
+                <EnumParameter Name="CHANNELS" Size="8">
+                    <ValuePair Literal="MONO" Numerical="0"/>
+                    <ValuePair Literal="STEREO" Numerical="2"/>
+                    <ValuePair Literal="DUAL_MONO_RIGHT" Numerical="3"/>
+                    <ValuePair Literal="DUAL_MONO_LEFT" Numerical="4"/>
+                </EnumParameter>
+                <EnumParameter Name="MODE" Size="8">
+                    <ValuePair Literal="Default" Numerical="0"/>
+                    <ValuePair Literal="Handset" Numerical="1"/>
+                    <ValuePair Literal="Headset" Numerical="2"/>
+                    <ValuePair Literal="Handsfree" Numerical="3"/>
+                    <ValuePair Literal="Aux" Numerical="4"/>
+                    <ValuePair Literal="HeadsetHandsfree-DestOnly" Numerical="5"/>
+                    <ValuePair Literal="HeadsetHandset-DestOnly" Numerical="6"/>
+                    <ValuePair Literal="TTY" Numerical="7"/>
+                    <ValuePair Literal="Bluetooth" Numerical="8"/>
+                    <ValuePair Literal="UserDefined1" Numerical="9"/>
+                    <ValuePair Literal="UserDefined15" Numerical="10"/>
+                </EnumParameter>
+            </ParameterBlock>
+        </ComponentType>
+        <ComponentType Name="I2S_SOURCE" Extends="I2S_DESTINATION">
+            <BooleanParameter Name="ENABLED" Mapping="EnableSource"/>
+        </ComponentType>
+        <ComponentType Name="I2S_PORT">
+            <Component Name="RX" Type="I2S_SOURCE" Mapping="Direction:src"/>
+            <Component Name="TX" Type="I2S_DESTINATION" Mapping="Direction:dst"/>
+        </ComponentType>
+        <!-- SPEECH COMPONENT LIBRARY -->
+        <ComponentType Name="SPEECH_TX_TYPE" Extends="DESTINATION_TYPE">
+            <EnumParameter Name="MODE" Size="8" Mapping="SpeechConfig">
+                <ValuePair Literal="NETWORK" Numerical="0"/>
+                <ValuePair Literal="USER_DEFINED_1" Numerical="1"/>
+                <ValuePair Literal="USER_DEFINED_2" Numerical="2"/>
+                <ValuePair Literal="USER_DEFINED_3" Numerical="3"/>
+                <ValuePair Literal="USER_DEFINED_4" Numerical="4"/>
+                <ValuePair Literal="USER_DEFINED_5" Numerical="5"/>
+            </EnumParameter>
+        </ComponentType>
+        <ComponentType Name="SPEECH_RX_TYPE" Extends="SPEECH_TX_TYPE">
+            <BooleanParameter Name="ENABLED" Mapping="EnableSource"/>
+        </ComponentType>
+        <ComponentType Name="SPEECH_PORT">
+            <Component Name="RX" Type="SPEECH_RX_TYPE" Mapping="Direction:src"/>
+            <Component Name="TX" Type="SPEECH_TX_TYPE" Mapping="Direction:dst"/>
+        </ComponentType>
+        <!-- ANALOG COMPONENT LIBRARY -->
+        <ComponentType Name="ANALOG_OUT" Extends="DESTINATION_TYPE">
+            <EnumParameter Name="MODE" Size="8" Mapping="AnalogConfig">
+                <ValuePair Literal="Handset" Numerical="0"/>
+                <ValuePair Literal="Headset" Numerical="1"/>
+                <ValuePair Literal="Handsfree" Numerical="2"/>
+                <ValuePair Literal="Aux" Numerical="3"/>
+                <ValuePair Literal="HeadsetHandsfree-DestOnly" Numerical="4"/>
+                <ValuePair Literal="HeadsetHandset-DestOnly" Numerical="5"/>
+                <ValuePair Literal="TTY" Numerical="6"/>
+                <ValuePair Literal="UserDefined1" Numerical="7"/>
+                <ValuePair Literal="UserDefined2" Numerical="8"/>
+            </EnumParameter>
+        </ComponentType>
+        <ComponentType Name="ANALOG_IN" Extends="ANALOG_OUT">
+            <BooleanParameter Name="ENABLED" Mapping="EnableSource"/>
+        </ComponentType>
+        <ComponentType Name="ANALOG_PORT">
+            <Component Name="IN" Type="ANALOG_IN" Mapping="Direction:src"/>
+            <Component Name="OUT" Type="ANALOG_OUT" Mapping="Direction:dst"/>
+        </ComponentType>
+        <!-- DIGITAL COMPONENT LIBRARY -->
+        <ComponentType Name="DIGITAL_IN" Extends="SOURCE_TYPE">
+            <EnumParameter Name="MODE" Size="8" Mapping="DigitalConfig">
+                <ValuePair Literal="Default" Numerical="0"/>
+                <ValuePair Literal="Handset" Numerical="1"/>
+                <ValuePair Literal="Headset" Numerical="2"/>
+                <ValuePair Literal="Handsfree" Numerical="3"/>
+                <ValuePair Literal="Aux" Numerical="4"/>
+                <ValuePair Literal="HeadsetHandsfree-DestOnly" Numerical="5"/>
+                <ValuePair Literal="HeadsetHandset-DestOnly" Numerical="6"/>
+                <ValuePair Literal="TTY" Numerical="7"/>
+                <ValuePair Literal="Bluetooth" Numerical="8"/>
+                <ValuePair Literal="UserDefined" Numerical="9"/>
+            </EnumParameter>
+        </ComponentType>
+        <ComponentType Name="DIGITAL_PORT">
+            <Component Name="MIC" Type="DIGITAL_IN" Mapping="Direction:src"/>
+        </ComponentType>
+        <!-- PROBE COMPONENT LIBRARY -->
+        <ComponentType Name="PROBE_TYPE">
+            <Component Name="IN" Type="SOURCE_TYPE" Mapping="SrcPort:10,Direction:src"/>
+            <Component Name="IN_A" Type="SOURCE_TYPE" Mapping="SrcPort:12,Direction:src"/>
+            <Component Name="IN_B" Type="SOURCE_TYPE" Mapping="SrcPort:13,Direction:src"/>
+            <Component Name="IN_C" Type="SOURCE_TYPE" Mapping="SrcPort:14,Direction:src"/>
+        </ComponentType>
+        <!-- INJECTOR COMPONENT LIBRARY -->
+        <ComponentType Name="INJECTOR_TYPE">
+            <Component Name="A" Type="SOURCE_TYPE" Mapping="SrcPort:15,Direction:src"/>
+            <Component Name="B" Type="SOURCE_TYPE" Mapping="SrcPort:16,Direction:src"/>
+            <Component Name="C" Type="SOURCE_TYPE" Mapping="SrcPort:17,Direction:src"/>
+            <Component Name="D" Type="SOURCE_TYPE" Mapping="SrcPort:18,Direction:src"/>
+        </ComponentType>
+        <ComponentType Name="PORTS_CONFIG">
+            <Component Name="SPEECH" Type="SPEECH_PORT" Mapping="SrcPort:0,DstPort:0"/>
+            <Component Name="ANALOG" Type="ANALOG_PORT" Mapping="SrcPort:1,DstPort:1"/>
+            <Component Name="DIGITAL" Type="DIGITAL_PORT" Mapping="SrcPort:2"/>
+            <Component Name="I2S1" Type="I2S_PORT" Mapping="SrcPort:3,DstPort:2"/>
+            <Component Name="I2S2" Type="I2S_PORT" Mapping="SrcPort:4,DstPort:3"/>
+            <Component Name="SIMPLE_TONES" Type="SOURCE_TYPE" Mapping="SrcPort:5,Direction:src"/>
+            <Component Name="PCM_GENERAL_RX" Type="SOURCE_TYPE" Mapping="SrcPort:6,Direction:src"/>
+            <Component Name="FM_RADIO_RX" Type="SOURCE_TYPE" Mapping="SrcPort:9,Direction:src"/>
+            <Component Name="PROBE" Type="PROBE_TYPE"/>
+            <Component Name="AMR_DECODER" Type="SOURCE_TYPE" Mapping="SrcPort:11,Direction:src"/>
+            <Component Name="INJECTOR" Type="INJECTOR_TYPE"/>
+            <Component Name="SILENT" Type="SOURCE_TYPE" Mapping="SrcPort:27,Direction:src"/>
+        </ComponentType>
+        <!-- SWITCH MATRIX COMPONENT LIBRARY -->
+        <ComponentType Name="DESTINATION_SET">
+            <BitParameterBlock Name="DESTINATIONS" Size="32" Mapping="Route:%1">
+                <BitParameter Name="SPEECH_TX" Size="1" Pos="0"/>
+                <BitParameter Name="RADIO_ANALOG_OUT" Size="1" Pos="1"/>
+                <BitParameter Name="I2S1_TX" Size="1" Pos="2"/>
+                <BitParameter Name="I2S2_TX" Size="1" Pos="3"/>
+                <BitParameter Name="PCM_GENERAL_DESTINATION" Size="1" Pos="4"/>
+                <BitParameter Name="SPEECH_DL_EXTRACT" Size="1" Pos="5"/>
+                <BitParameter Name="SPEECH_UL_EXTRACT" Size="1" Pos="6"/>
+                <BitParameter Name="PROBE_OUT" Size="1" Pos="7"/>
+                <BitParameter Name="FM_RADIO_TX" Size="1" Pos="8"/>
+                <BitParameter Name="AMR_ENCODER" Size="1" Pos="9"/>
+                <BitParameter Name="PROBE_OUT_A" Size="1" Pos="10"/>
+                <BitParameter Name="PROBE_OUT_B" Size="1" Pos="11"/>
+                <BitParameter Name="PROBE_OUT_C" Size="1" Pos="12"/>
+                <BitParameter Name="EXTRACTOR_A" Size="1" Pos="13"/>
+                <BitParameter Name="EXTRACTOR_B" Size="1" Pos="14"/>
+                <BitParameter Name="EXTRACTOR_C" Size="1" Pos="15"/>
+                <BitParameter Name="EXTRACTOR_D" Size="1" Pos="16"/>
+            </BitParameterBlock>
+        </ComponentType>
+        <ComponentType Name="SWITCH_MATRIX_TYPE">
+            <Component Name="SPEECH_RX" Type="DESTINATION_SET" Mapping="Amend1:0"/>
+            <Component Name="RADIO_ANALOG_IN" Type="DESTINATION_SET" Mapping="Amend1:1"/>
+            <Component Name="DIGITAL_MIC" Type="DESTINATION_SET" Mapping="Amend1:2"/>
+            <Component Name="I2S1_RX" Type="DESTINATION_SET" Mapping="Amend1:3"/>
+            <Component Name="I2S2_RX" Type="DESTINATION_SET" Mapping="Amend1:4"/>
+            <Component Name="SIMPLE_TONES" Type="DESTINATION_SET" Mapping="Amend1:5"/>
+            <Component Name="PCM_GENERAL_SOURCE" Type="DESTINATION_SET" Mapping="Amend1:6"/>
+            <Component Name="SPEECH_DL_INJECT" Type="DESTINATION_SET" Mapping="Amend1:7"/>
+            <Component Name="SPEECH_UL_INJECT" Type="DESTINATION_SET" Mapping="Amend1:8"/>
+            <Component Name="INTERNAL_FM_RADIO" Type="DESTINATION_SET" Mapping="Amend1:9"/>
+            <Component Name="PROBE_IN" Type="DESTINATION_SET" Mapping="Amend1:10"/>
+            <Component Name="SILENT" Type="DESTINATION_SET" Mapping="Amend1:27"/>
+        </ComponentType>
+        <ComponentType Name="SOUND_CARD">
+            <Component Name="PORTS" Type="PORTS_CONFIG"/>
+            <Component Name="SWITCH_MATRIX" Type="SWITCH_MATRIX_TYPE"/>
+        </ComponentType>
+    </ComponentLibrary>
+    <InstanceDefinition>
+        <Component Name="SOUND_CARD" Type="SOUND_CARD"/>
+    </InstanceDefinition>
+</Subsystem>

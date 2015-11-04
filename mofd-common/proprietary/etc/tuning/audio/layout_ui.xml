@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LAYOUT_UI>
+    <MODULE_LAYOUT name="wm8958" label="" left="3" top="40" width="23" height="10"/>
+    <MODULE_LAYOUT name="sst" label="" left="3" top="21" width="69" height="10"/>
+    <MODULE_LAYOUT name="xmm7260" label="XMM7260" left="49" top="40" width="23" height="10"/>
+    <MODULE_LAYOUT name="cws_broadcom" label="" left="27" top="40" width="21" height="10"/>
+    <MODULE_LAYOUT name="modem_in" label="MODEM IN" left="5" top="2" width="15" height="5"/>
+    <MODULE_LAYOUT name="modem_out" label="MODEM OUT" left="5" top="8" width="15" height="5"/>
+    <MODULE_LAYOUT name="bt_in" label="BT IN" left="5" top="15" width="15" height="4"/>
+    <MODULE_LAYOUT name="bt_out" label="BT OUT" left="5" top="20" width="15" height="4"/>
+    <MODULE_LAYOUT name="codec_dmics_in" label="CODEC DMICS IN" left="5" top="26" width="15" height="5"/>
+    <MODULE_LAYOUT name="codec_ihf_earpiece_out" label="CODEC IHF/EP OUT" left="5" top="32" width="15" height="5"/>
+    <MODULE_LAYOUT name="codec_amic_in" label="CODEC AMIC IN" left="5" top="51" width="15" height="5"/>
+    <MODULE_LAYOUT name="codec_hs_out" label="CODEC HS OUT" left="5" top="41" width="15" height="5"/>
+    <MODULE_LAYOUT name="media_spk_prot" label="SPK PROT LOOP" left="5" top="60" width="15" height="7"/>
+    <MODULE_LAYOUT name="media_spk_eq" label="SPEAKER EQ LOOP" left="5" top="73" width="15" height="7"/>
+    <MODULE_LAYOUT name="media_mic_eq" label="MIC EQ LOOP" left="5" top="86" width="15" height="7"/>
+    <MODULE_LAYOUT name="speech_uplink" label="SPEECH UPLINK LOOP" left="67" top="2" width="15" height="25"/>
+    <MODULE_LAYOUT name="speech_downlink" label="SPEECH DOWNLINK LOOP" left="67" top="28" width="15" height="10"/>
+    <MODULE_LAYOUT name="tone_generator" label="TONE GENERATOR" left="67" top="40" width="15" height="5"/>
+    <MODULE_LAYOUT name="aware" label="AWARE OUT" left="67" top="60" width="15" height="5"/>
+    <MODULE_LAYOUT name="vad" label="VOICE TRIGGER OUT" left="67" top="66" width="15" height="5"/>
+    <MODULE_LAYOUT name="voip_in" label="VOIP IN" left="67" top="53" width="15" height="5"/>
+    <MODULE_LAYOUT name="voip_out" label="VOIP OUT" left="67" top="47" width="15" height="5"/>
+    <MODULE_LAYOUT name="pcm_record" label="PCM RECORD OUT" left="67" top="72" width="15" height="5"/>
+    <MODULE_LAYOUT name="pcm_compressed" label="PCM COMPRESSED IN" left="67" top="79" width="15" height="5"/>
+    <MODULE_LAYOUT name="pcm_low_latency" label="PCM LOW-LATENCY" left="67" top="98" width="15" height="5"/>
+    <MODULE_LAYOUT name="pcm_regular" label="PCM REGULAR IN" left="67" top="85" width="15" height="5"/>
+    <MODULE_LAYOUT name="pcm_deep" label="PCM DEEP BUFFER IN" left="67" top="92" width="15" height="5"/>
+    <MODULE_LAYOUT name="main_matrix" label="MAIN MATRIX" left="35" top="3" width="10" height="96"/>
+    <MODULE_LAYOUT name="modem_in_ssp_in" label="MODEM SSP IN" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="modem_in_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="modem_in_dcr" label="" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="modem_in_pipe_out" label="PIPE OUT" left="55" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="modem_out_pipe_in" label="PIPE IN" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="modem_out_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="modem_out_ssp_out" label="MODEM SSP OUT" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="bt_in_ssp_in" label="BT SSP IN" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="bt_in_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="bt_in_dcr" label="" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="bt_in_pipe_out" label="PIPE OUT" left="55" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="bt_out_pipe_in" label="PIPE IN" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="bt_out_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="bt_out_ssp_out" label="BT SSP OUT" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec0_in_ssp_in" label="DMICS SSP IN" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec0_in_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec0_in_dcr" label="" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec0_in_pipe_out" label="PIPE OUT" left="55" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec0_out_pipe_in" label="PIPE IN" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec0_out_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec0_out_ssp_out" label="IHF-EP SSP OUT" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec1_in_ssp_in" label="AMIC SSP IN" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec1_in_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec1_in_dcr" label="" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec1_in_pipe_out" label="PIPE OUT" left="55" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec1_out_pipe_in" label="PIPE IN" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec1_out_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="codec1_out_ssp_out" label="HS SSP OUT" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_comp_pipe_in" label="PCM COMP IN" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_comp_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_comp_pipe_out" label="PIPE OUT" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_low_latency_pipe_in" label="PIPE IN" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_low_latency_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_low_latency_pipe_out" label="PIPE OUT" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_reg_pipe_in" label="PCM REG IN" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_reg_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_reg_pipe_out" label="PIPE OUT" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_deep_pipe_in" label="PCM DEEP IN" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_deep_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_deep_pipe_out" label="PIPE OUT" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_pcm1_pipe_in" label="PCM1 PIPE IN" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_pipe_out" label="PCM RECORD OUT" left="108" top="26" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_voip_in_pipe_in" label="VOIP IN" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_voip_in_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_voip_in_pipe_out" label="PIPE OUT" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_voip_out_pipe_in" label="PIPE IN" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_voip_out_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_voip_out_pipe_out" label="VOIP OUT" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="spk_prot_pipe_in" label="PIPE IN" left="40" top="28" width="10" height="10"/>
+    <MODULE_LAYOUT name="spk_prot_gain" label="" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="spk_prot_lpro" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="spk_prot_pipe_out" label="PIPE OUT" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="spk_eq_pipe_in" label="PIPE IN" left="40" top="28" width="10" height="10"/>
+    <MODULE_LAYOUT name="spk_eq_equalizer" label="" left="10" top="28" width="10" height="10"/>
+    <MODULE_LAYOUT name="spk_eq_mdrc" label="" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="spk_eq_gain" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="spk_eq_pipe_out" label="PIPE OUT" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="mic_eq_pipe_in" label="PIPE IN" left="40" top="28" width="10" height="10"/>
+    <MODULE_LAYOUT name="mic_eq_equalizer" label="" left="10" top="28" width="10" height="10"/>
+    <MODULE_LAYOUT name="mic_eq_mdrc" label="" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="mic_eq_gain" label="" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="mic_eq_pipe_out" label="PIPE OUT" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_pipe_in" left="0" top="90" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_out_gain" label="" left="16" top="59" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_hf_sns2_gain" label="" left="16" top="19" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_hf_sns3_gain" label="" left="16" top="32" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_hf_sns4_gain" label="" left="16" top="46" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_pipe_hf_sns2_in" label="HF SNS2 PIPE IN" left="1" top="19" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_pipe_hf_sns3_in" label="HF SNS3 PIPE IN" left="1" top="32" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_pipe_hf_sns4_in" label="HF SNS4 PIPE IN" left="1" top="46" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_pipe_hf_in" label="HF PIPE IN" left="1" top="1" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_hf_gain" label="" left="16" top="1" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_equalizer_main" label="" left="31" top="59" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_equalizer_hf_sns2" label="" left="31" top="19" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_equalizer_hf_sns3" label="" left="31" top="32" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_equalizer_hf_sns4" label="" left="31" top="46" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_nlf" label="" left="31" top="1" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_bmf" label="" left="46" top="20" width="10" height="48"/>
+    <MODULE_LAYOUT name="speech_ul_aec" label="" left="61" top="51" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_nr_dnr" label="NR/DNR" left="76" top="51" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_tnr" label="" left="91" top="51" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_wnr" label="" left="106" top="51" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_cni" label="" left="138" top="67" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_drp" label="" left="164" top="51" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_cni_mixer1" label="" left="153" top="53" width="6" height="6"/>
+    <MODULE_LAYOUT name="speech_ul_cni_mixer2" label="" left="166" top="82" width="6" height="6"/>
+    <MODULE_LAYOUT name="speech_ul_ser" label="" left="122" top="51" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_agc" label="" left="138" top="51" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_hf_out" left="0" top="30" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_edl" label="" left="122" top="13" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_ref_line" label="REF LINE" left="122" top="29" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_ul_gain" label="" left="164" top="66" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_in_gain" label="" left="16" top="104" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_pipe_out" label="PIPE OUT" left="1" top="104" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_pipe_sidetone_out" label="SIDETONE PIPE OUT" left="1" top="89" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_sidetone_gain" label="" left="16" top="74" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_sidetone_equalizer" label="" left="31" top="74" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_aec_to_ana" label="AEC TO ANA" left="61" top="67" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_pipe_out" label="PIPE OUT" left="0" top="15" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_in_gain" label="" left="15" top="15" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_nr" label="" left="30" top="61" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_tnr" label="" left="45" top="61" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_slv" label="" left="60" top="61" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_bwx" label="" left="75" top="61" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_mdrp" label="" left="75" top="45" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_ana_drp" label="" left="75" top="30" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_glc" label="" left="75" top="15" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_cni" label="" left="45" top="0" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_equalizer" label="" left="30" top="15" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_out_gain" label="" left="15" top="61" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_pipe_in" label="PIPE IN" left="0" top="61" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_dl_cni_mixer" label="" left="47" top="17" width="6" height="6"/>
+    <MODULE_LAYOUT name="speech_dl_from_uplink_aec" label="FROM AEC" left="95" top="30" width="10" height="10"/>
+    <MODULE_LAYOUT name="tone_generator TO BE IMPLEMENTED" left="20" top="10" width="10" height="10"/>
+    <MODULE_LAYOUT name="aware_pipe_in" label="PIPE IN" left="10" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="aware_equalizer" label="" left="25" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="aware_gain" label="" left="40" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="context_awareness" label="AWARENESS OUT" left="55" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="vad TO BE IMPLEMENTED" left="20" top="10" width="10" height="10"/>
+    <MODULE_LAYOUT name="main_matrix TO BE IMPLEMENTED" left="20" top="10" width="10" height="10"/>
+    <MODULE_LAYOUT name="speech_ul_pipe_in" label="MAIN PIPE IN" left="1" top="66" width="10" height="10"/>
+    <MODULE_LAYOUT name="inputs" label="INPUTS" left="4" top="4" width="10" height="22"/>
+    <MODULE_LAYOUT name="digital_core" label="DIGITAL CORE" left="19" top="4" width="44" height="22"/>
+    <MODULE_LAYOUT name="outputs" label="OUTPUTS" left="69" top="4" width="10" height="22"/>
+    <MODULE_LAYOUT name="aif1" label="AIF1" left="21" top="31" width="12" height="10"/>
+    <MODULE_LAYOUT name="aif2" label="AIF2" left="35" top="31" width="12" height="10"/>
+    <MODULE_LAYOUT name="aif3" label="AIF3" left="49" top="31" width="12" height="10"/>
+    <MODULE_LAYOUT name="input_in1l" label="IN1L" left="22" top="4" width="10" height="10"/>
+    <MODULE_LAYOUT name="input_in1r" label="IN1R" left="22" top="29" width="10" height="10"/>
+    <MODULE_LAYOUT name="input_in2l" label="IN2L" left="22" top="16" width="10" height="10"/>
+    <MODULE_LAYOUT name="input_in2r" label="IN2R" left="22" top="41" width="10" height="10"/>
+    <MODULE_LAYOUT name="input_mixinl" label="MIXINL" left="43" top="3" width="10" height="24"/>
+    <MODULE_LAYOUT name="input_mixinr" label="MIXINR" left="43" top="28" width="10" height="24"/>
+    <MODULE_LAYOUT name="input_adc_l" label="ADC_L" left="64" top="10" width="10" height="10"/>
+    <MODULE_LAYOUT name="input_adc_r" label="ADC_R" left="64" top="35" width="10" height="10"/>
+    <MODULE_LAYOUT name="inputs_mic_1_l" label="MIC 1 L" left="5" top="4" width="10" height="10"/>
+    <MODULE_LAYOUT name="inputs_mic_1_r" label="MIC 1 R" left="5" top="29" width="10" height="10"/>
+    <MODULE_LAYOUT name="outputs_dac_L1" label="DAC L1" left="4" top="4" width="10" height="10"/>
+    <MODULE_LAYOUT name="outputs_dac_R1" label="DAC R1" left="4" top="16" width="10" height="10"/>
+    <MODULE_LAYOUT name="outputs_dac_L2" label="DAC L2" left="4" top="28" width="10" height="10"/>
+    <MODULE_LAYOUT name="outputs_dac_R2" label="DAC R2" left="4" top="40" width="10" height="10"/>
+    <MODULE_LAYOUT name="outputs_mixers" label="OUTPUT MIXERS" left="19" top="3" width="12" height="48"/>
+    <MODULE_LAYOUT name="outputs_headphone" label="HEADPHONE" left="37" top="6" width="11" height="10"/>
+    <MODULE_LAYOUT name="outputs_earpiece" label="EARPIECE" left="37" top="22" width="11" height="10"/>
+    <MODULE_LAYOUT name="outputs_speaker_mixer_volume" label="SPEAKER MIXER" left="37" top="38" width="11" height="10"/>
+    <MODULE_LAYOUT name="outputs_speaker_volume" label="SPEAKER VOLUME" left="52" top="38" width="12" height="10"/>
+    <MODULE_LAYOUT name="outputs_speaker_boost" label="SPEAKER BOOST" left="68" top="38" width="11" height="10"/>
+    <MODULE_LAYOUT name="digital_core_dac_1_l" label="DAC 1 L" left="70" top="13" width="10" height="10"/>
+    <MODULE_LAYOUT name="digital_core_adc_l" label="ADC L" left="9" top="13" width="10" height="22"/>
+    <MODULE_LAYOUT name="digital_core_adc_r" label="ADC R" left="9" top="39" width="10" height="22"/>
+    <MODULE_LAYOUT name="digital_core_dac_1_volume" label="DAC_1_VOLUME" left="49" top="12" width="11" height="24"/>
+    <MODULE_LAYOUT name="digital_core_dac_1_r" label="DAC 1 R" left="70" top="25" width="10" height="10"/>
+    <MODULE_LAYOUT name="digital_core_dac_2_l" label="DAC 2 L" left="70" top="39" width="10" height="10"/>
+    <MODULE_LAYOUT name="digital_core_dac_2_r" label="DAC 2 R" left="70" top="51" width="10" height="10"/>
+    <MODULE_LAYOUT name="digital_core_dac_2_volume" label="DAC_2_VOLUME" left="49" top="38" width="11" height="24"/>
+    <MODULE_LAYOUT name="digital_core_aif1" label="DIGITAL AUDIO INTERFACE 1" left="19" top="64" width="30" height="7"/>
+    <MODULE_LAYOUT name="digital_core_dmic_1" label="DIGITAL MIC 1" left="23" top="1" width="10" height="10"/>
+    <MODULE_LAYOUT name="digital_core_dmic_2" label="DIGITAL MIC 2" left="35" top="1" width="10" height="10"/>
+    <MODULE_LAYOUT name="aif1_adc_R" label="ADC R" left="5" top="2" width="20" height="10"/>
+    <MODULE_LAYOUT name="aif1_adc_L" label="ADC L" left="30" top="2" width="20" height="10"/>
+    <MODULE_LAYOUT name="aif1_dacs" label="DACS" left="53" top="2" width="37" height="10"/>
+    <MODULE_LAYOUT name="aif1_adc1_L_enabled" label="Switch L" left="6" top="16" width="8" height="8"/>
+    <MODULE_LAYOUT name="aif1_adc1_R_enabled" label="Switch R" left="16" top="16" width="8" height="8"/>
+    <MODULE_LAYOUT name="aif1_adc2_L_enabled" label="Switch L" left="31" top="16" width="8" height="8"/>
+    <MODULE_LAYOUT name="aif1_adc2_R_enabled" label="Switch R" left="41" top="16" width="8" height="8"/>
+    <MODULE_LAYOUT name="aif1_drc1" label="DRC 1" left="5" top="28" width="20" height="7"/>
+    <MODULE_LAYOUT name="aif1_drc2" label="DRC 2" left="30" top="28" width="20" height="7"/>
+    <MODULE_LAYOUT name="aif1_aif1_input" label="AIF1" left="2" top="43" width="51" height="10"/>
+    <MODULE_LAYOUT name="aif1_aif1_output" label="   " left="53" top="43" width="37" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_I2S_1_RX" label="I2S 1 RX" left="2" top="4" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_I2S_1_TX" label="I2S 1 TX" left="2" top="15" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_I2S_2_RX" label="I2S 2 RX" left="2" top="26" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_I2S_2_TX" label="I2S 2 TX" left="2" top="37" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_Tone_Gen" label="Tone Gen" left="2" top="48" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_I2S_2_RX_Volume" label="VOLUME" left="16" top="26" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_I2S_2_TX_Volume" label="VOLUME" left="16" top="37" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_SWM" label="SWM" left="39" top="4" width="10" height="54"/>
+    <MODULE_LAYOUT name="xmm7260_Tone_Volume" label="VOLUME" left="16" top="48" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_SPEECH_RX" label="SPEECH RX" left="72" top="32" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_SPEECH_RX_Volume" label="VOLUME" left="56" top="32" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_SPEECH_TX_Volume" label="VOLUME" left="56" top="21" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_SPEECH_TX" label="SPEECH TX" left="72" top="21" width="10" height="10"/>
+    <MODULE_LAYOUT name="xmm7260_Network" label="NETWORK" left="89" top="21" width="8" height="21"/>
+    <MODULE_LAYOUT name="media_compr_pcm" label="Media Compr" left="4" top="17" width="11" height="4"/>
+    <MODULE_LAYOUT name="voip_pcm" label="VoIP PCM" left="33" top="17" width="11" height="4"/>
+    <MODULE_LAYOUT name="media_pcm" label="Media PCM" left="20" top="17" width="11" height="4"/>
+    <MODULE_LAYOUT name="aware_pcm" label="Aware PCM" left="49" top="17" width="10" height="4"/>
+    <MODULE_LAYOUT name="vtsv_pcm" label="VTSV PCM" left="60" top="17" width="10" height="4"/>
+    <MODULE_LAYOUT name="compressed_hal" label="Compressed HAL" left="4" top="1" width="11" height="10"/>
+    <MODULE_LAYOUT name="primary_hal" label="Primary Audio HAL" left="17" top="1" width="30" height="10"/>
+    <MODULE_LAYOUT name="aware_hal" label="Aware HAL" left="49" top="1" width="10" height="10"/>
+    <MODULE_LAYOUT name="vtsv_hal" label="VTSV HAL" left="60" top="1" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_mdrc" label="" left="94" top="26" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_agc" label="" left="80" top="26" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_wnr" label="" left="66" top="26" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_pcm3_pipe_in" label="PCM3 PIPE IN" left="10" top="40" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_mic_1_2_gain" label="" left="24" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_mic_3_4_gain" label="" left="24" top="40" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_mic_1_2_eq" label="" left="38" top="12" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_mic_3_4_eq" label="" left="38" top="40" width="10" height="10"/>
+    <MODULE_LAYOUT name="pcm_rec_bmf" label="" left="52" top="26" width="10" height="10"/>
+</LAYOUT_UI>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Configuration for XMM modem 2, single SIM
+-->
+<MAMGR version="0.0.2">
+    <XmmMamgrConfig>
+        <MmgrInstanceNumber>2</MmgrInstanceNumber>
+        <TtysNameList>
+            <e1>/dev/gsmtty77</e1>
+        </TtysNameList>
+    </XmmMamgrConfig>
+</MAMGR>

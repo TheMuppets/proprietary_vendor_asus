@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="SimpleTone">
+        <IntegerParameter Name="frequency1" Size="32"
+                          Description="Tone frequency of 1st sine wav"/>
+        <IntegerParameter Name="frequency2" Size="32"
+                          Description="Tone frequency of 2nd sine wav"/>
+        <IntegerParameter Name="frequency3" Size="32"
+                          Description="Tone frequency of 3rd sine wav"/>
+        <IntegerParameter Name="amplitude1" Size="32"
+                          Description="Tone amplitude of 1st sine wav"/>
+        <IntegerParameter Name="amplitude2" Size="32"
+                          Description="Tone amplitude of 2nd sine wav"/>
+        <IntegerParameter Name="amplitude3" Size="32"
+                          Description="Tone amplitude of 3rd sine wav"/>
+        <IntegerParameter Name="duration" Size="32" Unit="1/48 ms" Max="480000"
+                          Description="Number of sample the tone is played"/>
+        <IntegerParameter Name="pause" Size="32" Unit="1/48 ms"
+                          Description="Number of sample the tone is paused"/>
+    </ComponentType>
+
+    <ComponentType Name="ToneGenerator" Mapping="ByteControlWithLength:%1 %2 %3 params">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="nbr_tones" Size="16" Min="1" Max="3"
+                          Description="Number of tones"/>
+        <IntegerParameter Name="nbr_repetitions" Size="16"
+                          Description="Number of repetitions: 0 means infinite"/>
+        <IntegerParameter Name="reserved1" Size="16"
+                          Description="Not used"/>
+        <IntegerParameter Name="int_duration" Size="32"
+                          Description="Number of samples to generate an interrupt. 0 means no interrupt"/>
+        <IntegerParameter Name="fade_in" Size="32"
+                          Description="Number of samples to use for fading in."/>
+        <IntegerParameter Name="fade_out" Size="32"
+                          Description="Number of samples to use for fading out."/>
+        <Component Name="t1" Type="SimpleTone"/>
+        <Component Name="t2" Type="SimpleTone"/>
+        <Component Name="t3" Type="SimpleTone"/>
+    </ComponentType>
+</ComponentTypeSet>

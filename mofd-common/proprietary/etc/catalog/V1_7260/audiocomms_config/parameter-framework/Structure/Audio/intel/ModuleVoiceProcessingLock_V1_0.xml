@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../Schemas/ComponentLibrary.xsd">
+    <ComponentType Name="VoiceProcessingLock">
+        <EnumParameter Name="locked" Size="16" Mapping="ByteControlWithLength:%1 %2 %3 params algo_lock">
+            <ValuePair Literal="on" Numerical="0x00"/>
+            <ValuePair Literal="off" Numerical="0x01"/>
+        </EnumParameter>
+    </ComponentType>
+</ComponentLibrary>

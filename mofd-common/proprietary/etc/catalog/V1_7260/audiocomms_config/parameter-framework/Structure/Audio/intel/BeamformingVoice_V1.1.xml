@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="Channel4micsDelay">
+                <IntegerParameter Name="mics" Size="16" Min="0" Max="256"  ArrayLength="4"
+                             Description="Delay value for the channel connected to each microphone. Class 2 parameter. Default=0"/>
+    </ComponentType>
+    <ComponentType Name="Channel4micsGain">
+                <IntegerParameter Name="mics" Size="16" Min="-400" Max="120" Signed="true" ArrayLength="4"
+                             Description="Gain value for the channel connected to each microphone. Class 2 parameter. Default=0"/>
+    </ComponentType>
+    <ComponentType Name="Channel4micsFilterCoefs">
+                <FixedPointParameter Name="mic_1" Size="16" Integral="2" Fractional="13" ArrayLength="64"
+                             Description="Filter coefficients for the channel connected to microphone 1. Class 2 parameter. Default=0"/>
+                <FixedPointParameter Name="mic_2" Size="16" Integral="2" Fractional="13" ArrayLength="64"
+                             Description="Filter coefficients for the channel connected to microphone 2. Class 2 parameter. Default=0"/>
+                <FixedPointParameter Name="mic_3" Size="16" Integral="2" Fractional="13" ArrayLength="64"
+                             Description="Filter coefficients for the channel connected to microphone 3. Class 2 parameter. Default=0"/>
+                <FixedPointParameter Name="mic_4" Size="16" Integral="2" Fractional="13" ArrayLength="64"
+                             Description="Filter coefficients for the channel connected to microphone 4. Class 2 parameter. Default=0"/>
+    </ComponentType>
+    <ComponentType Name="BeamformingVoice" Mapping="ByteControlWithLength:%1 %2 %3 params bmf">
+        <Component Name="switch" Type="SwitchParam"/>
+        <EnumParameter Name="sw_flag" Size="16" Description="Module version. Default=BMF_1.1">
+            <ValuePair Literal="BMF_1.1" Numerical="0"/>
+            <ValuePair Literal="BMF_1.2" Numerical="1"/>
+        </EnumParameter>
+        <IntegerParameter Name="fir_enable" Size="16" Min="0" Max="1"
+                          Description="Enable filtering before channel selection and mixing. Class 1 parameter. Default=0"/>
+        <IntegerParameter Name="delay_enable" Size="16" Min="0" Max="1"
+                          Description="Enable delay before channel selection and mixing. Class 1 parameter. Default=0"/>
+        <IntegerParameter Name="gain_enable" Size="16" Min="0" Max="1"
+                          Description="Enable gain before channel selection and mixing. Class 1 parameter. Default=0"/>
+        <EnumParameter Name="spatialize" Size="16"
+                          Description="Spatialization. Class 1 parameter. Default=no spatialization">
+            <ValuePair Literal="disable" Numerical="1"/>
+            <ValuePair Literal="enable" Numerical="2"/>
+        </EnumParameter>
+        <ParameterBlock Name="switch_mat">
+            <EnumParameter Name="in" Size="16" ArrayLength="32" Description="Specify microphones connexion for each input channel of the first switch matrix. Up to four microphones signals can be added or subtracted. Class 2 parameter. Default=0">
+                <ValuePair Literal="disable" Numerical="0"/>
+                <ValuePair Literal="enable_signal_addition" Numerical="1"/>
+                <ValuePair Literal="enable_signal_substraction" Numerical="-1"/>
+            </EnumParameter>
+            <EnumParameter Name="out" Size="16" ArrayLength="32" Description="Specify microphones connexion for each output channel of the first switch matrix. Up to four microphones signals can be added or subtracted. Class 2 parameter. Default=0">
+                <ValuePair Literal="disable" Numerical="0"/>
+                <ValuePair Literal="enable_signal_addition" Numerical="1"/>
+                <ValuePair Literal="enable_signal_substraction" Numerical="-1"/>
+            </EnumParameter>
+        </ParameterBlock>
+        <ParameterBlock Name="delay">
+            <Component Name="left_channel" Type="Channel4micsDelay"/>
+            <Component Name="right_channel" Type="Channel4micsDelay"/>
+        </ParameterBlock>
+        <ParameterBlock Name="gain">
+            <Component Name="left_channel" Type="Channel4micsGain"/>
+            <Component Name="right_channel" Type="Channel4micsGain"/>
+        </ParameterBlock>
+        <ParameterBlock Name="filter_coefs">
+            <Component Name="left_channel" Type="Channel4micsFilterCoefs"/>
+            <Component Name="right_channel" Type="Channel4micsFilterCoefs"/>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>

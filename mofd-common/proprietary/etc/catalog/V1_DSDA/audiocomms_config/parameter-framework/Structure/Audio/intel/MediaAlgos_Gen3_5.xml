@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Schemas/ComponentTypeSet.xsd">
+    <xi:include href="AutomaticGainControlAudio_V1_0.xml"/>
+    <xi:include href="BeamformingAudio_V1.0.xml"/>
+    <xi:include href="WindNoiseReductionAudio_V1_0.xml"/>
+</ComponentTypeSet>
