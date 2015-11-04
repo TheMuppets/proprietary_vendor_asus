@@ -1,0 +1,397 @@
+################################################################################
+# @Copyright     Copyright (c) Imagination Technologies Ltd.
+#                All Rights Reserved
+# @License       MIT
+#
+# The contents of this file are subject to the MIT license as set out below.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+################################################################################
+
+ARGC=$#
+ARGV=$1
+
+usage() {
+    echo ""
+    echo "Usage: $0 [OPTION | APP_NAME]"
+    echo "Gathers diagnostic information for IMG."
+    echo "If APP_NAME is specified also gather diagnostics on that specific app."
+    echo "Note that APP_NAME should contain full path to the app binary."
+    echo ""
+    echo "    -h, --help     prints this message"
+    echo ""
+}
+
+init() {
+    # detect os
+    if [ -x "/system/bin/logcat" ]; then
+        OS="Android"
+    else
+        OS="Linux"
+    fi
+
+    if [ $OS = 'Android' ]; then
+        USERID=$USER_ID
+    else
+        USERID=`id -u`
+    fi
+
+    if [ "$USERID" != "0" ]; then
+        echo "This script needs to be executed with root privileges."
+        exit 1
+    fi
+
+    if [ "$ARGC" -gt "1" ]; then
+        echo "Error: Too many arguments."
+        usage
+        exit 1
+    fi
+
+    if [ "$ARGV" = "--help" -o "$ARGV" = "-h" ]; then
+        usage
+        exit 0
+    fi
+
+    # output file
+    if [ -d /tmp ]; then
+        OUT=/tmp/`date +pvrlogdump_%y%m%d%H%M.txt`
+    else
+        OUT=`date +pvrlogdump_%y%m%d%H%M.txt`
+    fi
+
+    # some useful varibles
+    DEBUGFS_PATH=/sys/kernel/debug/pvr
+    LOCKDEP_PATH=/proc/lockdep
+    PVRINI_PATH=/etc/powervr.ini
+    INSTKMLOG_PATH=/etc/powervr_ddk_install_km.log
+    INSTUMLOG_PATH=/etc/powervr_ddk_install_um.log
+
+    if [ "$ARGC" -eq "1" ]; then
+        APPNAME=$ARGV
+    fi
+}
+
+perform_check() {
+    echo -n "Checking driver state ............... "
+    if [ -d /sys/module/pvrsrvkm ]; then
+        LOADED=true
+        if [ -d $DEBUGFS ]; then
+            DRIVER_STATE="initialised"
+        else
+            DRIVER_STATE="loaded"
+        fi
+        echo "$DRIVER_STATE"
+    else
+        LOADED=false
+        DRIVER_STATE="not loaded"
+        echo "$DRIVER_STATE"
+        echo "    Driver is not loaded. Not all crucial information can"
+        echo "    be gathered in that state. Please consider running driver."
+    fi
+
+    echo -n "Checking for debugfs ................ "
+    if [ -d $DEBUGFS_PATH ]; then
+        echo "found"
+    else
+        # because there is no debugfs dump firmware log to dmesg buffer
+        if command pvrdebug >/dev/null 2>&1; then
+            if [ "$LOADED" = "true" ]; then pvrdebug -dd >/dev/null 2>&1; fi
+        fi
+        echo "not found"
+    fi
+
+    echo -n "Checking for lockdep ................ "
+    if [ -f $LOCKDEP_PATH ]; then
+        echo "found"
+    else
+        echo "not found"
+    fi
+
+    echo -n "Checking for powervr.ini ............ "
+    if [ -f $PVRINI_PATH ]; then
+        echo "found"
+        local FWLOG_APPHINTS=`grep -E ^EnableLogGroup.+[#\;]* $PVRINI_PATH`
+    else
+        echo "not found"
+    fi
+    if [ ! -f $PVRINI_PATH -o -z "$FWLOG_APPHINTS" ]; then
+        echo "    There are no AppHints enabled in $PVRINI_PATH for any of"
+        echo "    the firmware log groups. Unless 'pvrdebug' tool was used for"
+        echo "    that purpose there will be no information in firmware log."
+        echo "    Please consider enabling some of the firmware log groups"
+        echo "    before the problem occurs."
+    fi
+}
+
+dump_env_info() {
+    echo ""
+    echo "===== Dumping environment info ======================================"
+    echo ""
+
+    echo "Date:" `date`
+    echo "/proc/version:" `cat /proc/version`
+
+    echo ""
+    echo "Driver state: $DRIVER_STATE"
+
+    echo ""
+    echo "env:"
+    export -p
+
+    echo ""
+    echo "lsmod:"
+    lsmod
+
+    echo ""
+    echo "/cpu/info"
+    cat /proc/cpuinfo
+
+    echo ""
+    echo "/proc/meminfo"
+    cat /proc/meminfo
+
+    if [ $OS = "Linux" ]; then
+        echo ""
+        echo "lshw"
+        lshw -quiet
+    fi
+}
+
+dump_intallation_log() {
+    echo ""
+    echo "===== Dumping powervr_ddk_install_km.log ============================"
+    echo ""
+
+    if [ -f $INSTKMLOG_PATH ]; then
+        cat  $INSTKMLOG_PATH
+    else
+        echo "Not found"
+    fi
+
+    echo ""
+    echo "===== Dumping powervr_ddk_install_um.log ============================"
+    echo ""
+
+    if [ -f $INSTUMLOG_PATH ]; then
+        head $INSTUMLOG_PATH
+    else
+        echo "Not found"
+    fi
+}
+
+dump_apphints() {
+    echo ""
+    echo "===== Dumping powervr.ini ==========================================="
+    echo ""
+
+    if [ -f $PVRINI_PATH ]; then
+        cat $PVRINI_PATH
+    else
+        echo "Not found"
+    fi
+}
+
+dump_dmesg() {
+    echo ""
+    echo "===== Dumping dmesg ================================================="
+    echo ""
+
+    dmesg
+}
+
+dump_debugfs() {
+    echo ""
+    echo "===== Dumping files from pvr debugfs ================================"
+    echo ""
+
+    if [ -d $DEBUGFS_PATH ]; then
+        # android doesn't have 'find' command
+        if [ $OS == "Android" ]; then
+            ls -FR $DEBUGFS_PATH | while read FILE; do
+                if echo $FILE | grep / >/dev/null 2>&1; then
+                    # save last found full directory path
+                    DIR=$FILE
+                    continue
+                fi
+                if echo $FILE | grep -E "^d .+" >/dev/null 2>&1; then
+                    # ignore as it is a subdirectory
+                    continue
+                fi
+                if echo $FILE | grep -E "^- .+" >/dev/null 2>&1; then
+                    echo -e "\n==== ${DIR%:}/${FILE#- } ====\n"
+                    cat ${DIR%:}/${FILE#- }
+                fi
+            done
+        else
+            local FILES="`find $DEBUGFS_PATH -type f -printf "%P\n"`"
+            for FILE in $FILES; do
+                echo ""
+                echo "==== $DEBUGFS_PATH/$FILE ===="
+                echo ""
+                cat $DEBUGFS_PATH/$FILE
+            done
+        fi
+    else
+        echo "Not found"
+    fi
+}
+
+dump_android() {
+    echo ""
+    echo "===== Dumping android logs =========================================="
+    echo ""
+
+    if [ -x /system/bin/logcat ]; then
+        echo ""
+        echo "==== android/logcat ===="
+        echo ""
+        logcat -d
+    fi
+
+    if [ -x /system/bin/dumpsys ]; then
+        echo ""
+        echo "==== android/dumpsys ===="
+        echo ""
+        dumpsys
+    fi
+
+    # NOTE: It might be worth to call also dumpstate (which runs procrank) here 
+    # but procrank causes some of the targets to crash. It's left out for now.
+
+    if [ -f /d/sync ]; then
+        echo ""
+        echo "==== /d/sync ===="
+        echo ""
+        cat /d/sync
+    fi
+}
+
+dump_lockdep() {
+    echo ""
+    echo "===== Dumping lockdep related files ================================="
+    echo ""
+
+    if [ -f $LOCKDEP_PATH ]; then
+        local FILES="/proc/lockdep_stats $LOCKDEP_PATH /proc/lockdep_chains"
+
+        for FILE in $FILES; do
+            echo ""
+            echo "==== $FILE ===="
+            echo ""
+
+            if [ -f $FILE ]; then
+                cat $FILE
+            fi
+        done
+    else
+        echo "Not found"
+    fi
+}
+
+dump_app_info() {
+    echo ""
+    echo "===== Dumping app info =============================================="
+    echo ""
+
+    if [ -f "$APPNAME" ]; then
+        echo "Analysing $APPNAME"
+        if [ -f `dirname $APPNAME`/powervr.ini ]; then
+            echo `dirname $APPNAME`/powervr.ini
+            cat `dirname $APPNAME`/powervr.ini
+        fi
+        echo ""
+        echo "Checking nature of $APPNAME:"
+        file $APPNAME
+        echo
+        echo "Checking linkage of $APPNAME:"
+        ldd $APPNAME
+    else
+        if [ -n "$APPNAME" ]; then
+            echo "Not app with name '$APPNAME' exists."
+            echo ""
+        fi
+
+        if [ -f /usr/local/bin/gltest1 ]; then
+            echo "Checking linkage of gltest1:"
+            ldd /usr/local/bin/gltest1
+        fi
+        if [ -f /usr/local/bin/gles1test1 ]; then
+            echo ""
+            echo "Checking linkage of gles1test1:"
+            ldd /usr/local/bin/gles1test1
+        fi
+        if [ -f /usr/local/bin/xgltest1 ]; then
+            echo ""
+            echo "Checking linkage of xgltest1:"
+            ldd /usr/local/bin/xgltest1
+        fi
+        if [ -f /usr/local/bin/xgles1test1 ]; then
+            echo ""
+            echo "Checking linkage of xgles1test1:"
+            ldd /usr/local/bin/xgles1test1
+        fi
+    fi
+}
+
+dump_all() {
+    echo ""
+    echo -n "Dumping data ........................ "
+    dump_env_info >> $OUT 2>&1
+    dump_intallation_log >> $OUT
+    dump_apphints >> $OUT
+    dump_dmesg >> $OUT
+    dump_debugfs >> $OUT 2>&1
+    if [ $OS = "Android" ]; then
+        dump_android >> $OUT 2>&1
+    fi
+    dump_lockdep >> $OUT
+    dump_app_info >> $OUT
+    echo "done"
+}
+
+archive() {
+    if [ $OS = "Android" ]; then
+        if [ ! -x /system/bin/gzip ]; then
+            return
+        fi
+    else
+        if ! command gzip -h >/dev/null 2>&1; then
+            return
+        fi
+    fi
+
+    echo -n "Archiving data ...................... "
+    gzip -f $OUT
+    echo "done"
+    echo ""
+    echo "File $OUT.gz was created."
+}
+
+main() {
+    init
+
+    touch $OUT
+
+    perform_check
+    dump_all
+    archive
+}
+
+# main function
+main

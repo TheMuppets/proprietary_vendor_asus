@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Schemas/ComponentTypeSet.xsd">
+     <ComponentType Name="ComfortNoiseInjector_V1_2" Mapping="ByteControlWithLength:%1 %2 %3 params cni">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+                          Description="Module version. Default=0 (TxCNI v1.2)"/>
+        <FixedPointParameter Name="noise_gain" Size="16" Integral="2" Fractional="13"
+                          Description="Injected noise gain when AGC is attenuating. Class 1 parameter. Default=16384"/>
+        <FixedPointParameter Name="noise_floor" Size="16" Integral="0" Fractional="15"
+                          Description="Injected noise gain when AGC is not attenuating. Class 1 parameter. Default=2048"/>
+        <FixedPointParameter Name="mult_ctr" Size="16" Integral="4" Fractional="11"
+                          Description="Factor for noise control window size. Class 1 parameter. Default=4096"/>
+        <IntegerParameter Name="m" Size="16" Min="1" Max="32"
+                          Description="Subframe size for Noise Level Estimation of mic signal. Class 2 parameter. Default=16"/>
+        <FixedPointParameter Name="env_decay" Size="16" Integral="0" Fractional="15"
+                          Description="Time constant for envelop estimation during energy decrease. Class 2 parameter. Default=30654"/>
+        <FixedPointParameter Name="env_attack" Size="16" Integral="0" Fractional="15"
+                          Description="Time constant for envelop estimation during energy increase. Class 2 parameter. Default=26827"/>
+        <FixedPointParameter Name="n_decay" Size="16" Integral="0" Fractional="15"
+                          Description="Time constant for noise estimation during envelop decrease. Class 2 parameter. Default=32441"/>
+        <FixedPointParameter Name="n_attack" Size="16" Integral="0" Fractional="15"
+                          Description="Time constant for noise estimation during envelop increase. Class 2 parameter. Default=32758"/>
+        <FixedPointParameter Name="update_ctrl" Size="16" Integral="1" Fractional="14"
+                          Description="Factor to update control signal during noise activity. Class 2 parameter. Default=16466"/>
+        <FixedPointParameter Name="ctr_decay" Size="16" Integral="0" Fractional="15"
+                          Description="Factor to increase noise control window during envelop increase. Class 2 parameter. Default=0"/>
+        <FixedPointParameter Name="noise_gain_drp" Size="16" Integral="2" Fractional="13"
+                          Description="Gain value for the injected noise after DRP. Class 1 parameter. Default=0"/>
+        <ParameterBlock Name="biquad">
+            <EnumParameter Name="order" Size="16"
+                Description="Order of the biquad filter.">
+                <ValuePair Literal="2th order filter (1 biquad filter)" Numerical="2"/>
+                <ValuePair Literal="4th order filter (2 cascaded biquad filters)" Numerical="4"/>
+            </EnumParameter>
+            <Component Name="stage_0" Type="Biquad"
+                Description="Coefficients for biquad stage 0. Class 2 parameters"/>
+            <Component Name="stage_1" Type="Biquad"
+                Description="Coefficients for biquad stage 1. Class 2 parameters"/>
+        </ParameterBlock>
+     </ComponentType>
+</ComponentTypeSet>

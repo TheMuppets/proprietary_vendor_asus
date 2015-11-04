@@ -1,0 +1,7 @@
+# software config - informative only
+ro.swconf.info=V1_7260
+
+ro.sf.lcd_density=480
+panel.physicalWidthmm=58
+panel.physicalHeightmm=103
+

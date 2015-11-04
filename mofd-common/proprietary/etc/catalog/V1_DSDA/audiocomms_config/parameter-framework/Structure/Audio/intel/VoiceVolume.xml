@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../Schemas/ComponentLibrary.xsd">
+    <ComponentType Name="VoiceVolume">
+        <IntegerParameter Name="ramp_duration" Size="32" Min="5" Max="5000" Unit="ms" Mapping="Control:%1 %2 %3 rampduration"/>
+        <!-- Volume control is an array of the form [left, right] -->
+        <IntegerParameter Name="level" Size="32" ArrayLength="2" Signed="true" Min="-1440" Max="360" Mapping="Control:%1 %2 %3 volume"
+                          Description="Voice Control. Min value is mapped to -24dB and max value to 0dB">
+                <LinearAdaptation SlopeNumerator="240" SlopeDenominator="1" Offset="-240"/>
+        </IntegerParameter>
+        <BooleanParameter Name="mute" Mapping="Control:%1 %2 %3 mute"/>
+    </ComponentType>
+</ComponentLibrary>

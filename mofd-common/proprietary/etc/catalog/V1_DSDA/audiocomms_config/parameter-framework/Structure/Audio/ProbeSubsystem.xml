@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../../core/Schemas/Subsystem.xsd"
+           Name="probe" Type="PROBE" Endianness="Little" Mapping="CardNumber:0,Device:5">
+    <ComponentLibrary>
+        <ComponentType Name="ProbeExtractor" Mapping="ProbeExtractor">
+            <BooleanParameter Name="started"/>
+            <StringParameter Name="name" MaxLength="128"/>
+            <StringParameter Name="destination_dir" MaxLength="128"/>
+        </ComponentType>
+    </ComponentLibrary>
+
+    <InstanceDefinition>
+        <Component Name="probe_extractor0" Type="ProbeExtractor"/>
+        <Component Name="probe_extractor1" Type="ProbeExtractor"/>
+        <Component Name="probe_extractor2" Type="ProbeExtractor"/>
+        <Component Name="probe_extractor3" Type="ProbeExtractor"/>
+        <Component Name="probe_extractor4" Type="ProbeExtractor"/>
+    </InstanceDefinition>
+</Subsystem>

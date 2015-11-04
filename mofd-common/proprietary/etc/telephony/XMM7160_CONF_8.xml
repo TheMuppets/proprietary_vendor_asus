@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE author [
+	   <!ENTITY channels_default SYSTEM "channels_default.xml" >
+]>
+
+<telephony_config>
+	<modems_info>
+		<modem_info>
+			<core
+				name="7160"
+				flashless="false"
+				secured="false"
+				ipc="usb"
+				ipcLogging="usb"
+				ipcDump="usb"
+				swRevision="1.2"
+				hwRevision="45"
+			/>
+			<modules
+				mmgr_xml="mmgr_7160_conf_8.xml"
+				rril_txt="rril_7160_conf_3.txt"
+			/>
+			<tlvs_info>
+				<tlv_info
+					filename="1024_USB_reconfig_3ACM_4NCM.tlv"
+				/>
+			</tlvs_info>
+			&channels_default;
+		</modem_info>
+	</modems_info>
+</telephony_config>

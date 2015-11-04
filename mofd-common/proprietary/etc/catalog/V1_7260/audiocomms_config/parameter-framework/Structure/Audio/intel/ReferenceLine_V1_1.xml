@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="ReferenceLine" Mapping="ByteControlWithLength:%1 %2 %3 params ref">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="ReferenceLine version: 0 is v1.1"/>
+        <FixedPointParameter Name="gain_analog" Size="16" Integral="0" Fractional="15"
+            Description="External gain involved in the echo path. Class II parameter. Default=0x7FFF."/>
+        <IntegerParameter Name="aec_delay" Size="16" Min="0" Max="320"
+            Description="Number of delay samples for AEC reference line. Class II parameter. Default=0. Max value is 160 in narrow-band mode."/>
+        <IntegerParameter Name="ser_delay" Size="16" Min="0" Max="320"
+            Description="Number of delay samples for SER reference line. Class II parameter. Default=40. Max value is 160 in narrow-band mode."/>
+        <IntegerParameter Name="agc_delay" Size="16" Min="0" Max="320"
+            Description="Number of delay samples for AGC reference line. Class II parameter. Default=0. Max value is 160 in narrow-band mode."/>
+        <ParameterBlock Name="biquad">
+            <EnumParameter Name="order" Size="16"
+                Description="Reference line biquad filter order. Class II parameter. Default=2">
+                <ValuePair Literal="off" Numerical="0"/>
+                <ValuePair Literal="on" Numerical="2"/>
+            </EnumParameter>
+            <Component Name="0" Type="Biquad"
+                Description="Coefficients for biquad"/>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>

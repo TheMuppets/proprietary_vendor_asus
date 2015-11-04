@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="DualMicrophoneNoiseReduction" Mapping="ByteControlWithLength:%1 %2 %3 params dnr">
+        <Component Name="switch" Type="SwitchParam"/>
+        <BitParameterBlock Name="sw_flag" Size="16" Description="DNR Version">
+            <BitParameter Name="dnr_1_1" Size="1" Pos="0"/>
+            <BitParameter Name="dnr_1_2" Size="1" Pos="1"/>
+            <BitParameter Name="dnr_1_5" Size="1" Pos="4"/>
+        </BitParameterBlock>
+        <EnumParameter Name="mode" Size="16" Description="Noise Estimation Mode. Class 1 parameter. Default=2">
+          <ValuePair Literal="no_dnr" Numerical="0"/>
+          <ValuePair Literal="no_single_channel_noise_estimation" Numerical="1"/>
+          <ValuePair Literal="max_dnr_and_single_channel_noise_estimation" Numerical="2"/>
+        </EnumParameter>
+        <FixedPointParameter Name="cross_comp" Size="16" Integral="3" Fractional="12"
+            Description="Gain Compensation between primary and secondary microphones. Class 1 parameter. Default=4096"/>
+        <FixedPointParameter Name="smooth" Size="16" Integral="0" Fractional="15"
+            Description="Smoothing factor of noise power spectral density estimated by DNR. Class 1 parameter. Default=29491"/>
+        <FixedPointParameter Name="scale_ple" Size="16" Integral="1" Fractional="14"
+            Description="Scaling of the DNR noise estimation. Class 2 parameter. Default=16384"/>
+        <FixedPointParameter Name="min_stat_scale" Size="16" Integral="1" Fractional="14"
+            Description="Scaling of the single channel noise estimation. Class 2 parameter. Default=16384"/>
+        <FixedPointParameter Name="diff_smooth" Size="16" Integral="0" Fractional="15"
+            Description="Smoothing of difference. Class 2 parameter. Default=29491"/>
+        <FixedPointParameter Name="threshold" Size="16" Integral="5" Fractional="10"
+            Description="Threshold for PLE estimation. Class 2 parameter. Default=4096"/>
+        <ParameterBlock Name="alpha">
+            <FixedPointParameter Name="ph1" Size="16" Integral="0" Fractional="15"
+                Description="Smoothing of the speech presence probability estimate. Class 2 parameter. Default=29491"/>
+            <FixedPointParameter Name="np" Size="16" Integral="0" Fractional="15"
+                Description="Smoothing of the spectral noise power estimate. Class 2 parameter. Default=26214"/>
+            <FixedPointParameter Name="nn" Size="16" Integral="0" Fractional="15"
+                Description="Smoothing of the periodograms. Class 2 parameter. Default=24576"/>
+        </ParameterBlock>
+        <FixedPointParameter Name="coh_threshold" ArrayLength="16" Size="16" Integral="0" Fractional="15"
+                Description="Coherence based threshold for noise estimation (band x). Class 1 parameter. Default=26214"/>
+    </ComponentType>
+</ComponentTypeSet>
+

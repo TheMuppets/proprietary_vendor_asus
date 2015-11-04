@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConfigurableDomains xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Schemas/ConfigurableDomains.xsd" SystemClassName="Misc">
+	<ConfigurableDomain Name="VibratorState">
+		<Configurations>
+			<Configuration Name="Off">
+				<CompoundRule Type="All">
+					<SelectionCriterionRule SelectionCriterion="VibratorState" MatchesWhen="Is" Value="Off"/>
+				</CompoundRule>
+			</Configuration>
+			<Configuration Name="On">
+				<CompoundRule Type="All">
+					<SelectionCriterionRule SelectionCriterion="VibratorState" MatchesWhen="Is" Value="On"/>
+				</CompoundRule>
+			</Configuration>
+		</Configurations>
+		<ConfigurableElements>
+			<ConfigurableElement Path="/Misc/Vibrator/state/enabled"/>
+			<ConfigurableElement Path="/Misc/Vibrator/state/pwm_duty_cycle"/>
+			<ConfigurableElement Path="/Misc/Vibrator/state/pwm_baseunit"/>
+		</ConfigurableElements>
+		<Settings>
+			<Configuration Name="Off">
+				<ConfigurableElement Path="/Misc/Vibrator/state/enabled">
+					<BooleanParameter Name="enabled">0</BooleanParameter>
+				</ConfigurableElement>
+				<ConfigurableElement Path="/Misc/Vibrator/state/pwm_duty_cycle">
+					<IntegerParameter Name="pwm_duty_cycle">0</IntegerParameter>
+				</ConfigurableElement>
+				<ConfigurableElement Path="/Misc/Vibrator/state/pwm_baseunit">
+					<IntegerParameter Name="pwm_baseunit">0</IntegerParameter>
+				</ConfigurableElement>
+			</Configuration>
+			<Configuration Name="On">
+				<ConfigurableElement Path="/Misc/Vibrator/state/enabled">
+					<BooleanParameter Name="enabled">1</BooleanParameter>
+				</ConfigurableElement>
+				<ConfigurableElement Path="/Misc/Vibrator/state/pwm_duty_cycle">
+					<IntegerParameter Name="pwm_duty_cycle">17</IntegerParameter>
+				</ConfigurableElement>
+				<ConfigurableElement Path="/Misc/Vibrator/state/pwm_baseunit">
+					<IntegerParameter Name="pwm_baseunit">32768</IntegerParameter>
+				</ConfigurableElement>
+			</Configuration>
+		</Settings>
+	</ConfigurableDomain>
+	<ConfigurableDomain Name="Calibration" SequenceAware="false">
+		<Configurations>
+			<Configuration Name="Default">
+				<CompoundRule Type="All"/>
+		    </Configuration>
+		</Configurations>
+		<ConfigurableElements>
+			<ConfigurableElement Path="/Misc/Configuration/vibrator/min_vibration_duration"/>
+		</ConfigurableElements>
+		<Settings>
+			<Configuration Name="Default">
+				<ConfigurableElement Path="/Misc/Configuration/vibrator/min_vibration_duration">
+					<IntegerParameter Name="min_vibration_duration">0</IntegerParameter>
+				</ConfigurableElement>
+			</Configuration>
+		</Settings>
+	</ConfigurableDomain>
+</ConfigurableDomains>

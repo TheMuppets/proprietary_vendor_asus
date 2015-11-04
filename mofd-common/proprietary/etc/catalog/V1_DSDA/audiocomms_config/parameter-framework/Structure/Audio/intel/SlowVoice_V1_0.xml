@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="SlowVoice" Mapping="ByteControlWithLength:%1 %2 %3 params slv">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16" Min="0" Max="65536"
+                             Description="Module version. Default=0"/>
+        <IntegerParameter Name="stretch_factor" Size="16" Min="50" Max="100"
+                             Description="The percentage for frame stretch. Class 1 parameter. Default=66"/>
+        <IntegerParameter Name="acf_decimation_frequency" Size="16" Min="1" Max="65535"
+                             Description="Value used to calculate the auto-correlation-step for frequency decimation. Class 2 parameter. Default=4000"/>
+        <IntegerParameter Name="vad_factor" Size="16" Min="0" Max="128"
+                             Description="Sigmoid setting. Class 2 parameter. Default=128"/>
+        <IntegerParameter Name="vad_negative_offset" Size="16"
+                             Description="DC remover high-pass filter coefficient (in number of right shifts). Class 2 parameter. Default=7"/>
+        <IntegerParameter Name="tail_portion2" Size="16" Min="82" Max="1404"
+                             Description="Tail of the pointer for SLV buffer - 2nd portion. Class 2 parameter. Default: NB = 322 and WB = 642"/>
+        <IntegerParameter Name="head_portion2" Size="16" Min="82" Max="1404"
+                             Description="Head of the pointer for SLV buffer - 2nd portion. Class 2 parameter. Default: NB = 323 and WB = 643"/>
+        <IntegerParameter Name="tail_portion3" Size="16" Min="464" Max="64000"
+                             Description="Tail of the pointer for SLV buffer - 3rd portion. Class 2 parameter. Default: NB = 704 and WB = 1404"/>
+        <IntegerParameter Name="head_portion3" Size="16" Min="464" Max="64000"
+                             Description="Head of the pointer for SLV buffer - 3rd portion. Class 2 parameter. Default: NB = 705 and WB = 1405"/>
+        <IntegerParameter Name="buff_size_portion1" Size="16" Min="82" Max="642"
+                             Description="Size of the SLV buffer - 1st portion. Class 2 parameter. Default: NB = 322 and WB = 642"/>
+        <IntegerParameter Name="buff_size_portion2" Size="16" Min="382" Max="762"
+                             Description="Size of the SLV buffer - 2nd portion. Class 2 parameter. Default: NB = 382 and WB = 762"/>
+        <IntegerParameter Name="buffer_empty" Size="16" Min="1" Max="2"
+                             Description="Number of frames when we consider the buffer 3rd portion is empty. Class 2 parameter. Default=2"/>
+        <IntegerParameter Name="buffer_full" Size="16" Min="1" Max="2"
+                             Description="Number of frames when we consider the buffer 3rd portion is full. Class 2 parameter. Default=2"/>
+        <IntegerParameter Name="vad_noise_level_smooth_coef" Size="16" Signed="true" Min="-32768" Max="32767"
+                             Description="Smoothing coef for noise level. Class 2 parameter. Default=1024"/>
+        <IntegerParameter Name="buff_size_total" Size="16" Min="1000" Max="4000"
+                             Description="Size of the total buffer for SLV module in milliseconds. Class 2 parameter. Default=4000"/>
+        <IntegerParameter Name="vad_snr_factor" Size="16" Min="0" Max="32767"
+                             Description="Sigmoid settings. Class 2 parameter. Default=22500"/>
+    </ComponentType>
+</ComponentTypeSet>

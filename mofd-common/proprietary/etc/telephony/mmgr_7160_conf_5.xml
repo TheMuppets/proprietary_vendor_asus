@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE author [
+	<!ENTITY firmware SYSTEM "mmgr_fw_default.xml" >
+]>
+
+<mmgr_config>
+	&firmware;
+	<modem_link>
+		<flash_ebl>
+			<link_hsi
+				device="![CDATA[/dev/ttyIFX1]]"
+				control="![CDATA[/sys/module/hsi_dlp/parameters/set_flashing_mode]]"
+				command="1"
+			/>
+		</flash_ebl>
+		<flash_fw>
+			<link_hsi device="![CDATA[/dev/ttyIFX1]]"/>
+		</flash_fw>
+		<baseband>
+			<link_hsi
+				device="![CDATA[/dev/ttyIFX0]]"
+				control="![CDATA[/sys/module/hsi_dlp/parameters/set_flashing_mode]]"
+				command="0"
+			/>
+		</baseband>
+	</modem_link>
+	<mdm_ctrl
+		path="/dev/mdm_ctrl0"
+		type="ioctl"
+		board="aob"
+		pwr_on_ctrl="pmic"
+		usb_hub_ctrl="false"
+	/>
+	<modem_comm>
+		<mux
+			frame_size="1509"
+			retry="24"
+		/>
+	</modem_comm>
+	<modem_timings
+		ipc_ready="10"
+		cd_ipc_ready="10"
+	/>
+	<modem_recovery
+		enable="true"
+		cold_reset="5"
+		platform_reboot="1"
+		reset="600"
+		delay_before_reboot="1"
+		cold_reset_timeout="1"
+		shutdown_timeout="1"
+	/>
+	<clients_config max="12"/>
+	<mcdr>
+		<general
+			enable="true"
+			protocol="ymodem"
+			folder="/logs/modemcrash"
+			timeout="600"
+		/>
+		<link>
+			<link_uart device="![CDATA[/dev/ttyMFD1]]" baudrate="3000000"/>
+		</link>
+		<power
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:05.1/power/control]]"
+			on="auto"
+			off="on"
+		/>
+	</mcdr>
+</mmgr_config>

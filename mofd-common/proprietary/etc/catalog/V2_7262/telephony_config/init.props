@@ -1,0 +1,2 @@
+# Enable AP-centric IMS
+persist.ims_support=2

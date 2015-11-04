@@ -1,0 +1,6 @@
+# software config - informative only
+ro.swconf.info=DDO_BB
+
+ro.sf.lcd_density=320
+panel.physicalWidthmm=180
+panel.physicalHeightmm=113

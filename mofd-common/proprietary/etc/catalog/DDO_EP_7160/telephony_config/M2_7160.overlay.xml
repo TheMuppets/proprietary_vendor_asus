@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<telephony_config>
+	<modems_info>
+		<modem_info>
+			<core
+				flashless="false"
+				swRevision="1.2"
+				hwRevision="45"
+			/>
+			<modules
+				mmgr_xml="mmgr_7160_conf_7.xml"
+				rril_txt="rril_7160_conf_3.txt"
+			/>
+		</modem_info>
+	</modems_info>
+</telephony_config>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="Mdrc" Mapping="ByteControlWithLength:%1 mdrp %3 params">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="power_threshold" Size="8" Unit="dB/(-2)"/>
+        <EnumParameter Name="mode" Size="8" Description="Sets the filter map configuration">
+            <ValuePair Literal="simple" Numerical="0x00"/>
+            <ValuePair Literal="power_threshold" Numerical="0x01"/>
+            <ValuePair Literal="normalizer" Numerical="0x02"/>
+        </EnumParameter>
+        <IntegerParameter Name="nbr_bands" Size="8" Min="1" Max="4"
+                              Description="Number of active bands"/>
+        <EnumParameter Name="filter_conf" Size="8">
+            <ValuePair Literal="wide_band" Numerical="0x00"/>
+            <ValuePair Literal="serial_arch_1st" Numerical="0x01"/>
+            <ValuePair Literal="serial_arch_3rd" Numerical="0x02"/>
+            <ValuePair Literal="parallel_arch_5th" Numerical="0x03"/>
+        </EnumParameter>
+        <ParameterBlock Name="band" ArrayLength="4">
+            <IntegerParameter Name="reserved1" Size="8"
+                                  Description="Not used"/>
+            <EnumParameter Name="filter_type" Size="8">
+                <ValuePair Literal="peaking" Numerical="0x00"/>
+                <ValuePair Literal="low_shelving" Numerical="0x01"/>
+                <ValuePair Literal="high_shelving" Numerical="0x02"/>
+                <ValuePair Literal="complementary" Numerical="0x03"/>
+                <ValuePair Literal="wide_band" Numerical="0x04"/>
+            </EnumParameter>
+            <FixedPointParameter Name="a1_1" Size="32" Integral="1" Fractional="22"
+                                     Description="A1 coefficient value 1st filter"/>
+            <FixedPointParameter Name="a1_2" Size="32" Integral="1" Fractional="22"
+                                     Description="A1 coefficient value 2nd filter"/>
+            <FixedPointParameter Name="a2_1" Size="32" Integral="1" Fractional="22"
+                                     Description="A2 coefficient value 1st filter"/>
+            <FixedPointParameter Name="a2_2" Size="32" Integral="1" Fractional="22"
+                                     Description="A2 coefficient value 2nd filter"/>
+            <FixedPointParameter Name="a3_1" Size="32" Integral="1" Fractional="22"
+                                     Description="A3 coefficient value 1st filter"/>
+            <FixedPointParameter Name="a3_2" Size="32" Integral="1" Fractional="22"
+                                     Description="A3 coefficient value 2nd filter"/>
+            <IntegerParameter Name="level_a" Size="32" Min="0" Max="65535" Signed="true" Unit="dBFs/(-256)"
+                                  Description="level of point A on DRC curve"/>
+            <IntegerParameter Name="level_b" Size="32" Min="0" Max="65535" Signed="true" Unit="dBFs/(-256)"
+                                  Description="level of point B on DRC curve"/>
+            <IntegerParameter Name="level_u" Size="32" Min="0" Max="65535" Signed="true" Unit="dBFs/(-256)"
+                                  Description="level of point U on DRC curve"/>
+            <IntegerParameter Name="gain_b" Size="32" Min="0" Max="20480" Signed="true" Unit="dBFs/256"
+                                  Description="gain value at knot point B"/>
+            <IntegerParameter Name="slope_lower_most" Size="32" Min="0" Max="65535" Signed="true" Unit="dBFs/256"
+                                  Description="slope of static characteristic for input loudness lesser than (-level_a/256) dBFs)"/>
+            <IntegerParameter Name="slope_ab" Size="32" Min="0" Max="65535" Signed="true" Unit="dBFs/256"
+                                  Description="slope of static characteristic for input loudness in the range [(-level_a/256); (-level_b]/256) dBFs"/>
+            <IntegerParameter Name="slope_upper_most" Size="32" Min="0" Max="65535" Signed="true" Unit="dBFs/(-256)"
+                                  Description="slope of static characteristic for input loudness greater than (level_u/256) dBFs"/>
+            <IntegerParameter Name="loudness_attack" Size="32" Min="0" Max="65535" Signed="true" Unit="ms"
+                                  Description="attack time for loudness calculation"/>
+            <IntegerParameter Name="loudness_release" Size="32" Min="0" Max="65535" Signed="true" Unit="ms"
+                                  Description="release time for loudness calculation"/>
+            <IntegerParameter Name="gain_attack" Size="32" Min="0" Max="65535" Signed="true" Unit="dB/256ms"
+                                  Description="attack time for gain adaptation"/>
+            <IntegerParameter Name="gain_release" Size="32" Min="0" Max="65535" Signed="true" Unit="dB/256ms"
+                                  Description="release time for gain adaptation"/>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>

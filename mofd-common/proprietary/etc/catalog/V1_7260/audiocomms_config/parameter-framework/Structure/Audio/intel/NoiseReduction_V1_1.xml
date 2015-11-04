@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="NoiseReduction" Mapping="ByteControlWithLength:%1 %2 %3 params nr">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="NR version: 0 is v1.0; 1 is v1.1"/>
+        <FixedPointParameter Name="atten_factor_min_val" Size="16" Integral="0" Fractional="15"
+            Description="Minimum value of attenuation factor. (Class I)"/>
+        <FixedPointParameter Name="ov_est_fac_band_zero" Size="16" Integral="2" Fractional="13"
+            Description="Overestimation factor for band 0. (Class I)"/>
+        <FixedPointParameter Name="ov_est_fac_band_no_zero" Size="16" Integral="2" Fractional="13"
+            Description="Overestimation factor for all bands except band 0. (Class I)"/>
+        <IntegerParameter Name="nr_shl_ri" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Number of left shifts in noise reduction averaging low-pass for rising signals. (Class II)"/>
+        <IntegerParameter Name="nr_shl_fa" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Number of left shifts in noise reduction averaging low-pass for falling signals. (Class II)"/>
+        <IntegerParameter Name="min_stat_len" Size="16" Min="1" Max="32767" Signed="true" Unit="samples"
+            Description="Window length of minimum statistics (number of SB samples, 16 or 32 SB). (Class II)"/>
+        <FixedPointParameter Name="atte_ratio" Size="16" Integral="5" Fractional="10"
+            Description="Attenuation from one SB to the following SB to consider masking in frequency direction. (Class II)"/>
+        <FixedPointParameter Name="correction_value" Size="16" Integral="5" Fractional="10"
+            Description="Correction value for background noise measurement. (Class II)"/>
+        <FixedPointParameter Name="thresh_spe_act" Size="16" Integral="5" Fractional="10"
+            Description="Threshold for speech activity decision, triggers increase or reduction of noise level enhancement (to avoid musical tones). (Class II)"/>
+        <FixedPointParameter Name="noise_lev_enhanc_max" Size="16" Integral="5" Fractional="10"
+            Description="Maximum value of noise level enhancement. (Class II)"/>
+        <FixedPointParameter Name="noise_lev_enhanc_min" Size="16" Integral="5" Fractional="10"
+            Description="Minimum value of noise level enhancement. (Class II)"/>
+        <FixedPointParameter Name="noise_lev_enhanc_incre_no_sp" Size="16" Integral="5" Fractional="10"
+            Description="Threshold increment of noise level enhancement (no speech activity). (Class II)"/>
+        <FixedPointParameter Name="noise_lev_enhanc_incre_sp" Size="16" Integral="5" Fractional="10"
+            Description="Threshold decrement of noise level enhancement (speech activity). (Class II)"/>
+        <FixedPointParameter Name="agc_thresh_abs" Size="16" Integral="5" Fractional="10"
+            Description="Absolute threshold for AGC update. (Class II)"/>
+        <FixedPointParameter Name="agc_thresh_rel" Size="16" Integral="5" Fractional="10"
+            Description="Relative threshold (distance to noise level) for AGC update. (Class II)"/>
+        <FixedPointParameter Name="gain_factor" Size="16" Integral="0" Fractional="15"
+            Description="Exponent factor of the NR V1.1 gain. (Class II)"/>
+        <FixedPointParameter Name="gain_limit" Size="16" Integral="1" Fractional="14"
+            Description="Maximum gain limit of the NR V1.1 gain. (Class II)"/>
+    </ComponentType>
+</ComponentTypeSet>

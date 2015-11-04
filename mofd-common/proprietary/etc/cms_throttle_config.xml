@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Current Management service Configuration File -->
+<!-- List of throttle reasons and devices to throttle in each state -->
+<!-- Intel Corporation 2013 -->
+<cmsThrottleTrigger>
+	<useThermalService>0</useThermalService>
+	<throttleTrigger>
+		<name>battLevel</name>
+		<normal>
+			<level-gt>15</level-gt>
+		</normal>
+		<warning>
+			<level-gt>10</level-gt>
+			<devID>1</devID>
+			<devID>2</devID>
+			<devID>3</devID>
+                        <devID>4</devID>
+                        <devID>5</devID>
+		</warning>
+		<alert>
+			<level-gt>5</level-gt>
+                        <devID>1</devID>
+                        <devID>2</devID>
+			<devID>3</devID>
+			<devID>4</devID>
+			<devID>5</devID>
+		</alert>
+		<critical>
+			<level-gt>0</level-gt>
+			<devID>1</devID>
+                        <devID>2</devID>
+			<devID>3</devID>
+                        <devID>4</devID>
+			<devID>5</devID>
+		</critical>
+	</throttleTrigger>
+	<throttleTrigger>
+		<name>battTemp</name>
+		<normal>
+			<temp-gt>15</temp-gt>
+			<devID>2</devID>
+		</normal>
+		<warning>
+			<level-lt>50</level-lt>
+			<ops>AND</ops>
+			<temp-gt>10</temp-gt>
+			<devID>2</devID>
+		</warning>
+		<alert>
+			<level-lt>80</level-lt>
+			<ops>AND</ops>
+			<temp-gt>5</temp-gt>
+			<devID>2</devID>
+		</alert>
+		<critical>
+                        <temp-gt>-15</temp-gt>
+			<devID>2</devID>
+		</critical>
+	</throttleTrigger>
+</cmsThrottleTrigger>

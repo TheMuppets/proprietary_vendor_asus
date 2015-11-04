@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="BandWidthExtender" Mapping="ByteControlWithLength:%1 %2 %3 params bwx">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="BWX version: 0 is v1.0"/>
+        <FixedPointParameter Name="gain_patch" Size="16" Integral="1" Fractional="14"
+            Description="Highband Post Gain. Class 1 parameter. Default value: 24756"/>
+        <EnumParameter Name="ex_s_correction_factor" Size="16" Description="De-Esser Flag. Class 1 parameter. Default value: 1">
+            <ValuePair Literal="Disable" Numerical="0"/>
+            <ValuePair Literal="Enable" Numerical="1"/>
+        </EnumParameter>
+        <FixedPointParameter Name="min_s_correction_factor" Size="16" Integral="0" Fractional="15"
+            Description="Minimum Correction Factor1. Class 1 parameter. Default value: 3277"/>
+        <IntegerParameter Name="high_nrj_thr" Size="16" Min="0" Max="32767"
+            Description="Gain Threshold done for Level Matching Block. Class 1 parameter. Default value: 60"/>
+        <FixedPointParameter Name="bw_exp" Size="16" Integral="0" Fractional="15"
+            Description="Bandwidth Expansion Factor for Input LPC Filter. Class 2 parameter. Default value: 31785"/>
+        <IntegerParameter Name="flatten_order" Size="16" Min="4" Max="8"
+            Description="Excitation Flattening LPC Filter Order. Class 2 parameter. Default value: 6"/>
+        <IntegerParameter Name="start_skip_bin" Size="16" Min="0" Max="16"
+            Description="Define Start Frequency Bins for Level Matching of BWX output. Class 2 parameter. Default value: 8"/>
+        <IntegerParameter Name="end_skip_bin" Size="16" Min="0" Max="16"
+            Description="Define End Frequency Bins for Level Matching of BWX output. Class 2 parameter. Default value: 8"/>
+        <FixedPointParameter Name="echo_fix" Size="16" Integral="1" Fractional="14"
+            Description="Pre-Echo Compensation Factor. Class 2 parameter. Default value: 16384"/>
+        <ParameterBlock Name="cepstral_vectors">
+            <FixedPointParameter Name="summand" ArrayLength="8" Size="16" Integral="3" Fractional="12"
+                Description="Modified Mapped Cepstral Vectors with Addition. Class 2 parameter. Default=0"/>
+            <FixedPointParameter Name="weighting" ArrayLength="8" Size="16" Integral="1" Fractional="14"
+                Description="Modified Mapped Cepstral Vectors with Multiplication. Class 2 parameter. Default=32767"/>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>

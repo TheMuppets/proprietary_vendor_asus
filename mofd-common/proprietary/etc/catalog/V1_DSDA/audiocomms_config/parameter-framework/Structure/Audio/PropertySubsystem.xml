@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Schemas/Subsystem.xsd" Name="PROPERTY" Type="PROPERTY" Endianness="Little">
+    <ComponentLibrary>
+        <ComponentType Name="USE_CASE_ROUTED">
+            <BooleanParameter Name="IS_ROUTED" Mapping="BooleanProperty:routed" Description="Indicates whether the use case is routed or not"/>
+        </ComponentType>
+        <ComponentType Name="AUDIO_USE_CASE">
+            <Component Name="VTSV" Type="USE_CASE_ROUTED" Mapping="Component:vtsv,WithIntent"/>
+        </ComponentType>
+    </ComponentLibrary>
+    <InstanceDefinition>
+        <Component Name="AUDIO_COMMS" Type="AUDIO_USE_CASE" Mapping="Feature:AudioComms"/>
+    </InstanceDefinition>
+</Subsystem>

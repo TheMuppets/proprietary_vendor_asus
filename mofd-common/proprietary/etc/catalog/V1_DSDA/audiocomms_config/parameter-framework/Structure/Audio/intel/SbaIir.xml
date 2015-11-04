@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="SbaIir" Mapping="ByteControlWithLength:%1 iir %3 params">
+        <Component Name="switch" Type="SwitchParam"/>
+        <Component Name="channel_conf" Type="ConfParam"/>
+        <ParameterBlock Name="channel" ArrayLength="2"
+                            Description="[0] is mono or left channel, [1] is right channel">
+            <IntegerParameter Name="nbr_sections" Size="16" Min="1" Max="6"
+                                  Description="Number of active filter sections"/>
+            <IntegerParameter Name="reserved1" Size="16"
+                                  Description="Not used"/>
+            <ParameterBlock Name="section" ArrayLength="6">
+                <FixedPointParameter Name="a2" Size="32" Integral="0" Fractional="23"
+                                         Description="-A2/2 coefficient"/>
+                <FixedPointParameter Name="a1" Size="32" Integral="0" Fractional="23"
+                                         Description="-A1/2 coefficient"/>
+                <FixedPointParameter Name="b2" Size="32" Integral="0" Fractional="23"
+                                         Description="B2/2 coefficient"/>
+                <FixedPointParameter Name="b1" Size="32" Integral="0" Fractional="23"
+                                         Description="B1/2 coefficient"/>
+                <FixedPointParameter Name="b0" Size="32" Integral="0" Fractional="23"
+                                         Description="B0/2 coefficient"/>
+                <IntegerParameter Name="gain" Size="32" Min="-7936" Max="7936" Signed="true"
+                                      Description="Shift value for the output gain. ((-31 ≤ gain ≤ 31) lsh 8) (Align on the 24th MSB)"/>
+            </ParameterBlock>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>

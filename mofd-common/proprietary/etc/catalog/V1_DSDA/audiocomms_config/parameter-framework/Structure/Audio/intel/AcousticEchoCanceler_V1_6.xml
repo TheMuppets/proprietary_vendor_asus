@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="AcousticEchoCanceler" Mapping="ByteControlWithLength:%1 %2 %3 params aec">
+        <Component Name="switch" Type="SwitchParam"/>
+        <BitParameterBlock Name="sw_flag" Size="16"
+            Description="This parameter controls the version of current AEC.">
+            <BitParameter Name="aec_1_2"  Size="1" Pos="0"/>
+            <BitParameter Name="aec_1_3"  Size="1" Pos="1"/>
+            <BitParameter Name="aec_1_41" Size="1" Pos="2"/>
+            <BitParameter Name="aec_1_42" Size="1" Pos="3"/>
+            <BitParameter Name="aec_1_5"  Size="1" Pos="4"/>
+            <BitParameter Name="aec_1_6"  Size="1" Pos="5"/>
+        </BitParameterBlock>
+        <IntegerParameter Name="nr_coeffs_real" Size="16" Min="1" Max="1096"
+            Description="Number of taps in real subband. Class I parameter. Default=100"/>
+        <IntegerParameter Name="nr_coeffs_complex_1" Size="16" Min="1" Max="548"
+            Description="Number of taps in complex subband 1. Class I parameter. Default=100"/>
+        <IntegerParameter Name="nr_coeffs_complex_2" Size="16" Min="1" Max="548"
+            Description="Number of taps in complex subband 2. Class I parameter. Default=100"/>
+        <IntegerParameter Name="nr_coeffs_complex_3" Size="16" Min="1" Max="995"
+            Description="Number of taps in complex subband 3. Class I parameter. Default=2"/>
+        <IntegerParameter Name="nr_coeffs_complex_4" Size="16" Min="1" Max="995"
+            Description="Number of taps in complex subband 4. Class I parameter. Default=2"/>
+        <IntegerParameter Name="nr_coeffs_complex_5" Size="16" Min="1" Max="995"
+            Description="Number of taps in complex subband 5. Class I parameter. Default=2"/>
+        <EnumParameter Name="b_len" Size="16"
+            Description="NLMS update block length. Default=1">
+            <ValuePair Literal="LMS_1 LMS block vector length=1" Numerical="1"/>
+            <ValuePair Literal="LMS_2 LMS block vector length=2" Numerical="2"/>
+            <ValuePair Literal="LMS_4 LMS block vector length=4" Numerical="4"/>
+            <ValuePair Literal="LMS_5 LMS block vector length=5" Numerical="5"/>
+            <ValuePair Literal="LMS_8 LMS block vector length=8" Numerical="8"/>
+        </EnumParameter>
+        <IntegerParameter Name="nr_shl_norm" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Number of left shifts used in norm calculation for the NLMS algorithm Class II parameter. Default=0xFFF7"/>
+        <IntegerParameter Name="x_max_exp" Size="16" Min="0" Max="12"
+            Description="Max. value of SB input exponents in delay lines Class II parameter. Default=0x0004"/>
+        <FixedPointParameter Name="h_max_lim" Size="16" Integral="0" Fractional="15"
+            Description="Max. absolute value of real and imaginary parts of adaptive filter coefficients, used for rescale decision. Class II parameter. Min=0x1000 Max=0x7FFF Default=0x6000"/>
+        <FixedPointParameter Name="x_max_lim" Size="16" Integral="0" Fractional="15"
+            Description="Max. absolute value of real and imaginary parts of delay line samples, used for rescale decision. Class II parameter. Min=0x1000 Max=0x7FFF. Default=0x7FFF"/>
+        <FixedPointParameter Name="corr_thres" Size="16" Integral="0" Fractional="15"
+            Description="Threshold for high-correlation decision (between adaptive filter output and near-end input in SB. Class II parameter. Min=0x4000 Max=0x7FFF. Default=0x7C28"/>
+        <IntegerParameter Name="sb_meas_shl_ri" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Number of left shifts in smoothing absolute values of SB signals for rising signals. Class II parameter. Default=0xFFFB"/>
+        <IntegerParameter Name="sb_meas_shl_fa" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Number of left shifts in smoothing absolute values of SB signals for falling signals. Class II parameter. Default=0xFFF8"/>
+        <IntegerParameter Name="nr_steps_shl_ri" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Number of left shifts in step size routine for rising signals. Class II parameter. Default=0xFFFB"/>
+        <IntegerParameter Name="nr_steps_shl_fa" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Number of left shifts in step size routine for falling signals. Class II parameter. Default=0xFFF5"/>
+        <FixedPointParameter Name="steps_sig_thresh" Size="16" Integral="0" Fractional="15"
+            Description="Far end SB signal thresholds in SR StepSize Class II parameter. Min=0x0000 Max=0x7FFF Default=0x0032"/>
+        <IntegerParameter Name="nr_far_near_shl_ri" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Number of left shifts in far/near ratio minimum detector for rising signals. Class II parameter. Default=0xFFF2"/>
+        <IntegerParameter Name="nr_far_near_shl_fa" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Number of left shifts in far/near ratio minimum detector for falling signals. Class II parameter. Default=0x0000"/>
+        <IntegerParameter Name="factor_near_fa_calc" Size="16" Min="0" Max="4096" Signed="true"
+            Description="Factor for near/far ratio calculation. Class II parameter. Default=0x0002"/>
+        <IntegerParameter Name="nr_far_near_shl" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Factor for near/far ratio calculation. Class II parameter. Default=0xFFF8"/>
+        <FixedPointParameter Name="far_near_ld_max" Size="16" Integral="5" Fractional="10"
+            Description="Max. value of measured far/near level difference. Class II parameter. Min=0x0000 Max=0x7FFF Default=0x1000"/>
+        <IntegerParameter Name="x_min_exp" Size="16" Min="-12" Max="0" Signed="true"
+            Description="Minimum value of the exponent that the LMS filter coefficients can have. Class II parameter. Default=0xFFFE"/>
+        <FixedPointParameter Name="steps_sig_thresh1" Size="16" Integral="0" Fractional="15"
+            Description="Far end subband signal thresholds in updated StepSize for band 1 (800 Hz .. 2400 Hz). Class II parameter. Min=0 Max=32767 Default=40"/>
+        <FixedPointParameter Name="steps_sig_thresh2" Size="16" Integral="0" Fractional="15"
+            Description="Far end subband signal thresholds in updated StepSize for band 2 (2400 Hz .. 4000 Hz). Class II parameter. Min=0 Max=32767 Default=25"/>
+        <IntegerParameter Name="data_shift" Size="16" Signed="true" ArrayLength="6"
+            Description="Shift of the AEC coefficients for AEC initialization, Class II parameters"/>
+        <IntegerParameter Name="s_sfloor_attack" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Attack time for raw kstep size floor detector. Class II parameter. Default=-8"/>
+        <IntegerParameter Name="s_sfloor_decay" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Decay time for raw step size detector. Class II parameter. Default=-4"/>
+        <IntegerParameter Name="alpha_smooth_attack" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Attack time constant for first stage step size mode indicator. Class II parameter. Default=-2"/>
+        <IntegerParameter Name="alpha_smooth_decay" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Attack time constant for first stage step size mode indicator. Class II parameter. Default=-2"/>
+        <IntegerParameter Name="beta_smooth_attack" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Attack time constant for second stage step size mode indicator. Class II parameter. Default=-1"/>
+        <IntegerParameter Name="beta_smooth_decay" Size="16" Min="-15" Max="0" Signed="true"
+            Description="Decay time constant for second stage step size mode indicator. Class II parameter. Default=-15"/>
+        <FixedPointParameter Name="st_detector_sensitivity" Size="16" Integral="0" Fractional="15"
+            Description="ST detection sensitivity. Class I parameter. Min=1 Max=32767 Default=11469"/>
+        <FixedPointParameter Name="dt_detector_sensitivity" Size="16" Integral="0" Fractional="15"
+            Description="DT detection sensitivity. Class I parameter. Min=1 Max=32767 Default=26214"/>
+        <FixedPointParameter Name="st_step_min" Size="16" Integral="0" Fractional="15"
+            Description="Minimum value of step size multiplier during ST talk. Class I parameter. Min=0 Max=32767 Default=11469"/>
+        <FixedPointParameter Name="st_step_max" Size="16" Integral="0" Fractional="15"
+            Description="Maximum value of step size multiplier during ST talk. Class I parameter. Min=0 Max=31130 Default=31130"/>
+        <FixedPointParameter Name="st_step_mult" Size="16" Integral="3" Fractional="12"
+            Description="Old step size multiplier in ST. Class I parameter. Min=4096 Max=32767 Default=28672"/>
+        <FixedPointParameter Name="dt_step_mult" Size="16" Integral="0" Fractional="15"
+            Description="Old step size multiplier in DT. Class II parameter. Min=0 Max=32767 Default=16384"/>
+        <BitParameterBlock Name="dt_flag_dependency" Size="16"
+            Description="Dependency of different sub-bands to DT. Min=0 Max=127 Default=7">
+            <BitParameter Name="subband_0" Size="1" Pos="0"/>
+            <BitParameter Name="subband_1" Size="1" Pos="1"/>
+            <BitParameter Name="subband_2" Size="1" Pos="2"/>
+        </BitParameterBlock>
+        <IntegerParameter Name="sub_0_real" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 0. Class II parameter"/>
+        <IntegerParameter Name="sub_1_real" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 1 (real part). Class II parameter"/>
+        <IntegerParameter Name="sub_1_im" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 1 (imaginary part). Class II parameter"/>
+        <IntegerParameter Name="sub_2_real" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 2 (real part). Class II parameter"/>
+        <IntegerParameter Name="sub_2_im" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 2 (imaginary part). Class II parameter"/>
+        <IntegerParameter Name="sub_3_real" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 3 (real part). Class II parameter"/>
+        <IntegerParameter Name="sub_3_im" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 3 (imaginary part). Class II parameter"/>
+        <IntegerParameter Name="sub_4_real" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 4 (real part). Class II parameter"/>
+        <IntegerParameter Name="sub_4_im" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 4 (imaginary part). Class II parameter"/>
+        <IntegerParameter Name="sub_5_real" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 5 (real part). Class II parameter"/>
+        <IntegerParameter Name="sub_5_im" Size="16" Signed="true" ArrayLength="25"
+            Description="Initial AEC coefficient of band 5 (imaginary part). Class II parameter"/>
+    </ComponentType>
+</ComponentTypeSet>

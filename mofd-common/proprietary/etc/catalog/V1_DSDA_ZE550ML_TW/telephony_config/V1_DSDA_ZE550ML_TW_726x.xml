@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<telephony_config>
+	<modems_info>
+		<modem_info>
+			<tlvs_info>
+				<tlv_info
+					filename="ze550ml_TW_726x.tlv"
+				/>
+			</tlvs_info>
+		</modem_info>
+	</modems_info>
+</telephony_config>
