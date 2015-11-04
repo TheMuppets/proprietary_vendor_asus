@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="SbaFir" Mapping="ByteControlWithLength:%1 fir %3 params">
+        <Component Name="switch" Type="SwitchParam"/>
+        <Component Name="channel_conf" Type="ConfParam"/>
+        <ParameterBlock Name="channel" ArrayLength="2"
+                            Description="[0] is mono or left channel, [1] is right channel">
+            <IntegerParameter Name="nbr_taps" Size="16" Min="2" Max="64"
+                                  Description="Number of filter taps Must be an even number (2≤N≤64)"/>
+            <IntegerParameter Name="input_gain" Size="16" Min="-32" Max="32" Signed="true"
+                                  Description="Shift value for the input gain (-32 ≤ INPUT_GAIN ≤ 32)"/>
+            <IntegerParameter Name="output_gain" Size="16" Min="-32" Max="32" Signed="true"
+                                  Description="Shift value for the output gain (-32 ≤ OUTPUT_GAIN ≤ 32)"/>
+            <IntegerParameter Name="coefficient" Size="16" ArrayLength="64" Signed="true"
+                                  Description="Coefficients h(1) to h(N), This coefficient value is coded on 16bits length."/>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>

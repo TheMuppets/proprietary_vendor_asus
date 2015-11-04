@@ -1,0 +1,12 @@
+# audiocomms init properties
+
+#set PFW configuration file path and file names
+AudioComms.RoutePFW.ConfPath=/system/etc/catalog/V1_7260/audiocomms_config/parameter-framework/
+AudioComms.RoutePFW.ConfName=ParameterFrameworkConfigurationRoute.xml
+
+AudioComms.PFW.ConfPath=/system/etc/catalog/V1_7260/audiocomms_config/parameter-framework/
+AudioComms.PFW.ConfName=ParameterFrameworkConfiguration.xml
+
+AudioComms.Vibrator.ConfPath=/system/etc/catalog/V1_7260/audiocomms_config/parameter-framework/
+AudioComms.Vibrator.ConfName=ParameterFrameworkConfigurationVibrator.xml
+

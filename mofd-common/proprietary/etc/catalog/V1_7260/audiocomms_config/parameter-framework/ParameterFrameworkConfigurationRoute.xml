@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ParameterFrameworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Schemas/ParameterFrameworkConfiguration.xsd"
+    SystemClassName="Route" ServerPort="5009" TuningAllowed="false">
+    <SubsystemPlugins>
+        <Location Folder="/system/lib/parameter-framework-plugins/Route">
+            <Plugin Name="libroute-subsystem.so"/>
+        </Location>
+    </SubsystemPlugins>
+    <StructureDescriptionFileLocation Path="Structure/Route/RouteClass.xml"/>
+    <SettingsConfiguration>
+        <ConfigurableDomainsFileLocation Path="Settings/Route/RouteConfigurableDomains.xml"/>
+        <!--ConfigurableDomainsFileLocation Path="Settings/Audio/AudioSettingsExport.xml"/-->
+        <!--BinarySettingsFileLocation Path="Settings/Audio/AudioSettingsExport.bin"/-->
+    </SettingsConfiguration>
+</ParameterFrameworkConfiguration>

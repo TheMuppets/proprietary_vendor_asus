@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="LproFilterStageType">
+        <ParameterBlock Name="a" ArrayLength="2">
+            <ParameterBlock Name="biquad">
+                <Component Name="0" Type="Biquad"
+                    Description="Coefficients for biquad0"/>
+                <Component Name="1" Type="Biquad"
+                    Description="Coefficients for biquad1"/>
+            </ParameterBlock>
+        </ParameterBlock>
+    </ComponentType>
+
+    <ComponentType Name="LproFbSbType">
+        <FixedPointParameter Name="lp1" Size="16" Integral="0" Fractional="15" Unit="s"
+                                 Description="Time constant for energy estimation during energy increase"/>
+        <FixedPointParameter Name="lp2" Size="16" Integral="0" Fractional="15" Unit="s"
+                                 Description="Time constant for energy estimation during energy decrease"/>
+        <FixedPointParameter Name="lp4" Size="16" Integral="0" Fractional="15" Unit="s"
+                                 Description="Time constant for gain smoothing during gain decrease"/>
+        <FixedPointParameter Name="lp3" Size="16" Integral="0" Fractional="15" Unit="s"
+                                 Description="Time constant for gain smoothing during gain increase"/>
+        <FixedPointParameter Name="lb" Size="16" Integral="0" Fractional="15" Unit="dB"
+                                 Description="Limiter value"/>
+    </ComponentType>
+
+    <ComponentType Name="Lpro" Mapping="ByteControlWithLength:%1 lpro %3 params">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+                              Description="LPRO version to address"/>
+        <Component Name="channel_conf" Type="ConfParam"/>
+        <EnumParameter Name="channel" Size="16"
+                           Description="Number of sub-bands used for LPRO operation.">
+            <ValuePair Literal="no_split" Numerical="0x00"/>
+            <ValuePair Literal="full_band" Numerical="0x01"/>
+            <ValuePair Literal="2_sub_bands" Numerical="0x02"/>
+            <ValuePair Literal="3_sub_bands" Numerical="0x03"/>
+            <ValuePair Literal="4_sub_bands" Numerical="0x04"/>
+        </EnumParameter>
+        <IntegerParameter Name="buf_len" Size="16" Min="0" Max="192"
+                              Description="Buffer length for RMS computing."/>
+        <FixedPointParameter Name="inv_buf_len" Size="16" Integral="0" Fractional="15"
+                                 Description="Inverse of buffer length for RMS computing."/>
+        <IntegerParameter Name="bypass_buf_len" Size="16" Min="0" Max="192"
+                              Description="Buffer length for delay line."/>
+        <IntegerParameter Name="bypass_n_f" Size="16" Min="0" Max="32767" Unit="samples"
+                              Description="Fading period."/>
+        <IntegerParameter Name="bypass_n_wait" Size="16" Min="0" Max="32767" Unit="samples"
+                              Description="Waiting period before bypass can become active."/>
+        <FixedPointParameter Name="bypass_th_gain" Size="16" Integral="0" Fractional="15"
+                                 Description="Threshold for gain."/>
+        <EnumParameter Name="bypass" Size="16"
+                           Description="Indicate whether bypass is active.">
+            <ValuePair Literal="off" Numerical="0x00"/>
+            <ValuePair Literal="on" Numerical="0x01"/>
+        </EnumParameter>
+        <Component Name="fb" Type="LproFbSbType"/>
+        <Component Name="sb1" Type="LproFbSbType"/>
+        <Component Name="sb2" Type="LproFbSbType"/>
+        <Component Name="sb3" Type="LproFbSbType"/>
+        <Component Name="sb4" Type="LproFbSbType"/>
+        <Component Name="s0" Type="LproFilterStageType"/>
+        <Component Name="s10" Type="LproFilterStageType"/>
+        <Component Name="s11" Type="LproFilterStageType"/>
+    </ComponentType>
+</ComponentTypeSet>

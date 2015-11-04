@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="Dcr" Mapping="ByteControlWithLength:%1 dcr %3 params">
+        <Component Name="switch" Type="SwitchParam"/>
+        <Component Name="channel_conf" Type="ConfParam"/>
+        <ParameterBlock Name="channel" ArrayLength="2"
+                            Description="[0] is mono or left channel, [1] is right channel">
+            <FixedPointParameter Name="a2" Size="32" Integral="0" Fractional="31"
+                                     Description="-A2/2 coefficient"/>
+            <FixedPointParameter Name="a1" Size="32" Integral="0" Fractional="31"
+                                     Description="-A1/2 coefficient"/>
+            <FixedPointParameter Name="b2" Size="32" Integral="0" Fractional="23"
+                                     Description="B2/2 coefficient"/>
+            <FixedPointParameter Name="b1" Size="32" Integral="0" Fractional="23"
+                                     Description="B1/2 coefficient"/>
+            <FixedPointParameter Name="b0" Size="32" Integral="0" Fractional="23"
+                                     Description="B0/2 coefficient"/>
+            <IntegerParameter Name="gain" Size="32" Min="-7936" Max="7936" Signed="true"
+                                  Description="Output gain for the first section. The gain is actually a shift value so for instance a gain value of 1 gives a gain of 6 dB. To obtain a filter with 0dB gain in the passband the Sx_GAIN should be set to 1 to compensate for the divide by 2 of the B-coefficients."/>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>

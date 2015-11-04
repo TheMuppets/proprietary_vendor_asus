@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Schemas/Subsystem.xsd" Name="CONFIGURATION" Type="Virtual" Endianness="Little">
+	<ComponentLibrary>
+		<ComponentType Name="FM_SETTINGS">
+			<IntegerParameter Size="16" Min="0" Max="62" Signed="false" Name="VOLUME"/>
+		</ComponentType>
+		<ComponentType Name="FM_CONF">
+			<Component Name="SPEAKER" Type="FM_SETTINGS"/>
+			<Component Name="HEADSET" Type="FM_SETTINGS"/>
+		</ComponentType>
+		<ComponentType Name="ALSA_SETTINGS">
+			<IntegerParameter Size="16" Min="0" Max="48000" Signed="false" Name="DEFAULT_SAMPLE_RATE"/>
+		</ComponentType>
+		<ComponentType Name="ALSA_CONF">
+			<Component Name="IN" Type="ALSA_SETTINGS"/>
+			<Component Name="OUT" Type="ALSA_SETTINGS"/>
+		</ComponentType>
+		<ComponentType Name="IFX_PORT">
+			<EnumParameter Size="8" Name="CLK_SELECT">
+				<ValuePair Literal="IFX_CLK0" Numerical="0"/>
+				<ValuePair Literal="IFX_CLK1" Numerical="1"/>
+			</EnumParameter>
+		</ComponentType>
+		<ComponentType Name="IFX_MODEM">
+			<Component Name="I2S1" Type="IFX_PORT"/>
+			<Component Name="I2S2" Type="IFX_PORT"/>
+		</ComponentType>
+	</ComponentLibrary>
+	<InstanceDefinition>
+		<Component Name="ALSA_CONF" Type="ALSA_CONF"/>
+		<Component Name="IFX_MODEM" Type="IFX_MODEM"/>
+		<Component Name="FM_CONF" Type="FM_CONF"/>
+		<StringParameter Name="VOICE_VOLUME_CTRL_PARAMETER" MaxLength="256"/>
+	</InstanceDefinition>
+</Subsystem>

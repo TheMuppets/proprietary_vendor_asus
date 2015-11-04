@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="DynamicRangeProcessor" Mapping="ByteControlWithLength:%1 %2 %3 params compr">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="DRP version. Default=0 (v1.4)"/>
+        <EnumParameter Name="mono_flag" Size="16"
+            Description="Flag, which indicates if input buffer is stereo or mono. Class II.">
+            <ValuePair Literal="stereo" Numerical="0"/>
+            <ValuePair Literal="mono" Numerical="1"/>
+        </EnumParameter>
+        <EnumParameter Name="comp_mode" Size="16"
+            Description="Compressor Mode. Class I. Default=1">
+            <ValuePair Literal="dual" Numerical="0"/>
+            <ValuePair Literal="mono" Numerical="1"/>
+        </EnumParameter>
+        <ParameterBlock Name="band" ArrayLength="2">
+            <IntegerParameter Name="m_bufflen" Size="16" Min="1" Max="20"
+                Description="Length of IO-buffer in number of samples. Class II. Default=0x0014"/>
+            <FixedPointParameter Name="m_inv_bufflen" Size="16" Integral="0" Fractional="15"
+                Description="Inverse of buffer length. Class II. Default=0x0666"/>
+            <IntegerParameter Name="m_hp_coeff_exp" Size="16" Min="0" Max="15"
+                Description="Determines coefficients for HP-Filter, which is used for DC-removal. Class II. Default=0x0005"/>
+            <IntegerParameter Name="m_lp1_coeff" Size="16" Min="0" Max="32767"
+                Description="Filter coefficient determining the attack time of the RMS- level measurement. Class II. Default=0x6D4A"/>
+            <IntegerParameter Name="m_lp2_coeff" Size="16" Min="0" Max="32767"
+                Description="Filter coefficient determining the release time of the RMS- level measurement. Class II. Default=0x0F0A"/>
+            <IntegerParameter Name="m_lp4_coeff" Size="16" Min="0" Max="32767"
+                Description="Filter coefficient determining the attack time of the RMS- level measurement. Class II. Default=0x50E9"/>
+            <IntegerParameter Name="m_lp3_coeff" Size="16" Min="0" Max="32767"
+                Description="Filter coefficient determining the attack time of the RMS- level measurement. Class II. Default=0x063E"/>
+            <IntegerParameter Name="m_l_a" Size="16" Min="40960" Max="0" Signed="true"
+                Description="Lower compressor input threshold. Must fulfill m_L_A lower than m_L_B. Class I. Default=0xC400"/>
+            <IntegerParameter Name="m_l_b" Size="16" Min="40960" Max="0" Signed="true"
+                Description="Upper compressor input threshold. Must fulfill m_L_A lower than m_L_B. Class I. Default=0xEC00"/>
+            <IntegerParameter Name="m_g_comp" Size="16" Min="40960" Max="24576" Signed="true"
+                Description="Output compensation gain: Sets output level of L_B: L_B_out = L_B+G_comp. Class I. Default=0x0000"/>
+            <IntegerParameter Name="um_r_infa" Size="16" Min="0" Max="14666"
+                Description="Gradient of compression curve for input levels in the range of -96 dB to L_A (only positive gradients between 0 and 90 degrees are possible). Class I. Default=0x0180"/>
+            <IntegerParameter Name="um_r_ab" Size="16" Min="0" Max="14666"
+                Description="Gradient of compression curve for input levels in the range of L_A to L_B (only positive gradients between 0 and 90 degrees are possible). Class I. Default=0x0100"/>
+            <IntegerParameter Name="um_r_b0" Size="16" Min="0" Max="14666"
+                Description="Gradient of compression curve for input levels in the range of L_B to 0dB (only positive gradients between 0 and 90 degrees are possible). Class I. Default=0x00CC"/>
+            <Component Name="biquad_0" Type="Biquad"/>
+            <Component Name="biquad_1" Type="Biquad"/>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>

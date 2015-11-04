@@ -1,0 +1,155 @@
+OS="LINUX"
+TMP_ROOT="/tmp"
+TXT_READER=more
+CAT_LOG=no
+
+if [ x"$PVRHWPERF_TMP" != x ]; then
+  if [ -d "$PVRHWPERF_TMP" ]; then
+    TMP_ROOT="$PVRHWPERF_TMP"
+  fi
+fi
+
+if [ -x "/system/bin/logcat" ]; then
+  OS="ANDROID"
+  BIN_DIR=/system/vendor/bin
+  TMP_ROOT="/temp"
+  TXT_READER=cat
+fi
+
+TLD_RET=
+EXEC_LINE=""
+H2J_NAME="hwperfbin2jsont"
+
+# PARAMETERS PARSING
+for argument in "$@"
+do
+  case "$argument" in
+    -t)  EXEC_LINE=$H2J_NAME
+         OUT_JSON_FILE_TMP="hwperf.json"
+         OUT_JSON_FILE="./hwperf.json"
+        ;;
+    -rt) EXEC_LINE="$H2J_NAME $ -raw" 
+         OUT_JSON_FILE_TMP="hwperf.raw.json"
+         OUT_JSON_FILE="./hwperf.raw.json"
+        ;;
+    -c)  CAT_LOG=yes ;;
+    -h)  echo "+-----------------------------------------------------------------------------+"
+         echo "| pvrhwperf : run pvrtld (Transport Layer Daemon) for gathering HWPerf data"
+         echo "+-----------------------------------------------------------------------------+"
+         echo "| Usage:"
+         echo "|     -t  : Call hwperfbin2jsont (if present), to process the generated "
+         echo "|           hwperf.bin output file, after pvrtld end."
+         echo "|     -rt : Call hwperfbin2jsont, adding the -raw parameter, to process the "
+         echo "|           generated hwperf.bin output file, after pvrtld end."
+         echo "|     -c  : Prints the log file to the std output just after pvrtld execution."
+         echo "|     -h  : Print this message."
+         echo "+-----------------------------------------------------------------------------+"
+         exit 0
+        ;;
+    *)  echo "[Error] Argument '$argument' not recognized." 
+        echo "        Run '$0 -h' for more information."; exit 1 ;;
+  esac
+done
+
+
+# ENVIRONMENT CHECK
+if [ x"$OS" = xANDROID ]; then
+  TLD_BIN="$BIN_DIR/pvrtld"
+  H2J_BIN="$BIN_DIR/$H2J_NAME"
+else
+  TLD_BIN="`which \"pvrtld\"`"
+  H2J_BIN="`which \"$H2J_NAME\"`"
+fi
+
+if [ ! -f "$TLD_BIN" ]; then 
+  echo "[Error] pvrtld not found"
+  exit 1
+fi
+
+if [ x"$EXEC_LINE" != x ]; then
+  if [ ! -f "$H2J_BIN" ]; then 
+    echo "[Error] hwperfbin2jsont not found"
+    exit 1
+  fi
+fi
+
+# ENVIRONMENT VARIABLES
+WORK_DIR="$TMP_ROOT/hwperf/`date +%s`" 
+OUT_JSON_FILE_TMP="$WORK_DIR/$OUT_JSON_FILE_TMP"
+CFG_FILE=$WORK_DIR/"tld.conf"
+LOG_FILE=$WORK_DIR/"tld.log"
+OUT_FILE_TMP=$WORK_DIR/"hwperf.bin"
+OUT_FILE="./hwperf.bin"
+PVR_DBG_LEVEL_OLD="$PVRDebugLevel"
+export PVRDebugLevel=0x00
+
+# ENVIRONMENT SETUP
+# - Create working directory
+mkdir -p $WORK_DIR
+
+# - Create configuration file
+echo "
+[pvrtld]
+output_folder_name=$WORK_DIR
+omit_header=yes
+output_file_save_previous=yes
+
+[hwperf]
+enabled=yes
+wait_for_stream=yes
+" > $CFG_FILE
+
+# - Add the post processing command if the tool exists
+if [ x"$H2J_BIN" = x ] || [ x"$EXEC_LINE" = x ]; then 
+echo "" >> $CFG_FILE
+else
+echo "exec=\"$EXEC_LINE\"" >> $CFG_FILE
+fi
+
+# EXECUTION
+echo "+-----------------------------------------------------------------------------+"
+echo "| Starting capture of HWPerf data..."
+echo "+-----------------------------------------------------------------------------+"
+echo "| Using these temporary files:"
+echo "| - TLDaemon configuration file:     $CFG_FILE"
+echo "| - TLDaemon log file:               $LOG_FILE"
+echo "| - HWPerf binary file:              $OUT_FILE_TMP"
+if [ x"$H2J_BIN" = x ] || [ x"$EXEC_LINE" = x ]; then 
+  echo "| - No JSON output selected"
+else
+  echo "| - HWPerf raw json file:            $OUT_JSON_FILE_TMP"
+  echo "| - JSON conversion log file:        $LOG_FILE"
+fi
+echo "+-----------------------------------------------------------------------------+"
+
+$TLD_BIN -f=$CFG_FILE -q -s 2> $LOG_FILE
+TLD_RET=$?
+
+# LAST MESSAGES
+if [ "$TLD_RET" -ne "0" ]; then
+  echo "+-----------------------------------------------------------------------------+"
+  echo "| Capture process exited with error code $TLD_RET"
+elif [ -f $OUT_FILE_TMP ]; then
+  echo "+-----------------------------------------------------------------------------+"
+  echo "| Data captured, files moved to CWD."
+  mv $OUT_FILE_TMP $OUT_FILE
+  if [ -f $OUT_JSON_FILE_TMP ]; then
+    mv $OUT_JSON_FILE_TMP $OUT_JSON_FILE
+  fi
+else
+  echo "+-----------------------------------------------------------------------------+"
+  echo "| No data captured, binary file does not exist." 
+fi
+
+# Give time for the Log file to be flushed to disk
+sync
+if [ "$CAT_LOG" = "yes" ]; then
+  echo "+-----------------------------------------------------------------------------+"
+  echo "| TLDaemon debug log file..."
+  echo "| $TXT_READER $LOG_FILE"
+  echo "+-----------------------------------------------------------------------------+"
+  $TXT_READER $LOG_FILE
+fi
+echo "+-----------------------------------------------------------------------------+"
+
+export PVRDebugLevel=$PVR_DBG_LEVEL_OLD

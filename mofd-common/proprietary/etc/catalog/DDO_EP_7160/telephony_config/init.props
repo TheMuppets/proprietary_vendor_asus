@@ -1,0 +1,7 @@
+# Disable IMS
+persist.ims_support=0
+persist.disable_NVM_Server=1
+# Disable all PWS features
+persist.pws_support=0
+# Add specific AMTL config
+service.amtl.config=moorefield_XMM_7160_M2

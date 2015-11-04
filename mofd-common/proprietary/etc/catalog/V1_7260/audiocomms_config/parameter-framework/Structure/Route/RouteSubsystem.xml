@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xsi:noNamespaceSchemaLocation="../../Schemas/Subsystem.xsd"
+    Name="route_mgr" Type="ROUTEMGR" Endianness="Little">
+
+    <ComponentLibrary>
+
+    <!-- Route library -->
+
+        <!-- Common Criteria defintion -->
+        <xi:include href="RouteSubsystem-CommonCriteria.xml"/>
+
+        <!-- Common Route Types defintion -->
+        <xi:include href="RouteSubsystem-RoutesTypes.xml"/>
+
+        <ComponentType Name="PlatformRoutes">
+            <Component Name="media" Type="StreamRouteFullDuplex" Mapping="Amend1:Media,Card:rt5647audio,Device:0,Ports:"/>
+            <Component Name="voice" Type="StreamRouteFullDuplex" Mapping="Amend1:Voice,Card:rt5647audio,Device:4,Ports:"/>
+            <Component Name="low_latency" Type="StreamRoutePlayback" Mapping="Amend1:LowLatency,Card:rt5647audio,Device:2,Ports:"/>
+            <Component Name="compressed_media" Type="RoutePlayback" Mapping="Amend1:CompressedMedia,Ports:"/>
+            <Component Name="deep_media" Type="StreamRoutePlayback" Mapping="Amend1:DeepMedia,Card:rt5647audio,Device:1,Ports:"/>
+            <Component Name="modem_ia" Type="RouteFullDuplex" Mapping="Amend1:ModemIA,Ports:"/>
+            <Component Name="modem_xmm1_ia" Type="RouteFullDuplex" Mapping="Amend1:ModemIA,Ports:"/>
+            <Component Name="modem_xmm2_ia" Type="RouteFullDuplex" Mapping="Amend1:Modem2IA,Ports:"/>
+            <Component Name="bt_ia" Type="RouteFullDuplex" Mapping="Amend1:BtIA,Ports:Bt_Port"/>
+            <Component Name="fm_ia" Type="RouteFullDuplex" Mapping="Amend1:FMIA,Ports:FM_Port"/>
+            <Component Name="hwcodec_ia" Type="RouteFullDuplex" Mapping="Amend1:HwCodecIA,Ports:"/>
+            <Component Name="cme_voice" Type="RouteFullDuplex" Mapping="Amend1:CmeVoice,Ports:"/>
+        </ComponentType>
+
+        <ComponentType Name="PlatformPorts">
+            <Component Name="FM" Type="Port" Mapping="Amend1:FM,Groups:Group0"/>
+            <Component Name="BT" Type="Port" Mapping="Amend1:Bt,Groups:Group0"/>
+        </ComponentType>
+
+    </ComponentLibrary>
+
+    <InstanceDefinition>
+        <Component Name="ports" Type="PlatformPorts"/>
+        <Component Name="routes" Type="PlatformRoutes"/>
+        <Component Name="criteria" Type="PlatformCriteria"/>
+    </InstanceDefinition>
+</Subsystem>

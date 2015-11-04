@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="TrafficNoiseReduction" Mapping="ByteControlWithLength:%1 %2 %3 params tnr">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="TNR version: 0 is v1.0"/>
+        <ParameterBlock Name="spec_smooth">
+            <IntegerParameter Name="rise" Size="16" Signed="true"
+                Description="Time Constant for smoothing Spectral Rise. Class 2 parameter. Default=0"/>
+            <IntegerParameter Name="fall" Size="16" Signed="true"
+                Description="Time Constant for smoothing Spectral Fall. Class 2 parameter. Default=0"/>
+        </ParameterBlock>
+        <IntegerParameter Name="env_init_count" Size="16"
+            Description="Counter for initializing envelop. Class 2 parameter. Default=20"/>
+        <ParameterBlock Name="env_smooth">
+            <IntegerParameter Name="rise" Size="16" Min="-10" Max="0" Signed="true"
+                Description="Time Constant for smoothing Envelope Rise. Class 2 parameter. Default=-7"/>
+            <IntegerParameter Name="fall" Size="16" Min="-10" Max="0" Signed="true"
+                Description="Time Constant for smoothing Envelope Fall. Class 2 parameter. Default=-7"/>
+        </ParameterBlock>
+        <ParameterBlock Name="env_delta">
+            <FixedPointParameter Name="low_lb" Size="16" Integral="5" Fractional="10"
+                Description="Lower Threshold for detecting Horn Presence Probability in Lower Band. Class 1 parameter. Default=13312"/>
+            <FixedPointParameter Name="high_lb" Size="16" Integral="5" Fractional="10"
+                Description="Higher Threshold for detecting Horn Presence Probability in Lower Band. Class 1 parameter. Default=16384"/>
+            <FixedPointParameter Name="low_hb" Size="16" Integral="5" Fractional="10"
+                Description="Lower Threshold for detecting Horn Presence Probability in Higher Band. Class 1 parameter. Default=14336"/>
+            <FixedPointParameter Name="high_hb" Size="16" Integral="5" Fractional="10"
+                Description="Higher Threshold for detecting Horn Presence Probability in Higher Band. Class 1 parameter. Default=16384"/>
+        </ParameterBlock>
+        <ParameterBlock Name="fc_low">
+            <IntegerParameter Name="lb" Size="16" Min="0" Max="4000" Signed="true"
+                Description="Low frequency cutoff for TNR in lower band. Class 1 parameter. Default=1500"/>
+            <IntegerParameter Name="hb" Size="16" Min="4000" Max="8000" Signed="true"
+                Description="Low frequency cutoff for TNR in higher band. Class 2 parameter. Default=4000"/>
+        </ParameterBlock>
+        <EnumParameter Name="short_horn_test" Size="16" Description="ShortHorn Test Mode. Class 1 parameter. Default=0">
+            <ValuePair Literal="disable" Numerical="0"/>
+            <ValuePair Literal="enable" Numerical="1"/>
+        </EnumParameter>
+        <IntegerParameter Name="spec_peak_ratio" Size="16" Min="0" Max="65535"
+            Description="Threshold for deciding short-horns. Class 1 parameter. Default=6"/>
+        <FixedPointParameter Name="sig_est_fact" Size="16" Integral="0" Fractional="15"
+            Description="Signal Estimation factor for TNR. Class 1 parameter. Default=16384"/>
+        <ParameterBlock Name="short_horn">
+            <IntegerParameter Name="low_freq" Size="16" Min="0" Max="3968" Signed="true"
+                Description="Upper cutoff frequency for first sub-band of short-horn presence. Class 2 parameter. Default=500"/>
+            <IntegerParameter Name="high_freq" Size="16" Min="32" Max="4000" Signed="true"
+                Description="Upper cutoff frequency for second sub-band of shorthorn presence. Class 2 parameter. Default=1000"/>
+        </ParameterBlock>
+        <EnumParameter Name="gain_by_pass" Size="16" Description="BYPASS gain computation inside TNR module. Class 1 parameter. Default=0">
+            <ValuePair Literal="disable" Numerical="0"/>
+            <ValuePair Literal="enable" Numerical="1"/>
+        </EnumParameter>
+    </ComponentType>
+</ComponentTypeSet>

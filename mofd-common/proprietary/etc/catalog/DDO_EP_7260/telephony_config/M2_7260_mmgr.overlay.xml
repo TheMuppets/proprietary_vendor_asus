@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mmgr_config>
+	<modem_link>
+		<flash>
+			<link_usb device="![CDATA[/dev/ttyACM0]]" pid="0x07ef" vid="0x8087"/>
+		</flash>
+		<baseband>
+			<link_usb device="![CDATA[/dev/ttyACM0]]" pid="0x0443" vid="0x1519"/>
+		</baseband>
+		<reconfig_usb>
+			<link_usb device="![CDATA[/dev/ttyACM0]]" pid="0xf214" vid="0x1519"/>
+		</reconfig_usb>
+	</modem_link>
+	<mdm_ctrl
+		board="ngff"
+	/>
+</mmgr_config>

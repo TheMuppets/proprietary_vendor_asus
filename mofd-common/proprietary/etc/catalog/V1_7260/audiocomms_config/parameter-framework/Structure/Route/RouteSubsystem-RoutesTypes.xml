@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../Schemas/ComponentLibrary.xsd">
+    <ComponentTypeSet>
+
+        <ComponentType Name="Route">
+            <ParameterBlock Name="status" Mapping="Route:'%1_%2'">
+                <BooleanParameter Name="applicable"/>
+                <BooleanParameter Name="need_reconfigure"/>
+                <BooleanParameter Name="need_reroute"/>
+            </ParameterBlock>
+        </ComponentType>
+
+        <ComponentType Name="RoutePlayback"
+                       Mapping="Direction:out,Type:route,Amend2:Playback">
+            <Component Name="route_playback" Type="Route"/>
+        </ComponentType>
+        <ComponentType Name="RouteCapture"
+                       Mapping="Direction:in,Type:route,Amend2:Capture">
+            <Component Name="route_capture" Type="Route"/>
+        </ComponentType>
+        <ComponentType Name="RouteFullDuplex">
+            <ParameterBlock Name="route_duplex">
+                <Component Name="playback"
+                           Type="Route"
+                           Mapping="Direction:out,Type:route,Amend2:Playback"/>
+                <Component Name="capture"
+                           Type="Route"
+                           Mapping="Direction:in,Type:route,Amend2:Capture"/>
+            </ParameterBlock>
+        </ComponentType>
+
+        <!-- Base for playback StreamRoute configuration and capture StreamRoute configuration -->
+        <ComponentType Name="StreamRouteConfig">
+            <BooleanParameter Name="require_preenable"/>
+            <BooleanParameter Name="require_postdisable"/>
+            <IntegerParameter Name="silence_prolog_ms" Size="32"/>
+            <IntegerParameter Name="channels" Size="32"/>
+            <StringParameter Name="channels_policy" MaxLength="256"
+                Description="CSV list of policy copy, average or ignore are supported"/>
+            <IntegerParameter Name="rate" Size="32"/>
+            <EnumParameter Name="format" Size="8">
+                <ValuePair Literal="Pcm16Bit" Numerical="1"/>
+                <ValuePair Literal="Pcm8Bit24Bit" Numerical="3"/>
+                <ValuePair Literal="Pcm32Bit" Numerical="4"/>
+            </EnumParameter>
+            <IntegerParameter Name="period_size" Size="32" Description="in frames"/>
+            <IntegerParameter Name="period_count" Size="32" Description="in frames"/>
+            <IntegerParameter Name="start_threshold" Size="32" Description="in frames"/>
+            <IntegerParameter Name="stop_threshold" Size="32" Description="in frames"/>
+            <IntegerParameter Name="silence_threshold" Size="32" Description="in frames"/>
+            <IntegerParameter Name="avail_min" Size="32" Description="in frames"/>
+        </ComponentType>
+
+        <!-- Specialized configuration for playback (effects_supported has to
+                be duplicated between playback and capture for legacy reason in
+                libroute-subsystem) -->
+        <ComponentType Name="StreamRouteConfigPlayback"
+                       Extends="StreamRouteConfig"
+                       Mapping="StreamRoute:'%1_%2'">
+            <Component Name="attributes" Type="OutputFlags_" Description="Applicable OutputFlags"/>
+            <StringParameter Name="effects_supported" MaxLength="256"
+                             Description="CSV Human readeable effects list"/>
+        </ComponentType>
+        <ComponentType Name="StreamRouteConfigCapture"
+                       Extends="StreamRouteConfig"
+                       Mapping="StreamRoute:'%1_%2'">
+            <Component Name="attributes" Type="InputSources_"
+                       Description="Applicable InputSources mask"/>
+            <StringParameter Name="effects_supported" MaxLength="256"
+                             Description="CSV Human readeable effects list"/>
+        </ComponentType>
+
+        <!-- These two types are hacks for the sake of nice paths in both
+             "duplex" and "single direction" stream routes: thanks to
+             StreamRoutePlayback, StreamRouteCapture and StreamRouteFullDuplex, we can write:
+                 some_duplex_route/stream_duplex/playback/config
+                 some_duplex_route/stream_duplex/capture/config;
+                 some_capture_route/stream_capture/config -->
+        <ComponentType Name="StreamRoutePlayback_"
+                       Extends="Route"
+                       Mapping="Direction:out,Type:streamRoute,Amend2:Playback">
+            <Component Name="config" Type="StreamRouteConfigPlayback"/>
+        </ComponentType>
+        <ComponentType Name="StreamRouteCapture_"
+                       Extends="Route"
+                       Mapping="Direction:in,Type:streamRoute,Amend2:Capture">
+            <Component Name="config" Type="StreamRouteConfigCapture"/>
+        </ComponentType>
+
+        <ComponentType Name="StreamRoutePlayback">
+            <Component Name="stream_playback" Type="StreamRoutePlayback_"/>
+        </ComponentType>
+        <ComponentType Name="StreamRouteCapture">
+            <Component Name="stream_capture" Type="StreamRouteCapture_"/>
+        </ComponentType>
+
+        <ComponentType Name="StreamRouteFullDuplex">
+            <ParameterBlock Name="stream_duplex">
+                <Component Name="playback" Type="StreamRoutePlayback_"/>
+                <Component Name="capture" Type="StreamRouteCapture_"/>
+            </ParameterBlock>
+        </ComponentType>
+
+        <ComponentType Name="Port">
+            <BooleanParameter Name="blocked" Mapping="Port:'%1_Port'"/>
+        </ComponentType>
+
+    </ComponentTypeSet>
+</ComponentLibrary>

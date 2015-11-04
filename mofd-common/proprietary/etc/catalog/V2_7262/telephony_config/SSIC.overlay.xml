@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<telephony_config>
+	<modems_info>
+		<modem_info>
+			<modules
+				rril_txt="rril_7260_conf_2.txt"
+			/>
+		</modem_info>
+	</modems_info>
+</telephony_config>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Schemas/SystemClass.xsd" Name="Audio">
+    <SubsystemInclude Path="SstSubsystem.xml"/>
+    <SubsystemInclude Path="Realtek_RT5647.xml"/>
+    <SubsystemInclude Path="ConfigurationSubsystem.xml"/>
+    <SubsystemInclude Path="IMCSubsystem.xml"/>
+    <SubsystemInclude Path="PowerSubsystem.xml"/>
+    <SubsystemInclude Path="PropertySubsystem.xml"/>
+    <SubsystemInclude Path="CMESubsystem.xml"/>
+</SystemClass>

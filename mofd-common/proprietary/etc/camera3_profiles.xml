@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<CameraSettings>
+    <Profiles cameraId="0">
+        <Hal_tuning> <!-- Parameters to tune the HAL and hacks for the HAL that are camera dependent -->
+            <hwType value="SUPPORTED_HW_CSS_2400"/> <!-- SUPPORTED_HW_CSS_2400,SUPPORTED_HW_CSS_2500,SUPPORTED_HW_CSS_2600,SUPPORTED_HW_USB -->
+            <flipping value="" value_v=""/> <!-- value: SENSOR_FLIP_H or "", value_v: SENSOR_FLIP_V or "" -->
+            <maxContinuousRawRingBuffer value="10"/>
+            <shutterLagCompensationMs value="40"/>
+        </Hal_tuning>
+
+        <Sensor_info> <!-- Information that parametrizes the behavior or qualities of the physical sensor -->
+            <sensorType value="SENSOR_TYPE_RAW"/> <!-- SENSOR_TYPE_SOC or SENSOR_TYPE_RAW -->
+            <facing value="CAMERA_FACING_BACK"/> <!-- CAMERA_FACING_FRONT or CAMERA_FACING_BACK -->
+            <exposure.sync value="true"/> <!-- compensate expsure sync-->
+            <gainExposure.comp value="false"/> <!-- compensate gain and Exposure delay-->
+            <gain.lag value="1"/> <!-- camera3 HAL CPF parameters moved here start-->
+            <exposure.lag value="1"/>
+            <zoomDigital.max value="1024"/>
+            <ispVamemType value="1"/>
+            <statistics.initialSkip value="1"/> <!-- camera3 HAL CPF parameters moved here end-->
+        </Sensor_info>
+
+        <Android_metadata> <!-- Android static metadata only -->
+            <!-- Control -->
+            <control.aeAvailableAntibandingModes value="OFF,50HZ,60Hz,AUTO"/>
+            <control.aeAvailableModes value="OFF,ON,ON_AUTO_FLASH"/>
+            <control.aeAvailableTargetFpsRanges value="30,30"/>
+            <control.aeCompensationRange value="-7,7"/>
+            <control.aeCompensationStep value="1,2"/>
+            <control.afAvailableModes value="OFF,AUTO,MACRO,CONTINUOUS_VIDEO,CONTINUOUS_PICTURE"/>
+            <control.availableEffects value="OFF,MONO,NEGATIVE,SEPIA"/>
+            <control.awbAvailableModes value="AUTO,INCANDESCENT,FLUORESCENT,WARM_FLUORESCENT,DAYLIGHT,CLOUDY_DAYLIGHT,SHADE,TWILIGHT"/>
+            <control.availableSceneModes value="PORTRAIT,LANDSCAPE,NIGHT,FIREWORKS,SPORTS"/>
+            <control.sceneModeOverrides value="ON,AUTO,AUTO,ON,AUTO,AUTO,ON,AUTO,AUTO,ON,AUTO,AUTO,ON,AUTO,AUTO"/>
+            <control.availableVideoStabilizationModes value="OFF,ON"/>
+            <control.maxRegions value="1"/>
+            <!-- JPEG -->
+            <jpeg.maxSize value="19368960"/>  <!-- 4160*3104*1.5 -->
+            <jpeg.availableThumbnailSizes value="320,240,320,180,160,120,0,0"/>
+            <!-- Lens Info-->
+            <lens.info.availableApertures value="0.0"/> <!-- TODO VALUE -->
+            <lens.info.availableFilterDensities value="0.0"/> <!-- TODO VALUE -->
+            <lens.info.availableFocalLengths value="2.04,4.28"/>
+            <lens.info.availableOpticalStabilization value="0"/> <!-- TODO VALUE -->
+            <lens.info.geometricCorrectionMap value="0.0"/> <!-- TODO VALUE -->
+            <lens.info.geometricCorrectionMapSize value="0,0"/> <!-- TODO VALUE -->
+            <lens.info.hyperfocalDistance value="0.0"/> <!-- TODO VALUE -->
+            <lens.info.minimumFocusDistance value="0.1"/>
+            <lens.info.shadingMapSize value="0,0"/> <!-- TODO VALUE -->
+            <!-- Lens -->
+            <lens.facing value="BACK"/> <!-- TODO VALUE -->
+            <lens.opticalAxisAngle value="0.0,0.0"/> <!-- TODO VALUE -->
+            <lens.position value="0.0,0.0,0.0"/> <!-- TODO VALUE -->
+            <!-- Request -->
+            <request.maxNumOutputStreams value="1,3,1"/> <!-- TODO VALUE -->
+            <request.pipelineMaxDepth value="0"/> <!-- TODO VALUE -->
+            <request.maxNumInputStreams value="0,0,0"/> <!-- TODO VALUE -->
+            <request.partialResultCount value="1"/> <!-- TODO VALUE -->
+            <request.availableCapabilities value="BACKWARD_COMPATIBLE"/> <!-- TODO VALUE, OPTIONS: BACKWARD_COMPATIBLE, OPTIONAL, MANUAL_SENSOR, GCAM, ZSL, DNG -->
+            <request.availableRequestKeys value="0"/> <!-- TODO VALUE -->
+            <request.availableResultKeys value="0"/> <!-- TODO VALUE -->
+            <request.availableCharacteristicsKeys value="0"/> <!-- TODO VALUE -->
+            <!-- Scaler -->
+            <scaler.availableFormats value="RAW16,YV12,IMPLEMENTATION_DEFINED,YCbCr_420_888,BLOB"/> <!-- OPTIONS: RAW16, RAW_OPAQUE, YV12, YCrCb_420_SP, IMPLEMENTATION_DEFINED, YCbCr_420_888, BLOB -->
+            <scaler.availableJpegMinDurations value="250000,250000,250000,250000,250000,250000,250000,250000,250000,250000,250000"/> <!-- DEPRECATED DO NOT USE 4fps-->
+            <scaler.availableJpegSizes value="4208x3120,4208x2372,4160x3104,4160x2336,2560x1920,2400x2400,2386x2386,2048x1536,2028x2706,2028x1536,1600x1200,1920x1088,1920x1080,1600x1200,1280x720,640x480,320x240"/> <!-- DEPRECATED DO NOT USE -->
+            <scaler.availableMaxDigitalZoom value="16.0"/>
+            <scaler.availableProcessedMinDurations value="66666,66666,66666,66666,66666,66666,66666,66666,66666,66666,66666"/> <!-- DEPRECATED DO NOT USE 30fps-->
+            <scaler.availableProcessedSizes value="4208x3120,4208x2372,4160x3104,4160x2336,2560x1920,2400x2400,2386x2386,2048x1536,2028x2706,2028x1536,1600x1200,1920x1088,1920x1080,1600x1200,1280x720,640x480,320x240"/> <!-- DEPRECATED DO NOT USE -->
+            <scaler.availableRawMinDurations value="33333,33333"/> <!-- DEPRECATED DO NOT USE 30fps-->
+            <scaler.availableRawSizes value="4208x3120,4208x2372"/>
+            <scaler.availableInputOutputFormatsMap value="0"/> <!-- TODO VALUE -->
+            <scaler.availableStreamConfigurations value="RAW16,4208x3120,INPUT,RAW16,4208x3120,OUTPUT,RAW16,4208x2372,BLOB,4208x3120,OUTPUT,BLOB,4208x2372,OUTPUT,BLOB,4160x3104,OUTPUT,BLOB,4160x2336,OUTPUT,BLOB,2560x1920,OUTPUT,BLOB,2400x2400,OUTPUT,BLOB,2386x2386,OUTPUT,BLOB,2048x1536,OUTPUT,BLOB,2028x2706,OUTPUT,BLOB,2028x1536,OUTPUT,BLOB,1600x1200,OUTPUT,BLOB,1920x1088,OUTPUT,BLOB,1920x1080,OUTPUT,BLOB,1280x720,OUTPUT,BLOB,640x480,OUTPUT,BLOB,320x240,OUTPUT,YCbCr_420_888,4208x3120,OUTPUT,YCbCr_420_888,4208x2372,OUTPUT,YCbCr_420_888,4160x3104,OUTPUT,YCbCr_420_888,4160x2336,OUTPUT,YCbCr_420_888,2560x1920,OUTPUT,YCbCr_420_888,2400x2400,OUTPUT,YCbCr_420_888,2386x2386,OUTPUT,YCbCr_420_888,2048x1536,OUTPUT,YCbCr_420_888,2028x2706,OUTPUT,YCbCr_420_888,2028x1536,OUTPUT,YCbCr_420_888,1600x1200,OUTPUT,YCbCr_420_888,1920x1088,OUTPUT,YCbCr_420_888,1920x1080,OUTPUT,YCbCr_420_888,1280x720,OUTPUT,YCbCr_420_888,640x480,OUTPUT,YCbCr_420_888,320x240,OUTPUT,IMPLEMENTATION_DEFINED,4208x3120,OUTPUT,IMPLEMENTATION_DEFINED,4208x2372,OUTPUT,IMPLEMENTATION_DEFINED,4160x3104,OUTPUT,IMPLEMENTATION_DEFINED,4160x2336,OUTPUT,IMPLEMENTATION_DEFINED,2560x1920,OUTPUT,IMPLEMENTATION_DEFINED,2400x2400,OUTPUT,IMPLEMENTATION_DEFINED,2386x2386,OUTPUT,IMPLEMENTATION_DEFINED,2048x1536,OUTPUT,IMPLEMENTATION_DEFINED,2028x2706,OUTPUT,IMPLEMENTATION_DEFINED,2028x1536,OUTPUT,IMPLEMENTATION_DEFINED,1600x1200,OUTPUT,IMPLEMENTATION_DEFINED,1920x1088,OUTPUT,IMPLEMENTATION_DEFINED,1920x1080,OUTPUT,IMPLEMENTATION_DEFINED,1280x720,OUTPUT,IMPLEMENTATION_DEFINED,640x480,OUTPUT,IMPLEMENTATION_DEFINED,320x240,OUTPUT"/>
+            <scaler.availableMinFrameDurations value="RAW16,4208x3120,33333,RAW16,4208x3120,33333,BLOB,4208x3120,250000,BLOB,4208x2372,250000,BLOB,4160x3104,250000,BLOB,4160x2336,250000,BLOB,2560x1920,250000,BLOB,2400x2400,250000,BLOB,2386x2386,250000,BLOB,2048x1536,250000,BLOB,2028x2706,250000,BLOB,2028x1536,250000,BLOB,1600x1200,250000,BLOB,1920x1088,250000,BLOB,1920x1080,250000,BLOB,1280x720,250000,BLOB,640x480,250000,BLOB,320x240,250000,YCbCr_420_888,4208x3120,66666,YCbCr_420_888,4208x2336,66666,YCbCr_420_888,4160x3104,66666,YCbCr_420_888,4160x2336,66666,YCbCr_420_888,2560x1920,66666,YCbCr_420_888,2400x2400,66666,YCbCr_420_888,2386x2386,66666,YCbCr_420_888,2048x1536,66666,YCbCr_420_888,2028x2706,66666,YCbCr_420_888,2028x1536,66666,YCbCr_420_888,1600x1200,66666,YCbCr_420_888,1920x1088,66666,YCbCr_420_888,1920x1080,66666,YCbCr_420_888,1280x720,66666,YCbCr_420_888,640x480,66666,YCbCr_420_888,320x240,66666,IMPLEMENTATION_DEFINED,4208x3120,66666,IMPLEMENTATION_DEFINED,4208x2336,66666,IMPLEMENTATION_DEFINED,4160x3104,66666,IMPLEMENTATION_DEFINED,4160x2336,66666,IMPLEMENTATION_DEFINED,2560x1920,66666,IMPLEMENTATION_DEFINED,2400x2400,66666,IMPLEMENTATION_DEFINED,2386x2386,66666,IMPLEMENTATION_DEFINED,2048x1536,66666,IMPLEMENTATION_DEFINED,2028x2706,66666,IMPLEMENTATION_DEFINED,2028x1536,66666,IMPLEMENTATION_DEFINED,1600x1200,66666,IMPLEMENTATION_DEFINED,1920x1088,66666,IMPLEMENTATION_DEFINED,1920x1080,66666,IMPLEMENTATION_DEFINED,1280x720,66666,IMPLEMENTATION_DEFINED,640x480,66666,IMPLEMENTATION_DEFINED,320x240,66666"/>
+            <scaler.availableStallDurations value="RAW16,4208x3120,33333,RAW16,4208x3120,33333,BLOB,4208x2372,250000,BLOB,4208x2372,250000,BLOB,4160x3104,250000,BLOB,4160x2336,250000,BLOB,2560x1920,250000,BLOB,2400x2400,250000,BLOB,2386x2386,250000,BLOB,2048x1536,250000,BLOB,2028x2706,250000,BLOB,2028x1536,250000,BLOB,1600x1200,250000,BLOB,1920x1088,250000,BLOB,1920x1080,250000,BLOB,1280x720,250000,BLOB,640x480,250000,BLOB,320x240,250000,YCbCr_420_888,4208x3120,0,YCbCr_420_888,4208x2372,0,YCbCr_420_888,4160x3104,0,YCbCr_420_888,4160x2336,0,YCbCr_420_888,2560x1920,0,YCbCr_420_888,2400x2400,0,YCbCr_420_888,2386x2386,0,YCbCr_420_888,2048x1536,0,YCbCr_420_888,2028x2706,0,YCbCr_420_888,2028x1536,0,YCbCr_420_888,1600x1200,0,YCbCr_420_888,1920x1088,0,YCbCr_420_888,1920x1080,0,YCbCr_420_888,1280x720,0,YCbCr_420_888,640x480,0,YCbCr_420_888,320x240,0,IMPLEMENTATION_DEFINED,4208x3120,0,IMPLEMENTATION_DEFINED,4208x2372,0,IMPLEMENTATION_DEFINED,4160x3104,0,IMPLEMENTATION_DEFINED,4160x2336,0,IMPLEMENTATION_DEFINED,2560x1920,0,IMPLEMENTATION_DEFINED,2400x2400,0,IMPLEMENTATION_DEFINED,2386x2386,0,IMPLEMENTATION_DEFINED,2048x1536,0,IMPLEMENTATION_DEFINED,2028x2706,0,IMPLEMENTATION_DEFINED,2028x1536,0,IMPLEMENTATION_DEFINED,1600x1200,0,IMPLEMENTATION_DEFINED,1920x1088,0,IMPLEMENTATION_DEFINED,1920x1080,0,IMPLEMENTATION_DEFINED,1280x720,0,IMPLEMENTATION_DEFINED,640x480,0,IMPLEMENTATION_DEFINED,320x240,0"/> <!-- TODO VALUE -->
+            <scaler.availableStallDurations value="0,0,0,0"/> <!-- TODO VALUE -->
+            <!-- Sensor Info -->
+            <sensor.info.activeArraySize value="0,0,4208,3120"/>
+            <sensor.info.sensitivityRange value="0"/>
+            <sensor.info.colorFilterArrangement value="RGGB"/> <!-- TODO VALUE -->
+            <sensor.info.exposureTimeRange value="0"/> <!-- TODO VALUE -->
+            <sensor.info.maxFrameDuration value="0"/> <!-- TODO VALUE -->
+            <sensor.info.physicalSize value="1.0,1.0"/>
+            <sensor.info.pixelArraySize value="4224x2136"/>
+            <sensor.info.whiteLevel value="0"/> <!-- TODO VALUE -->
+            <!-- Sensor -->
+            <sensor.baseGainFactor value="0"/> <!-- TODO VALUE -->
+            <sensor.blackLevelPattern value="0,0,0,0"/> <!-- TODO VALUE -->
+            <sensor.maxAnalogSensitivity value="0"/> <!-- TODO VALUE -->
+            <sensor.orientation value="90"/>
+            <sensor.profileHueSatMapDimensions value="0,0,0"/> <!-- TODO VALUE -->
+            <sensor.availableTestPatternModes value="0"/> <!-- TODO VALUE -->
+            <!-- Info -->
+            <info.supportedHardwareLevel value="LIMITED"/> <!-- disable zsl stream due to no enought memory -->
+            <!-- Statistics Info -->
+            <statistics.info.availableFaceDetectModes value="OFF,SIMPLE"/>
+            <statistics.info.histogramBucketCount value="0"/> <!-- TODO VALUE -->
+            <statistics.info.maxFaceCount value="32"/>
+            <statistics.info.maxHistogramCount value="0"/> <!-- TODO VALUE -->
+            <statistics.info.maxSharpnessMapValue value="0"/> <!-- TODO VALUE -->
+            <statistics.info.sharpnessMapSize value="0,0"/> <!-- TODO VALUE -->
+            <statistics.info.availableHotPixelMapModes value="0"/> <!-- TODO VALUE -->
+            <!-- Tonemap -->
+            <tonemap.maxCurvePoints value="0"/>
+            <tonemap.availableToneMapModes value="0"/> <!-- TODO VALUE, OPTIONS: CONTRAST_CURVE, FAST, HIGH_QUALITY-->
+            <!-- LED -->
+            <led.availableLeds value="0"/> <!-- TODO VALUE -->
+            <!-- Flash -->
+            <flash.colorTemperature value="0"/> <!-- TODO VALUE -->
+            <flash.maxEnergy value="0"/> <!-- TODO VALUE -->
+            <!-- Flash info -->
+            <flash.info.available value="1"/>
+            <flash.info.chargeDuration value="0"/> <!-- TODO VALUE -->
+            <!-- Sync -->
+            <sync.maxLatency value="UNKNOWN"/> <!-- TODO VALUE -->
+            <!-- Edge -->
+            <edge.availableEdgeModes value="OFF"/> <!-- TODO VALUE, OPTIONS: OFF, FAST, HIGH_QUALITY -->
+            <!-- Hot Pixel -->
+            <hotPixel.availableHotPixelModes value="OFF"/> <!-- TODO VALUE, OPTIONS: OFF, FAST, HIGH_QUALITY -->
+            <!-- Noise Reduction -->
+            <noiseReduction.availableNoiseReductionModes value="OFF"/> <!-- TODO VALUE, OPTIONS: OFF, FAST, HIGH_QUALITY -->
+
+        </Android_metadata>
+
+        <MediaCtl_elements>
+            <element name="imx135 pixel array 4-0010" type="pixel_array"/>
+            <element name="imx135 scaler 4-0010" type="scaler"/>
+            <element name="imx135 binner 4-0010" type="binner"/>
+            <element name="css2600 CSI-2 0 capture" type="video_node" videoNodeType="VIDEO_RAW_BAYER"/>
+            <element name="css2600 CSI-2 0" type="back_end"/>
+        </MediaCtl_elements>
+
+<!--    example pipe config
+        <MediaCtl_config>
+            <config width="2" height="1"/>
+            <link srcName="srcDev" srcPad="0" sinkName="sinkDev" sinkPad="1" enable="true"/>
+            <control name="setSmth" ctrlId="IOCTL_CID_SETSMTH" value="123" ctrlName="set something"/>
+            <selection name="slkName" pad="0" target="V4L2_SEL4208_CROP" top="0" left="0" width="123" height="456"/>
+        </MediaCtl_config>
+-->
+
+        <MediaCtl_config> <!-- FULL RES -->
+            <config width="4208" height="3120"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="4208" height="3120" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- FULL 16:9 RES -->
+            <config width="4208" height="2372"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="4208" height="2372"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="4208" height="2372" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="4208" height="2372" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="4208" height="2372" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 4160x3104 - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="4160" height="3104"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4160" height="3104" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4160" height="3104" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4160" height="3104" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="4160" height="3104" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="4160" height="3104" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="4160" height="3104" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 4160x2336 - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="4160" height="2336"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="4160" height="2336"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="4160" height="2336" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="4160" height="2336" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="4160" height="2336" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 2560x1920 - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="2560" height="1920"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="2560" height="1920"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="2560" height="1920" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="2560" height="1920" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="2560" height="1920" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 2400x2400 - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="2400" height="2400"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="2400" height="2400"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="2400" height="2400" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="2400" height="2400" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="2400" height="2400" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 2386x2386 - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="2386" height="2386"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="2386" height="2386"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="2386" height="2386" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="2386" height="2386" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="2386" height="2386" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 2048x1536 - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="2048" height="1536"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="2048" height="1536"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="2048" height="1536" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="2048" height="1536" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="2048" height="1536" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 2028x2706 - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="2028" height="2706"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="2028" height="2706"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="2028" height="2706" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="2028" height="2706" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="2028" height="2706" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 2028x1536 - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="2028" height="1536"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="2028" height="1536"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="2028" height="1536" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="2028" height="1536" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="2028" height="1536" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 1920x1088 - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="1920" height="1088"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="1920" height="1088"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="1920" height="1088" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="1920" height="1088" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="1920" height="1088" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 1080p - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="1920" height="1080"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="1920" height="1080"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="1920" height="1080" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="1920" height="1080" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="1920" height="1080" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 1600x1200 - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="1600" height="1200"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="1600" height="1200"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="1600" height="1200" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="1600" height="1200" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="1600" height="1200" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- 720p - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="1280" height="720"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="1280" height="720"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="1280" height="720" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="1280" height="720" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="1280" height="720" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- VGA - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="640" height="480"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="640" height="480"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="640" height="480" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="640" height="480" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="640" height="480" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+        <MediaCtl_config> <!-- QVGA - THIS IS A CROPPING SOLUTION! CHANGES FIELD OF VIEW! -->
+            <config width="320" height="240"/>
+            <link srcName="imx135 scaler 4-0010" srcPad="1" sinkName="css2600 CSI-2 0" sinkPad="0" enable="true"/>
+            <format name="imx135 pixel array 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 binner 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="imx135 scaler 4-0010" pad="0" width="4208" height="3120" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <selection name="imx135 scaler 4-0010" pad="0" target="V4L2_SEL_TGT_CROP" top="0" left="0" width="320" height="240"/>
+            <format name="imx135 scaler 4-0010" pad="1" width="320" height="240" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0" pad="0" width="320" height="240" format="V4L2_MBUS_FMT_SRGGB10_1X10"/>
+            <format name="css2600 CSI-2 0 capture" pad="0" width="320" height="240" format="V4L2_PIX_FMT_SRGGB10"/>
+            <control name="imx135 scaler 4-0010" ctrlId="V4L2_CID_LINK_FREQ" value="1" ctrlName="link freq"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_VBLANK" value="170" ctrlName="set vblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_HBLANK" value="365" ctrlName="set hblank"/>
+            <control name="imx135 pixel array 4-0010" ctrlId="V4L2_CID_EXPOSURE" value="1500" ctrlName="exposure"/>
+        </MediaCtl_config>
+
+    </Profiles>
+
+    <Profiles cameraId="1">
+        <Hal_tuning> <!-- Parameters to tune the HAL and hacks for the HAL that are camera dependent -->
+            <hwType value="SUPPORTED_HW_CSS_2400"/> <!-- SUPPORTED_HW_CSS_2400,SUPPORTED_HW_CSS_2500,SUPPORTED_HW_CSS_2600,SUPPORTED_HW_USB -->
+            <flipping value="" value_v=""/> <!-- value: SENSOR_FLIP_H or "", value_v: SENSOR_FLIP_V or "" -->
+            <maxContinuousRawRingBuffer value="10"/>
+            <shutterLagCompensationMs value="40"/>
+        </Hal_tuning>
+
+        <Sensor_info> <!-- Information that parametrizes the behavior or qualities of the physical sensor -->
+            <sensorType value="SENSOR_TYPE_RAW"/> <!-- SENSOR_TYPE_SOC or SENSOR_TYPE_RAW -->
+            <facing value="CAMERA_FACING_FRONT"/> <!-- CAMERA_FACING_FRONT or CAMERA_FACING_BACK -->
+            <gain.lag value="2"/> <!-- camera3 HAL CPF parameters moved here start-->
+            <exposure.lag value="1"/>
+            <zoomDigital.max value="1024"/>
+            <ispVamemType value="1"/>
+            <statistics.initialSkip value="1"/> <!-- camera3 HAL CPF parameters moved here end-->
+        </Sensor_info>
+
+        <Android_metadata> <!-- Android static metadata only -->
+            <!-- Control -->
+            <control.aeAvailableAntibandingModes value="50HZ,60Hz"/>
+            <control.aeAvailableModes value="OFF,ON"/>
+            <control.aeAvailableTargetFpsRanges value="30,30"/>
+            <control.aeCompensationRange value="0,0"/>
+            <control.aeCompensationStep value="0,1"/>
+            <control.afAvailableModes value="OFF"/>
+            <control.availableEffects value="OFF,MONO,NEGATIVE,SEPIA"/>
+            <control.awbAvailableModes value="AUTO"/>
+            <control.availableSceneModes value="UNSUPPORTED"/>
+            <control.sceneModeOverrides value="ON,AUTO,AUTO"/>
+            <control.availableVideoStabilizationModes value="OFF,ON"/>
+            <control.maxRegions value="0"/>
+            <!-- JPEG -->
+            <jpeg.maxSize value="1382400"/> <!-- 1280*720*1.5 -->
+            <jpeg.availableThumbnailSizes value="0,0"/> <!-- INCREASING ORDER -->
+            <!-- Lens Info -->
+            <lens.info.availableApertures value="0.0"/> <!-- TODO VALUE -->
+            <lens.info.availableFilterDensities value="0.0"/> <!-- TODO VALUE -->
+            <lens.info.availableFocalLengths value="2.04,4.28"/>
+            <lens.info.availableOpticalStabilization value="OFF"/> <!-- TODO VALUE -->
+            <lens.info.hyperfocalDistance value="0.0"/> <!-- TODO VALUE, OPTIONAL -->
+            <lens.info.minimumFocusDistance value="0.1"/>
+            <lens.info.shadingMapSize value="0,0"/> <!-- TODO VALUE -->
+            <lens.info.focusDistanceCalibration value="UNCALIBRATED"/> <!-- TODO VALUE -->
+            <!-- Lens -->
+            <lens.facing value="FRONT"/> <!-- TODO VALUE -->
+            <lens.opticalAxisAngle value="0.0,0.0"/> <!-- TODO VALUE -->
+            <lens.position value="0.0,0.0,0.0"/> <!-- TODO VALUE -->
+            <!-- Request -->
+            <request.maxNumOutputStreams value="1,3,1"/>
+            <request.pipelineMaxDepth value="0"/> <!-- TODO VALUE -->
+            <request.maxNumInputStreams value="0,0,0"/> <!-- TODO VALUE -->
+            <request.partialResultCount value="1"/> <!-- TODO VALUE -->
+            <request.availableCapabilities value="BACKWARD_COMPATIBLE"/> <!-- TODO VALUE, OPTIONS: BACKWARD_COMPATIBLE, OPTIONAL, MANUAL_SENSOR, GCAM, ZSL, DNG -->
+            <request.availableRequestKeys value="0"/> <!-- TODO VALUE -->
+            <request.availableResultKeys value="0"/> <!-- TODO VALUE -->
+            <request.availableCharacteristicsKeys value="0"/> <!-- TODO VALUE -->
+            <!-- Scaler -->
+            <scaler.availableFormats value="YV12"/> <!-- OPTIONS: RAW16, RAW_OPAQUE, YV12, YCrCb_420_SP, IMPLEMENTATION_DEFINED, YCbCr_420_888, BLOB -->
+            <scaler.availableJpegSizes value="1280x720,640x480,320x240"/>
+            <scaler.availableMaxDigitalZoom value="0.0"/> <!-- TODO VALUE -->
+            <scaler.availableProcessedMinDurations value="0"/> <!-- TODO VALUE --> <!-- DEPRECATED DO NOT USE -->
+            <scaler.availableProcessedSizes value="1280x720,1024x576,640x480,640x360"/> <!-- DEPRECATED DO NOT USE -->
+            <scaler.availableRawMinDurations value="0"/> <!-- TODO VALUE --> <!-- DEPRECATED DO NOT USE -->
+            <scaler.availableRawSizes value="1280x720"/> <!-- DEPRECATED DO NOT USE -->
+            <scaler.availableInputOutputFormatsMap value="0"/> <!-- TODO VALUE -->
+            <scaler.availableStreamConfigurations value="0,0,0,0"/> <!-- TODO VALUE -->
+            <scaler.availableMinFrameDurations value="0,0,0,0"/> <!-- TODO VALUE -->
+            <scaler.availableStallDurations value="0,0,0,0"/> <!-- TODO VALUE -->
+            <!-- Sensor Info -->
+            <sensor.info.activeArraySize value="0,0,1280,720"/> <!-- TODO VALUE -->
+            <sensor.info.sensitivityRange value="0,0"/> <!-- TODO VALUE -->
+            <sensor.info.colorFilterArrangement value="RGGB"/> <!-- TODO VALUE, OPTIONS: RGGB, GRBG, GBRG, BGGR, RGB -->
+            <sensor.info.exposureTimeRange value="0,0"/> <!-- TODO VALUE -->
+            <sensor.info.maxFrameDuration value="0"/> <!-- TODO VALUE -->
+            <sensor.info.physicalSize value="0.0,0.0"/> <!-- TODO VALUE -->
+            <sensor.info.pixelArraySize value="1280x720"/>
+            <sensor.info.whiteLevel value="0"/> <!-- TODO VALUE -->
+            <!-- Sensor -->
+            <sensor.baseGainFactor value="0"/> <!-- TODO VALUE -->
+            <sensor.blackLevelPattern value="0,0,0,0"/> <!-- TODO VALUE -->
+            <sensor.maxAnalogSensitivity value="0"/> <!-- TODO VALUE -->
+            <sensor.orientation value="90"/>
+            <sensor.profileHueSatMapDimensions value="0,0,0"/> <!-- TODO VALUE -->
+            <sensor.availableTestPatternModes value="0"/> <!-- TODO VALUE -->
+            <!-- Info -->
+            <info.supportedHardwareLevel value="LIMITED"/>
+            <!-- Statistics Info -->
+            <statistics.info.availableFaceDetectModes value="OFF,SIMPLE,FULL"/>
+            <statistics.info.histogramBucketCount value="0"/> <!-- TODO VALUE -->
+            <statistics.info.maxFaceCount value="32"/>
+            <statistics.info.maxHistogramCount value="0"/> <!-- TODO VALUE -->
+            <statistics.info.maxSharpnessMapValue value="0"/> <!-- TODO VALUE -->
+            <statistics.info.sharpnessMapSize value="0,0"/> <!-- TODO VALUE -->
+            <statistics.info.availableHotPixelMapModes value="0"/> <!-- TODO VALUE -->
+            <!-- Tonemap -->
+            <tonemap.maxCurvePoints value="0"/>
+            <tonemap.availableToneMapModes value="0"/> <!-- TODO VALUE, OPTIONS: CONTRAST_CURVE, FAST, HIGH_QUALITY-->
+            <!-- LED -->
+            <led.availableLeds value="TRANSMIT"/> <!-- TODO VALUE -->
+            <!-- Flash -->
+            <flash.colorTemperature value="0"/> <!-- TODO VALUE -->
+            <flash.maxEnergy value="0"/> <!-- TODO VALUE -->
+            <!-- Flash info -->
+            <flash.info.available value="0"/>
+            <flash.info.chargeDuration value="0"/> <!-- TODO VALUE -->
+            <!-- Sync -->
+            <sync.maxLatency value="UNKNOWN"/> <!-- TODO VALUE -->
+            <!-- Edge -->
+            <edge.availableEdgeModes value="OFF"/> <!-- TODO VALUE, OPTIONS: OFF, FAST, HIGH_QUALITY -->
+            <!-- Hot Pixel -->
+            <hotPixel.availableHotPixelModes value="OFF"/> <!-- TODO VALUE, OPTIONS: OFF, FAST, HIGH_QUALITY -->
+            <!-- Noise Reduction -->
+            <noiseReduction.availableNoiseReductionModes value="OFF"/> <!-- TODO VALUE, OPTIONS: OFF, FAST, HIGH_QUALITY -->
+        </Android_metadata>
+    </Profiles>
+
+    <Common> <!-- Common parameters of camera and hacks -->
+        <subDevName value="/dev/v4l-subdev8"/> <!-- it depends on the real hardware -->
+        <fileInject value="false"/> <!-- true or false -->
+        <productName value="mofd_v1"/> <!-- cfg the EXIF, CTS test requires proper board info -->
+        <manufacturerName value="intel"/> <!-- cfg the EXIF, CTS test requires proper manufacturer info -->
+        <boardName value="saltbay_v3"/>
+        <previewFormat value="V4L2_PIX_FMT_NV12"/> <!-- define the driver preview output format, V4L2_PIX_FMT_YVU420 or V4L2_PIX_FMT_NV12 -->
+        <supportDualVideo value="true"/> <!-- true or false -->
+    </Common>
+</CameraSettings>
+
