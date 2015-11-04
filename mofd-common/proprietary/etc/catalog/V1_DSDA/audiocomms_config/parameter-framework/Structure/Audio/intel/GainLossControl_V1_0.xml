@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="GainLossControl" Mapping="ByteControlWithLength:%1 %2 %3 params glc">
+            <Component Name="switch" Type="SwitchParam"/>
+            <IntegerParameter Name="sw_flag" Size="16"
+                              Description="GLC version: 0 is v1.0 (default)"/>
+            <IntegerParameter Name="mic_act_thres" Size="16" Min="0" Max="16384"
+                              Description="This parameter sets the minimal mic SNR needed to activate GLC. This prevents GLC activation during loud constant ambient noise (in cars for example). It is proportional to dB (for n dB enter 1024*n/6)."/>
+            <IntegerParameter Name="mic_pow_thres" Size="16" Min="0" Max="16384"
+                              Description="This parameter sets the minimal mic power level to activate GLC. This prevents GLC activation due to low-level irregular ambient noise. It is proportional to dBFS (for n dBFS please enter 16384+1024*n/6, where n shall only be negative)."/>
+            <IntegerParameter Name="rx_gain_floor" Size="16" Min="0" Max="32767"
+                              Description="This parameter limits the attenuation done by GLC. It is proportional to a linear gain expressed in Q15. The value in dB is given by the rule: for n dB enter 32767*2^(n/6), knowing that 0>n (from -inf dB to 0 dB)."/>
+            <IntegerParameter Name="echo_flag_shift_ri" Size="16" Min="-36" Max="36" Signed="true"
+                              Description="This parameter smooths the echo flag when remote single- talk is detected. It should be relatively short to provide loud far-end talk (“RCV DT” switching characteristics)."/>
+            <IntegerParameter Name="echo_flag_shift_fa" Size="16" Min="-36" Max="36" Signed="true"
+                              Description="This parameter smooths the echo flag when remote single- talk has stopped. It avoids GLC activation during erroneously cleared echo flag (in case single-talk echoes are considered as double-talks by AGC)."/>
+            <IntegerParameter Name="gain_shift_ri" Size="16" Min="-36" Max="36" Signed="true"
+                              Description="Number of left shifts for rising loudspeaker gain. Class II. Default=-5. This parameter smooths the linear downlink gain when near- end speech is finished."/>
+            <IntegerParameter Name="gain_shift_fa" Size="16" Min="-36" Max="36" Signed="true"
+                              Description="Number of left shifts for falling loudspeaker gain. Class II. Default=-5. This parameter smooths the linear downlink gain when near- end speech is starting."/>
+        </ComponentType>
+</ComponentTypeSet>

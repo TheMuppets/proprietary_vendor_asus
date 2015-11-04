@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<channels_info>
+	<channels>
+		<mmgr>
+			<mdm_custo device="![CDATA[/dev/gsmtty75]]"/>
+			<shutdown device="![CDATA[/dev/gsmtty75]]"/>
+			<cd_logs device="![CDATA[/dev/gsmtty75]]"/>
+			<secured device="![CDATA[/dev/gsmtty86]]"/>
+			<sanity_check device="![CDATA[/dev/gsmtty79]]"/>
+		</mmgr>
+		<nvm>
+			<nvm_sync device="![CDATA[/dev/gsmtty82]]"/>
+		</nvm>
+		<rril>
+			<monitoring device="![CDATA[/dev/gsmtty65]]"/>
+			<registration device="![CDATA[/dev/gsmtty66]]"/>
+			<settings device="![CDATA[/dev/gsmtty70]]"/>
+			<sim_toolkit device="![CDATA[/dev/gsmtty72]]"/>
+			<field_test device="![CDATA[/dev/gsmtty73]]"/>
+			<control device="![CDATA[/dev/gsmtty76]]"/>
+			<cops_commands device="![CDATA[/dev/gsmtty86]]"/>
+			<rfcoexistence device="![CDATA[/dev/gsmtty87]]"/>
+			<sms device="![CDATA[/dev/gsmtty89]]"/>
+		</rril>
+	</channels>
+</channels_info>

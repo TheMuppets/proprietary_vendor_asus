@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="ComfortNoiseInjector_V1_1" Mapping="ByteControlWithLength:%1 %2 %3 params cni">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="CNI version: 0 is v1.1"/>
+        <FixedPointParameter Name="gain" Size="16" Integral="0" Fractional="15"
+            Description="Mixing gain value for CNI. Class I parameter. Default=0x0000"/>
+        <ParameterBlock Name="biquad">
+            <EnumParameter Name="order" Size="16"
+                Description="Order of the biquad filter.">
+                <ValuePair Literal="2th order filter (1 biquad filter)" Numerical="2"/>
+                <ValuePair Literal="4th order filter (2 cascaded biquad filters)" Numerical="4"/>
+            </EnumParameter>
+            <Component Name="stage_0" Type="Biquad"
+                Description="Coefficients for biquad stage 0. Class II parameters"/>
+            <Component Name="stage_1" Type="Biquad"
+                Description="Coefficients for biquad stage 1. Class II parameters"/>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>

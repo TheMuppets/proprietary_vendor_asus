@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="FbaIir" Mapping="ByteControlWithLength:%1 %2 %3 params %4">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="Module version. Default=0 (IIR 1.0)"/>
+        <EnumParameter Name="order" Size="16" Description="Order of the filter">
+            <ValuePair Literal="Second" Numerical="2"/>
+            <ValuePair Literal="Fourth" Numerical="4"/>
+            <ValuePair Literal="Sixth" Numerical="6"/>
+            <ValuePair Literal="Eighth" Numerical="8"/>
+        </EnumParameter>
+        <ParameterBlock Name="biquad">
+            <Component Name="0" Type="Biquad"
+                Description="Coefficients for biquad stage 0"/>
+            <Component Name="1" Type="Biquad"
+                Description="Coefficients for biquad stage 1"/>
+            <Component Name="2" Type="Biquad"
+                Description="Coefficients for biquad stage 2"/>
+            <Component Name="3" Type="Biquad"
+                Description="Coefficients for biquad stage 3"/>
+        </ParameterBlock>
+    </ComponentType>
+</ComponentTypeSet>

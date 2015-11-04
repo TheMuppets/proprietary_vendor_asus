@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Schemas/ComponentTypeSet.xsd">
+    <xi:include href="NoiseReduction_V1_1.xml"/>
+    <xi:include href="AmbientNoiseAdapter_V2_5.xml"/>
+    <xi:include href="ComfortNoiseInjector_V1_1.xml"/>
+    <xi:include href="FbaIir_V1_1.xml"/>
+    <xi:include href="FbaFir_V1_1.xml"/>
+    <xi:include href="ComfortNoiseInjector_V1_2.xml"/>
+    <xi:include href="AutomaticGainControlVoice_V1_3.xml"/>
+    <xi:include href="DualMicrophoneNoiseReduction_V1_5.xml"/>
+    <xi:include href="SpectralEchoReduction_V2_5.xml"/>
+    <xi:include href="BeamformingVoice_V1.1.xml"/>
+    <xi:include href="EchoDelayLine_V1_1.xml"/>
+    <xi:include href="GainLossControl_V1_0.xml"/>
+    <xi:include href="AcousticEchoCanceler_V1_6.xml"/>
+    <xi:include href="ReferenceLine_V1_1.xml"/>
+    <xi:include href="NonLinearFilter_V1_0.xml"/>
+    <xi:include href="TrafficNoiseReduction_V1_0.xml"/>
+    <xi:include href="DynamicRangeProcessor_V1_4.xml"/>
+    <xi:include href="BandWidthExtender_V1_0.xml"/>
+    <xi:include href="WindNoiseReductionVoice_V1_0.xml"/>
+    <xi:include href="SlowVoice_V1_0.xml"/>
+    <xi:include href="MultibandDynamicRangeProcessor_V1_0.xml"/>
+</ComponentTypeSet>

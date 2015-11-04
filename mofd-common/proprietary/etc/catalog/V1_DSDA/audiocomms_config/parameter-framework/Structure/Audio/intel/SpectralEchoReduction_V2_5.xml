@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="SpectralEchoReduction" Mapping="ByteControlWithLength:%1 %2 %3 params ser">
+        <Component Name="switch" Type="SwitchParam"/>
+        <EnumParameter Name="sw_flag" Size="16" Description="SER Module version. Class 2 parameter. Default=SER_2.5">
+            <ValuePair Literal="SER_2.0" Numerical="0"/>
+            <ValuePair Literal="SER_2.1" Numerical="1"/>
+            <ValuePair Literal="SER_2.5" Numerical="3"/>
+        </EnumParameter>
+        <FixedPointParameter Name="beta" Size="16" Integral="0" Fractional="15"
+                             Description="Smoothing factor of the echo reduction applied. Class 1 Parameter. Default=32113"/>
+        <FixedPointParameter Name="overest" Size="16" Integral="6" Fractional="9"
+                             Description="Overestimation factor of the echo estimation. Class 1 Parameter. Default=2048"/>
+        <FixedPointParameter Name="noise_level" Size="16" Integral="6" Fractional="9"
+                             Description="Overestimation factor of the noise estimation. Class 1 Parameter. Default=2560"/>
+        <FixedPointParameter Name="alpha_dn" Size="16" Integral="0" Fractional="15"
+                             Description="Smoothing factor of noise estimation for falling noise. Class 2 Parameter. Default=6554"/>
+        <FixedPointParameter Name="alpha_up" Size="16" Integral="0" Fractional="15"
+                             Description="Smoothing factor of noise estimation for rising noise. Class 2 Parameter. Default=29491"/>
+        <FixedPointParameter Name="mult_ctr" Size="16" Integral="4" Fractional="11"
+                             Description="Multiplication factor for Control threshold of noise. Class 1 Parameter. Default=4096"/>
+        <FixedPointParameter Name="update_ctr" Size="16" Integral="2" Fractional="13"
+                             Description="Update factor for the long-term amplitude variations of the noise estimation. Class 2 Parameter. Default=8290"/>
+        <IntegerParameter Name="threshold_power" Size="16" Min="0" Max="32767"
+                             Description="Threshold Power of loudspeaker. Class 2 Parameter. Default=1"/>
+        <ParameterBlock Name="weighting">
+            <FixedPointParameter Name="factors" Size="16" Integral="4" Fractional="11" ArrayLength="6"
+                                 Description="Weighting factors for frequency bands defined by frequency_bands[0:4]. Class 2 Parameter. Default=[2048, 8192, 16384, 20480, 16384, 16384]"/>
+            <IntegerParameter Name="frequency_bands" Size="16" Min="1" Max="129" ArrayLength="5"
+                                 Description="Frequency bands for applying selective weighting factors for echo overestimation. Class 2 Parameter. Default=[16, 25, 48, 129, 129]"/>
+        </ParameterBlock>
+        <EnumParameter Name="gain_bypass" Size="16"
+                             Description="Flag to BYPASS gain computation inside SER module">
+            <ValuePair Literal="disable" Numerical="0"/>
+            <ValuePair Literal="enable" Numerical="1"/>
+        </EnumParameter>
+    </ComponentType>
+</ComponentTypeSet>

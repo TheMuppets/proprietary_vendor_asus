@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentTypeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../Schemas/ComponentTypeSet.xsd">
+    <ComponentType Name="FbaFir" Mapping="ByteControlWithLength:%1 %2 %3 params %4">
+        <Component Name="switch" Type="SwitchParam"/>
+        <IntegerParameter Name="sw_flag" Size="16"
+            Description="Module version.0=FIR 1.0 XMM FIR, 1=FIR 1.1 : FIR with minimum delay. Default=0 (FIR 1.0)"/>
+        <FixedPointParameter Name="coefficients" Size="16" Integral="0" Fractional="15" ArrayLength="65"/>
+    </ComponentType>
+</ComponentTypeSet>

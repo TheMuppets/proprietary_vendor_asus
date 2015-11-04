@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<sensor_hal_config>
+  <sensor type="accelerometer" category="libsensorhub">
+    <device>
+      <name>PSH Accelerometer</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange unit="GRAVITY_EARTH">4</maxRange>
+      <resolution unit="GRAVITY_EARTH">0.000976562</resolution>
+      <power>0.006</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.001" axis_y="0.001" axis_z="0.001" unit="GRAVITY_EARTH"></scale>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="light" category="libsensorhub">
+    <device>
+      <name>PSH Ambient Light sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>6553.5</maxRange>
+      <resolution>0.1</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <scale axis_x="0.1"></scale>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="proximity" category="libsensorhub">
+    <device>
+      <name>PSH Proximity sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>5.0</maxRange>
+      <resolution>5.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <scale axis_x="5.0"></scale>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="compass" category="libsensorhub">
+    <device>
+      <name>PSH Magnetic field sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>800.0</maxRange>
+      <resolution>0.5</resolution>
+      <power>0.1</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.1" axis_y="0.1" axis_z="0.1"></scale>
+    </device>
+  </sensor>
+  <sensor type="gyroscope" category="libsensorhub">
+    <device>
+      <name>PSH Gyroscope sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange unit="M_PI">11.111111</maxRange>         <!-- 2000/180 -->
+      <resolution unit="M_PI">0.000555556</resolution>   <!-- 1/10/180 -->
+      <power>6.1</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.000555556" axis_y="0.000555556" axis_z="0.000555556" unit="M_PI"></scale> <!-- 1/10/180 -->
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="pressure" category="libsensorhub">
+    <device>
+      <name>PSH Pressure sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1200</maxRange>
+      <resolution>0.001</resolution>
+      <power>0.001</power>
+      <minDelay>50000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.001"></scale>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="gravity" category="libsensorhub">
+    <device>
+      <name>PSH Gravity sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange unit="GRAVITY_EARTH">2</maxRange>
+      <resolution unit="GRAVITY_EARTH">0.000488281</resolution>
+      <power>0.006</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <mapper axis_x="X" axis_y="Y" axis_z="Z"></mapper>
+      <scale axis_x="0.0000000152587890625" axis_y="0.0000000152587890625" axis_z="0.0000000152587890625" unit="GRAVITY_EARTH"></scale> <!-- 1/1000/65536 -->
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="linear_acceleration" category="libsensorhub">
+    <device>
+      <name>PSH Linear Acceleration sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange unit="GRAVITY_EARTH">2</maxRange>
+      <resolution unit="GRAVITY_EARTH">0.000488281</resolution>
+      <power>0.006</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.001" axis_y="0.001" axis_z="0.001" unit="GRAVITY_EARTH"></scale>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="rotation_vector" category="libsensorhub">
+    <device>
+      <name>PSH Rotation Vector sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1</maxRange>
+      <resolution>0.00001</resolution>
+      <power>0.106</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.0000152587890625" axis_y="0.0000152587890625" axis_z="0.0000152587890625" axis_w="0.0000152587890625"></scale> <!-- 1/65536 -->
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="orientation" category="libsensorhub">
+    <device>
+      <name>PSH Orientation sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>360</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.106</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.0000152587890625" axis_y="0.0000152587890625" axis_z="0.0000152587890625"></scale> <!-- 1/65536 -->
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="glance_gesture" category="libsensorhub">
+    <device>
+      <name>PSH Glance Gesture sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+    </device>
+  </sensor>
+  <sensor type="tilt_detector" category="libsensorhub">
+    <device>
+      <name>PSH Tilt Detector sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+    </device>
+  </sensor>
+  <sensor type="pick_up_gesture" category="libsensorhub">
+    <device>
+      <name>PSH Pick Up Gesture sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+    </device>
+  </sensor>
+  <sensor type="step_detector" category="libsensorhub">
+    <device>
+      <name>PSH Step Detector sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1</maxRange>
+      <resolution>1</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="step_counter" category="libsensorhub">
+    <device>
+      <name>PSH Step Counter sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1</maxRange>
+      <resolution>1</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <!-- disable significant_motion for power saving
+  <sensor type="significant_motion" category="libsensorhub">
+    <device>
+      <name>PSH Significant Motion sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1</maxRange>
+      <resolution>1</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+    </device>
+  </sensor>
+  -->
+  <sensor type="shake" category="libsensorhub">
+    <device>
+      <name>PSH shake sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="game_rotation_vector" category="libsensorhub">
+    <device>
+      <name>PSH Game Rotation Vector sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1</maxRange>
+      <resolution>0.00001</resolution>
+      <power>0.106</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.0000152587890625" axis_y="0.0000152587890625" axis_z="0.0000152587890625" axis_w="0.0000152587890625"></scale> <!-- 1/65536 -->
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="geo_magnetic_rotation_vector" category="libsensorhub">
+    <device>
+      <name>PSH GeoMagnetic Rotation Vector sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1</maxRange>
+      <resolution>0.00001</resolution>
+      <power>0.106</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.0000152587890625" axis_y="0.0000152587890625" axis_z="0.0000152587890625" axis_w="0.0000152587890625"></scale> <!-- 1/65536 -->
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="gesture_flick" category="libsensorhub">
+    <device>
+      <name>PSH Gesture Flick sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>7.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="terminal" category="libsensorhub">
+    <device>
+      <name>PSH Terminal sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>7.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="simple_tapping" category="libsensorhub">
+    <device>
+      <name>PSH Simple Tapping sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="move_detect" category="libsensorhub">
+    <device>
+      <name>PSH Move Detect sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>3.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="pedometer" category="libsensorhub">
+    <device>
+      <name>PSH Pedometer sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>5000</minDelay>
+      <maxDelay>1000000</maxDelay>
+    </device>
+  </sensor>
+  <sensor type="physical_activity" category="libsensorhub">
+    <device>
+      <name>PSH Physical Activity sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>5000</minDelay>
+      <maxDelay>1000000</maxDelay>
+    </device>
+  </sensor>
+  <sensor type="gesture" category="libsensorhub">
+    <device>
+      <name>PSH Gesture sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>7.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+    </device>
+  </sensor>
+  <sensor type="audio_classifier" category="libsensorhub">
+    <device>
+      <name>PSH Audio Classifier sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>1.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>5000</minDelay>
+      <maxDelay>1000000</maxDelay>
+    </device>
+  </sensor>
+  <sensor type="uncalibrated_magnetic_field" category="libsensorhub">
+    <device>
+      <name>PSH Magnetic field sensor uncalibrated</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>800.0</maxRange>
+      <resolution>0.5</resolution>
+      <power>0.1</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.1" axis_y="0.1" axis_z="0.1"></scale>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="uncalibrated_gyroscope" category="libsensorhub">
+    <device>
+      <name>PSH Gyroscope sensor uncalibrated</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange unit="M_PI">11.111111</maxRange>         <!-- 2000/180 -->
+      <resolution unit="M_PI">0.000555556</resolution>   <!-- 1/10/180 -->
+      <power>6.1</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+      <scale axis_x="0.000555556" axis_y="0.000555556" axis_z="0.000555556" unit="M_PI"></scale> <!-- 1/10/180 -->
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="calibration" category="libsensorhub">
+    <device>
+      <name>Sensor for calibration</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>100.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.001</power>
+      <minDelay>10000</minDelay>
+      <maxDelay>1000000</maxDelay>
+    </device>
+  </sensor>
+  <sensor type="gesture_hmm" category="libsensorhub">
+    <device>
+      <name>PSH Gesture Hmm sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>7.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+    </device>
+  </sensor>
+  <sensor type="gesture_eartouch" category="libsensorhub">
+    <device>
+      <name>PSH Gesture Eartouch sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>7.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+    </device>
+  </sensor>
+  <sensor type="device_position" category="libsensorhub">
+    <device>
+      <name>PSH Device Position sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>7.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="lift" category="libsensorhub">
+    <device>
+      <name>PSH Lift sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>7.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+  <sensor type="pan_zoom" category="libsensorhub">
+    <device>
+      <name>PSH Pan Zoom sensor</name>
+      <vendor>Intel Inc.</vendor>
+      <version>1</version>
+      <maxRange>7.0</maxRange>
+      <resolution>1.0</resolution>
+      <power>0.35</power>
+      <minDelay>0</minDelay>
+      <maxDelay>0</maxDelay>
+      <fifoMaxEventCount>2048</fifoMaxEventCount>
+    </device>
+  </sensor>
+</sensor_hal_config>

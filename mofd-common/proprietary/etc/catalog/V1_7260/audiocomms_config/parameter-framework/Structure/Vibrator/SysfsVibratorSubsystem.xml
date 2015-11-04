@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Schemas/Subsystem.xsd" Name="Vibrator" Type="FS" Endianness="Little">
+	<ComponentLibrary>
+		<ComponentType Name="SysFsDir">
+			<BooleanParameter Name="enabled" Mapping="File:vibrator"/>
+			<IntegerParameter Name="pwm_duty_cycle" Size="8" Min="0" Max="64" Mapping="File:pwm_ontime_div"/>
+			<IntegerParameter Name="pwm_baseunit" Size="16" Min="0" Max="32768" Mapping="File:pwm_baseunit"/>
+		</ComponentType>
+	</ComponentLibrary>
+	<InstanceDefinition>
+		<Component Name="state" Type="SysFsDir" Mapping="Directory:/sys/devices/pci0000:00/0000:00:17.0"/>
+	</InstanceDefinition>
+</Subsystem>

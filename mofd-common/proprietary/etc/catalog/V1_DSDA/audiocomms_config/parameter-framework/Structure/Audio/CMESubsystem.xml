@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../../Schemas/Subsystem.xsd"
+           Name="CME" Type="REMOTE-PARAMETER" Endianness="Little" Mapping="Amend1:cme">
+    <ComponentLibrary>
+        <ComponentType Name="Direction">
+            <BooleanParameter Name="open" Mapping="BooleanRemoteParameter:%1_%2_open"/>
+        </ComponentType>
+    </ComponentLibrary>
+    <InstanceDefinition>
+        <Component Name="playback" Type="Direction" Mapping="Amend2:playback"/>
+        <Component Name="capture" Type="Direction" Mapping="Amend2:capture"/>
+    </InstanceDefinition>
+</Subsystem>

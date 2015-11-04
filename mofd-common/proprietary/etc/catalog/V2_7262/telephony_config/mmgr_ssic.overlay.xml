@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mmgr_config>
+	<modem_link>
+		<flash>
+			<link_usb device="![CDATA[/dev/ttyACM0]]" pid="0x07ef" vid="0x8087"/>
+		</flash>
+		<baseband>
+			<link_usb device="![CDATA[/dev/ttyACM0]]" pid="0x0452" vid="0x1519"/>
+		</baseband>
+		<power
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:1b.0/ssic/Nautosuspend_enable]]"
+			on="1"
+			off="0"
+		/>
+		<link_ctrl
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:1b.0/ssic/ssic_enable]]"
+			on="1"
+			off="0"
+			reset="1"
+		/>
+	</modem_link>
+	<modem_timings
+		ipc_ready="30"
+		mdm_flash="20"
+	/>
+	<mcdr>
+		<power
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:1b.0/ssic/Nautosuspend_enable]]"
+			on="1"
+			off="0"
+		/>
+		<link_ctrl
+			device="![CDATA[/sys/devices/pci0000:00/0000:00:1b.0/ssic/ssic_enable]]"
+			on="1"
+			off="0"
+			reset="1"
+		/>
+	</mcdr>
+</mmgr_config>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE author [
+	   <!ENTITY channels_default SYSTEM "channels_default.xml" >
+	   <!ENTITY channels_dsda SYSTEM "channels_dsda.xml" >
+]>
+
+<telephony_config>
+	<modems_info>
+		<modem_info>
+			<core
+				name="7260"
+				flashless="true"
+				secured="false"
+				ipc="usb"
+				ipcLogging="usb"
+				ipcDump="usb"
+				swRevision="4.0"
+				hwRevision="20"
+			/>
+			<modules
+				mmgr_xml="mmgr_7260_conf_4.xml"
+				rril_txt="rril_7260_conf_1.txt"
+			/>
+			&channels_default;
+		</modem_info>
+		<modem_info>
+			<core
+				name="2230"
+				flashless="true"
+				secured="false"
+				ipc="spi"
+				ipcLogging="spi"
+				ipcDump="uart"
+				swRevision="1.1"
+				hwRevision="20"
+			/>
+			<modules
+				mmgr_xml="mmgr_2230_conf_1.xml"
+				rril_txt="rril_2230_conf_1.txt"
+			/>
+			&channels_dsda;
+		</modem_info>
+	</modems_info>
+</telephony_config>
