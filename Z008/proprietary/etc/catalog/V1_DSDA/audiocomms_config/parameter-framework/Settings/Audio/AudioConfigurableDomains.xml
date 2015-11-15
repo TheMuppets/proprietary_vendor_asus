@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConfigurableDomains xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation=".6BhtLIkYYB/Schemas/ConfigurableDomains.xsd" SystemClassName="Audio">
+<ConfigurableDomains xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation=".w9wda0Y6DQ/Schemas/ConfigurableDomains.xsd" SystemClassName="Audio">
   <ConfigurableDomain Name="AudioConfiguration" SequenceAware="false">
     <Configurations>
       <Configuration Name="Default">
@@ -12240,8 +12240,8 @@
                   <IntegerParameter Name="m_lp4_coeff">20713</IntegerParameter>
                   <IntegerParameter Name="m_lp3_coeff">800</IntegerParameter>
                   <IntegerParameter Name="m_l_a">-16640</IntegerParameter>
-                  <IntegerParameter Name="m_l_b">-6400</IntegerParameter>
-                  <IntegerParameter Name="m_g_comp">3072</IntegerParameter>
+                  <IntegerParameter Name="m_l_b">-5632</IntegerParameter>
+                  <IntegerParameter Name="m_g_comp">2304</IntegerParameter>
                   <IntegerParameter Name="um_r_infa">512</IntegerParameter>
                   <IntegerParameter Name="um_r_ab">256</IntegerParameter>
                   <IntegerParameter Name="um_r_b0">0</IntegerParameter>
@@ -16175,24 +16175,24 @@
               <EnumParameter Name="order">Eighth</EnumParameter>
               <ParameterBlock Name="biquad">
                 <Component Name="0">
-                  <FixedPointParameter Name="a1">0.523895263671875</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.510894775390625</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.122344970703125</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.234924316406250</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.233276367187500</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.324462890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.619995117187500</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.667175292968750</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="1">
-                  <FixedPointParameter Name="a1">-0.067474365234375</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.014038085937500</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.599487304687500</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.558837890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.066680908203125</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.030670166015625</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.716003417968750</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.678314208984375</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="2">
-                  <FixedPointParameter Name="a1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.000000000000000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.623687744140625</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.588653564453125</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.690704345703125</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.697967529296875</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="3">
@@ -16225,24 +16225,24 @@
               <EnumParameter Name="order">Eighth</EnumParameter>
               <ParameterBlock Name="biquad">
                 <Component Name="0">
-                  <FixedPointParameter Name="a1">0.523895263671875</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.510894775390625</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.122344970703125</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.234924316406250</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.233276367187500</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.324462890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.619995117187500</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.667175292968750</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="1">
-                  <FixedPointParameter Name="a1">-0.067474365234375</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.014038085937500</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.599487304687500</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.558837890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.066680908203125</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.030670166015625</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.716003417968750</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.678314208984375</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="2">
-                  <FixedPointParameter Name="a1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.000000000000000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.623687744140625</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.588653564453125</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.690704345703125</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.697967529296875</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="3">
@@ -16275,24 +16275,24 @@
               <EnumParameter Name="order">Eighth</EnumParameter>
               <ParameterBlock Name="biquad">
                 <Component Name="0">
-                  <FixedPointParameter Name="a1">0.523895263671875</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.510894775390625</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.122344970703125</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.234924316406250</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.233276367187500</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.324462890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.619995117187500</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.667175292968750</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="1">
-                  <FixedPointParameter Name="a1">-0.067474365234375</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.014038085937500</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.599487304687500</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.558837890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.066680908203125</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.030670166015625</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.716003417968750</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.678314208984375</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="2">
-                  <FixedPointParameter Name="a1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.000000000000000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.623687744140625</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.588653564453125</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.690704345703125</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.697967529296875</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="3">
@@ -16325,24 +16325,24 @@
               <EnumParameter Name="order">Eighth</EnumParameter>
               <ParameterBlock Name="biquad">
                 <Component Name="0">
-                  <FixedPointParameter Name="a1">0.523895263671875</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.510894775390625</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.122344970703125</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.234924316406250</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.233276367187500</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.324462890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.619995117187500</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.667175292968750</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="1">
-                  <FixedPointParameter Name="a1">-0.067474365234375</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.014038085937500</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.599487304687500</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.558837890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.066680908203125</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.030670166015625</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.716003417968750</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.678314208984375</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="2">
-                  <FixedPointParameter Name="a1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.000000000000000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.623687744140625</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.588653564453125</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.690704345703125</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.697967529296875</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="3">
@@ -16375,24 +16375,24 @@
               <EnumParameter Name="order">Eighth</EnumParameter>
               <ParameterBlock Name="biquad">
                 <Component Name="0">
-                  <FixedPointParameter Name="a1">0.523895263671875</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.510894775390625</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.122344970703125</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.234924316406250</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.233276367187500</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.324462890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.619995117187500</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.667175292968750</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="1">
-                  <FixedPointParameter Name="a1">-0.067474365234375</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.014038085937500</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.599487304687500</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.558837890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.066680908203125</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.030670166015625</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.716003417968750</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.678314208984375</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="2">
-                  <FixedPointParameter Name="a1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.000000000000000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.623687744140625</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.588653564453125</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.690704345703125</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.697967529296875</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="3">
@@ -16425,24 +16425,24 @@
               <EnumParameter Name="order">Eighth</EnumParameter>
               <ParameterBlock Name="biquad">
                 <Component Name="0">
-                  <FixedPointParameter Name="a1">0.523895263671875</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.510894775390625</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.122344970703125</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.234924316406250</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.233276367187500</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.324462890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.619995117187500</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.667175292968750</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="1">
-                  <FixedPointParameter Name="a1">-0.067474365234375</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.014038085937500</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.599487304687500</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.558837890625000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.066680908203125</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.030670166015625</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.716003417968750</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.678314208984375</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="2">
-                  <FixedPointParameter Name="a1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b1">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="a2">0.000000000000000</FixedPointParameter>
-                  <FixedPointParameter Name="b2">0.000000000000000</FixedPointParameter>
+                  <FixedPointParameter Name="a1">0.623687744140625</FixedPointParameter>
+                  <FixedPointParameter Name="b1">0.588653564453125</FixedPointParameter>
+                  <FixedPointParameter Name="a2">0.690704345703125</FixedPointParameter>
+                  <FixedPointParameter Name="b2">0.697967529296875</FixedPointParameter>
                   <FixedPointParameter Name="a0">0.999969482421875</FixedPointParameter>
                 </Component>
                 <Component Name="3">
@@ -19280,9 +19280,9 @@
                 <IntegerParameter Name="m_lp2_coeff">3850</IntegerParameter>
                 <IntegerParameter Name="m_lp4_coeff">20713</IntegerParameter>
                 <IntegerParameter Name="m_lp3_coeff">1598</IntegerParameter>
-                <IntegerParameter Name="m_l_a">-15360</IntegerParameter>
+                <IntegerParameter Name="m_l_a">-17920</IntegerParameter>
                 <IntegerParameter Name="m_l_b">-8960</IntegerParameter>
-                <IntegerParameter Name="m_g_comp">3840</IntegerParameter>
+                <IntegerParameter Name="m_g_comp">4608</IntegerParameter>
                 <IntegerParameter Name="um_r_infa">384</IntegerParameter>
                 <IntegerParameter Name="um_r_ab">256</IntegerParameter>
                 <IntegerParameter Name="um_r_b0">26</IntegerParameter>
@@ -19352,9 +19352,9 @@
                 <IntegerParameter Name="m_lp2_coeff">1985</IntegerParameter>
                 <IntegerParameter Name="m_lp4_coeff">12893</IntegerParameter>
                 <IntegerParameter Name="m_lp3_coeff">809</IntegerParameter>
-                <IntegerParameter Name="m_l_a">-15360</IntegerParameter>
+                <IntegerParameter Name="m_l_a">-17920</IntegerParameter>
                 <IntegerParameter Name="m_l_b">-8960</IntegerParameter>
-                <IntegerParameter Name="m_g_comp">3840</IntegerParameter>
+                <IntegerParameter Name="m_g_comp">4608</IntegerParameter>
                 <IntegerParameter Name="um_r_infa">384</IntegerParameter>
                 <IntegerParameter Name="um_r_ab">256</IntegerParameter>
                 <IntegerParameter Name="um_r_b0">26</IntegerParameter>
@@ -25128,8 +25128,25 @@
       </Configuration>
     </Settings>
   </ConfigurableDomain>
-  <ConfigurableDomain Name="Routing.Enable.HwCodec.Capture.Headset" SequenceAware="false">
+  <ConfigurableDomain Name="Routing.Enable.HwCodec.Capture.Headset" SequenceAware="true">
     <Configurations>
+      <Configuration Name="TtyVcoMute">
+        <CompoundRule Type="All">
+          <SelectionCriterionRule SelectionCriterion="RoutageState" MatchesWhen="Includes" Value="Path"/>
+          <CompoundRule Type="All">
+            <SelectionCriterionRule SelectionCriterion="TTYDirection" MatchesWhen="Includes" Value="Downlink"/>
+            <SelectionCriterionRule SelectionCriterion="TTYDirection" MatchesWhen="Excludes" Value="Uplink"/>
+            <CompoundRule Type="Any">
+              <SelectionCriterionRule SelectionCriterion="OpenedCaptureRoutes" MatchesWhen="Includes" Value="ModemIA"/>
+              <SelectionCriterionRule SelectionCriterion="OpenedCaptureRoutes" MatchesWhen="Includes" Value="Modem2IA"/>
+            </CompoundRule>
+          </CompoundRule>
+          <CompoundRule Type="All">
+            <SelectionCriterionRule SelectionCriterion="SelectedInputDevice" MatchesWhen="Includes" Value="Headset"/>
+            <SelectionCriterionRule SelectionCriterion="OpenedCaptureRoutes" MatchesWhen="Includes" Value="HwCodecIA"/>
+          </CompoundRule>
+        </CompoundRule>
+      </Configuration>
       <Configuration Name="Enable">
         <CompoundRule Type="All">
           <SelectionCriterionRule SelectionCriterion="RoutageState" MatchesWhen="Includes" Value="Path"/>
@@ -25152,6 +25169,11 @@
       <ConfigurableElement Path="/Audio/RT5647/INPUT/HEADSET/SWITCH"/>
     </ConfigurableElements>
     <Settings>
+      <Configuration Name="TtyVcoMute">
+        <ConfigurableElement Path="/Audio/RT5647/INPUT/HEADSET/SWITCH">
+          <BooleanParameter Name="SWITCH">0</BooleanParameter>
+        </ConfigurableElement>
+      </Configuration>
       <Configuration Name="Enable">
         <ConfigurableElement Path="/Audio/RT5647/INPUT/HEADSET/SWITCH">
           <BooleanParameter Name="SWITCH">1</BooleanParameter>
@@ -25623,8 +25645,28 @@
       </Configuration>
     </Settings>
   </ConfigurableDomain>
-  <ConfigurableDomain Name="Routing.Mute.HwCodec.Playback.WiredSpeakers" SequenceAware="false">
+  <ConfigurableDomain Name="Routing.Mute.HwCodec.Playback.WiredSpeakers" SequenceAware="true">
     <Configurations>
+      <Configuration Name="TtyHcoMute">
+        <CompoundRule Type="All">
+          <SelectionCriterionRule SelectionCriterion="RoutageState" MatchesWhen="Includes" Value="Flow"/>
+          <CompoundRule Type="All">
+            <SelectionCriterionRule SelectionCriterion="TTYDirection" MatchesWhen="Includes" Value="Uplink"/>
+            <SelectionCriterionRule SelectionCriterion="TTYDirection" MatchesWhen="Excludes" Value="Downlink"/>
+            <CompoundRule Type="Any">
+              <SelectionCriterionRule SelectionCriterion="OpenedPlaybackRoutes" MatchesWhen="Includes" Value="ModemIA"/>
+              <SelectionCriterionRule SelectionCriterion="OpenedPlaybackRoutes" MatchesWhen="Includes" Value="Modem2IA"/>
+            </CompoundRule>
+          </CompoundRule>
+          <CompoundRule Type="All">
+            <SelectionCriterionRule SelectionCriterion="OpenedPlaybackRoutes" MatchesWhen="Includes" Value="HwCodecIA"/>
+            <CompoundRule Type="Any">
+              <SelectionCriterionRule SelectionCriterion="SelectedOutputDevice" MatchesWhen="Includes" Value="Headset"/>
+              <SelectionCriterionRule SelectionCriterion="SelectedOutputDevice" MatchesWhen="Includes" Value="Headphones"/>
+            </CompoundRule>
+          </CompoundRule>
+        </CompoundRule>
+      </Configuration>
       <Configuration Name="Unmute">
         <CompoundRule Type="All">
           <SelectionCriterionRule SelectionCriterion="RoutageState" MatchesWhen="Includes" Value="Flow"/>
@@ -25650,6 +25692,11 @@
       <ConfigurableElement Path="/Audio/RT5647/OUTPUT/HEADPHONE/SWITCH"/>
     </ConfigurableElements>
     <Settings>
+      <Configuration Name="TtyHcoMute">
+        <ConfigurableElement Path="/Audio/RT5647/OUTPUT/HEADPHONE/SWITCH">
+          <BooleanParameter Name="SWITCH">0</BooleanParameter>
+        </ConfigurableElement>
+      </Configuration>
       <Configuration Name="Unmute">
         <ConfigurableElement Path="/Audio/RT5647/OUTPUT/HEADPHONE/SWITCH">
           <BooleanParameter Name="SWITCH">1</BooleanParameter>
