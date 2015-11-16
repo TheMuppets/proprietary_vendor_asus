@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConfigurableDomains xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation=".pLtycKctZd/Schemas/ConfigurableDomains.xsd" SystemClassName="Audio">
+<ConfigurableDomains xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation=".TQdqajcChH/Schemas/ConfigurableDomains.xsd" SystemClassName="Audio">
   <ConfigurableDomain Name="AudioConfiguration" SequenceAware="false">
     <Configurations>
       <Configuration Name="Default">
@@ -24542,8 +24542,25 @@
       </Configuration>
     </Settings>
   </ConfigurableDomain>
-  <ConfigurableDomain Name="Routing.Enable.HwCodec.Capture.Headset" SequenceAware="false">
+  <ConfigurableDomain Name="Routing.Enable.HwCodec.Capture.Headset" SequenceAware="true">
     <Configurations>
+      <Configuration Name="TtyVcoMute">
+        <CompoundRule Type="All">
+          <SelectionCriterionRule SelectionCriterion="RoutageState" MatchesWhen="Includes" Value="Path"/>
+          <CompoundRule Type="All">
+            <SelectionCriterionRule SelectionCriterion="TTYDirection" MatchesWhen="Includes" Value="Downlink"/>
+            <SelectionCriterionRule SelectionCriterion="TTYDirection" MatchesWhen="Excludes" Value="Uplink"/>
+            <CompoundRule Type="Any">
+              <SelectionCriterionRule SelectionCriterion="OpenedCaptureRoutes" MatchesWhen="Includes" Value="ModemIA"/>
+              <SelectionCriterionRule SelectionCriterion="OpenedCaptureRoutes" MatchesWhen="Includes" Value="Modem2IA"/>
+            </CompoundRule>
+          </CompoundRule>
+          <CompoundRule Type="All">
+            <SelectionCriterionRule SelectionCriterion="SelectedInputDevice" MatchesWhen="Includes" Value="Headset"/>
+            <SelectionCriterionRule SelectionCriterion="OpenedCaptureRoutes" MatchesWhen="Includes" Value="HwCodecIA"/>
+          </CompoundRule>
+        </CompoundRule>
+      </Configuration>
       <Configuration Name="Enable">
         <CompoundRule Type="All">
           <SelectionCriterionRule SelectionCriterion="RoutageState" MatchesWhen="Includes" Value="Path"/>
@@ -24566,6 +24583,11 @@
       <ConfigurableElement Path="/Audio/RT5647/INPUT/HEADSET/SWITCH"/>
     </ConfigurableElements>
     <Settings>
+      <Configuration Name="TtyVcoMute">
+        <ConfigurableElement Path="/Audio/RT5647/INPUT/HEADSET/SWITCH">
+          <BooleanParameter Name="SWITCH">0</BooleanParameter>
+        </ConfigurableElement>
+      </Configuration>
       <Configuration Name="Enable">
         <ConfigurableElement Path="/Audio/RT5647/INPUT/HEADSET/SWITCH">
           <BooleanParameter Name="SWITCH">1</BooleanParameter>
@@ -25037,8 +25059,28 @@
       </Configuration>
     </Settings>
   </ConfigurableDomain>
-  <ConfigurableDomain Name="Routing.Mute.HwCodec.Playback.WiredSpeakers" SequenceAware="false">
+  <ConfigurableDomain Name="Routing.Mute.HwCodec.Playback.WiredSpeakers" SequenceAware="true">
     <Configurations>
+      <Configuration Name="TtyHcoMute">
+        <CompoundRule Type="All">
+          <SelectionCriterionRule SelectionCriterion="RoutageState" MatchesWhen="Includes" Value="Flow"/>
+          <CompoundRule Type="All">
+            <SelectionCriterionRule SelectionCriterion="TTYDirection" MatchesWhen="Includes" Value="Uplink"/>
+            <SelectionCriterionRule SelectionCriterion="TTYDirection" MatchesWhen="Excludes" Value="Downlink"/>
+            <CompoundRule Type="Any">
+              <SelectionCriterionRule SelectionCriterion="OpenedPlaybackRoutes" MatchesWhen="Includes" Value="ModemIA"/>
+              <SelectionCriterionRule SelectionCriterion="OpenedPlaybackRoutes" MatchesWhen="Includes" Value="Modem2IA"/>
+            </CompoundRule>
+          </CompoundRule>
+          <CompoundRule Type="All">
+            <SelectionCriterionRule SelectionCriterion="OpenedPlaybackRoutes" MatchesWhen="Includes" Value="HwCodecIA"/>
+            <CompoundRule Type="Any">
+              <SelectionCriterionRule SelectionCriterion="SelectedOutputDevice" MatchesWhen="Includes" Value="Headset"/>
+              <SelectionCriterionRule SelectionCriterion="SelectedOutputDevice" MatchesWhen="Includes" Value="Headphones"/>
+            </CompoundRule>
+          </CompoundRule>
+        </CompoundRule>
+      </Configuration>
       <Configuration Name="Unmute">
         <CompoundRule Type="All">
           <SelectionCriterionRule SelectionCriterion="RoutageState" MatchesWhen="Includes" Value="Flow"/>
@@ -25064,6 +25106,11 @@
       <ConfigurableElement Path="/Audio/RT5647/OUTPUT/HEADPHONE/SWITCH"/>
     </ConfigurableElements>
     <Settings>
+      <Configuration Name="TtyHcoMute">
+        <ConfigurableElement Path="/Audio/RT5647/OUTPUT/HEADPHONE/SWITCH">
+          <BooleanParameter Name="SWITCH">0</BooleanParameter>
+        </ConfigurableElement>
+      </Configuration>
       <Configuration Name="Unmute">
         <ConfigurableElement Path="/Audio/RT5647/OUTPUT/HEADPHONE/SWITCH">
           <BooleanParameter Name="SWITCH">1</BooleanParameter>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ConfigurableDomains xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation=".RfsIzBz1uh/Schemas/ConfigurableDomains.xsd" SystemClassName="Route">
+<ConfigurableDomains xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation=".k3kcnOTWh2/Schemas/ConfigurableDomains.xsd" SystemClassName="Route">
   <ConfigurableDomain Name="Calibration.HwPlatform" SequenceAware="false">
     <Configurations>
       <Configuration Name="Default">

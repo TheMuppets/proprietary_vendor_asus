@@ -295,7 +295,7 @@
 		<defaultFlashMode value="auto"/> <!-- one value of the supportedFlashModes. if not support, please set it to "off" -->
 		<supportedIso value="iso-auto,iso-100,iso-200,iso-400,iso-800"/> <!-- if not support, please set it to "" -->
 		<defaultIso value="iso-auto"/> <!-- one value of the supportedIso. if not support, please set it to "" -->
-		<supportedSceneModes value="auto,night,hdr"/> <!-- if not support, please set it to "" -->
+		<supportedSceneModes value="auto,night"/> <!-- if not support, please set it to "" -->
 		<defaultSceneMode value="auto"/> <!-- one value of the supportedSceneModes. if not support, please set it to "" -->
 		<supportedEffectModes value="none,mono,negative,sepia"/> <!-- if not support, please set it to "none" -->
 		<supportedIntelEffectModes value="none,mono,negative,sepia,vivid,still-sky-blue,still-grass-green,still-skin-whiten-low,still-skin-whiten-medium,still-skin-whiten-high"/> <!-- if not support, please set it to "none" -->
@@ -411,7 +411,7 @@
 		<defaultFlashMode value="off"/>
 		<supportedIso value="iso-auto,iso-100,iso-200,iso-400,iso-800"/> <!-- if not support, please set it to "" -->
 		<defaultIso value="iso-auto"/> <!-- one value of the supportedIso. if not support, please set it to "" -->
-		<supportedSceneModes value="auto,night,hdr"/>
+		<supportedSceneModes value="auto,night"/>
 		<defaultSceneMode value="auto"/> <!-- one value of the supportedSceneModes. if not support, please set it to "" -->
 		<supportedEffectModes value="none,mono,negative,sepia"/> <!-- if not support, please set it to "none" -->
 		<supportedIntelEffectModes value="none,mono,negative,sepia,vivid,still-sky-blue,still-grass-green,still-skin-whiten-low,still-skin-whiten-medium,still-skin-whiten-high"/> <!-- if not support, please set it to "none" -->
