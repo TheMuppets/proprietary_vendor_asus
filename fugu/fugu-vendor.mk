@@ -257,6 +257,7 @@ PRODUCT_COPY_FILES += \
     vendor/asus/fugu/proprietary/vendor/lib/mediadrm/libwvdrmengine.so:system/vendor/lib/mediadrm/libwvdrmengine.so
 
 PRODUCT_PACKAGES += \
+    AndroidMediaShell \
     AtvRemoteService \
     LeanbackLauncher \
     TV \
