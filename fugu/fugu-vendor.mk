@@ -41,7 +41,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/fugu/proprietary/etc/vp9_interpredict.binary:system/etc/vp9_interpredict.binary \
     vendor/asus/fugu/proprietary/etc/wifi/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
     vendor/asus/fugu/proprietary/etc/wifi/bcmdhd_sr2.cal:system/etc/wifi/bcmdhd_sr2.cal \
-    vendor/asus/fugu/proprietary/framework/com.google.widevine.software.drm.jar:system/framework/com.google.widevine.software.drm.jar \
     vendor/asus/fugu/proprietary/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
     vendor/asus/fugu/proprietary/lib/arm/libEGL.so:system/lib/arm/libEGL.so \
     vendor/asus/fugu/proprietary/lib/arm/libETC1.so:system/lib/arm/libETC1.so \
@@ -219,9 +218,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/fugu/proprietary/lib/libmixvbp_vp8.so:system/lib/libmixvbp_vp8.so \
     vendor/asus/fugu/proprietary/lib/libsepdrm_cc54.so:system/lib/libsepdrm_cc54.so \
     vendor/asus/fugu/proprietary/lib/libstlport-mfx.so:system/lib/libstlport-mfx.so \
-    vendor/asus/fugu/proprietary/priv-app/AtvRemoteService/AtvRemoteService.apk:system/priv-app/AtvRemoteService/AtvRemoteService.apk \
-    vendor/asus/fugu/proprietary/priv-app/LeanbackLauncher/LeanbackLauncher.apk:system/priv-app/LeanbackLauncher/LeanbackLauncher.apk \
-    vendor/asus/fugu/proprietary/priv-app/TV/TV.apk:system/priv-app/TV/TV.apk \
     vendor/asus/fugu/proprietary/vendor/bin/hwperfbin2jsont:system/vendor/bin/hwperfbin2jsont \
     vendor/asus/fugu/proprietary/vendor/bin/pvrdebug:system/vendor/bin/pvrdebug \
     vendor/asus/fugu/proprietary/vendor/bin/pvrhtb2txt:system/vendor/bin/pvrhtb2txt \
@@ -259,3 +255,9 @@ PRODUCT_COPY_FILES += \
     vendor/asus/fugu/proprietary/vendor/lib/libwvm.so:system/vendor/lib/libwvm.so \
     vendor/asus/fugu/proprietary/vendor/lib/mediadrm/libplayreadydrmplugin.so:system/vendor/lib/mediadrm/libplayreadydrmplugin.so \
     vendor/asus/fugu/proprietary/vendor/lib/mediadrm/libwvdrmengine.so:system/vendor/lib/mediadrm/libwvdrmengine.so
+
+PRODUCT_PACKAGES += \
+    AtvRemoteService \
+    LeanbackLauncher \
+    TV \
+    com.google.widevine.software.drm
