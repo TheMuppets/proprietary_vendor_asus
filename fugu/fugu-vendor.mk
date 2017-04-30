@@ -265,3 +265,4 @@ PRODUCT_PACKAGES += \
     Overscan \
     RemoteControlService \
     com.google.widevine.software.drm
+    libremotecontrolservice
