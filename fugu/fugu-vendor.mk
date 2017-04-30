@@ -259,12 +259,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     AndroidMediaShell \
     AtvRemoteService \
-    CanvasPackageInstaller \
     GamepadPairingService \
     GlobalKeyInterceptor \
     LeanbackIme \
-    LeanbackLauncher \
     Overscan \
     RemoteControlService \
-    TV \
     com.google.widevine.software.drm
