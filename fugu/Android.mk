@@ -64,7 +64,7 @@ include $(BUILD_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE := LeanbackIme
 LOCAL_MODULE_OWNER := google
-LOCAL_SRC_FILES := proprietary/app/LeanbackLauncher/LeanbackLauncher.apk
+LOCAL_SRC_FILES := proprietary/app/LeanbackIme/LeanbackIme.apk
 LOCAL_CERTIFICATE := PRESIGNED
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := APPS
