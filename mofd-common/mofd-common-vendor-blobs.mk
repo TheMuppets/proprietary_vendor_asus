@@ -815,7 +815,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/mofd-common/proprietary/lib/hw/sensors.mofd_v1.so:system/lib/hw/sensors.mofd_v1.so \
     vendor/asus/mofd-common/proprietary/lib/libcontextarbitor.so:system/lib/libcontextarbitor.so \
     vendor/asus/mofd-common/proprietary/lib/libsensorhub.so:system/lib/libsensorhub.so \
-    vendor/asus/mofd-common/proprietary/lib/libvirtualsensors.so:system/lib/libvirtualsensors.so \
     vendor/asus/mofd-common/proprietary/bin/thermald:system/bin/thermald \
     vendor/asus/mofd-common/proprietary/etc/wifi/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
     vendor/asus/mofd-common/proprietary/etc/wifi/bcmdhd_zx551ml.cal:system/etc/wifi/bcmdhd_zx551ml.cal \
