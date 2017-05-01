@@ -264,5 +264,5 @@ PRODUCT_PACKAGES += \
     LeanbackIme \
     Overscan \
     RemoteControlService \
-    com.google.widevine.software.drm
+    com.google.widevine.software.drm \
     libremotecontrolservice
