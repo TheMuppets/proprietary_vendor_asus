@@ -38,6 +38,7 @@ PRODUCT_COPY_FILES += \
     vendor/asus/fugu/proprietary/etc/firmware/vsp.bin.0008.0002.0001:system/etc/firmware/vsp.bin.0008.0002.0001 \
     vendor/asus/fugu/proprietary/etc/firmware/vsp.bin.000c.0001.0001:system/etc/firmware/vsp.bin.000c.0001.0001 \
     vendor/asus/fugu/proprietary/etc/permissions/com.google.widevine.software.drm.xml:system/etc/permissions/com.google.widevine.software.drm.xml \
+    vendor/asus/fugu/proprietary/etc/permissions/nrdp.modelgroup.xml:system/etc/permissions/nrdp.modelgroup.xml \
     vendor/asus/fugu/proprietary/etc/vp9_interpredict.binary:system/etc/vp9_interpredict.binary \
     vendor/asus/fugu/proprietary/etc/wifi/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
     vendor/asus/fugu/proprietary/etc/wifi/bcmdhd_sr2.cal:system/etc/wifi/bcmdhd_sr2.cal \
@@ -235,7 +236,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/fugu/proprietary/vendor/lib/libdrmdecrypt.so:system/vendor/lib/libdrmdecrypt.so \
     vendor/asus/fugu/proprietary/vendor/lib/libeffects.so:system/vendor/lib/libeffects.so \
     vendor/asus/fugu/proprietary/vendor/lib/libglslcompiler.so:system/vendor/lib/libglslcompiler.so \
-    vendor/asus/fugu/proprietary/vendor/lib/liboemcrypto.so:system/vendor/lib/liboemcrypto.so \
     vendor/asus/fugu/proprietary/vendor/lib/libpvrANDROID_WSEGL.so:system/vendor/lib/libpvrANDROID_WSEGL.so \
     vendor/asus/fugu/proprietary/vendor/lib/libpvrcpt.so:system/vendor/lib/libpvrcpt.so \
     vendor/asus/fugu/proprietary/vendor/lib/libseppr_hal.so:system/vendor/lib/libseppr_hal.so \
@@ -250,5 +250,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libremotecontrolservice \
     AtvRemoteService \
+    GamepadPairingService \
+    GlobalKeyInterceptor \
+    RemoteControlService \
     TV \
     com.google.widevine.software.drm
