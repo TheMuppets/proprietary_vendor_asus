@@ -17,7 +17,6 @@
 PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/bin/dpmd:system/bin/dpmd \
     vendor/asus/X00TD/proprietary/bin/fmconfig:system/bin/fmconfig \
-    vendor/asus/X00TD/proprietary/vendor/bin/gatekeeperd:$(TARGET_COPY_OUT_VENDOR)/bin/gatekeeperd \
     vendor/asus/X00TD/proprietary/bin/mm-qcamera-daemon:system/bin/mm-qcamera-daemon \
     vendor/asus/X00TD/proprietary/bin/wfdservice:system/bin/wfdservice \
     vendor/asus/X00TD/proprietary/etc/cne/SwimConfig.xml:system/etc/cne/SwimConfig.xml \
@@ -25,7 +24,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/etc/dpm/dpm.conf:system/etc/dpm/dpm.conf \
     vendor/asus/X00TD/proprietary/etc/dpm/nsrm/NsrmConfiguration.xml:system/etc/dpm/nsrm/NsrmConfiguration.xml \
     vendor/asus/X00TD/proprietary/etc/init/dpmd.rc:system/etc/init/dpmd.rc \
-    vendor/asus/X00TD/proprietary/vendor/etc/init/gatekeeperd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/gatekeeperd.rc \
     vendor/asus/X00TD/proprietary/etc/init/wfdservice.rc:system/etc/init/wfdservice.rc \
     vendor/asus/X00TD/proprietary/etc/permissions/cneapiclient.xml:system/etc/permissions/cneapiclient.xml \
     vendor/asus/X00TD/proprietary/etc/permissions/com.nxp.nfc.xml:system/etc/permissions/com.nxp.nfc.xml \
@@ -3039,6 +3037,7 @@ PRODUCT_PACKAGES += \
     libthermalclient \
     libloc_api_v02 \
     libtime_genoff \
+    CallFeaturesSetting \
     QtiTelephonyService \
     WfdService \
     datastatusnotification \
