@@ -3032,6 +3032,7 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/speccfg/switch_spec.sh:$(TARGET_COPY_OUT_VENDOR)/speccfg/switch_spec.sh
 
 PRODUCT_PACKAGES += \
+    libantradio \
     libgpustats \
     libsdm-disp-vndapis \
     libthermalclient \
