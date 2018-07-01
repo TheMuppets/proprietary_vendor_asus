@@ -17,7 +17,6 @@
 PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/bin/dpmd:system/bin/dpmd \
     vendor/asus/X00TD/proprietary/bin/fmconfig:system/bin/fmconfig \
-    vendor/asus/X00TD/proprietary/bin/mm-qcamera-daemon:system/bin/mm-qcamera-daemon \
     vendor/asus/X00TD/proprietary/bin/wfdservice:system/bin/wfdservice \
     vendor/asus/X00TD/proprietary/etc/cne/SwimConfig.xml:system/etc/cne/SwimConfig.xml \
     vendor/asus/X00TD/proprietary/etc/cne/andsfCne.xml:system/etc/cne/andsfCne.xml \
@@ -40,7 +39,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/etc/permissions/qti_permissions.xml:system/etc/permissions/qti_permissions.xml \
     vendor/asus/X00TD/proprietary/etc/permissions/telephonyservice.xml:system/etc/permissions/telephonyservice.xml \
     vendor/asus/X00TD/proprietary/etc/permissions/vendor-qti-hardware-alarm.xml:system/etc/permissions/vendor-qti-hardware-alarm.xml \
-    vendor/asus/X00TD/proprietary/etc/scve/facereco/gModel.dat:system/etc/scve/facereco/gModel.dat \
     vendor/asus/X00TD/proprietary/etc/wfdconfig.xml:system/etc/wfdconfig.xml \
     vendor/asus/X00TD/proprietary/etc/wfdconfigsink.xml:system/etc/wfdconfigsink.xml \
     vendor/asus/X00TD/proprietary/framework/QtiTelephonyServicelibrary.jar:system/framework/QtiTelephonyServicelibrary.jar \
@@ -55,11 +53,11 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/framework/izat.xt.srv.jar:system/framework/izat.xt.srv.jar \
     vendor/asus/X00TD/proprietary/framework/tcmclient.jar:system/framework/tcmclient.jar \
     vendor/asus/X00TD/proprietary/framework/vendor.qti.hardware.fingerprint-V1.0-java.jar:system/framework/vendor.qti.hardware.fingerprint-V1.0-java.jar \
+    vendor/asus/X00TD/proprietary/lib/android.hardware.sensors@1.0.so:system/lib/android.hardware.sensors@1.0.so \
     vendor/asus/X00TD/proprietary/lib/com.qualcomm.qti.ant@1.0.so:system/lib/com.qualcomm.qti.ant@1.0.so \
     vendor/asus/X00TD/proprietary/lib/com.qualcomm.qti.dpm.api@1.0.so:system/lib/com.qualcomm.qti.dpm.api@1.0.so \
     vendor/asus/X00TD/proprietary/lib/com.qualcomm.qti.wifidisplayhal@1.0.so:system/lib/com.qualcomm.qti.wifidisplayhal@1.0.so \
     vendor/asus/X00TD/proprietary/lib/libExtendedExtractor.so:system/lib/libExtendedExtractor.so \
-    vendor/asus/X00TD/proprietary/lib/libFaceDetectCA.so:system/lib/libFaceDetectCA.so \
     vendor/asus/X00TD/proprietary/lib/libFidoCryptoJNI.so:system/lib/libFidoCryptoJNI.so \
     vendor/asus/X00TD/proprietary/lib/libFidoCrypto_system.so:system/lib/libFidoCrypto_system.so \
     vendor/asus/X00TD/proprietary/lib/libFileMux.so:system/lib/libFileMux.so \
@@ -67,8 +65,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib/libQTEEConnector_system.so:system/lib/libQTEEConnector_system.so \
     vendor/asus/X00TD/proprietary/lib/libaptXHD_encoder.so:system/lib/libaptXHD_encoder.so \
     vendor/asus/X00TD/proprietary/lib/libaptX_encoder.so:system/lib/libaptX_encoder.so \
-    vendor/asus/X00TD/proprietary/lib/libavenhancements.so:system/lib/libavenhancements.so \
-    vendor/asus/X00TD/proprietary/lib/libblurbuster.so:system/lib/libblurbuster.so \
     vendor/asus/X00TD/proprietary/lib/libchromaflash.so:system/lib/libchromaflash.so \
     vendor/asus/X00TD/proprietary/lib/libdiag_system.so:system/lib/libdiag_system.so \
     vendor/asus/X00TD/proprietary/lib/libdpmctmgr.so:system/lib/libdpmctmgr.so \
@@ -77,7 +73,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib/libdpmnsrm.so:system/lib/libdpmnsrm.so \
     vendor/asus/X00TD/proprietary/lib/libdpmtcm.so:system/lib/libdpmtcm.so \
     vendor/asus/X00TD/proprietary/lib/libdualcameraddm.so:system/lib/libdualcameraddm.so \
-    vendor/asus/X00TD/proprietary/lib/libfiltergenerator.so:system/lib/libfiltergenerator.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libgatekeeper.so:$(TARGET_COPY_OUT_VENDOR)/lib/libgatekeeper.so \
     vendor/asus/X00TD/proprietary/lib/libhbtpjni.so:system/lib/libhbtpjni.so \
     vendor/asus/X00TD/proprietary/lib/libjni_blurbuster.so:system/lib/libjni_blurbuster.so \
@@ -105,7 +100,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib/libmmparser.so:system/lib/libmmparser.so \
     vendor/asus/X00TD/proprietary/lib/libmmparser_lite.so:system/lib/libmmparser_lite.so \
     vendor/asus/X00TD/proprietary/lib/liboptizoom.so:system/lib/liboptizoom.so \
-    vendor/asus/X00TD/proprietary/lib/libqct_resampler.so:system/lib/libqct_resampler.so \
     vendor/asus/X00TD/proprietary/lib/libqmi_cci_system.so:system/lib/libqmi_cci_system.so \
     vendor/asus/X00TD/proprietary/lib/libqti-at.so:system/lib/libqti-at.so \
     vendor/asus/X00TD/proprietary/lib/libqti-perfd-client_system.so:system/lib/libqti-perfd-client_system.so \
@@ -157,15 +151,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib/libwfduibcsrc.so:system/lib/libwfduibcsrc.so \
     vendor/asus/X00TD/proprietary/lib/libwfduibcsrcinterface.so:system/lib/libwfduibcsrcinterface.so \
     vendor/asus/X00TD/proprietary/lib/libxt_native.so:system/lib/libxt_native.so \
-    vendor/asus/X00TD/proprietary/lib/rfsa/adsp/libapps_mem_heap.so:system/lib/rfsa/adsp/libapps_mem_heap.so \
-    vendor/asus/X00TD/proprietary/lib/rfsa/adsp/libdspCV_skel.so:system/lib/rfsa/adsp/libdspCV_skel.so \
-    vendor/asus/X00TD/proprietary/lib/rfsa/adsp/libfastcvadsp.so:system/lib/rfsa/adsp/libfastcvadsp.so \
-    vendor/asus/X00TD/proprietary/lib/rfsa/adsp/libfastcvadsp_skel.so:system/lib/rfsa/adsp/libfastcvadsp_skel.so \
-    vendor/asus/X00TD/proprietary/lib/rfsa/adsp/libhvxMathVIO.so:system/lib/rfsa/adsp/libhvxMathVIO.so \
-    vendor/asus/X00TD/proprietary/lib/rfsa/adsp/libqvr_adsp_driver_skel.so:system/lib/rfsa/adsp/libqvr_adsp_driver_skel.so \
-    vendor/asus/X00TD/proprietary/lib/rfsa/adsp/libscveBlobDescriptor_skel.so:system/lib/rfsa/adsp/libscveBlobDescriptor_skel.so \
-    vendor/asus/X00TD/proprietary/lib/rfsa/adsp/libscveFaceLandmark_skel.so:system/lib/rfsa/adsp/libscveFaceLandmark_skel.so \
-    vendor/asus/X00TD/proprietary/lib/rfsa/adsp/libscveT2T_skel.so:system/lib/rfsa/adsp/libscveT2T_skel.so \
     vendor/asus/X00TD/proprietary/lib/vendor.display.color@1.0.so:system/lib/vendor.display.color@1.0.so \
     vendor/asus/X00TD/proprietary/lib/vendor.display.postproc@1.0.so:system/lib/vendor.display.postproc@1.0.so \
     vendor/asus/X00TD/proprietary/lib/vendor.qti.esepowermanager@1.0.so:system/lib/vendor.qti.esepowermanager@1.0.so \
@@ -183,6 +168,7 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib/vendor.qti.hardware.tui_comm@1.0.so:system/lib/vendor.qti.hardware.tui_comm@1.0.so \
     vendor/asus/X00TD/proprietary/lib/vendor.qti.hardware.vpp@1.1.so:system/lib/vendor.qti.hardware.vpp@1.1.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/android.hardware.gatekeeper@1.0.so:$(TARGET_COPY_OUT_VENDOR)/lib64/android.hardware.gatekeeper@1.0.so \
+    vendor/asus/X00TD/proprietary/lib64/android.hardware.sensors@1.0.so:system/lib64/android.hardware.sensors@1.0.so \
     vendor/asus/X00TD/proprietary/lib64/com.qualcomm.qti.ant@1.0.so:system/lib64/com.qualcomm.qti.ant@1.0.so \
     vendor/asus/X00TD/proprietary/lib64/com.qualcomm.qti.dpm.api@1.0.so:system/lib64/com.qualcomm.qti.dpm.api@1.0.so \
     vendor/asus/X00TD/proprietary/lib64/com.qualcomm.qti.imscmservice@1.0.so:system/lib64/com.qualcomm.qti.imscmservice@1.0.so \
@@ -193,7 +179,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib64/lib-imsvtextutils.so:system/lib64/lib-imsvtextutils.so \
     vendor/asus/X00TD/proprietary/lib64/lib-imsvtutils.so:system/lib64/lib-imsvtutils.so \
     vendor/asus/X00TD/proprietary/lib64/libExtendedExtractor.so:system/lib64/libExtendedExtractor.so \
-    vendor/asus/X00TD/proprietary/lib64/libFaceDetectCA.so:system/lib64/libFaceDetectCA.so \
     vendor/asus/X00TD/proprietary/lib64/libFidoCryptoJNI.so:system/lib64/libFidoCryptoJNI.so \
     vendor/asus/X00TD/proprietary/lib64/libFidoCrypto_system.so:system/lib64/libFidoCrypto_system.so \
     vendor/asus/X00TD/proprietary/lib64/libFileMux.so:system/lib64/libFileMux.so \
@@ -201,8 +186,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib64/libQTEEConnector_system.so:system/lib64/libQTEEConnector_system.so \
     vendor/asus/X00TD/proprietary/lib64/libaptXHD_encoder.so:system/lib64/libaptXHD_encoder.so \
     vendor/asus/X00TD/proprietary/lib64/libaptX_encoder.so:system/lib64/libaptX_encoder.so \
-    vendor/asus/X00TD/proprietary/lib64/libavenhancements.so:system/lib64/libavenhancements.so \
-    vendor/asus/X00TD/proprietary/lib64/libblurbuster.so:system/lib64/libblurbuster.so \
     vendor/asus/X00TD/proprietary/lib64/libchromaflash.so:system/lib64/libchromaflash.so \
     vendor/asus/X00TD/proprietary/lib64/libdiag_system.so:system/lib64/libdiag_system.so \
     vendor/asus/X00TD/proprietary/lib64/libdpmctmgr.so:system/lib64/libdpmctmgr.so \
@@ -211,7 +194,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib64/libdpmnsrm.so:system/lib64/libdpmnsrm.so \
     vendor/asus/X00TD/proprietary/lib64/libdpmtcm.so:system/lib64/libdpmtcm.so \
     vendor/asus/X00TD/proprietary/lib64/libdualcameraddm.so:system/lib64/libdualcameraddm.so \
-    vendor/asus/X00TD/proprietary/lib64/libfiltergenerator.so:system/lib64/libfiltergenerator.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libgatekeeper.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgatekeeper.so \
     vendor/asus/X00TD/proprietary/lib64/libhbtpjni.so:system/lib64/libhbtpjni.so \
     vendor/asus/X00TD/proprietary/lib64/libimscamera_jni.so:system/lib64/libimscamera_jni.so \
@@ -540,20 +522,10 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc \
     vendor/asus/X00TD/proprietary/vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc \
     vendor/asus/X00TD/proprietary/vendor/etc/perf/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml \
-    vendor/asus/X00TD/proprietary/vendor/etc/permissions/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml \
     vendor/asus/X00TD/proprietary/vendor/etc/permissions/vendor.qti.hardware.factory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/vendor.qti.hardware.factory.xml \
     vendor/asus/X00TD/proprietary/vendor/etc/qdcm_calib_data_nt36672_1080p_video_mode_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_nt36672_1080p_video_mode_dsi_panel.xml \
     vendor/asus/X00TD/proprietary/vendor/etc/qdcm_calib_data_nt36672_1080p_video_mode_dsi_txd_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_nt36672_1080p_video_mode_dsi_txd_panel.xml \
     vendor/asus/X00TD/proprietary/vendor/etc/qdcm_calib_data_td4310_1080p_video_mode_dsi_txd_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_td4310_1080p_video_mode_dsi_txd_panel.xml \
-    vendor/asus/X00TD/proprietary/vendor/etc/qti-logkit/IMS.dmc:$(TARGET_COPY_OUT_VENDOR)/etc/qti-logkit/IMS.dmc \
-    vendor/asus/X00TD/proprietary/vendor/etc/qti-logkit/audiobasic.dmc:$(TARGET_COPY_OUT_VENDOR)/etc/qti-logkit/audiobasic.dmc \
-    vendor/asus/X00TD/proprietary/vendor/etc/qti-logkit/gnsslocationlogging.dmc:$(TARGET_COPY_OUT_VENDOR)/etc/qti-logkit/gnsslocationlogging.dmc \
-    vendor/asus/X00TD/proprietary/vendor/etc/qti-logkit/goldenlogmask.dmc:$(TARGET_COPY_OUT_VENDOR)/etc/qti-logkit/goldenlogmask.dmc \
-    vendor/asus/X00TD/proprietary/vendor/etc/qti-logkit/qti_logkit_command.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qti-logkit/qti_logkit_command.xml \
-    vendor/asus/X00TD/proprietary/vendor/etc/qti-logkit/qti_logkit_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qti-logkit/qti_logkit_config.xml \
-    vendor/asus/X00TD/proprietary/vendor/etc/qti-logkit/scenarios/IMS.png:$(TARGET_COPY_OUT_VENDOR)/etc/qti-logkit/scenarios/IMS.png \
-    vendor/asus/X00TD/proprietary/vendor/etc/qti-logkit/scenarios/bluetooth.png:$(TARGET_COPY_OUT_VENDOR)/etc/qti-logkit/scenarios/bluetooth.png \
-    vendor/asus/X00TD/proprietary/vendor/etc/qti-logkit/scenarios/default.png:$(TARGET_COPY_OUT_VENDOR)/etc/qti-logkit/scenarios/default.png \
     vendor/asus/X00TD/proprietary/vendor/etc/qvop/antispoofing.bin:$(TARGET_COPY_OUT_VENDOR)/etc/qvop/antispoofing.bin \
     vendor/asus/X00TD/proprietary/vendor/etc/qvop/cmudict.bin:$(TARGET_COPY_OUT_VENDOR)/etc/qvop/cmudict.bin \
     vendor/asus/X00TD/proprietary/vendor/etc/qvop/noisesample.bin:$(TARGET_COPY_OUT_VENDOR)/etc/qvop/noisesample.bin \
@@ -3026,10 +2998,7 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.imsrtpservice@1.0_vendor.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/vendor.qti.voiceprint@1.0.so:$(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.voiceprint@1.0.so \
-    vendor/asus/X00TD/proprietary/vendor/media/LMspeed_508.emd:$(TARGET_COPY_OUT_VENDOR)/media/LMspeed_508.emd \
-    vendor/asus/X00TD/proprietary/vendor/media/PFFprec_600.emd:$(TARGET_COPY_OUT_VENDOR)/media/PFFprec_600.emd \
-    vendor/asus/X00TD/proprietary/vendor/radio/qcril_database/qcril.db:$(TARGET_COPY_OUT_VENDOR)/radio/qcril_database/qcril.db \
-    vendor/asus/X00TD/proprietary/vendor/speccfg/switch_spec.sh:$(TARGET_COPY_OUT_VENDOR)/speccfg/switch_spec.sh
+    vendor/asus/X00TD/proprietary/vendor/radio/qcril_database/qcril.db:$(TARGET_COPY_OUT_VENDOR)/radio/qcril_database/qcril.db
 
 PRODUCT_PACKAGES += \
     libantradio \
