@@ -225,7 +225,7 @@ LensInfo : Information of the lens present in the module.
       <ComboMode>0</ComboMode>
     </CSIInfo>
     <LensInfo>
-      <FocalLength>3.42</FocalLength>
+      <FocalLength>3.52</FocalLength>
       <FNumber>2.0</FNumber>
       <TotalFocusDistance>10</TotalFocusDistance>
       <HorizontalViewAngle>67.4</HorizontalViewAngle>
@@ -239,7 +239,9 @@ LensInfo : Information of the lens present in the module.
     <CameraId>0</CameraId>
     <SensorName>ov16885_holitech_16m</SensorName>
     <ActuatorName>ov16885_holitech_16m_fp5510a</ActuatorName>
-    <!--EepromName>ov16885_ofilm_16m_fm24c64d</EepromName-->
+    <!--Huaqin add for ov16885_holitech eeprom by chengming at 2018/06/14 start-->
+    <EepromName>ov16885_holitech_16m_fm24c64d</EepromName>
+    <!--Huaqin add for ov16885_holitech eeprom by chengming at 2018/06/14 end-->
     <FlashName>pmic</FlashName>
     <ChromatixName>ov16885_holitech_16m_chromatix</ChromatixName>
     <ModesSupported>1</ModesSupported>
@@ -287,6 +289,32 @@ LensInfo : Information of the lens present in the module.
       <!--Huaqin modify for backfill lens parameter by lizihao at 2018/3/12 end-->
     </LensInfo>
   </CameraModuleConfig>
+  <!--Huaqin add for ov8856-1b compatible by lizihao at 2018/06/22 start-->
+  <CameraModuleConfig>
+    <CameraId>1</CameraId>
+    <SensorName>ov8856b_chicony_front</SensorName>
+    <EepromName>ov8856_chicony_front</EepromName>
+    <FlashName>pmic</FlashName>
+    <ChromatixName>ov8856_chicony_front_chromatix</ChromatixName>
+    <ModesSupported>1</ModesSupported>
+    <Position>FRONT</Position>
+    <MountAngle>270</MountAngle>
+    <CSIInfo>
+      <CSIDCore>2</CSIDCore>
+      <LaneMask>0x1F</LaneMask>
+      <LaneAssign>0x4320</LaneAssign>
+      <ComboMode>0</ComboMode>
+    </CSIInfo>
+    <LensInfo>
+      <FocalLength>2.48</FocalLength>
+      <FNumber>2.2</FNumber>
+      <TotalFocusDistance>0.40</TotalFocusDistance>
+      <HorizontalViewAngle>72.5</HorizontalViewAngle>
+      <VerticalViewAngle>57.5</VerticalViewAngle>
+      <MinFocusDistance>0.1</MinFocusDistance>
+    </LensInfo>
+  </CameraModuleConfig>
+  <!--Huaqin add for ov8856-1b compatible by lizihao at 2018/06/22 end-->
   <!--Huaqin add for second supply camera by lizihao at 2018/03/21 start-->
   <CameraModuleConfig>
     <CameraId>1</CameraId>
@@ -359,7 +387,7 @@ LensInfo : Information of the lens present in the module.
     </CSIInfo>
     <!--Huaqin backfill 16M front ov16885 lens info by lizihao at 2018/05/07 start-->
     <LensInfo>
-      <FocalLength>3.52</FocalLength>
+      <FocalLength>3.43</FocalLength>
       <FNumber>2.0</FNumber>
       <TotalFocusDistance>0.40</TotalFocusDistance>
       <HorizontalViewAngle>67.0</HorizontalViewAngle>
