@@ -1,4 +1,0 @@
-service nxpnfc_hal_svc /vendor/bin/hw/vendor.nxp.nxpnfc@1.0-service
-    class hal
-    user nfc
-    group nfc
