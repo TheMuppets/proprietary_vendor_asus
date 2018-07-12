@@ -97,7 +97,7 @@ special_mode_mask values:
       <ISPPreview>ov13855_holitech_13m_snapshot</ISPPreview>
       <ISPSnapshot>ov13855_holitech_13m_snapshot</ISPSnapshot>
       <ISPVideo>ov13855_holitech_13m_video_full</ISPVideo>
-      <CPPPreview>ov13855_holitech_13m_cpp_snapshot</CPPPreview>
+      <CPPPreview>ov13855_holitech_13m_cpp_preview</CPPPreview>
       <CPPSnapshot>ov13855_holitech_13m_cpp_snapshot</CPPSnapshot>
       <CPPVideo>ov13855_holitech_13m_cpp_video_full</CPPVideo>
       <CPPLiveshot>ov13855_holitech_13m_cpp_snapshot</CPPLiveshot>
@@ -108,7 +108,7 @@ special_mode_mask values:
       <ISPPreview>ov13855_holitech_13m_snapshot</ISPPreview>
       <ISPSnapshot>ov13855_holitech_13m_snapshot</ISPSnapshot>
       <ISPVideo>ov13855_holitech_13m_video_full</ISPVideo>
-      <CPPPreview>ov13855_holitech_13m_cpp_snapshot</CPPPreview>
+      <CPPPreview>ov13855_holitech_13m_cpp_preview</CPPPreview>
       <CPPSnapshot>ov13855_holitech_13m_cpp_snapshot</CPPSnapshot>
       <CPPVideo>ov13855_holitech_13m_cpp_video_full</CPPVideo>
       <CPPLiveshot>ov13855_holitech_13m_cpp_snapshot</CPPLiveshot>

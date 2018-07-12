@@ -82,7 +82,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib/libjni_dualcamera.so:system/lib/libjni_dualcamera.so \
     vendor/asus/X00TD/proprietary/lib/libjni_filtergenerator.so:system/lib/libjni_filtergenerator.so \
     vendor/asus/X00TD/proprietary/lib/libjni_hazebuster.so:system/lib/libjni_hazebuster.so \
-    vendor/asus/X00TD/proprietary/lib/libjni_imageutil.so:system/lib/libjni_imageutil.so \
     vendor/asus/X00TD/proprietary/lib/libjni_makeupV2.so:system/lib/libjni_makeupV2.so \
     vendor/asus/X00TD/proprietary/lib/libjni_optizoom.so:system/lib/libjni_optizoom.so \
     vendor/asus/X00TD/proprietary/lib/libjni_panorama.so:system/lib/libjni_panorama.so \
