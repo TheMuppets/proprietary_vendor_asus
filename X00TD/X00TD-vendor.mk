@@ -27,6 +27,8 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/etc/permissions/com.qti.dpmframework.xml:system/etc/permissions/com.qti.dpmframework.xml \
     vendor/asus/X00TD/proprietary/etc/permissions/com.qti.location.sdk.xml:system/etc/permissions/com.qti.location.sdk.xml \
     vendor/asus/X00TD/proprietary/etc/permissions/com.qti.snapdragon.sdk.display.xml:system/etc/permissions/com.qti.snapdragon.sdk.display.xml \
+    vendor/asus/X00TD/proprietary/vendor/etc/permissions/com.qualcomm.qti.imscmservice.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.qualcomm.qti.imscmservice.xml \
+    vendor/asus/X00TD/proprietary/vendor/etc/permissions/com.qualcomm.qti.imscmservice_1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.qualcomm.qti.imscmservice_1_1.xml \
     vendor/asus/X00TD/proprietary/etc/permissions/com.quicinc.cne.xml:system/etc/permissions/com.quicinc.cne.xml \
     vendor/asus/X00TD/proprietary/etc/permissions/dpmapi.xml:system/etc/permissions/dpmapi.xml \
     vendor/asus/X00TD/proprietary/etc/permissions/embms.xml:system/etc/permissions/embms.xml \
@@ -58,6 +60,11 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib/com.qualcomm.qti.dpm.api@1.0.so:system/lib/com.qualcomm.qti.dpm.api@1.0.so \
     vendor/asus/X00TD/proprietary/lib/com.qualcomm.qti.wifidisplayhal@1.0.so:system/lib/com.qualcomm.qti.wifidisplayhal@1.0.so \
     vendor/asus/X00TD/proprietary/lib/fm_helium.so:system/lib/fm_helium.so \
+    vendor/asus/X00TD/proprietary/vendor/lib/lib-imscamera.so:$(TARGET_COPY_OUT_VENDOR)/lib/lib-imscamera.so \
+    vendor/asus/X00TD/proprietary/vendor/lib/lib-imsvideocodec.so:$(TARGET_COPY_OUT_VENDOR)/lib/lib-imsvideocodec.so \
+    vendor/asus/X00TD/proprietary/vendor/lib/lib-imsvt.so:$(TARGET_COPY_OUT_VENDOR)/lib/lib-imsvt.so \
+    vendor/asus/X00TD/proprietary/vendor/lib/lib-imsvtextutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/lib-imsvtextutils.so \
+    vendor/asus/X00TD/proprietary/vendor/lib/lib-imsvtutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/lib-imsvtutils.so \
     vendor/asus/X00TD/proprietary/lib/libExtendedExtractor.so:system/lib/libExtendedExtractor.so \
     vendor/asus/X00TD/proprietary/lib/libFidoCryptoJNI.so:system/lib/libFidoCryptoJNI.so \
     vendor/asus/X00TD/proprietary/lib/libFidoCrypto_system.so:system/lib/libFidoCrypto_system.so \
@@ -175,11 +182,11 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib64/com.qualcomm.qti.imscmservice@1.0.so:system/lib64/com.qualcomm.qti.imscmservice@1.0.so \
     vendor/asus/X00TD/proprietary/lib64/com.qualcomm.qti.wifidisplayhal@1.0.so:system/lib64/com.qualcomm.qti.wifidisplayhal@1.0.so \
     vendor/asus/X00TD/proprietary/lib64/fm_helium.so:system/lib64/fm_helium.so \
-    vendor/asus/X00TD/proprietary/lib64/lib-imscamera.so:system/lib64/lib-imscamera.so \
-    vendor/asus/X00TD/proprietary/lib64/lib-imsvideocodec.so:system/lib64/lib-imsvideocodec.so \
-    vendor/asus/X00TD/proprietary/lib64/lib-imsvt.so:system/lib64/lib-imsvt.so \
-    vendor/asus/X00TD/proprietary/lib64/lib-imsvtextutils.so:system/lib64/lib-imsvtextutils.so \
-    vendor/asus/X00TD/proprietary/lib64/lib-imsvtutils.so:system/lib64/lib-imsvtutils.so \
+    vendor/asus/X00TD/proprietary/vendor/lib64/lib-imscamera.so:$(TARGET_COPY_OUT_VENDOR)/lib64/lib-imscamera.so \
+    vendor/asus/X00TD/proprietary/vendor/lib64/lib-imsvideocodec.so:$(TARGET_COPY_OUT_VENDOR)/lib64/lib-imsvideocodec.so \
+    vendor/asus/X00TD/proprietary/vendor/lib64/lib-imsvt.so:$(TARGET_COPY_OUT_VENDOR)/lib64/lib-imsvt.so \
+    vendor/asus/X00TD/proprietary/vendor/lib64/lib-imsvtextutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/lib-imsvtextutils.so \
+    vendor/asus/X00TD/proprietary/vendor/lib64/lib-imsvtutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/lib-imsvtutils.so \
     vendor/asus/X00TD/proprietary/lib64/libExtendedExtractor.so:system/lib64/libExtendedExtractor.so \
     vendor/asus/X00TD/proprietary/lib64/libFidoCryptoJNI.so:system/lib64/libFidoCryptoJNI.so \
     vendor/asus/X00TD/proprietary/lib64/libFidoCrypto_system.so:system/lib64/libFidoCrypto_system.so \
@@ -199,8 +206,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib64/libfm-hci.so:system/lib64/libfm-hci.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libgatekeeper.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgatekeeper.so \
     vendor/asus/X00TD/proprietary/lib64/libhbtpjni.so:system/lib64/libhbtpjni.so \
-    vendor/asus/X00TD/proprietary/lib64/libimscamera_jni.so:system/lib64/libimscamera_jni.so \
-    vendor/asus/X00TD/proprietary/lib64/libimsmedia_jni.so:system/lib64/libimsmedia_jni.so \
     vendor/asus/X00TD/proprietary/lib64/libjni_blurbuster.so:system/lib64/libjni_blurbuster.so \
     vendor/asus/X00TD/proprietary/lib64/libjni_chromaflash.so:system/lib64/libjni_chromaflash.so \
     vendor/asus/X00TD/proprietary/lib64/libjni_clearsight.so:system/lib64/libjni_clearsight.so \
@@ -2997,6 +3002,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libantradio \
     vendor.qti.hardware.fm@1.0 \
+    libimscamera_jni \
+    libimsmedia_jni \
     libgpustats \
     libsdm-disp-vndapis \
     libthermalclient \
@@ -3007,12 +3014,12 @@ PRODUCT_PACKAGES += \
     WfdService \
     datastatusnotification \
     embms \
-    ims \
-    imssettings \
     uceShimService \
     CNEService \
     dpmserviceapp \
     qcrilmsgtunnel \
+    ims \
+    imssettings \
     CABLService \
     Perfdump \
     QFingerprintService \
@@ -3025,6 +3032,8 @@ PRODUCT_PACKAGES += \
     colorservice \
     com.qti.snapdragon.sdk.display \
     qcrilhook \
+    com.qualcomm.qti.imscmservice@1.0-java \
+    com.qualcomm.qti.imscmservice@1.1-java \
     vendor.qti.hardware.alarm-V1.0-java \
     vendor.qti.hardware.factory-V1.0-java \
     vendor.qti.hardware.sensorscalibrate-V1.0-java
