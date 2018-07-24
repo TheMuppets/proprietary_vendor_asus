@@ -47,6 +47,8 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/framework/cneapiclient.jar:system/framework/cneapiclient.jar \
     vendor/asus/X00TD/proprietary/framework/com.qti.dpmframework.jar:system/framework/com.qti.dpmframework.jar \
     vendor/asus/X00TD/proprietary/framework/com.qti.location.sdk.jar:system/framework/com.qti.location.sdk.jar \
+    vendor/asus/X00TD/proprietary/vendor/framework/com.qualcomm.qti.imscmservice@1.0-java.jar:$(TARGET_COPY_OUT_VENDOR)/framework/com.qualcomm.qti.imscmservice@1.0-java.jar \
+    vendor/asus/X00TD/proprietary/vendor/framework/com.qualcomm.qti.imscmservice@1.1-java.jar:$(TARGET_COPY_OUT_VENDOR)/framework/com.qualcomm.qti.imscmservice@1.1-java.jar \
     vendor/asus/X00TD/proprietary/framework/com.quicinc.cne.api-V1.0-java.jar:system/framework/com.quicinc.cne.api-V1.0-java.jar \
     vendor/asus/X00TD/proprietary/framework/com.quicinc.cne.jar:system/framework/com.quicinc.cne.jar \
     vendor/asus/X00TD/proprietary/framework/dpmapi.jar:system/framework/dpmapi.jar \
@@ -71,8 +73,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib/libFileMux.so:system/lib/libFileMux.so \
     vendor/asus/X00TD/proprietary/lib/libGPTEE_system.so:system/lib/libGPTEE_system.so \
     vendor/asus/X00TD/proprietary/lib/libQTEEConnector_system.so:system/lib/libQTEEConnector_system.so \
-    vendor/asus/X00TD/proprietary/lib/libaptXHD_encoder.so:system/lib/libaptXHD_encoder.so \
-    vendor/asus/X00TD/proprietary/lib/libaptX_encoder.so:system/lib/libaptX_encoder.so \
     vendor/asus/X00TD/proprietary/lib/libchromaflash.so:system/lib/libchromaflash.so \
     vendor/asus/X00TD/proprietary/lib/libdiag_system.so:system/lib/libdiag_system.so \
     vendor/asus/X00TD/proprietary/lib/libdpmctmgr.so:system/lib/libdpmctmgr.so \
@@ -84,6 +84,8 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib/libfm-hci.so:system/lib/libfm-hci.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libgatekeeper.so:$(TARGET_COPY_OUT_VENDOR)/lib/libgatekeeper.so \
     vendor/asus/X00TD/proprietary/lib/libhbtpjni.so:system/lib/libhbtpjni.so \
+    vendor/asus/X00TD/proprietary/vendor/lib/libimscamera_jni.so:$(TARGET_COPY_OUT_VENDOR)/lib/libimscamera_jni.so \
+    vendor/asus/X00TD/proprietary/vendor/lib/libimsmedia_jni.so:$(TARGET_COPY_OUT_VENDOR)/lib/libimsmedia_jni.so \
     vendor/asus/X00TD/proprietary/lib/libjni_blurbuster.so:system/lib/libjni_blurbuster.so \
     vendor/asus/X00TD/proprietary/lib/libjni_chromaflash.so:system/lib/libjni_chromaflash.so \
     vendor/asus/X00TD/proprietary/lib/libjni_dualcamera.so:system/lib/libjni_dualcamera.so \
@@ -136,7 +138,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib/libts_detected_face_jni.so:system/lib/libts_detected_face_jni.so \
     vendor/asus/X00TD/proprietary/lib/libts_face_beautify_hal.so:system/lib/libts_face_beautify_hal.so \
     vendor/asus/X00TD/proprietary/lib/libts_face_beautify_jni.so:system/lib/libts_face_beautify_jni.so \
-    vendor/asus/X00TD/proprietary/lib/libubifocus.so:system/lib/libubifocus.so \
     vendor/asus/X00TD/proprietary/lib/libvendorconn.so:system/lib/libvendorconn.so \
     vendor/asus/X00TD/proprietary/lib/libvr_amb_engine.so:system/lib/libvr_amb_engine.so \
     vendor/asus/X00TD/proprietary/lib/libvr_object_engine.so:system/lib/libvr_object_engine.so \
@@ -206,6 +207,8 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib64/libfm-hci.so:system/lib64/libfm-hci.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libgatekeeper.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgatekeeper.so \
     vendor/asus/X00TD/proprietary/lib64/libhbtpjni.so:system/lib64/libhbtpjni.so \
+    vendor/asus/X00TD/proprietary/vendor/lib64/libimscamera_jni.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libimscamera_jni.so \
+    vendor/asus/X00TD/proprietary/vendor/lib64/libimsmedia_jni.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libimsmedia_jni.so \
     vendor/asus/X00TD/proprietary/lib64/libjni_blurbuster.so:system/lib64/libjni_blurbuster.so \
     vendor/asus/X00TD/proprietary/lib64/libjni_chromaflash.so:system/lib64/libjni_chromaflash.so \
     vendor/asus/X00TD/proprietary/lib64/libjni_clearsight.so:system/lib64/libjni_clearsight.so \
@@ -3002,8 +3005,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libantradio \
     vendor.qti.hardware.fm@1.0 \
-    libimscamera_jni \
-    libimsmedia_jni \
     libgpustats \
     libsdm-disp-vndapis \
     libthermalclient \
@@ -3032,8 +3033,6 @@ PRODUCT_PACKAGES += \
     colorservice \
     com.qti.snapdragon.sdk.display \
     qcrilhook \
-    com.qualcomm.qti.imscmservice@1.0-java \
-    com.qualcomm.qti.imscmservice@1.1-java \
     vendor.qti.hardware.alarm-V1.0-java \
     vendor.qti.hardware.factory-V1.0-java \
     vendor.qti.hardware.sensorscalibrate-V1.0-java
