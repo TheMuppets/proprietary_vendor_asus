@@ -306,14 +306,7 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/lib64/vendor.qti.imsrtpservice@1.0.so:system/lib64/vendor.qti.imsrtpservice@1.0.so \
     vendor/asus/X00TD/proprietary/vendor/bin/ATFWD-daemon:$(TARGET_COPY_OUT_VENDOR)/bin/ATFWD-daemon \
     vendor/asus/X00TD/proprietary/vendor/bin/DR_AP_Service:$(TARGET_COPY_OUT_VENDOR)/bin/DR_AP_Service \
-    vendor/asus/X00TD/proprietary/vendor/bin/KmInstallKeybox:$(TARGET_COPY_OUT_VENDOR)/bin/KmInstallKeybox \
-    vendor/asus/X00TD/proprietary/vendor/bin/LKCore:$(TARGET_COPY_OUT_VENDOR)/bin/LKCore \
-    vendor/asus/X00TD/proprietary/vendor/bin/PktRspTest:$(TARGET_COPY_OUT_VENDOR)/bin/PktRspTest \
-    vendor/asus/X00TD/proprietary/vendor/bin/SoterProvisioningTool:$(TARGET_COPY_OUT_VENDOR)/bin/SoterProvisioningTool \
-    vendor/asus/X00TD/proprietary/vendor/bin/StoreKeybox:$(TARGET_COPY_OUT_VENDOR)/bin/StoreKeybox \
-    vendor/asus/X00TD/proprietary/vendor/bin/WifiLogger_app:$(TARGET_COPY_OUT_VENDOR)/bin/WifiLogger_app \
     vendor/asus/X00TD/proprietary/vendor/bin/adsprpcd:$(TARGET_COPY_OUT_VENDOR)/bin/adsprpcd \
-    vendor/asus/X00TD/proprietary/vendor/bin/athdiag:$(TARGET_COPY_OUT_VENDOR)/bin/athdiag \
     vendor/asus/X00TD/proprietary/vendor/bin/audioflacapp:$(TARGET_COPY_OUT_VENDOR)/bin/audioflacapp \
     vendor/asus/X00TD/proprietary/vendor/bin/btnvtool:$(TARGET_COPY_OUT_VENDOR)/bin/btnvtool \
     vendor/asus/X00TD/proprietary/vendor/bin/cnd:$(TARGET_COPY_OUT_VENDOR)/bin/cnd \
@@ -331,8 +324,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/bin/fstman:$(TARGET_COPY_OUT_VENDOR)/bin/fstman \
     vendor/asus/X00TD/proprietary/vendor/bin/gamed:$(TARGET_COPY_OUT_VENDOR)/bin/gamed \
     vendor/asus/X00TD/proprietary/vendor/bin/garden_app:$(TARGET_COPY_OUT_VENDOR)/bin/garden_app \
-    vendor/asus/X00TD/proprietary/vendor/bin/getqxdmlog:$(TARGET_COPY_OUT_VENDOR)/bin/getqxdmlog \
-    vendor/asus/X00TD/proprietary/vendor/bin/gettcpdump:$(TARGET_COPY_OUT_VENDOR)/bin/gettcpdump \
     vendor/asus/X00TD/proprietary/vendor/bin/hal_proxy_daemon:$(TARGET_COPY_OUT_VENDOR)/bin/hal_proxy_daemon \
     vendor/asus/X00TD/proprietary/vendor/bin/hbtp_daemon:$(TARGET_COPY_OUT_VENDOR)/bin/hbtp_daemon \
     vendor/asus/X00TD/proprietary/vendor/bin/hci_qcomm_init:$(TARGET_COPY_OUT_VENDOR)/bin/hci_qcomm_init \
@@ -354,7 +345,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti:$(TARGET_COPY_OUT_VENDOR)/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti \
     vendor/asus/X00TD/proprietary/vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service:$(TARGET_COPY_OUT_VENDOR)/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service \
     vendor/asus/X00TD/proprietary/vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti:$(TARGET_COPY_OUT_VENDOR)/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti \
-    vendor/asus/X00TD/proprietary/vendor/bin/icm:$(TARGET_COPY_OUT_VENDOR)/bin/icm \
     vendor/asus/X00TD/proprietary/vendor/bin/ims_rtp_daemon:$(TARGET_COPY_OUT_VENDOR)/bin/ims_rtp_daemon \
     vendor/asus/X00TD/proprietary/vendor/bin/imsdatadaemon:$(TARGET_COPY_OUT_VENDOR)/bin/imsdatadaemon \
     vendor/asus/X00TD/proprietary/vendor/bin/imsqmidaemon:$(TARGET_COPY_OUT_VENDOR)/bin/imsqmidaemon \
@@ -366,7 +356,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/bin/mm-pp-dpps:$(TARGET_COPY_OUT_VENDOR)/bin/mm-pp-dpps \
     vendor/asus/X00TD/proprietary/vendor/bin/mmid:$(TARGET_COPY_OUT_VENDOR)/bin/mmid \
     vendor/asus/X00TD/proprietary/vendor/bin/msm_irqbalance:$(TARGET_COPY_OUT_VENDOR)/bin/msm_irqbalance \
-    vendor/asus/X00TD/proprietary/vendor/bin/myftm:$(TARGET_COPY_OUT_VENDOR)/bin/myftm \
     vendor/asus/X00TD/proprietary/vendor/bin/netmgrd:$(TARGET_COPY_OUT_VENDOR)/bin/netmgrd \
     vendor/asus/X00TD/proprietary/vendor/bin/nvram_btwifi:$(TARGET_COPY_OUT_VENDOR)/bin/nvram_btwifi \
     vendor/asus/X00TD/proprietary/vendor/bin/nvram_country:$(TARGET_COPY_OUT_VENDOR)/bin/nvram_country \
@@ -376,28 +365,18 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/bin/port-bridge:$(TARGET_COPY_OUT_VENDOR)/bin/port-bridge \
     vendor/asus/X00TD/proprietary/vendor/bin/power_off_alarm:$(TARGET_COPY_OUT_VENDOR)/bin/power_off_alarm \
     vendor/asus/X00TD/proprietary/vendor/bin/qfp-daemon:$(TARGET_COPY_OUT_VENDOR)/bin/qfp-daemon \
-    vendor/asus/X00TD/proprietary/vendor/bin/qjpeg-dma-test:$(TARGET_COPY_OUT_VENDOR)/bin/qjpeg-dma-test \
     vendor/asus/X00TD/proprietary/vendor/bin/qseecomd:$(TARGET_COPY_OUT_VENDOR)/bin/qseecomd \
     vendor/asus/X00TD/proprietary/vendor/bin/qti:$(TARGET_COPY_OUT_VENDOR)/bin/qti \
     vendor/asus/X00TD/proprietary/vendor/bin/qvop-daemon:$(TARGET_COPY_OUT_VENDOR)/bin/qvop-daemon \
-    vendor/asus/X00TD/proprietary/vendor/bin/resize2fs:$(TARGET_COPY_OUT_VENDOR)/bin/resize2fs \
     vendor/asus/X00TD/proprietary/vendor/bin/rmt_storage:$(TARGET_COPY_OUT_VENDOR)/bin/rmt_storage \
-    vendor/asus/X00TD/proprietary/vendor/bin/seemp_healthd:$(TARGET_COPY_OUT_VENDOR)/bin/seemp_healthd \
     vendor/asus/X00TD/proprietary/vendor/bin/sensors.qcom:$(TARGET_COPY_OUT_VENDOR)/bin/sensors.qcom \
     vendor/asus/X00TD/proprietary/vendor/bin/slim_daemon:$(TARGET_COPY_OUT_VENDOR)/bin/slim_daemon \
     vendor/asus/X00TD/proprietary/vendor/bin/ssr_diag:$(TARGET_COPY_OUT_VENDOR)/bin/ssr_diag \
     vendor/asus/X00TD/proprietary/vendor/bin/ssr_setup:$(TARGET_COPY_OUT_VENDOR)/bin/ssr_setup \
-    vendor/asus/X00TD/proprietary/vendor/bin/stopqxdmlog:$(TARGET_COPY_OUT_VENDOR)/bin/stopqxdmlog \
-    vendor/asus/X00TD/proprietary/vendor/bin/subsystem_ramdump:$(TARGET_COPY_OUT_VENDOR)/bin/subsystem_ramdump \
-    vendor/asus/X00TD/proprietary/vendor/bin/tbaseLoader:$(TARGET_COPY_OUT_VENDOR)/bin/tbaseLoader \
-    vendor/asus/X00TD/proprietary/vendor/bin/test_diag:$(TARGET_COPY_OUT_VENDOR)/bin/test_diag \
     vendor/asus/X00TD/proprietary/vendor/bin/tftp_server:$(TARGET_COPY_OUT_VENDOR)/bin/tftp_server \
     vendor/asus/X00TD/proprietary/vendor/bin/thermal-engine:$(TARGET_COPY_OUT_VENDOR)/bin/thermal-engine \
     vendor/asus/X00TD/proprietary/vendor/bin/time_daemon:$(TARGET_COPY_OUT_VENDOR)/bin/time_daemon \
-    vendor/asus/X00TD/proprietary/vendor/bin/toolbox_vendor:$(TARGET_COPY_OUT_VENDOR)/bin/toolbox_vendor \
-    vendor/asus/X00TD/proprietary/vendor/bin/vendor_cmd_tool:$(TARGET_COPY_OUT_VENDOR)/bin/vendor_cmd_tool \
     vendor/asus/X00TD/proprietary/vendor/bin/wcnss_filter:$(TARGET_COPY_OUT_VENDOR)/bin/wcnss_filter \
-    vendor/asus/X00TD/proprietary/vendor/bin/wdsdaemon:$(TARGET_COPY_OUT_VENDOR)/bin/wdsdaemon \
     vendor/asus/X00TD/proprietary/vendor/bin/wifidisplayhalservice:$(TARGET_COPY_OUT_VENDOR)/bin/wifidisplayhalservice \
     vendor/asus/X00TD/proprietary/vendor/bin/xtra-daemon:$(TARGET_COPY_OUT_VENDOR)/bin/xtra-daemon \
     vendor/asus/X00TD/proprietary/vendor/bin/xtwifi-client:$(TARGET_COPY_OUT_VENDOR)/bin/xtwifi-client \
@@ -2224,11 +2203,9 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/lib/libcneqmiutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libcneqmiutils.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libconfigdb.so:$(TARGET_COPY_OUT_VENDOR)/lib/libconfigdb.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libcppf.so:$(TARGET_COPY_OUT_VENDOR)/lib/libcppf.so \
-    vendor/asus/X00TD/proprietary/vendor/lib/libcsm_data.so:$(TARGET_COPY_OUT_VENDOR)/lib/libcsm_data.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libdataitems.so:$(TARGET_COPY_OUT_VENDOR)/lib/libdataitems.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libdepthmapwrapper.so:$(TARGET_COPY_OUT_VENDOR)/lib/libdepthmapwrapper.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libdiag.so:$(TARGET_COPY_OUT_VENDOR)/lib/libdiag.so \
-    vendor/asus/X00TD/proprietary/vendor/lib/libdiagjni.so:$(TARGET_COPY_OUT_VENDOR)/lib/libdiagjni.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libdisp-aba.so:$(TARGET_COPY_OUT_VENDOR)/lib/libdisp-aba.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libdpmqmihal.so:$(TARGET_COPY_OUT_VENDOR)/lib/libdpmqmihal.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libdrc.so:$(TARGET_COPY_OUT_VENDOR)/lib/libdrc.so \
@@ -2240,7 +2217,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/lib/libdsutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libdsutils.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libdualcameraddm.so:$(TARGET_COPY_OUT_VENDOR)/lib/libdualcameraddm.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libevent_observer.so:$(TARGET_COPY_OUT_VENDOR)/lib/libevent_observer.so \
-    vendor/asus/X00TD/proprietary/vendor/lib/libfastcrc.so:$(TARGET_COPY_OUT_VENDOR)/lib/libfastcrc.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libfastcvadsp_stub.so:$(TARGET_COPY_OUT_VENDOR)/lib/libfastcvadsp_stub.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libfastcvopt.so:$(TARGET_COPY_OUT_VENDOR)/lib/libfastcvopt.so \
     vendor/asus/X00TD/proprietary/vendor/lib/libfastrpc_utf_stub.so:$(TARGET_COPY_OUT_VENDOR)/lib/libfastrpc_utf_stub.so \
@@ -2781,10 +2757,8 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/lib64/libcneoplookup.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcneoplookup.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libcneqmiutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcneqmiutils.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libconfigdb.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libconfigdb.so \
-    vendor/asus/X00TD/proprietary/vendor/lib64/libcsm_data.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcsm_data.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libdataitems.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdataitems.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libdiag.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdiag.so \
-    vendor/asus/X00TD/proprietary/vendor/lib64/libdiagjni.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdiagjni.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libdisp-aba.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdisp-aba.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libdpmqmihal.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdpmqmihal.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libdrmfs.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdrmfs.so \
@@ -2794,7 +2768,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/X00TD/proprietary/vendor/lib64/libdsutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdsutils.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libdualcameraddm.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdualcameraddm.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libevent_observer.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libevent_observer.so \
-    vendor/asus/X00TD/proprietary/vendor/lib64/libfastcrc.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libfastcrc.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libfastcvadsp_stub.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libfastcvadsp_stub.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libfastcvopt.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libfastcvopt.so \
     vendor/asus/X00TD/proprietary/vendor/lib64/libfastrpc_utf_stub.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libfastrpc_utf_stub.so \
