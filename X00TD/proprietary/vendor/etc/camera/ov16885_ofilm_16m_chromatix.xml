@@ -94,10 +94,10 @@ special_mode_mask values:
   </CommonChromatixInfo>
   <ResolutionChromatixInfo>
     <ChromatixName sensor_resolution_index="0">
-      <ISPPreview>ov16885_ofilm_16m_snapshot</ISPPreview>
+      <ISPPreview>ov16885_ofilm_16m_preview</ISPPreview>
       <ISPSnapshot>ov16885_ofilm_16m_snapshot</ISPSnapshot>
       <ISPVideo>ov16885_ofilm_16m_video_full</ISPVideo>
-      <CPPPreview>ov16885_ofilm_16m_cpp_snapshot</CPPPreview>
+      <CPPPreview>ov16885_ofilm_16m_cpp_preview</CPPPreview>
       <CPPSnapshot>ov16885_ofilm_16m_cpp_snapshot</CPPSnapshot>
       <CPPVideo>ov16885_ofilm_16m_cpp_video_full</CPPVideo>
       <CPPLiveshot>ov16885_ofilm_16m_cpp_snapshot</CPPLiveshot>
