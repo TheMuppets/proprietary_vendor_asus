@@ -79,30 +79,30 @@ special_mode_mask values:
 <ChromatixConfigurationRoot>
   <CommonChromatixInfo>
     <ChromatixName>
-      <ISPCommon>ov16885_ofilm_16m_common</ISPCommon>
-      <PostProc>ov16885_ofilm_16m_postproc</PostProc>
+      <ISPCommon>ov16885_holitech_16m_common</ISPCommon>
+      <PostProc>ov16885_holitech_16m_postproc</PostProc>
     </ChromatixName>
     <ChromatixName special_mode_mask="FLASH">
-      <CPPSnapshot>ov16885_ofilm_16m_cpp_snapshot</CPPSnapshot>
+      <CPPSnapshot>ov16885_holitech_16m_cpp_snapshot</CPPSnapshot>
     </ChromatixName>
     <ChromatixName special_mode_mask="ZOOM_UPSCALE">
-      <CPPSnapshot>ov16885_ofilm_16m_cpp_us_chromatix</CPPSnapshot>
+      <CPPSnapshot>ov16885_holitech_16m_cpp_us_chromatix</CPPSnapshot>
     </ChromatixName>
     <ChromatixName special_mode_mask="ZOOM_DOWNSCALE">
-      <CPPSnapshot>ov16885_ofilm_16m_cpp_ds_chromatix</CPPSnapshot>
+      <CPPSnapshot>ov16885_holitech_16m_cpp_ds_chromatix</CPPSnapshot>
     </ChromatixName>
   </CommonChromatixInfo>
   <ResolutionChromatixInfo>
     <ChromatixName sensor_resolution_index="0">
-      <ISPPreview>ov16885_ofilm_16m_snapshot</ISPPreview>
-      <ISPSnapshot>ov16885_ofilm_16m_snapshot</ISPSnapshot>
-      <ISPVideo>ov16885_ofilm_16m_video_full</ISPVideo>
-      <CPPPreview>ov16885_ofilm_16m_cpp_snapshot</CPPPreview>
-      <CPPSnapshot>ov16885_ofilm_16m_cpp_snapshot</CPPSnapshot>
-      <CPPVideo>ov16885_ofilm_16m_cpp_video_full</CPPVideo>
-      <CPPLiveshot>ov16885_ofilm_16m_cpp_snapshot</CPPLiveshot>
-      <A3Preview>ov16885_ofilm_16m_zsl_preview_bu64297</A3Preview>
-      <A3Video>ov16885_ofilm_16m_zsl_video_bu64297</A3Video>
+      <ISPPreview>ov16885_holitech_16m_snapshot</ISPPreview>
+      <ISPSnapshot>ov16885_holitech_16m_snapshot</ISPSnapshot>
+      <ISPVideo>ov16885_holitech_16m_video_full</ISPVideo>
+      <CPPPreview>ov16885_holitech_16m_cpp_preview</CPPPreview>
+      <CPPSnapshot>ov16885_holitech_16m_cpp_snapshot</CPPSnapshot>
+      <CPPVideo>ov16885_holitech_16m_cpp_video_full</CPPVideo>
+      <CPPLiveshot>ov16885_holitech_16m_cpp_snapshot</CPPLiveshot>
+      <A3Preview>ov16885_holitech_16m_zsl_preview_bu64297</A3Preview>
+      <A3Video>ov16885_holitech_16m_zsl_video_bu64297</A3Video>
     </ChromatixName>
   </ResolutionChromatixInfo>
 </ChromatixConfigurationRoot>
