@@ -149,15 +149,15 @@ special_mode_mask values:
       <A3Video>ov16880_qtech_front_hfr_60_bu64297</A3Video>
     </ChromatixName>
     <ChromatixName sensor_resolution_index="5">
-      <ISPPreview>ov16880_qtech_front_hfr_90</ISPPreview>
-      <ISPSnapshot>ov16880_qtech_front_hfr_90</ISPSnapshot>
-      <ISPVideo>ov16880_qtech_front_hfr_90</ISPVideo>
-      <CPPPreview>ov16880_qtech_front_cpp_hfr_90</CPPPreview>
-      <CPPSnapshot>ov16880_qtech_front_cpp_hfr_90</CPPSnapshot>
-      <CPPVideo>ov16880_qtech_front_cpp_hfr_90</CPPVideo>
-      <CPPLiveshot>ov16880_qtech_front_cpp_hfr_90</CPPLiveshot>
-      <A3Preview>ov16880_qtech_front_hfr_90_bu64297</A3Preview>
-      <A3Video>ov16880_qtech_front_hfr_90_bu64297</A3Video>
+      <ISPPreview>ov16880_qtech_front_preview</ISPPreview>
+      <ISPSnapshot>ov16880_qtech_front_snapshot</ISPSnapshot>
+      <ISPVideo>ov16880_qtech_front_video_full</ISPVideo>
+      <CPPPreview>ov16880_qtech_front_cpp_preview</CPPPreview>
+      <CPPSnapshot>ov16880_qtech_front_cpp_snapshot</CPPSnapshot>
+      <CPPVideo>ov16880_qtech_front_cpp_video_full</CPPVideo>
+      <CPPLiveshot>ov16880_qtech_front_cpp_liveshot</CPPLiveshot>
+      <A3Preview>ov16880_qtech_front_zsl_preview_bu64297</A3Preview>
+      <A3Video>ov16880_qtech_front_eis_video_bu64297</A3Video>
     </ChromatixName>
     <ChromatixName sensor_resolution_index="6">
       <ISPPreview>ov16880_qtech_front_hfr_120</ISPPreview>

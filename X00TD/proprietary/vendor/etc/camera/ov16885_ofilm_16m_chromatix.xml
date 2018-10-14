@@ -105,19 +105,17 @@ special_mode_mask values:
       <A3Video>ov16885_ofilm_16m_zsl_video_bu64297</A3Video>
     </ChromatixName>
     <!--Huaqin change for fix resolution by lizihao at 2018/05/21 start-->
-    <!--
     <ChromatixName sensor_resolution_index="1">
-      <ISPPreview>ov16885_ofilm_16m_snapshot</ISPPreview>
+      <ISPPreview>ov16885_ofilm_16m_preview</ISPPreview>
       <ISPSnapshot>ov16885_ofilm_16m_snapshot</ISPSnapshot>
       <ISPVideo>ov16885_ofilm_16m_video_full</ISPVideo>
-      <CPPPreview>ov16885_ofilm_16m_cpp_snapshot</CPPPreview>
+      <CPPPreview>ov16885_ofilm_16m_cpp_preview</CPPPreview>
       <CPPSnapshot>ov16885_ofilm_16m_cpp_snapshot</CPPSnapshot>
       <CPPVideo>ov16885_ofilm_16m_cpp_video_full</CPPVideo>
       <CPPLiveshot>ov16885_ofilm_16m_cpp_snapshot</CPPLiveshot>
       <A3Preview>ov16885_ofilm_16m_zsl_preview_bu64297</A3Preview>
-      <A3Video>ov16885_ofilm_16m_zsl_video_bu64297</A3Video>
+      <A3Video>ov16885_ofilm_16m_eis_video_bu64297</A3Video>
     </ChromatixName>
-    -->
     <!--Huaqin change for fix resolution by lizihao at 2018/05/21 end-->
   </ResolutionChromatixInfo>
 </ChromatixConfigurationRoot>

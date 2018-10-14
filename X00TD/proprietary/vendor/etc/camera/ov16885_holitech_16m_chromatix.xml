@@ -104,6 +104,17 @@ special_mode_mask values:
       <A3Preview>ov16885_holitech_16m_zsl_preview_bu64297</A3Preview>
       <A3Video>ov16885_holitech_16m_zsl_video_bu64297</A3Video>
     </ChromatixName>
+    <ChromatixName sensor_resolution_index="1">
+      <ISPPreview>ov16885_holitech_16m_snapshot</ISPPreview>
+      <ISPSnapshot>ov16885_holitech_16m_snapshot</ISPSnapshot>
+      <ISPVideo>ov16885_holitech_16m_video_full</ISPVideo>
+      <CPPPreview>ov16885_holitech_16m_cpp_preview</CPPPreview>
+      <CPPSnapshot>ov16885_holitech_16m_cpp_snapshot</CPPSnapshot>
+      <CPPVideo>ov16885_holitech_16m_cpp_video_full</CPPVideo>
+      <CPPLiveshot>ov16885_holitech_16m_cpp_snapshot</CPPLiveshot>
+      <A3Preview>ov16885_holitech_16m_zsl_preview_bu64297</A3Preview>
+      <A3Video>ov16885_holitech_16m_eis_video_bu64297</A3Video>
+    </ChromatixName>
   </ResolutionChromatixInfo>
 </ChromatixConfigurationRoot>
 
