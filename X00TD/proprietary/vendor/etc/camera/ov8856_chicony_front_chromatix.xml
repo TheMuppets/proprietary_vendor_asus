@@ -133,6 +133,14 @@ special_mode_mask values:
       <A3Preview>ov8856_chicony_front_a3_hfr_120</A3Preview>
       <A3Video>ov8856_chicony_front_a3_hfr_120</A3Video>
     </ChromatixName>
+    <ChromatixName sensor_resolution_index="5">
+      <ISPPreview>ov8856_chicony_front_snapshot</ISPPreview>
+      <ISPSnapshot>ov8856_chicony_front_snapshot</ISPSnapshot>
+      <ISPVideo>ov8856_chicony_front_default_video</ISPVideo>
+      <CPPVideo>ov8856_chicony_front_cpp_video</CPPVideo>
+      <A3Preview>ov8856_chicony_front_zsl_preview</A3Preview>
+      <A3Video>ov8856_chicony_front_eis_video</A3Video>
+    </ChromatixName>
   </ResolutionChromatixInfo>
 </ChromatixConfigurationRoot>
 

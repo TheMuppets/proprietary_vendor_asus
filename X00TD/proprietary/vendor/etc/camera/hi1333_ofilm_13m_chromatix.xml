@@ -115,6 +115,17 @@ special_mode_mask values:
       <A3Preview>hi1333_ofilm_13m_zsl_preview_bu64297</A3Preview>
       <A3Video>hi1333_ofilm_13m_zsl_video_bu64297</A3Video>
     </ChromatixName>
+    <ChromatixName sensor_resolution_index="2">
+      <ISPPreview>hi1333_ofilm_13m_snapshot</ISPPreview>
+      <ISPSnapshot>hi1333_ofilm_13m_snapshot</ISPSnapshot>
+      <ISPVideo>hi1333_ofilm_13m_video_full</ISPVideo>
+      <CPPPreview>hi1333_ofilm_13m_cpp_preview</CPPPreview>
+      <CPPSnapshot>hi1333_ofilm_13m_cpp_snapshot</CPPSnapshot>
+      <CPPVideo>hi1333_ofilm_13m_cpp_video_full</CPPVideo>
+      <CPPLiveshot>hi1333_ofilm_13m_cpp_snapshot</CPPLiveshot>
+      <A3Preview>hi1333_ofilm_13m_zsl_preview_bu64297</A3Preview>
+      <A3Video>hi1333_ofilm_13m_eis_video_bu64297</A3Video>
+    </ChromatixName>
   </ResolutionChromatixInfo>
 </ChromatixConfigurationRoot>
 
