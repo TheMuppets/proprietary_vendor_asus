@@ -28,8 +28,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/Z01R/proprietary/etc/media_profiles_V1_0.dtd:system/etc/media_profiles_V1_0.dtd \
     vendor/asus/Z01R/proprietary/etc/nqnfcee_access.xml:system/etc/nqnfcee_access.xml \
     vendor/asus/Z01R/proprietary/etc/nqnfcse_access.xml:system/etc/nqnfcse_access.xml \
-    vendor/asus/Z01R/proprietary/etc/permissions/RemoteSimlock.xml:system/etc/permissions/RemoteSimlock.xml \
-    vendor/asus/Z01R/proprietary/etc/permissions/UimService.xml:system/etc/permissions/UimService.xml \
     vendor/asus/Z01R/proprietary/etc/permissions/cneapiclient.xml:system/etc/permissions/cneapiclient.xml \
     vendor/asus/Z01R/proprietary/etc/permissions/com.nxp.nfc.nq.xml:system/etc/permissions/com.nxp.nfc.nq.xml \
     vendor/asus/Z01R/proprietary/etc/permissions/com.qti.dpmframework.xml:system/etc/permissions/com.qti.dpmframework.xml \
@@ -40,7 +38,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/Z01R/proprietary/etc/permissions/com.qualcomm.qti.imscmservice.xml:system/etc/permissions/com.qualcomm.qti.imscmservice.xml \
     vendor/asus/Z01R/proprietary/etc/permissions/com.quicinc.cne.xml:system/etc/permissions/com.quicinc.cne.xml \
     vendor/asus/Z01R/proprietary/etc/permissions/dpmapi.xml:system/etc/permissions/dpmapi.xml \
-    vendor/asus/Z01R/proprietary/etc/permissions/embms.xml:system/etc/permissions/embms.xml \
     vendor/asus/Z01R/proprietary/etc/permissions/izat.xt.srv.xml:system/etc/permissions/izat.xt.srv.xml \
     vendor/asus/Z01R/proprietary/etc/permissions/privapp-permissions-com.qualcomm.location.xml:system/etc/permissions/privapp-permissions-com.qualcomm.location.xml \
     vendor/asus/Z01R/proprietary/etc/permissions/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
@@ -75,7 +72,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/Z01R/proprietary/framework/com.qti.dpmframework.jar:system/framework/com.qti.dpmframework.jar \
     vendor/asus/Z01R/proprietary/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar:system/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar \
     vendor/asus/Z01R/proprietary/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar:system/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar \
-    vendor/asus/Z01R/proprietary/framework/com.qualcomm.qti.uceservice-V2.0-java.jar:system/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
     vendor/asus/Z01R/proprietary/framework/com.quicinc.cne.api-V1.0-java.jar:system/framework/com.quicinc.cne.api-V1.0-java.jar \
     vendor/asus/Z01R/proprietary/framework/com.quicinc.cne.api-V1.1-java.jar:system/framework/com.quicinc.cne.api-V1.1-java.jar \
     vendor/asus/Z01R/proprietary/framework/com.quicinc.cne.constants-V1.0-java.jar:system/framework/com.quicinc.cne.constants-V1.0-java.jar \
@@ -87,25 +83,11 @@ PRODUCT_COPY_FILES += \
     vendor/asus/Z01R/proprietary/framework/com.quicinc.cne.server-V2.1-java.jar:system/framework/com.quicinc.cne.server-V2.1-java.jar \
     vendor/asus/Z01R/proprietary/framework/com.quicinc.cne.server-V2.2-java.jar:system/framework/com.quicinc.cne.server-V2.2-java.jar \
     vendor/asus/Z01R/proprietary/framework/dpmapi.jar:system/framework/dpmapi.jar \
-    vendor/asus/Z01R/proprietary/framework/embmslibrary.jar:system/framework/embmslibrary.jar \
-    vendor/asus/Z01R/proprietary/framework/oem-services.jar:system/framework/oem-services.jar \
     vendor/asus/Z01R/proprietary/framework/qcrilhook.jar:system/framework/qcrilhook.jar \
     vendor/asus/Z01R/proprietary/framework/qti-telephony-common.jar:system/framework/qti-telephony-common.jar \
-    vendor/asus/Z01R/proprietary/framework/qtiNetworkLib.jar:system/framework/qtiNetworkLib.jar \
     vendor/asus/Z01R/proprietary/framework/tcmclient.jar:system/framework/tcmclient.jar \
-    vendor/asus/Z01R/proprietary/framework/uimremotesimlocklibrary.jar:system/framework/uimremotesimlocklibrary.jar \
-    vendor/asus/Z01R/proprietary/framework/uimservicelibrary.jar:system/framework/uimservicelibrary.jar \
-    vendor/asus/Z01R/proprietary/framework/vendor.qti.data.factory-V1.0-java.jar:system/framework/vendor.qti.data.factory-V1.0-java.jar \
-    vendor/asus/Z01R/proprietary/framework/vendor.qti.hardware.alarm-V1.0-java.jar:system/framework/vendor.qti.hardware.alarm-V1.0-java.jar \
-    vendor/asus/Z01R/proprietary/framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar:system/framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar \
     vendor/asus/Z01R/proprietary/framework/vendor.qti.hardware.data.latency-V1.0-java.jar:system/framework/vendor.qti.hardware.data.latency-V1.0-java.jar \
     vendor/asus/Z01R/proprietary/framework/vendor.qti.hardware.data.qmi-V1.0-java.jar:system/framework/vendor.qti.hardware.data.qmi-V1.0-java.jar \
-    vendor/asus/Z01R/proprietary/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar:system/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar \
-    vendor/asus/Z01R/proprietary/framework/vendor.qti.hardware.soter-V1.0-java.jar:system/framework/vendor.qti.hardware.soter-V1.0-java.jar \
-    vendor/asus/Z01R/proprietary/framework/vendor.qti.ims.callinfo-V1.0-java.jar:system/framework/vendor.qti.ims.callinfo-V1.0-java.jar \
-    vendor/asus/Z01R/proprietary/framework/vendor.qti.ims.rcsconfig-V1.0-java.jar:system/framework/vendor.qti.ims.rcsconfig-V1.0-java.jar \
-    vendor/asus/Z01R/proprietary/framework/vendor.qti.latency-V2.0-java.jar:system/framework/vendor.qti.latency-V2.0-java.jar \
-    vendor/asus/Z01R/proprietary/framework/vendor.qti.voiceprint-V1.0-java.jar:system/framework/vendor.qti.voiceprint-V1.0-java.jar \
     vendor/asus/Z01R/proprietary/lib/com.qualcomm.qti.ant@1.0.so:system/lib/com.qualcomm.qti.ant@1.0.so \
     vendor/asus/Z01R/proprietary/lib/com.qualcomm.qti.dpm.api@1.0.so:system/lib/com.qualcomm.qti.dpm.api@1.0.so \
     vendor/asus/Z01R/proprietary/lib/com.qualcomm.qti.imscmservice@1.0.so:system/lib/com.qualcomm.qti.imscmservice@1.0.so \
@@ -141,19 +123,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/Z01R/proprietary/lib/libfm-hci.so:system/lib/libfm-hci.so \
     vendor/asus/Z01R/proprietary/lib/libimscamera_jni.so:system/lib/libimscamera_jni.so \
     vendor/asus/Z01R/proprietary/lib/libimsmedia_jni.so:system/lib/libimsmedia_jni.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_blurbuster.so:system/lib/libjni_blurbuster.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_chromaflash.so:system/lib/libjni_chromaflash.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_dualcamera.so:system/lib/libjni_dualcamera.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_filtergenerator.so:system/lib/libjni_filtergenerator.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_hazebuster.so:system/lib/libjni_hazebuster.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_optizoom.so:system/lib/libjni_optizoom.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_seestraight.so:system/lib/libjni_seestraight.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_sharpshooter.so:system/lib/libjni_sharpshooter.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_stillmore.so:system/lib/libjni_stillmore.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_trueportrait.so:system/lib/libjni_trueportrait.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_truescanner_v2.so:system/lib/libjni_truescanner_v2.so \
-    vendor/asus/Z01R/proprietary/lib/libjni_ubifocus.so:system/lib/libjni_ubifocus.so \
-    vendor/asus/Z01R/proprietary/lib/liblocationservice_jni.so:system/lib/liblocationservice_jni.so \
     vendor/asus/Z01R/proprietary/lib/libmmosal.so:system/lib/libmmosal.so \
     vendor/asus/Z01R/proprietary/lib/libmmparser_lite.so:system/lib/libmmparser_lite.so \
     vendor/asus/Z01R/proprietary/lib/libmmrtpdecoder.so:system/lib/libmmrtpdecoder.so \
@@ -186,33 +155,11 @@ PRODUCT_COPY_FILES += \
     vendor/asus/Z01R/proprietary/lib/libxditk_ditArchLIB.so:system/lib/libxditk_ditArchLIB.so \
     vendor/asus/Z01R/proprietary/lib/libxditk_ditBSP.so:system/lib/libxditk_ditBSP.so \
     vendor/asus/Z01R/proprietary/lib/libxditk_ditBSP_JNI.so:system/lib/libxditk_ditBSP_JNI.so \
-    vendor/asus/Z01R/proprietary/lib/libxt_native.so:system/lib/libxt_native.so \
-    vendor/asus/Z01R/proprietary/lib/style.cng:system/lib/style.cng \
-    vendor/asus/Z01R/proprietary/lib/vendor.display.color@1.0.so:system/lib/vendor.display.color@1.0.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.display.color@1.1.so:system/lib/vendor.display.color@1.1.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.display.color@1.2.so:system/lib/vendor.display.color@1.2.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.display.config@1.0.so:system/lib/vendor.display.config@1.0.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.display.config@1.1.so:system/lib/vendor.display.config@1.1.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.display.config@1.2.so:system/lib/vendor.display.config@1.2.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.display.config@1.3.so:system/lib/vendor.display.config@1.3.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.display.config@1.4.so:system/lib/vendor.display.config@1.4.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.display.postproc@1.0.so:system/lib/vendor.display.postproc@1.0.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.esepowermanager@1.0.so:system/lib/vendor.qti.esepowermanager@1.0.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.gnss@1.0.so:system/lib/vendor.qti.gnss@1.0.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.gnss@1.1.so:system/lib/vendor.qti.gnss@1.1.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.gnss@1.2.so:system/lib/vendor.qti.gnss@1.2.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.gnss@2.0.so:system/lib/vendor.qti.gnss@2.0.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.gnss@2.1.so:system/lib/vendor.qti.gnss@2.1.so \
     vendor/asus/Z01R/proprietary/lib/vendor.qti.hardware.data.latency@1.0.so:system/lib/vendor.qti.hardware.data.latency@1.0.so \
     vendor/asus/Z01R/proprietary/lib/vendor.qti.hardware.radio.ims@1.0.so:system/lib/vendor.qti.hardware.radio.ims@1.0.so \
     vendor/asus/Z01R/proprietary/lib/vendor.qti.hardware.radio.ims@1.1.so:system/lib/vendor.qti.hardware.radio.ims@1.1.so \
     vendor/asus/Z01R/proprietary/lib/vendor.qti.hardware.radio.ims@1.2.so:system/lib/vendor.qti.hardware.radio.ims@1.2.so \
     vendor/asus/Z01R/proprietary/lib/vendor.qti.hardware.radio.ims@1.3.so:system/lib/vendor.qti.hardware.radio.ims@1.3.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.hardware.scve.objecttracker@1.0-adapter-helper.so:system/lib/vendor.qti.hardware.scve.objecttracker@1.0-adapter-helper.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.hardware.scve.objecttracker@1.0.so:system/lib/vendor.qti.hardware.scve.objecttracker@1.0.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so:system/lib/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.hardware.scve.panorama@1.0.so:system/lib/vendor.qti.hardware.scve.panorama@1.0.so \
-    vendor/asus/Z01R/proprietary/lib/vendor.qti.hardware.sensorscalibrate@1.0.so:system/lib/vendor.qti.hardware.sensorscalibrate@1.0.so \
     vendor/asus/Z01R/proprietary/lib/vendor.qti.ims.callinfo@1.0.so:system/lib/vendor.qti.ims.callinfo@1.0.so \
     vendor/asus/Z01R/proprietary/lib/vendor.qti.ims.rcsconfig@1.0.so:system/lib/vendor.qti.ims.rcsconfig@1.0.so \
     vendor/asus/Z01R/proprietary/lib/vendor.qti.imsrtpservice@1.0.so:system/lib/vendor.qti.imsrtpservice@1.0.so \
@@ -232,8 +179,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/Z01R/proprietary/lib64/libFileMux.so:system/lib64/libFileMux.so \
     vendor/asus/Z01R/proprietary/lib64/libaptXHD_encoder.so:system/lib64/libaptXHD_encoder.so \
     vendor/asus/Z01R/proprietary/lib64/libaptX_encoder.so:system/lib64/libaptX_encoder.so \
-    vendor/asus/Z01R/proprietary/lib64/libautocct.so:system/lib64/libautocct.so \
-    vendor/asus/Z01R/proprietary/lib64/libcctapi.so:system/lib64/libcctapi.so \
     vendor/asus/Z01R/proprietary/lib64/libdiag_system.so:system/lib64/libdiag_system.so \
     vendor/asus/Z01R/proprietary/lib64/libdisplayconfig.so:system/lib64/libdisplayconfig.so \
     vendor/asus/Z01R/proprietary/lib64/libdpmctmgr.so:system/lib64/libdpmctmgr.so \
@@ -268,6 +213,15 @@ PRODUCT_COPY_FILES += \
     vendor/asus/Z01R/proprietary/lib64/libwfdclient.so:system/lib64/libwfdclient.so \
     vendor/asus/Z01R/proprietary/lib64/libwfdnative.so:system/lib64/libwfdnative.so \
     vendor/asus/Z01R/proprietary/lib64/libxt_native.so:system/lib64/libxt_native.so \
+    vendor/asus/Z01R/proprietary/lib64/vendor.display.color@1.0.so:system/lib64/vendor.display.color@1.0.so \
+    vendor/asus/Z01R/proprietary/lib64/vendor.display.color@1.1.so:system/lib64/vendor.display.color@1.1.so \
+    vendor/asus/Z01R/proprietary/lib64/vendor.display.color@1.2.so:system/lib64/vendor.display.color@1.2.so \
+    vendor/asus/Z01R/proprietary/lib64/vendor.display.config@1.0.so:system/lib64/vendor.display.config@1.0.so \
+    vendor/asus/Z01R/proprietary/lib64/vendor.display.config@1.1.so:system/lib64/vendor.display.config@1.1.so \
+    vendor/asus/Z01R/proprietary/lib64/vendor.display.config@1.2.so:system/lib64/vendor.display.config@1.2.so \
+    vendor/asus/Z01R/proprietary/lib64/vendor.display.config@1.3.so:system/lib64/vendor.display.config@1.3.so \
+    vendor/asus/Z01R/proprietary/lib64/vendor.display.config@1.4.so:system/lib64/vendor.display.config@1.4.so \
+    vendor/asus/Z01R/proprietary/lib64/vendor.display.postproc@1.0.so:system/lib64/vendor.display.postproc@1.0.so \
     vendor/asus/Z01R/proprietary/lib64/vendor.qti.gnss@1.0.so:system/lib64/vendor.qti.gnss@1.0.so \
     vendor/asus/Z01R/proprietary/lib64/vendor.qti.gnss@1.1.so:system/lib64/vendor.qti.gnss@1.1.so \
     vendor/asus/Z01R/proprietary/lib64/vendor.qti.gnss@1.2.so:system/lib64/vendor.qti.gnss@1.2.so \
@@ -284,16 +238,11 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     libantradio \
+    libril-qc-hal-qmi \
     vendor.qti.hardware.fm@1.0 \
-    DynamicDDSService \
-    QdcmFF \
     QtiSystemService \
     QtiTelephonyService \
-    datastatusnotification \
-    embms \
     imssettings \
-    remotesimlockservice \
-    uimlpaservice \
     CNEService \
     HotwordEnrollmentOKGoogleWCD9340 \
     HotwordEnrollmentTGoogleWCD9340 \
@@ -306,5 +255,4 @@ PRODUCT_PACKAGES += \
     xtra_t_app \
     WfdCommon \
     com.qti.location.sdk \
-    izat.xt.srv \
-    libril-qc-hal-qmi
+    izat.xt.srv
