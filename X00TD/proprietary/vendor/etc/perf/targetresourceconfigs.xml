@@ -35,7 +35,6 @@ as anyway perflock calls of these resources would fail. -->
         minors are disabled. -->
         <Config MajorValue="0x5" MinorValue="0x0" Supported="yes" />
         <Config MajorValue="0x5" MinorValue="0x1" Supported="yes" />
-        <Config MajorValue="0x5" MinorValue="0x2" Supported="yes" />
         <Config MajorValue="0x5" MinorValue="0x3" Supported="yes" />
         <Config MajorValue="0x5" MinorValue="0x4" Supported="yes" />
         <Config MajorValue="0x5" MinorValue="0x5" Supported="yes" />

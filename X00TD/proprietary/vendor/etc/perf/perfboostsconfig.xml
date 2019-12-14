@@ -291,14 +291,6 @@
             Resources="0x40C00000, 0x1, 0x40804000, 0xFFF, 0x40804100, 0xFFF, 0x40800000,0xFFF,
                        0x40800100,0xFFF" />
 
-<!--Huaqin add for ZQL1650-1028 by lingyuguo at 2018/04/20 start -->
-        <!-- Type="1", main launch boost of 2sec -->
-        <Config
-            Id="0x00001091" Type="1" Enable="true" Timeout="1000" Target="sdm660"
-            Resources="0x40C00000, 0x1, 0x40804000, 0xFFF, 0x40804100, 0xFFF, 0x40800000, 1800,
-                       0x40800100, 1400" />
-<!--Huaqin add for ZQL1650-1028 by lingyuguo at 2018/04/20 end-->
-
     <!--Rotation latency boost-->
         <!-- SCHEDBOOST resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ BIG Core resource opcode, value-->
@@ -342,5 +334,35 @@
         <Config
             Id="0x00001090" Enable="true" Timeout="1000" Target="sdm455"
             Resources="0x40800100, 1000, 0x4280C000, 596" />
+
+    <!--Display on Resource -->
+        <!-- Display on resource opcode, value -->
+        <Config
+                Id="0x00001041" Enable="true" Timeout="0" Target="sdm660"
+                Resources="0x40000000, 1" />
+        <Config
+                Id="0x00001041" Enable="true" Timeout="0" Target="sdm658"
+                Resources="0x40000000, 1" />
+        <Config
+                Id="0x00001041" Enable="true" Timeout="0" Target="sdm630"
+                Resources="0x40000000, 1" />
+        <Config
+                Id="0x00001041" Enable="true" Timeout="0" Target="sdm455"
+                Resources="0x40000000, 1" />
+    <!--Display off Resource -->
+        <!-- Display on resource opcode, value -->
+        <Config
+                Id="0x00001040" Enable="true" Timeout="0" Target="sdm660"
+                Resources="0x40000000, 0x0" />
+        <Config
+                Id="0x00001040" Enable="true" Timeout="0" Target="sdm658"
+                Resources="0x40000000, 0x0" />
+        <Config
+                Id="0x00001040" Enable="true" Timeout="0" Target="sdm630"
+                Resources="0x40000000, 0x0" />
+        <Config
+                Id="0x00001040" Enable="true" Timeout="0" Target="sdm455"
+                Resources="0x40000000, 0x0" />
+
     </PerfBoost>
 </BoostConfigs>
