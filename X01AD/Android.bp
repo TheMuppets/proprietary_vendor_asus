@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 The LineageOS Project
+ * Copyright (C) 2020-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,24 @@
  */
 
 soong_namespace {
+}
+
+cc_prebuilt_library_shared {
+	name: "libantradio",
+	owner: "asus",
+	strip: {
+		none: true,
+	},
+	target: {
+		android_arm: {
+			srcs: ["proprietary/lib/libantradio.so"],
+		},
+		android_arm64: {
+			srcs: ["proprietary/lib64/libantradio.so"],
+		},
+	},
+	compile_multilib: "both",
+	prefer: true,
 }
 
 android_app_import {
