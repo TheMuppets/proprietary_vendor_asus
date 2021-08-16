@@ -900,6 +900,7 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/lib/libwfduibcsrc_proprietary.so:$(TARGET_COPY_OUT_VENDOR)/lib/libwfduibcsrc_proprietary.so \
     vendor/asus/sake/proprietary/vendor/lib/libwfduibcsrcinterface_proprietary.so:$(TARGET_COPY_OUT_VENDOR)/lib/libwfduibcsrcinterface_proprietary.so \
     vendor/asus/sake/proprietary/vendor/lib/libwfdutils_proprietary.so:$(TARGET_COPY_OUT_VENDOR)/lib/libwfdutils_proprietary.so \
+    vendor/asus/sake/proprietary/vendor/lib/modules/modules.blocklist:$(TARGET_COPY_OUT_VENDOR)/lib/modules/modules.blocklist \
     vendor/asus/sake/proprietary/vendor/lib/rfsa/adsp/capi_v2_aptX_CLHDADV_Encoder.so:$(TARGET_COPY_OUT_VENDOR)/lib/rfsa/adsp/capi_v2_aptX_CLHDADV_Encoder.so \
     vendor/asus/sake/proprietary/vendor/lib/rfsa/adsp/dirac_resource.dar:$(TARGET_COPY_OUT_VENDOR)/lib/rfsa/adsp/dirac_resource.dar \
     vendor/asus/sake/proprietary/vendor/lib/rfsa/adsp/libQnnHtpAltPrepSkel.so:$(TARGET_COPY_OUT_VENDOR)/lib/rfsa/adsp/libQnnHtpAltPrepSkel.so \
