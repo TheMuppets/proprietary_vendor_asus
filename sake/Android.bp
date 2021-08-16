@@ -136,6 +136,18 @@ android_app_import {
 }
 
 android_app_import {
+	name: "WfdService",
+	owner: "asus",
+	apk: "proprietary/system_ext/priv-app/WfdService/WfdService.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	privileged: true,
+	system_ext_specific: true,
+}
+
+android_app_import {
 	name: "ims",
 	owner: "asus",
 	apk: "proprietary/system_ext/priv-app/ims/ims.apk",
@@ -157,6 +169,12 @@ android_app_import {
 	},
 	privileged: true,
 	system_ext_specific: true,
+}
+
+dex_import {
+	name: "WfdCommon",
+	owner: "asus",
+	jars: ["proprietary/system/framework/WfdCommon.jar"],
 }
 
 dex_import {
