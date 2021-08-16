@@ -46,6 +46,16 @@ cc_prebuilt_library_shared {
 }
 
 android_app_import {
+	name: "aptxals",
+	owner: "asus",
+	apk: "proprietary/system/app/aptxals/aptxals.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+}
+
+android_app_import {
 	name: "CACertService",
 	owner: "asus",
 	apk: "proprietary/vendor/app/CACertService/CACertService.apk",

@@ -1687,6 +1687,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libfastcvopt \
     libthermalclient \
+    aptxals \
     CACertService \
     CneApp \
     IWlanService \
