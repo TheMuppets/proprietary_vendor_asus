@@ -1,0 +1,40 @@
+
+on boot
+    chown audioserver audioserver /dev/aw8697_haptic
+    #chown audioserver audioserver /dev/awinic_haptic
+    #chown audioserver audioserver /sys/class/leds/vibrator_aw8697/haptic_audio
+    chown audioserver audioserver /sys/class/leds/vibrator/haptic_audio
+    mkdir /data/awinic 0770 system audio
+
+
+on post-fs
+    chmod 0664 /sys/class/leds/vibrator/mem_play
+    chown system shell /sys/class/leds/vibrator/mem_play
+
+    chmod 0664 /sys/class/leds/vibrator/gain
+    chown system shell /sys/class/leds/vibrator/gain
+
+    chmod 0664 /sys/class/leds/vibrator/index
+    chown system shell /sys/class/leds/vibrator/index
+
+    chmod 0664 /sys/class/leds/vibrator/state
+    chown system shell /sys/class/leds/vibrator/state
+
+    chmod 0664 /sys/class/leds/vibrator/duration
+    chown system shell /sys/class/leds/vibrator/duration
+
+    chmod 0664 /sys/class/leds/vibrator/activate
+    chown system shell /sys/class/leds/vibrator/activate
+
+    chmod 0664 /sys/class/leds/vibrator/vmax
+    chown system shell /sys/class/leds/vibrator/vmax
+    write /sys/class/leds/vibrator/vmax 28
+
+on post-fs-data
+    mkdir /data/vendor/BBY 0777 system system
+    mkdir /data/vendor/awinic 0777 system system
+
+on property:service.bootanim.exit=0
+    write /sys/class/leds/vibrator/index 3
+    write /sys/class/leds/vibrator/duration 100
+    write /sys/class/leds/vibrator/boot_vibrator 1

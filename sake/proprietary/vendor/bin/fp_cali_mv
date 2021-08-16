@@ -1,0 +1,9 @@
+#!/vendor/bin/sh
+
+setprop vendor.sys.asus.setenforce 1
+echo "[FP_Calibration] setenforce: permissive" > /proc/asusevtlog
+sleep 5
+cp /sdcard/Fingerprint_Calibration_Log.txt  /mnt/vendor/persist/gf_cali.txt
+/vendor/bin/cali_check
+setprop vendor.sys.asus.setenforce 0
+echo "[FP_Calibration] setenforce: enforcing" > /proc/asusevtlog
