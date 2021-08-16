@@ -1,0 +1,8 @@
+# VM mananger
+# root permission needed for loopback device setup
+service vendor.vm-mgr /vendor/bin/vmmgr
+    class core
+    user root
+    group system
+    oneshot
+    disabled
