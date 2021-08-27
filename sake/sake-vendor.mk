@@ -243,7 +243,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/etc/audio/ZS590KS/mixer_paths_ZS590KS_EU.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/ZS590KS/mixer_paths_ZS590KS_EU.xml \
     vendor/asus/sake/proprietary/vendor/etc/audio/ZS590KS/r_submix_audio_policy_configuration_ZS590KS.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/ZS590KS/r_submix_audio_policy_configuration_ZS590KS.xml \
     vendor/asus/sake/proprietary/vendor/etc/audio/sku_lahaina/audio_platform_info_intcodec_ZS590KS.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_lahaina/audio_platform_info_intcodec_ZS590KS.xml \
-    vendor/asus/sake/proprietary/vendor/etc/audio/sku_lahaina/sound_trigger_mixer_paths_ZS590KS.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_lahaina/sound_trigger_mixer_paths_ZS590KS.xml \
     vendor/asus/sake/proprietary/vendor/etc/camera/camxoverridesettings.txt:$(TARGET_COPY_OUT_VENDOR)/etc/camera/camxoverridesettings.txt \
     vendor/asus/sake/proprietary/vendor/etc/camera/vidhance_calibration:$(TARGET_COPY_OUT_VENDOR)/etc/camera/vidhance_calibration \
     vendor/asus/sake/proprietary/vendor/etc/charger_fstab.qti:$(TARGET_COPY_OUT_VENDOR)/etc/charger_fstab.qti \
@@ -824,7 +823,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/lib/hw/audio.bluetooth_qti.default.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/audio.bluetooth_qti.default.so \
     vendor/asus/sake/proprietary/vendor/lib/hw/audio.primary.lahaina.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/audio.primary.lahaina.so \
     vendor/asus/sake/proprietary/vendor/lib/hw/com.dsi.ant@1.0-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/com.dsi.ant@1.0-impl.so \
-    vendor/asus/sake/proprietary/vendor/lib/hw/sound_trigger.primary.lahaina.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/sound_trigger.primary.lahaina.so \
     vendor/asus/sake/proprietary/vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so \
     vendor/asus/sake/proprietary/vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.1-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/vendor.qti.hardware.bluetooth_sar@1.1-impl.so \
     vendor/asus/sake/proprietary/vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so \
@@ -1156,7 +1154,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/lib64/hw/com.qti.chi.override.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/com.qti.chi.override.so \
     vendor/asus/sake/proprietary/vendor/lib64/hw/fingerprint.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/fingerprint.default.so \
     vendor/asus/sake/proprietary/vendor/lib64/hw/fingerprint_er1.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/fingerprint_er1.default.so \
-    vendor/asus/sake/proprietary/vendor/lib64/hw/sound_trigger.primary.lahaina.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/sound_trigger.primary.lahaina.so \
     vendor/asus/sake/proprietary/vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so \
     vendor/asus/sake/proprietary/vendor/lib64/hw/vendor.qti.gnss@4.0-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/vendor.qti.gnss@4.0-impl.so \
     vendor/asus/sake/proprietary/vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so \
