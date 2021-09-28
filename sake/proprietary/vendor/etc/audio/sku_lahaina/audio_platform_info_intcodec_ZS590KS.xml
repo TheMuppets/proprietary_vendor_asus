@@ -202,6 +202,8 @@
         <device name="SND_DEVICE_IN_HANDSET_DMIC_STEREO_SCREEN_RECORD" acdb_id="414"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_SCREEN_RECORDER" acdb_id="405"/>
         <device name="SND_DEVICE_IN_USB_HEADSET_MIC_SCREEN_RECORDER" acdb_id="54"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC_GAME" acdb_id="718"/>
+        <device name="SND_DEVICE_IN_USB_HEADSET_MIC_GAME" acdb_id="744"/>
         <device name="SND_DEVICE_IN_BT_SCO_HD_440BT_MIC" acdb_id="938"/>
         <device name="SND_DEVICE_IN_BT_SCO_MI_BASIC_MIC" acdb_id="940"/>
         <device name="SND_DEVICE_IN_BT_SCO_HD_440BT_MIC_WB" acdb_id="938"/>
@@ -420,6 +422,8 @@
         <device name="SND_DEVICE_IN_USB_HEADSET_MIC_NS" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_SCREEN_RECORDER" backend="headset-mic" interface="TX_CDC_DMA_TX_4"/>
         <device name="SND_DEVICE_IN_USB_HEADSET_MIC_SCREEN_RECORDER" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC_GAME" backend="headset-mic" interface="TX_CDC_DMA_TX_4"/>
+        <device name="SND_DEVICE_IN_USB_HEADSET_MIC_GAME" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
         <device name="SND_DEVICE_IN_VOIP_USB_HEADSET_MIC" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
         <device name="SND_DEVICE_IN_VOIP_GAME_USB_HEADSET_MIC" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
         <device name="SND_DEVICE_IN_VOIP_GAME_SPEAKER_TMIC" interface="TX_CDC_DMA_TX_3"/>
