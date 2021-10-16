@@ -1,0 +1,28 @@
+#!/vendor/bin/sh
+
+LOG_TAG="WDKEY_INSTALL"
+FNAME="/ADF/keybox.bin"
+
+logi ()
+{
+	/vendor/bin/log -t $LOG_TAG -p i "$@"
+}
+
+logi "start to install WD key"
+
+if [ -f "/ADF/NOWDKY" ]; then
+	logi "No WDKEY for this device"
+fi
+
+echo 1 > /sys/fs/selinux/log
+sleep 1
+
+/vendor/bin/install_key_server decryptWD
+
+if [ -f "/ADF/keybox.bin" ]; then
+	rm -f $FNAME
+fi
+
+echo 0 > /sys/fs/selinux/log
+
+logi "end of WD key install"

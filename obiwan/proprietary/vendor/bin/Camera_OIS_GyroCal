@@ -1,0 +1,99 @@
+#!/system/bin/sh
+
+ON="/proc/driver/ois_power"
+REG="/proc/driver/ois_i2c_rw"
+CAL="/proc/driver/ois_cali"
+RC="/proc/driver/ois_atd_status"
+
+LASER_MODE="/proc/driver/LaserFocus_measure_mode"
+LASER_ENFORCE="/proc/driver/LaserFocus_enforce"
+
+EEPROM_REG="/proc/driver/eeprom_i2c_r"
+
+LOG="/proc/fac_printklog"
+
+function usage()
+{
+    echo "
+API: ATD TestCommand Interface
+
+Format: adb shell /data/data/Camera_OIS_GyroCal
+"
+}
+
+function power_on()
+{
+	echo 1 > $ON
+}
+
+function power_off()
+{
+	echo 0 > $ON
+}
+
+function cat_status()
+{
+	cat $RC
+}
+
+function get_eeprom_value()
+{
+	echo $1 > $EEPROM_REG
+	cat $EEPROM_REG
+}
+
+function do_calibration()
+{
+	#Laser_set_enfore 100
+	#Laser_set_measure_mode 0
+	echo 1 > $CAL
+	#Laser_set_measure_mode 1
+	#Laser_set_enfore 0
+}
+
+function Laser_set_enfore()
+{
+	echo $1 > $LASER_ENFORCE
+}
+function Laser_set_measure_mode()
+{
+	echo $1 > $LASER_MODE
+}
+
+[ -e $LOG ] && echo "$0 $*"> $LOG
+
+output=$(cat $ON)
+if [ $output -eq 0 ]
+then
+	echo "Solo power up..."
+	solo=1
+	power_on
+else
+	solo=0
+fi
+
+if [ "$1" = "fake" ]
+then
+	echo "1"
+elif [ "$1" = "efficient" ]
+then
+	flag=$(get_eeprom_value 0x1EB1)
+	echo "SEMCO gyro calibration flag $flag"
+	if [ ! "$flag" = "0x1" ]
+	then
+		do_calibration
+		cat_status
+	else
+		echo "SEMCO has done gyro calibration!"
+		echo "1"
+	fi
+else
+	do_calibration
+	cat_status
+fi
+
+if [ $solo -eq 1 ]
+then
+	echo "Solo power down..."
+	power_off
+fi

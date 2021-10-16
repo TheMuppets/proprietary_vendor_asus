@@ -1,0 +1,70 @@
+#!/system/bin/sh
+
+REG="/proc/driver/actuator_i2c_rw"
+ON="/proc/driver/actuator_power"
+STATE="/proc/driver/vcm_enable"
+REG_ADDR="0x84"
+DEBUG=0
+
+function read_ois_value()
+{
+	echo $2 0x2 > $REG #word
+	cat $REG
+}
+
+function write_vcm_value()
+{
+	echo $1 0x2 $2 > $REG #dword, kernel write at once
+}
+
+function init_vcm()
+{
+	echo 0xE0 0x1 0x1 > $REG #byte, initial download
+}
+
+function write_dac()
+{
+	hex=$(printf "%04x" $1)
+	[ $DEBUG -eq 1 ] && echo "convert $1 to $hex"
+	set_value=0x$hex
+	write_vcm_value $REG_ADDR $set_value
+
+	[ $DEBUG -eq 1 ] && echo "write val is $set_value, reg val now is $(read_ois_value $REG_ADDR)"
+}
+
+
+if [ $# -ne 2 ]; then
+	echo "Usage: adb shell $0 DAC_VALUE (Decimal, 1~4095)"
+	echo "Params num: $#"
+	exit 1
+fi
+
+if [ "$2" = "END" -o "$2" = "end" ]; then
+	af_movable=$(cat $STATE)
+	if [ $af_movable -eq 0 ]; then
+		echo 1 > $STATE
+		[ $DEBUG -eq 1 ] && echo "allow AF move lens"
+	else
+		[ $DEBUG -eq 1 ] && echo "AF can move lens already"
+	fi
+	exit 1
+fi
+
+if ! grep -Eq "^[0-9]+$" <<< $2; then
+	echo "Please input decimal value!"
+	exit 1
+fi
+
+if [ $2 -gt 4095 -o $2 -lt 1 ]; then
+	echo "DAC value invalid! Range is [1,4095]"
+	exit 1
+fi
+
+af_movable=$(cat $STATE)
+if [ $af_movable -eq 1 ]; then
+	echo 0 > $STATE
+	[ $DEBUG -eq 1 ] && echo "first, disallow AF move lens"
+fi
+
+#init_vcm
+write_dac $2

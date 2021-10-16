@@ -1,0 +1,28 @@
+on fs
+    write /sys/devices/platform/soc/1d84000.ufshc/ufshpb_lu0/hpb_read_disable 0
+    write /sys/devices/platform/soc/1d84000.ufshc/ufshpb_lu0/map_cmd_disable 0
+    write /sys/devices/platform/soc/1d84000.ufshc/ufstw_lu0/tw_enable 1
+    write /sys/devices/platform/soc/1d84000.ufshc/ufstw_lu0/flush_during_hibern_enter 1
+
+on property:sys.boot_completed=1
+    start ufs_info
+    start ddr_info
+
+on property:vendor.asus.update.storage.status=1
+    start ufs_info
+
+service ufs_info /vendor/bin/sh /vendor/bin/ufs_info.sh
+    class core
+    user root
+    oneshot
+    disabled
+    
+service ddr_info /vendor/bin/sh /vendor/bin/ddr_info.sh
+    class core
+    user root
+    oneshot
+    disabled
+    
+on property:ro.boot.ftm=1
+    symlink /vendor/bin/ufs_info /data/data/ufs_info
+    symlink /vendor/bin/ddr_info /data/data/ram_info

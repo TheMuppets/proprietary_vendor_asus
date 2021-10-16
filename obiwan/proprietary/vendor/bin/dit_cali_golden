@@ -1,0 +1,55 @@
+#!/vendor/bin/sh
+case $1 in
+	"0")
+	    # rear camera capture raw and calibration
+		rm /data/data/cal_golden_rear_result.txt
+		rm /data/data/SHD_log.txt
+		setprop debug.asus.cameratest.mode 7
+		CameraTest 3 1
+		/vendor/bin/ditbsp 3 0
+        CameraTest 4 0 10
+		CameraTest 3 0
+		setprop debug.asus.cameratest.mode 0
+		rm /factory/luma_target.txt
+	;;
+	"1")
+	    # front camera capture raw and calibration
+		rm /data/data/cal_golden_front_result.txt
+		rm /data/data/SHD_log.txt
+		setprop debug.asus.cameratest.mode 7
+		CameraTest 3 1
+		/vendor/bin/ditbsp 3 1
+        CameraTest 4 1 10
+		CameraTest 3 0
+		setprop debug.asus.cameratest.mode 0
+		rm /factory/luma_target.txt
+	;;
+	"2")
+	    # rear2 camera capture raw and calibration
+		rm /data/data/cal_golden_rear2_result.txt
+		rm /data/data/SHD_log.txt
+		setprop debug.asus.cameratest.mode 7
+		CameraTest 3 1
+		/vendor/bin/ditbsp 3 2
+        CameraTest 4 2 10
+		CameraTest 3 0
+		setprop debug.asus.cameratest.mode 0
+		rm /factory/luma_target.txt
+	;;
+	"3")
+	    # front2 camera capture raw and calibration
+		rm /data/data/cal_golden_front2_result.txt
+		rm /data/data/SHD_log.txt
+		setprop debug.asus.cameratest.mode 7
+		CameraTest 3 1
+		/vendor/bin/ditbsp 3 3
+        CameraTest 4 3 10
+		CameraTest 3 0
+		setprop debug.asus.cameratest.mode 0
+		rm /factory/luma_target.txt
+	;;
+	*)
+	    echo "Invalid argument!!(par1 : commandID = $1)"
+	;;
+esac
+exit 0

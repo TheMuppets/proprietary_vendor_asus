@@ -1,0 +1,14 @@
+service asus_osinfo /vendor/bin/asus_osinfo
+    class root
+    user root
+    oneshot
+    disabled
+
+on property:persist.vendor.sys.setupwizard.active=*
+    start asus_osinfo
+
+on property:vendor.debug.update.deviceinfo.result=1
+    start asus_osinfo
+
+on property:sys.boot_completed=1
+    start asus_osinfo

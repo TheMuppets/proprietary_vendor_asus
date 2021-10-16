@@ -1,0 +1,77 @@
+#!/system/bin/sh
+
+ON="/proc/driver/ois_power"
+REG="/proc/driver/ois_i2c_rw"
+RDATA="/proc/driver/ois_rdata"
+RC="/proc/driver/ois_atd_status"
+
+LOG="/proc/fac_printklog"
+
+FILE="/sdcard/gyro.csv"
+
+function usage()
+{
+    echo "
+API: ATD TestCommand Interface
+
+FORMAT: adb shell /data/data/Camera_OIS_Rdata Para1
+
+USAGE:
+
+	Save Para1 numbers of Gyro X/Y and ACC X/Y data
+"
+}
+
+function power_on()
+{
+	echo 1 > $ON
+}
+function power_off()
+{
+	echo 0 > $ON
+}
+
+function do_process()
+{
+	echo $1 > $RDATA
+}
+
+function cat_status()
+{
+	cat $RC
+}
+
+[ -e $LOG ] && echo "$0 $*"> $LOG
+
+if [ $(echo "$1" | grep -o "^[0-9]*$") ] || [ $? -eq 0 ]; then
+       echo $? >/dev/null 2>&1
+else
+	usage
+	echo "0"
+	exit 1
+fi
+
+
+output=$(cat $ON)
+if [ $output -eq 0 ]
+then
+	echo "Solo power up..."
+	solo=1
+	power_on
+else
+	solo=0
+fi
+
+
+[ -e "$FILE" ] && rm $FILE
+
+do_process $1
+
+cat_status
+
+if [ $solo -eq 1 ]
+then
+	echo "Solo power down..."
+	power_off
+fi
+

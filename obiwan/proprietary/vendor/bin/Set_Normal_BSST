@@ -1,0 +1,78 @@
+#!/vendor/bin/sh
+
+###########################################################################################
+##                                                                                       ##
+##  This is the shipping image normal mode BSST setting tool for Asus ZS661KS smart amp  ##
+##                                                                                       ##
+###########################################################################################
+
+if test -e "/proc/asound/konamtpsndcard"; then
+	soundcard_complete=1
+else
+	soundcard_complete=0
+fi
+
+echo "[ASUS][Set_Normal_BSST] BSST setting Begin, soundcard_complete = $soundcard_complete" > /dev/kmsg
+log -p d -t [ASUS][Set_Normal_BSST] BSST setting Begin, soundcard_complete = $soundcard_complete
+
+
+if [ "${soundcard_complete}" != "1" ]
+	then
+
+	echo "[ASUS][Set_Normal_BSST] Soundcard not complete $soundcard_complete, ingnore this process" > /dev/kmsg
+	log -p d -t [ASUS][Set_Normal_BSST] Soundcard not complete $soundcard_complete, ingnore this process
+
+else
+
+	if test -e "/dev/i2c-7"; then
+
+		echo "[ASUS][Set_Normal_BSST] Set Receiver normal BSST Begin" > /dev/kmsg
+		log -p d -t [ASUS][Set_Normal_BSST] Set Receiver normal BSST Begin
+
+		Temp_data=`climax -d /dev/i2c-7 --slave=0x34 -r 0x50`
+
+		echo "[ASUS][Set_Normal_BSST] Get Receiver normal BSST old setting = $Temp_data" > /dev/kmsg
+		log -p d -t [ASUS][Set_Normal_BSST] Get Receiver normal BSST old setting = $Temp_data
+
+
+		Temp_data=`climax -d /dev/i2c-7 --slave=0x34 -r 0x50 -w 0x0019`
+
+		echo "[ASUS][Set_Normal_BSST] Set Receiver normal BSST old setting result = $Temp_data" > /dev/kmsg
+		log -p d -t [ASUS][Set_Normal_BSST] Set Receiver normal BSST old setting result = $Temp_data
+
+
+		Temp_data=`climax -d /dev/i2c-7 --slave=0x34 -r 0x50`
+
+		echo "[ASUS][Set_Normal_BSST] Get Receiver normal BSST new setting = $Temp_data" > /dev/kmsg
+		log -p d -t [ASUS][Set_Normal_BSST] Get Receiver normal BSST new setting = $Temp_data
+
+
+
+		echo "[ASUS][Set_Normal_BSST] Set Speaker normal BSST Begin" > /dev/kmsg
+		log -p d -t [ASUS][Set_Normal_BSST] Set Speaker normal BSST Begin.
+
+		Temp_data=`climax -d /dev/i2c-7 --slave=0x35 -r 0x50`
+
+		echo "[ASUS][Set_Normal_BSST] Get Speaker normal BSST old setting = $Temp_data" > /dev/kmsg
+		log -p d -t [ASUS][Set_Normal_BSST] Get Speaker normal BSST old setting = $Temp_data
+
+
+
+		Temp_data=`climax -d /dev/i2c-7 --slave=0x35 -r 0x50 -w 0x0019`
+
+		echo "[ASUS][Set_Normal_BSST] Set Speaker normal BSST old setting result = $Temp_data" > /dev/kmsg
+		log -p d -t [ASUS][Set_Normal_BSST] Set Speaker normal BSST old setting result = $Temp_data
+
+
+		Temp_data=`climax -d /dev/i2c-7 --slave=0x35 -r 0x50`
+
+		echo "[ASUS][Set_Normal_BSST] Get Speaker normal BSST new setting = $Temp_data" > /dev/kmsg
+		log -p d -t [ASUS][Set_Normal_BSST] Get Speaker normal BSST new setting = $Temp_data
+
+	else
+
+		echo "[ASUS][Set_Normal_BSST] /dev/i2c-7 isnt Exists ingnore this process" > /dev/kmsg
+		log -p d -t [ASUS][Set_Normal_BSST] /dev/i2c-7 isnt Exists ingnore this process
+	fi
+
+fi

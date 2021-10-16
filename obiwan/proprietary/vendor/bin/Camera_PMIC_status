@@ -1,0 +1,3 @@
+#!/system/bin/sh
+#ASUS_BSP code in kernel/msm-4.19/regulator/qcom_pm8008-regulator.c
+cat proc/driver/Camera_PM8008_status

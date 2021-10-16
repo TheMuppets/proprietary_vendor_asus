@@ -1,0 +1,31 @@
+#!/vendor/bin/sh
+write_calikey() {
+        CameraDirID=$1
+        case $CameraDirID in
+        0)
+                dir=rear
+                ModuleNumID=0
+                ;;
+        1)
+                dir=front
+                ModuleNumID=0
+                ;;
+        2)
+                dir=rear2
+                ModuleNumID=0
+                ;;
+        esac
+        PRJ=113
+        SKU=0
+        ModeID=0
+        filename=/vendor/factory/cali_${dir}key.txt
+        echo "$PRJ $CameraDirID $ModuleNumID $ModeID" > $filename
+        echo 'Path = "/vendor/lib/DataSet/ispDB/ParameterDB.db"' >> $filename
+        echo -e "0 0\nPRJ_$PRJ\nSKU_$SKU" >> $filename
+        chmod 666 $filename
+}
+
+for i in `seq 0 2`; do
+        write_calikey $i
+done
+

@@ -1,0 +1,114 @@
+#!/vendor/bin/sh
+
+Pass=1
+Fail=0
+
+if [ "$1" == "0" ]; then
+	log "[UpdateDeviceName] +++ default setting +++"
+
+#	/data/data/PhoneInfoTest 6 1 WW >/dev/null
+#	if [ "$?" -ne 0 ]; then
+#		echo "$Fail"
+#		log "[UpdateDeviceName] Failed to reset COUNTRY code"
+#		exit 1
+#	else
+#		log "[UpdateDeviceName] COUNTRY = `/data/data/PhoneInfoTest 6 0`"
+#	fi
+
+#	/data/data/PhoneInfoTest 8 1 ASUS >/dev/null
+#	if [ "$?" -ne 0 ]; then
+#		echo "$Fail"
+#		log "[UpdateDeviceName] Failed to reset CID "
+#		exit 1
+#	else
+#		log "[UpdateDeviceName] CUSTOMER = `/data/data/PhoneInfoTest 8 0`"
+#	fi
+
+	rm /vendor/factory/COUNTRY
+	rm /vendor/factory/CUSTOMER
+	rm /vendor/factory/SIMCODE
+
+	/vendor/bin/sp
+	if [ "$?" -ne 0 ]; then
+		echo "$Fail"
+		log "[UpdateDeviceName][Reset] Failed to start sp "
+		exit 1
+	fi
+
+	/vendor/bin/asus_osinfo
+	if [ "$?" -ne 0 ]; then
+		echo "$Fail"
+		log "[UpdateDeviceName][Reset] Failed to start asus_osinfo "
+		exit 1
+	fi
+
+	log "[UpdateDeviceName] ro.product.model = `getprop ro.product.model`"
+	log "[UpdateDeviceName] ro.product.device = `getprop ro.product.device`"
+	log "[UpdateDeviceName] ro.product.name = `getprop ro.product.name`"
+	log "[UpdateDeviceName] --- default setting ---"
+	echo "$Pass"
+	exit 0
+
+elif [ "$1" == "1" ]; then
+	log "[UpdateDeviceName] +++ re-run SP +++"
+
+	# Update imei property
+	setprop persist.vendor.radio.device.imei 0
+	setprop persist.vendor.radio.device.imei2 0
+	killall qcrild
+
+	/vendor/bin/sp
+	if [ "$?" -ne 0 ]; then
+		echo "$Fail"
+		log "[UpdateDeviceName][Sync] Failed to start sp "
+		exit 1
+	fi
+
+	/vendor/bin/asus_osinfo
+	if [ "$?" -ne 0 ]; then
+		echo "$Fail"
+		log "[UpdateDeviceName][Sync] Failed to start asus_osinfo "
+		exit 1
+	fi
+
+	RESULT=0
+	COUNT=10
+	for i in $(seq 1 $COUNT);
+	do
+		IMEI1=`getprop persist.vendor.radio.device.imei`
+		IMEI2=`getprop persist.vendor.radio.device.imei2`
+
+		if [ "$IMEI1" == "0" ] || [ "$IMEI2" == "0" ];then
+			log "[UpdateDeviceName] IMEI1 = $IMEI1, IMEI2 = $IMEI2"
+			log "[UpdateDeviceName] Need to retry!"
+			RESULT=0
+			sleep 1
+		else
+			log "[UpdateDeviceName] IMEI1 = $IMEI1, IMEI2 = $IMEI2"
+			log "[UpdateDeviceName] Update IMEI successfully!"
+			RESULT=1
+			break
+		fi
+	done
+
+	if [ "$RESULT" == "0" ]; then
+		echo "$Fail"
+		log "[UpdateDeviceName] Failed to update IMEI "
+		exit 1
+	fi
+
+	log "[UpdateDeviceName] ro.product.model = `getprop ro.product.model`"
+	log "[UpdateDeviceName] ro.product.device = `getprop ro.product.device`"
+	log "[UpdateDeviceName] ro.product.name = `getprop ro.product.name`"
+	log "[UpdateDeviceName] --- re-run SP ---"
+	echo "$Pass"
+	exit 0
+
+else
+	log "[UpdateDeviceName] Invalid command!, cmd=$1"
+	log "[UpdateDeviceName] Invalid command!"
+	log "[UpdateDeviceName] UpdateDeviceName 0 => default setting"
+	log "[UpdateDeviceName] UpdateDeviceName 1 => re-run SP"
+	echo "$Fail"
+	exit 1
+fi

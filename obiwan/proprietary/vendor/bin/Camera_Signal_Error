@@ -1,0 +1,19 @@
+#!/system/bin/sh
+
+case $1 in
+"0")
+	echo 0 > /proc/driver/cam_csi_check
+	echo "PASS"
+;;
+"1")
+	csi_status=`cat /proc/driver/cam_csi_check`
+	if [ ${csi_status} -eq "0" ]; then
+		echo "PASS"
+	else
+		echo "CSID_Error (ROG2)"
+	fi
+;;
+*)
+	echo "Invalid argument!!(par1 : commandID = $1)"
+;;
+esac

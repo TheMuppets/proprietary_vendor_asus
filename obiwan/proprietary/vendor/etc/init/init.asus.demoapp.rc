@@ -1,0 +1,39 @@
+on fs
+
+    wait /dev/block/bootdevice/by-name/APD
+    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/APD
+    mount ext4 /dev/block/bootdevice/by-name/APD /APD nosuid nodev noatime barrier=1
+
+    wait /dev/block/bootdevice/by-name/ADF
+    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/ADF
+    mount ext4 /dev/block/bootdevice/by-name/ADF /ADF nosuid nodev noatime barrier=1
+
+
+on post-fs-data
+    chown system system /APD
+    chmod 0775 /APD
+    restorecon_recursive /APD
+
+    chown system system /ADF
+    chmod 0775 /ADF
+    restorecon_recursive /ADF
+
+on early-boot
+    start mount_apd
+
+service mount_apd /vendor/bin/sh /vendor/bin/mount_apd.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+	setprop persist.sys.enableAPD 0
+
+on property:persist.sys.enableAPD=1
+    wait /dev/block/bootdevice/by-name/APD
+    mount ext4 /dev/block/bootdevice/by-name/APD /APD nosuid nodev barrier=1 noatime
+    start mount_apd
+    
+on property:persist.sys.enableAPD=0
+    umount /APD

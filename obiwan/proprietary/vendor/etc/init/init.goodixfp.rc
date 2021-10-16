@@ -1,0 +1,74 @@
+#
+# rc file for goodix fingerprint
+#
+
+on fs
+    chown system root /dev/goodix_fp
+    chmod 0760 /dev/goodix_fp
+
+on post-fs-data
+	mkdir /data/vendor/goodix 0777 system system
+    setprop ro.hardware.fp_position front_woh
+    setprop ro.hardware.fp_shape round
+    setprop persist.sys.fp.navigation 1
+    setprop persist.vendor.asus.fp.wakeup_support true
+    setprop persist.vendor.asus.fp.wakeup true
+
+service fp_ver /vendor/bin/sh /vendor/bin/gf_ver.sh
+    class core
+    oneshot
+    disabled
+
+on property:vendor.goodix.service.ready=1
+    start fp_ver
+
+service fp_bmmi /vendor/bin/sh /vendor/bin/gf_bmmi_test.sh
+    class core
+    group root
+    user root
+    oneshot
+    disabled
+
+on property:persist.vendor.asus.fp.bmmi.test=1
+    start fp_bmmi
+
+service fp_smmi /vendor/bin/sh /vendor/bin/gf_smmi_test.sh
+    class core
+    group root
+    user root
+    oneshot
+    disabled
+
+on property:persist.vendor.asus.fp.smmi.test=1
+    start fp_smmi
+
+service fp_cali_status /vendor/bin/cali_check
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+
+on property:vendor.fp.cali.factory.check=1
+    start fp_cali_status
+
+service fp_shipping_cali_status /vendor/bin/cali_shipping_check
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+
+on property:vendor.fp.cali.shipping.check=1
+    start fp_shipping_cali_status
+
+service fp_cali_mv /vendor/bin/sh /vendor/bin/fp_cali_mv
+    class core
+    user root
+    group root
+    seclabel u:r:savelogmtp:s0
+    disabled
+    oneshot
+
+on property:sys.fp.mv.file=1
+    start fp_cali_mv

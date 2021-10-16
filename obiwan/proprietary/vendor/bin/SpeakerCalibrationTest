@@ -1,0 +1,369 @@
+#!/vendor/bin/sh
+
+##############################################################################
+##                                                                          ##
+##  This is the shipping image calibration tool for Asus ZS661KS smart amp  ##
+##                                                                          ##
+##############################################################################
+
+TAG=[ASUS][SpeakerCalibrationTest]
+PROP_PREFIX=vendor.audio.calibration
+SILENCE_SOURCE=/vendor/etc/silence30s.wav
+PRESET=/vendor/firmware/stereo.cnt
+EXE=/vendor/bin/climax
+
+TYPICAL_SPK=6500
+TYPICAL_RCV=5700
+
+# in percentage, 15 => 15%
+RANGE=15
+
+spk_lower=$((TYPICAL_SPK*(100-RANGE)/100))
+spk_upper=$((TYPICAL_SPK*(100+RANGE)/100))
+rcv_lower=$((TYPICAL_RCV*(100-RANGE)/100))
+rcv_upper=$((TYPICAL_RCV*(100+RANGE)/100))
+
+spk_ohm=0
+rcv_ohm=0
+
+function is_mtp_set() {
+    rcv_mtp=$(cat /d/tfa98xx-34/MTPEX)
+    spk_mtp=$(cat /d/tfa98xx-35/MTPEX)
+
+    test "$((rcv_mtp+spk_mtp))" -ne 0
+    return $?
+}
+
+function print_dbg() {
+    # You may set this flag using export
+    if test "$VERBOSE_DEBUG" == "1"
+    then
+        echo "$@"
+    else
+        log -p i -t $TAG "$@"
+    fi
+}
+
+function set_k_prop() {
+    key=$1
+    shift
+    setprop $PROP_PREFIX.$key "$@"
+}
+
+function get_k_prop() {
+    getprop $PROP_PREFIX.$1
+}
+
+function init_props() {
+    set_k_prop rcv FAIL
+    set_k_prop spk FAIL
+}
+
+function set_k_range() {
+    set_k_prop value.range "$spk_lower $spk_upper $rcv_lower $rcv_upper"
+}
+
+function rcv_pass() {
+    rcv_ohm=$(get_k_prop rcv.value)
+
+    log -p i -t $TAG "rcv_ohm = $rcv_ohm"
+    
+    log -p i -t $TAG "rcv_upper = $rcv_upper"
+    log -p i -t $TAG "rcv_lower = $rcv_lower"
+
+    test -n "$rcv_ohm" || return 1
+
+    test $rcv_ohm -lt $rcv_upper && test $rcv_ohm -gt $rcv_lower
+    return $?
+}
+
+function spk_pass() {
+    spk_ohm=$(get_k_prop spk.value)
+
+    log -p i -t $TAG "spk_ohm = $spk_ohm"
+    
+    log -p i -t $TAG "spk_upper = $spk_upper"
+    log -p i -t $TAG "spk_lower = $spk_lower"
+
+    test -n "$spk_ohm" || return 1
+
+    test $spk_ohm -lt $spk_upper && test $spk_ohm -gt $spk_lower
+    return $?
+}
+
+function check_audioamp() {
+        echo "[ASUS][SpeakerCalibrationTest] check_audioamp Begin" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp Begin.
+
+        nxp_reg_0x11_34=$(climax -dsysfs -l /vendor/firmware/tfa98xx.cnt --dump | grep 0x11 | head -n 1)
+        nxp_reg_0x11_35=$(climax -dsysfs -l /vendor/firmware/tfa98xx.cnt --dump | grep 0x11 | tail -n 1)
+
+        echo "[ASUS][SpeakerCalibrationTest] check_audioamp nxp_reg_0x11_34 = $nxp_reg_0x11_34" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp nxp_reg_0x11_34 = $nxp_reg_0x11_34
+
+        echo "[ASUS][SpeakerCalibrationTest] check_audioamp nxp_reg_0x11_35 = $nxp_reg_0x11_35" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp nxp_reg_0x11_35 = $nxp_reg_0x11_35
+
+        reg_0x34=$(echo $nxp_reg_0x11_34 | cut -d" " -f 9)
+        reg_0x35=$(echo $nxp_reg_0x11_35 | cut -d" " -f 9)
+        #echo reg_0x34:$reg_0x34
+        #echo reg_0x35:$reg_0x35
+
+        echo "[ASUS][SpeakerCalibrationTest] check_audioamp reg_0x34 = $reg_0x34, reg_0x35 = $reg_0x35" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp reg_0x34 = $reg_0x34, reg_0x35 = $reg_0x35
+
+
+        if [ "$reg_0x34" = "PLLS:1" ] && [ "$reg_0x35" = "PLLS:1" ];then
+                echo "[ASUS][SpeakerCalibrationTest] check_audioamp all pass" > /dev/kmsg
+                log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp all pass
+                return 0
+        elif [ "$reg_0x34" != "PLLS:1" ] && [ "$reg_0x35" != "PLLS:1" ];then
+                echo "[ASUS][SpeakerCalibrationTest] check_audioamp all fail" > /dev/kmsg
+                log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp all fail
+                return 1
+        elif [ "$reg_0x34" != "PLLS:1" ];then
+                echo "[ASUS][SpeakerCalibrationTest] check_audioamp rcv reg_0x34 fail" > /dev/kmsg
+                log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp rcv reg_0x34 fail
+                return 1
+        elif [ "$reg_0x35" != "PLLS:1" ];then
+                echo "[ASUS][SpeakerCalibrationTest] check_audioamp spk reg_0x35 fail" > /dev/kmsg
+                log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp spk reg_0x35 fail
+                return 1
+        else
+                echo "[ASUS][SpeakerCalibrationTest] check_audioamp else all fail" > /dev/kmsg
+                log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp else all fail
+                return 1
+        fi
+
+        echo "[ASUS][SpeakerCalibrationTest] check_audioamp End" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp End.
+}
+
+function assert_file_exist() {
+
+    if ! test -f "$1"
+    then
+        echo "File $1 not found" >&2
+        setprop vendor.asus.vendor_audiocalibration 0
+        exit 1
+    fi
+}
+
+function amp_calibrate_usage() {
+    cat <<USAGE_MESSAGE
+    usage: $TAG <action>
+    actions:
+    0 [imped_bnd1] [impd_bnd2]
+    1 [imped_bnd1] [impd_bnd2] - Re-calibrate amp.
+    2
+    3 - Calibrate amp chip speaker impendence.
+    5 - Reset amp chip MTP for re-calibrate.
+    Don't write to MTP more than 200 time, or ROM of chip would corrupt.
+USAGE_MESSAGE
+}
+
+
+function read_reg {
+    grep -m 1 "^$1:" $REGMAP_SYSFS | cut -d " " -f 2
+}
+
+function climax_tool {
+    $EXE -d sysfs -l $PRESET --$@ 2>&1
+}
+
+function set_mixer() {
+
+    echo "[ASUS][SpeakerCalibrationTest] set_mixer = tinymix -D 0 $1 $2" > /dev/kmsg
+    log -p d -t [ASUS][SpeakerCalibrationTest] set_tinymix
+
+    /system/bin/tinymix -D 0 "$1" "$2"
+}
+
+function clk_on {
+    print_dbg clk_on
+
+    setprop vendor.asus.audiocalibrationplaymusic 1
+
+    echo "[ASUS][SpeakerCalibrationTest] clk_on Begin" > /dev/kmsg
+    log -p d -t [ASUS][SpeakerCalibrationTest] clk_on Begin
+    
+    sleep 1
+}
+
+function amp_calibrate_reset() {
+    if ! is_mtp_set
+    then
+        print_dbg "mtp unset, reset not required"
+        return 0
+    fi
+
+    echo "[ASUS][SpeakerCalibrationTest] amp_calibrate_reset" > /dev/kmsg
+    log -p d -t [ASUS][SpeakerCalibrationTest] amp_calibrate_reset
+
+    clk_on
+    climax_tool resetMtpEx > /data/data/audio_spk_resetMtp.txt
+    sleep 1
+
+    # climax_tool reset | tee -a /data/data/audio_spk_reset.txt > /dev/null 
+    # sleep 1
+
+    if is_mtp_set
+    then
+        print_dbg "mtp reset failed"
+        return 1
+    fi
+
+}
+
+function amp_calibrate_boot() {
+    ret=0
+
+    echo "[ASUS][SpeakerCalibrationTest] amp_calibrate_boot" > /dev/kmsg
+    log -p d -t [ASUS][SpeakerCalibrationTest] amp_calibrate_boot
+
+    # clk_on
+
+    echo "[ASUS][SpeakerCalibrationTest] amp_calibrate_boot Begin calibration" > /dev/kmsg
+    log -p d -t [ASUS][SpeakerCalibrationTest] amp_calibrate_boot Begin calibration
+
+    sleep 1
+
+    /vendor/bin/sh /vendor/etc/check_spkcal.sh
+
+    echo "[ASUS][SpeakerCalibrationTest] amp_calibrate_boot End calibration process" > /dev/kmsg
+    log -p d -t [ASUS][SpeakerCalibrationTest] amp_calibrate_boot End calibration process
+
+    if spk_pass 
+    then
+        set_k_prop spk PASS
+    else
+        echo "[ASUS][SpeakerCalibrationTest] amp_calibrate_boot speaker calibrated value not in range" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] amp_calibrate_boot speaker calibrated value not in range
+        ret=1
+    fi
+
+
+    if rcv_pass 
+    then
+        set_k_prop rcv PASS
+    else
+        echo "[ASUS][SpeakerCalibrationTest] amp_calibrate_boot receiver calibrated value not in range" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] amp_calibrate_boot receiver calibrated value not in range
+        ret=1
+    fi
+
+
+    if check_audioamp
+    then
+        echo "[ASUS][SpeakerCalibrationTest] check_audioamp pass" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp pass
+    else
+        echo "[ASUS][SpeakerCalibrationTest] check_audioamp fail" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] check_audioamp fail
+        ret=1
+    fi
+
+    echo "[ASUS][SpeakerCalibrationTest] amp_calibrate_boot End" > /dev/kmsg
+    log -p d -t [ASUS][SpeakerCalibrationTest] amp_calibrate_boot End
+
+    return $ret
+}
+
+function amp_calibrate_all() {
+
+    echo "[ASUS][SpeakerCalibrationTest] amp_calibrate_all Begin" > /dev/kmsg
+    log -p d -t [ASUS][SpeakerCalibrationTest] amp_calibrate_all Begin
+
+    init_props
+
+    amp_calibrate_boot
+    return $?
+}
+
+function amp_calibrate_always() {
+    
+    log -p i -t $TAG "amp_calibrate_always Begin"
+
+    init_props
+
+    ret=0
+
+    clk_on
+
+    climax_tool calibrate=always | tee /data/data/audio_spk_calibrate_always.txt | parse_ohm
+
+    if rcv_pass 
+    then
+        set_k_prop rcv PASS
+    else
+        log -p i -t $TAG "receiver calibrated value not in range"
+        ret=1
+    fi
+
+    if spk_pass 
+    then
+        set_k_prop spk PASS
+    else
+        log -p i -t $TAG "speaker calibrated value not in range"
+        ret=1
+    fi
+
+    return $ret
+}
+
+function SpeakerCalibrationTest_main() {
+
+        echo "[ASUS][SpeakerCalibrationTest] Begin, Input command = $@" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] Begin, Input command = $@
+
+    assert_file_exist $EXE
+    assert_file_exist $PRESET
+
+    ACTION="$1"
+    shift
+
+    case "$ACTION" in
+        '0')
+            ;&
+        '1') # Calibration Left amp
+            ;&
+        '2')
+            ;&
+        '3') # Calibrate 1st smart amp chip i2c
+            log -p i -t $TAG "SpeakerCalibrationTest_main Command 3"
+            amp_calibrate_all || return 1
+            ;;
+        '4') # Calibrate always smart amp chip i2c
+            log -p i -t $TAG "SpeakerCalibrationTest_main Command 4"
+            amp_calibrate_always || return 1
+            ;;
+        '5') # Calibrate reset smart amp chip i2c
+            log -p i -t $TAG "SpeakerCalibrationTest_main Command 5"
+            amp_calibrate_reset || return 1
+            ;;
+
+        *)
+            amp_calibrate_usage;
+            return 1;
+            ;;
+    esac
+
+}
+
+SpeakerCalibrationTest_main 3
+RESULT=$?
+
+        echo "[ASUS][SpeakerCalibrationTest] RESULT = $RESULT" > /dev/kmsg
+        log -p d -t [ASUS][SpeakerCalibrationTest] RESULT = $RESULT
+
+set_k_range
+
+setprop vendor.asus.vendor_audiocalibration 0
+
+if [[ $RESULT -eq 0 ]]
+then
+    echo "PASS";
+else
+    echo "FAIL";
+fi
+exit $RESULT

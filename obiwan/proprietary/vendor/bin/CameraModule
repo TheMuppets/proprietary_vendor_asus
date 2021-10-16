@@ -1,0 +1,21 @@
+#!/system/bin/sh
+
+# Created by Stimber_Hsueh@asus.com
+
+case $1 in
+	"0")
+		cat /proc/driver/CameraModule0
+	;;
+	"1")
+		cat /proc/driver/CameraModule1
+	;;
+	"2")
+		cat /proc/driver/CameraModule2
+	;;
+	"3")
+		cat /proc/driver/CameraModule3
+	;;
+	*)
+		echo "Invalid argument!!(par1 : commandID = $1)"
+	;;
+esac

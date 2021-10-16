@@ -1,0 +1,11 @@
+if [ -f "/sys/camera_sensor/status/camera1" ]; then
+	vga_status=`cat /sys/camera_sensor/status/camera1`
+	if [ ${vga_status:0:3} -eq "ACK" ]; then
+    	echo "1"
+	else
+    	echo "0"
+        fi
+else
+	echo "0"
+fi
+

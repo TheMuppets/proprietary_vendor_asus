@@ -1,0 +1,36 @@
+#!/system/bin/sh
+setprop persist.asus.checkaudioamp 1
+
+echo "[ASUS][CheckAudioAMP] Begin start check thread" > /dev/kmsg
+log -p d -t [ASUS][CheckAudioAMP] Begin start check thread.
+
+sleep 2
+check_rcv_amp=`getprop vendor.audio.checkaudioamp.rcv`
+check_spk_amp=`getprop vendor.audio.checkaudioamp.spk`
+setprop persist.asus.checkaudioamp 0
+
+echo "[ASUS][CheckAudioAMP] check_rcv_amp = $check_rcv_amp, check_spk_amp = $check_spk_amp" > /dev/kmsg
+log -p d -t [ASUS][CheckAudioAMP] check_rcv_amp = $check_rcv_amp, check_spk_amp = $check_spk_amp
+
+if [ "${check_rcv_amp}" = "PASS" ] && [ "${check_spk_amp}" = "PASS" ];then
+        echo "[ASUS][CheckAudioAMP] Result : PASS" > /dev/kmsg
+        log -p d -t [ASUS][CheckAudioAMP] Result : PASS
+        echo "PASS"
+elif [ "${check_rcv_amp}" = "FAIL" ] && [ "${check_spk_amp}" = "FAIL" ];then
+        echo "[ASUS][CheckAudioAMP] Result : Both_FAIL" > /dev/kmsg
+        log -p d -t [ASUS][CheckAudioAMP] Result : Both_FAIL
+	echo "Both_FAIL"
+elif [ "${check_rcv_amp}" = "FAIL" ];then
+        echo "[ASUS][CheckAudioAMP] Result : 0x34_FAIL, check_rcv_amp = $check_rcv_amp, check_spk_amp = $check_spk_amp" > /dev/kmsg
+        log -p d -t [ASUS][CheckAudioAMP] Result : 0x34_FAIL, check_rcv_amp = $check_rcv_amp, check_spk_amp = $check_spk_amp
+	echo "0x34_FAIL"
+elif [ "${check_spk_amp}" = "FAIL" ];then
+        echo "[ASUS][CheckAudioAMP] Result : 0x35_FAIL, check_rcv_amp = $check_rcv_amp, check_spk_amp = $check_spk_amp" > /dev/kmsg
+        log -p d -t [ASUS][CheckAudioAMP] Result : 0x35_FAIL, check_rcv_amp = $check_rcv_amp, check_spk_amp = $check_spk_amp
+        echo "0x35_FAIL"
+else
+        echo "[ASUS][CheckAudioAMP] Result : FAIL, check_rcv_amp = $check_rcv_amp, check_spk_amp = $check_spk_amp" > /dev/kmsg
+        log -p d -t [ASUS][CheckAudioAMP] Result : FAIL, check_rcv_amp = $check_rcv_amp, check_spk_amp = $check_spk_amp
+	echo "FAIL"
+fi
+

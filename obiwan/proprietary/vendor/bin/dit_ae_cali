@@ -1,0 +1,187 @@
+#!/vendor/bin/sh 
+default="-1"
+record="1"
+frametime="33333"
+second=$((30*$frametime))
+timeout=$((3*$second))
+timeout_short=$((1*$second))
+TAG="CameraAECali"
+Version="3.0.0"
+
+#$1 = func	(1: set converge conditions and prepare txt-files for getting current exposure index, )
+#			(2: calculate and record exposure index difference, 0: remove temporary converge conditions)
+
+function printlog(){
+	log -p d -t $TAG ${1}
+}
+
+function polling(){				
+	count=0;
+	result=0;
+	while [ $(($count)) -lt ${2} ]; do
+		count=$(($count + $frametime));
+		usleep $frametime
+		#echo count=$count;
+
+		if [ $(($timeout)) -eq ${2} ]; then
+			case ${1} in
+			"0")
+				rear_exp_index=`cat /factory/rear_exp_index.txt`
+				#echo rear_exp_index = `cat /factory/rear_exp_index.txt`
+				if [ $rear_exp_index -ne $default ]; then
+					result=1;
+					break;
+				fi
+			;;
+			"1")
+				front_exp_index=`cat /factory/front_exp_index.txt`
+				#echo front_exp_index = `cat /factory/front_exp_index.txt`
+				if [ $front_exp_index -ne $default ]; then
+					result=1;
+					break;
+				fi
+			;;
+			"2")
+				rear2_exp_index=`cat /factory/rear2_exp_index.txt`
+				#echo rear2_exp_index = `cat /factory/rear2_exp_index.txt`
+				if [ $rear2_exp_index -ne $default ]; then
+					result=1;
+					break;
+				fi
+			;;
+			"3")
+				front2_exp_index=`cat /factory/front2_exp_index.txt`
+				#echo front2_exp_index = `cat /factory/front2_exp_index.txt`
+				if [ $front2_exp_index -ne $default ]; then
+					result=1;
+					break;
+				fi
+			;;
+			"DualRear")
+				rear_exp_index=`cat /factory/rear_exp_index.txt`
+				rear2_exp_index=`cat /factory/rear2_exp_index.txt`
+				#echo rear_exp_index = `cat /factory/rear_exp_index.txt`
+				#echo rear2_exp_index = `cat /factory/rear2_exp_index.txt`
+						
+				if [ $rear_exp_index -ne $default ] && [ $rear2_exp_index -ne $default ]; then
+					result=1;
+					break;
+				fi
+			;;
+			"DualFront")
+				front_exp_index=`cat /factory/front_exp_index.txt`
+				front2_exp_index=`cat /factory/front2_exp_index.txt`
+				#echo front_exp_index = `cat /factory/front_exp_index.txt`
+				#echo front2_exp_index = `cat /factory/front2_exp_index.txt`
+						
+				if [ $front_exp_index -ne $default ] && [ $front2_exp_index -ne $default ]; then
+					result=1;
+					break;
+				fi
+			;;
+			esac
+		fi
+	done;
+}
+
+printlog "start_aecali"
+
+case $1 in
+	"0")
+		# calculate and record difference of exposure index in rear
+		cali_result_0=`vendor/bin/test_aeCali 0`
+		cali_result_2=`vendor/bin/test_aeCali 2`
+		polling "DualRear" $timeout
+		DualCaliResult=$(($cali_result_0 * $cali_result_2 * $result));
+		echo $DualCaliResult
+		#echo rear_exp_index = `cat /factory/rear_exp_index.txt`
+		#echo rear2_exp_index = `cat /factory/rear2_exp_index.txt`
+	;;
+	"1")
+		# calculate and record difference of exposure index in front 
+		cali_result_1=`vendor/bin/test_aeCali 1`
+		cali_result_3=`vendor/bin/test_aeCali 3`
+		polling "DualFront" $timeout
+		DualCaliResult=$(($cali_result_1 * $cali_result_3 * $result));
+		echo $DualCaliResult
+	;;
+	"4")
+		if [ $2 -lt 4 ] && [ $2 -gt -1 ]; then
+			cali_result=`vendor/bin/test_aeCali $2`
+			polling $2 $timeout
+			SingleCaliResult=$(($cali_result * $result));
+			echo $SingleCaliResult
+		else
+			echo "Invalid argument!!(parII : commandID = Zero ~ Three)"
+		fi
+	;;
+	"5")
+		case $2 in
+			"0")
+				if [ -f /factory/rear_exp_index.txt ] && [ -f /factory/rear2_exp_index.txt ]; then
+					rear_exp_index=`cat /factory/rear_exp_index.txt`
+					rear2_exp_index=`cat /factory/rear2_exp_index.txt`
+					if [ $rear_exp_index -ne $default ] && [ $rear2_exp_index -ne $default ]; then
+						difference=$(($rear2_exp_index - $rear_exp_index))
+					#if [ $difference -gt 0 ] && [ $difference -lt 100 ]; then
+						echo $difference > /factory/exposure_difference.txt
+						# pass if greater than 0 and less than 100
+						echo 1 #=====pass=====
+					#else
+						#echo 0 #=====fail===== [Error code] Exposure index difference = $difference, out of spec [0, 100]
+					#fi
+					else
+						echo 2 #=====fail===== [Error code] Convergence incomplete
+					fi
+				else
+					echo 0 #=====fail===== [Error code] At least one file not exists
+				fi
+			;;
+			"1")
+				if [ -f /factory/front_exp_index.txt ] && [ -f /factory/front2_exp_index.txt ]; then
+					front_exp_index=`cat /factory/front_exp_index.txt`
+					front2_exp_index=`cat /factory/front2_exp_index.txt`
+					if [ $front_exp_index -ne $default ] && [ $front2_exp_index -ne $default ]; then
+						difference=$(($front2_exp_index - $front_exp_index))
+						echo $difference > /factory/exposure_difference.txt
+						echo 1 #=====pass=====
+					else
+						echo 2 #=====fail===== [Error code] Convergence incomplete
+					fi
+				else
+					echo 0 #=====fail===== [Error code] At least one file not exists
+				fi
+			;;
+			*)
+				echo "Invalid argument!!(parII : commandID = Zero ~ One)"
+			;;
+		esac
+	;;
+	"6")
+		DualCaliResult="0"
+		case $2 in
+			"0")
+				cali_result=`vendor/bin/test_aeCali DualRear`
+				DualCaliResult=$cali_result
+			;;
+			"1")
+				cali_result=`vendor/bin/test_aeCali DualFront`
+				DualCaliResult=$cali_result
+			;;
+			*)
+				echo "Invalid argument!!(parII : commandID = Zero ~ One)"
+			;;
+		esac
+		
+		if [ -f /factory/exposure_difference_HW.txt ]; then
+			echo $DualCaliResult #=====pass or fail=====
+		else
+			echo 0 #=====fail===== 
+		fi
+	;;
+	*)
+	    echo "Invalid argument!!(parI : commandID = Zero ~ One, Four ~ Six)"
+	;;	
+esac
+printlog "dit_ae_cali done"
+exit 0

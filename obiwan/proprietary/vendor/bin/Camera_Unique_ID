@@ -1,0 +1,45 @@
+OTPPath="/proc/driver/otp"
+FACTORY_FOLDER="/vendor/factory"
+
+fail()
+{
+  echo FAIL: wrong input Parameter
+  exit 0
+}
+
+CheckCameraOTP()
+{
+  if [ -f "$1" ]; then
+  for word in "$(cat $1)"
+  do
+		echo $word | sed 's/\n//g' | sed 's/[[:space:]]//g' |  sed 's/0x//g' | cut -c 21-44
+	done
+  else
+	echo "GET OTP NODE FAIL" 
+  fi
+}
+
+GetCameraID()
+{
+	CamID=`sed -n "8p" $FACTORY_FOLDER"/cali_"$1$2"key.txt"`
+	CheckCameraOTP $OTPPath$CamID
+}
+
+case $1 in
+	0 )
+		GetCameraID "rear"
+	;;
+	2 | 4 | 6 | 8)
+		GetCameraID "rear" $1
+	;;
+	1 )
+		GetCameraID "front"
+	;;
+	3 | 5 | 7 | 9)
+		GetCameraID "front" $1
+	;;
+	*)
+	# echo Command ID wrong: 
+    fail
+    ;;
+esac

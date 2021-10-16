@@ -1,0 +1,2 @@
+libupdateprof.qti.so
+libthermalclient.qti.so

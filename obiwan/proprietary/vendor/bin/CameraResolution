@@ -1,0 +1,34 @@
+case $1 in
+"0")
+	if   [ -f "/sys/camera_sensor/resolution/camera0" ];
+	then
+	cat /sys/camera_sensor/resolution/camera0
+	else
+	echo "no rear_0 resolution data"
+	fi
+;;
+"1")
+	if   [ -f "/sys/camera_sensor/resolution/camera1" ];
+	then
+	cat /sys/camera_sensor/resolution/camera1
+	else
+	echo "no front resolution data"
+	fi
+;;
+"2")
+	if   [ -f "/sys/camera_sensor/resolution/camera2" ];
+	then
+	cat /sys/camera_sensor/resolution/camera2
+	else
+	echo "no rear_2 resolution data"
+	fi
+;;
+"3")
+	if   [ -f "/sys/camera_sensor/resolution/camera3" ];
+	then
+	cat /sys/camera_sensor/resolution/camera3
+	else
+	echo "no rear_3 resolution data"
+	fi
+;;
+esac

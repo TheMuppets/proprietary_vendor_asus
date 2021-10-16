@@ -1,0 +1,656 @@
+#!/system/bin/sh 
+default="-1"
+record="1"
+frametime="33333"
+second=$((30*$frametime))
+timeout=$((25*$second))
+timeout_short=$((5*$second))
+PD_dac="100"
+TAG="CameraAFCali"
+Version="3.2.1"
+
+#$1 = camdir(0: rear, 1: front, 2: rear2)
+#$2 = scene (0: result, 1: inf, 2: macro, 3: thirty, 4: fifty) PD/laser switch (8: laser 9: PD)
+#$3 = func  (0: record Vertical calibration 1: OTP search 2: Horizon calibration and record 3: get PD data diff 4: get Hor PD data diff)
+#			(5: check PDAF result 6: check laser AF result 7: move VCM to Contrast AF BestPos 8: record Laser BestPos 9: record PDAF BestPos ) PD/laser switch (0: OFF 3: ON)
+
+
+function printlog(){
+	log -p d -t $TAG ${1}
+}
+
+function polling(){				
+	count=0;
+	result=0;
+	while [ $(($count)) -lt ${1} ]; 
+	do
+		count=$(($count + $frametime));
+		usleep $frametime
+		#echo count=$count;
+		value=`getprop media.camera.debug.return`
+		#echo value = $value
+				
+		if [ "$value" != "$default" ]; then
+			result=1;
+			break;
+		fi
+	done;
+}
+
+function echowithlog(){
+	printlog "saving "${2}
+	echo ${1} > ${2}
+	printlog "saving "${1}" in "${2}
+}
+
+function lockae(){
+	setprop media.camera.debug.return "$default"
+	setprop media.camera.debug.param3 1
+	setprop media.camera.debug.param2 23
+	setprop media.camera.debug.param1 24
+	polling $timeout_short
+}
+
+function unlockae(){
+	setprop media.camera.debug.return "$default"
+	setprop media.camera.debug.param3 1
+	setprop media.camera.debug.param2 0
+	setprop media.camera.debug.param1 24
+	polling $timeout_short
+}
+
+function checkresult(){
+	if [ "$result" == "0" ]; then
+		echo 0
+		exit 0
+	fi
+	echo $result
+}
+
+function runcali(){
+	setprop media.camera.debug.return "$default"
+	setprop media.camera.debug.param5 "$fine_dac"
+	setprop media.camera.debug.param4 "$coarse_dac"
+	setprop media.camera.debug.param3 "$range"
+	setprop media.camera.debug.param2 "$value"
+	setprop media.camera.debug.param1 7
+	polling $timeout
+	checkresult
+}
+
+printlog "dit_af_cali start"
+
+#++++++++++++++++++++++++++++++++++++path workaround
+root_path=`dirname $0`
+if [ -f $root_path/test_afCaliDB ]
+then
+	path=$root_path/test_afCaliDB
+elif [ -f "/vendor/bin/test_afCaliDB" ]
+then
+	path=/vendor/bin/test_afCaliDB
+elif [ -f "/system/bin/test_afCaliDB" ]
+then
+	path=/system/bin/test_afCaliDB
+else
+	echo "File not found, please check test_afCaliDB path."
+	exit 0
+fi
+#------------------------------------path workaround
+
+# set CameraProcess(by CamerDir)
+# echo cmd = $2 ON/OFF = $3
+case $1 in
+	0)
+		setprop media.camera.debug.param2 1
+		setprop media.camera.debug.param1 44
+		usleep $second
+		setprop media.camera.debug.param1 -1
+	;;
+	2)
+		setprop media.camera.debug.param2 4
+		setprop media.camera.debug.param1 44
+		usleep $second
+		setprop media.camera.debug.param1 -1
+	;;
+esac
+
+case $2 in
+	0)
+		# run AF calibration
+		$path $1 0
+		echo 1
+	;;
+	1)
+		case $3 in
+			0)
+				# record infinity best focused VCM position
+				$path $1 1
+				echo 1			
+			;;
+			1)		
+				# move VCM to OTP infinity and search short range
+				lockae
+				value=`$path $1 3`
+				#echo value = $value
+				range=`$path $1 9`
+				#echo range = $range
+				coarse_dac=`$path $1 13`
+				#echo coarse_dac = $coarse_dac
+				fine_dac=`$path $1 14`
+				#echo fine_dac = $fine_dac
+				runcali
+				
+				unlockae				
+			;;
+			2)
+				# move VCM to OTP infinity and search big range
+				lockae
+				# full search near OTP infinity
+				value=`$path $1 3`
+				#echo value = $value
+				range=`$path $1 10`
+				#echo range = "$range"
+				coarse_dac=`$path $1 13`
+				#echo coarse_dac = $coarse_dac
+				fine_dac=`$path $1 14`
+				#echo fine_dac = $fine_dac
+				runcali
+				
+				#record infinity Horizon best focused VCM position
+				$path $1 2
+				unlockae
+			;;
+			3)
+				# move VCM from bestPos
+				value=`$path $1 40`
+				
+				PD_dac=`$path $1 25`
+				
+				echowithlog $PD_dac /data/data/pd_shift_inf.txt
+				
+				value=$(($value + $PD_dac));
+				
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param2 "$value"
+				setprop media.camera.debug.param1 0
+				polling $timeout_short
+				
+				#delay for PD converge
+				usleep 200000
+				
+				# read PD data and save to file
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param1 43
+				polling $timeout_short
+				
+				infpd=`$path $1 42`
+				echowithlog $value $infpd
+				
+				#get PD diff data and check in testplan
+				value=`$path $1 20`
+				echowithlog $value /data/data/pd_inf_diff.txt
+				checkresult
+				
+			;;
+			4)
+				# move VCM from bestPos
+				value=`$path $1 41`
+				
+				PD_dac=`$path $1 25`
+				
+				echowithlog $PD_dac /data/data/pd_shift_inf.txt
+				
+				value=$(($value + $PD_dac));
+				
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param2 "$value"
+				setprop media.camera.debug.param1 0
+				polling $timeout_short
+				
+				#delay for PD converge
+				usleep 200000
+				
+				# read PD data and save to file
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param1 43
+				polling $timeout_short
+				
+				infpd=`$path $1 42`
+				echowithlog $value $infpd
+				
+				#get PD diff data and check in testplan
+				value=`$path $1 20`
+				echowithlog $value /data/data/pd_inf_diff.txt
+				checkresult
+				
+			;;
+			5)
+				#save PDAF bestpos and check DAC diff
+				value=`$path $1 30`
+				echowithlog $value /data/data/pd_vcm_inf_diff.txt
+				echo 1
+			;;
+			6)
+				#save Laser bestpos and check DAC diff
+				value=`$path $1 34`
+				echowithlog $value /data/data/laser_vcm_inf_diff.txt
+				echo 1
+			;;
+			7)
+				#move VCM to Contrast AF BestPos
+				value=`$path $1 40`
+								
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param2 "$value"
+				setprop media.camera.debug.param1 0
+				polling $timeout_short
+
+				checkresult
+			;;
+			8)
+				#save Laser bestpos
+				$path $1 54
+				echo 1			
+			;;
+			9)
+				#save PDAF bestpos
+				$path $1 50
+				echo 1			
+			;;
+			*)
+				echo "Invalid argument!!(par2 : commandID = 0~9)"
+			;;
+		esac
+	;;
+	
+	2)
+		case $3 in
+			0)
+				# record macro best focused VCM position
+				$path $1 4
+				echo 1			
+			;;
+			1)		
+				lockae
+				# move VCM to OTP macro and search short range
+				value=`$path $1 6`
+				#echo value = $value
+				range=`$path $1 11`
+				#echo range = $range
+				coarse_dac=`$path $1 13`
+				#echo coarse_dac = $coarse_dac
+				fine_dac=`$path $1 14`
+				#echo fine_dac = $fine_dac
+				runcali
+				
+				unlockae
+			;;
+			2)		
+				lockae
+				# full search near OTP macro
+				value=`$path $1 6`
+				#echo value = $value
+				range=`$path $1 12`
+				#echo range = $range
+				coarse_dac=`$path $1 13`
+				#echo coarse_dac = $coarse_dac
+				fine_dac=`$path $1 14`
+				#echo fine_dac = $fine_dac
+				runcali
+				
+				#record Horizon best focused VCM Macro position
+				$path $1 5
+				unlockae
+			;;
+			3)
+				# move VCM from bestPos
+				
+				value=`$path $1 43`
+				
+				
+				PD_dac=`$path $1 25`
+				
+				echowithlog $PD_dac /data/data/pd_shift_macro.txt
+				value=$(($value - $PD_dac));
+				
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param2 "$value"
+				setprop media.camera.debug.param1 0
+				polling $timeout_short
+				
+				#delay for PD converge
+				usleep 200000
+				
+				# read PD data and save to file
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param1 43
+				polling $timeout_short
+				
+				macropd=`$path $1 45`
+				echowithlog $value $macropd
+
+				#get PD diff data and check in testplan
+				value=`$path $1 23`
+				echowithlog $value /data/data/pd_macro_diff.txt
+				checkresult
+			;;
+			4)
+				# move VCM from Hor bestPos
+				
+				value=`$path $1 44`
+				
+				
+				PD_dac=`$path $1 25`
+				
+				echowithlog $PD_dac /data/data/pd_shift_macro.txt
+				value=$(($value - $PD_dac));
+				
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param2 "$value"
+				setprop media.camera.debug.param1 0
+				polling $timeout_short
+				
+				if [ "$result" == "0" ]; then
+					echo 0
+					exit 0
+				fi
+				#delay for PD converge
+				usleep 200000
+				
+				# read PD data and save to file
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param1 43
+				polling $timeout_short
+				
+				macropd=`$path $1 45`
+				echowithlog $value $macropd
+
+				#get PD diff data and check in testplan
+				value=`$path $1 23`
+				echowithlog $value /data/data/pd_macro_diff.txt
+				checkresult
+			;;
+			5)
+				#save PDAF bestpos and check DAC diff
+				value=`$path $1 33`
+				echowithlog $value /data/data/pd_vcm_macro_diff.txt
+				echo 1
+			;;
+			6)
+				#save LaserAF bestpos and check DAC diff
+				value=`$path $1 37`
+				echowithlog $value /data/data/laser_vcm_macro_diff.txt
+				echo 1
+			;;
+			7)
+				#move VCM to Contrast AF BestPos
+				value=`$path $1 43`
+				
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param2 "$value"
+				setprop media.camera.debug.param1 0
+				polling $timeout_short
+				checkresult
+			;;
+			8)
+				#save Laser bestpos
+				$path $1 55
+				echo 1			
+			;;
+			9)
+				#save PDAF bestpos
+				$path $1 51
+				echo 1			
+			;;
+			*)
+				echo "Invalid argument!!(par2 : commandID = 0~9)"
+			;;
+		esac
+	;;
+	3)
+		case $3 in
+			0)
+				# record thirty best focused VCM position
+				$path $1 7
+				echo 1	
+			;;
+			1)		
+				lockae
+				# move VCM to OTP macro and search short range
+				value=`$path $1 58`
+				#echo value = $value
+				range=`$path $1 11`
+				#echo range = $range
+				coarse_dac=`$path $1 13`
+				#echo coarse_dac = $coarse_dac
+				fine_dac=`$path $1 14`
+				#echo fine_dac = $fine_dac
+				runcali
+				
+				unlockae
+			;;
+			2)		
+				lockae
+				# full search near OTP macro
+				value=`$path $1 58`
+				#echo value = $value
+				range=`$path $1 12`
+				#echo range = $range
+				coarse_dac=`$path $1 13`
+				#echo coarse_dac = $coarse_dac
+				fine_dac=`$path $1 14`
+				#echo fine_dac = $fine_dac
+				runcali
+
+				unlockae
+			;;
+			3)
+				# move VCM from bestPos
+				value=`$path $1 46`
+				
+				PD_dac=`$path $1 25`
+				
+				echowithlog $PD_dac /data/data/pd_shift_30cm.txt
+								
+				value=$(($value + $PD_dac));
+				
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param2 "$value"
+				setprop media.camera.debug.param1 0
+				polling $timeout_short
+				
+				if [ "$result" == "0" ]; then
+						echo 0
+						exit 0
+				fi
+				
+				#delay for PD converge
+				usleep 200000
+				
+				# read PD data and save to file
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param1 43
+				polling $timeout_short
+				
+				thirtypd=`$path $1 47`
+				echowithlog $value $thirtypd
+				
+				#get PD diff data and check in testplan
+				value=`$path $1 22`
+				
+				echowithlog $value /data/data/pd_30cm_diff.txt
+				checkresult
+			;;
+			5)
+				#save PDAF bestpos and check DAC diff
+				value=`$path $1 32`
+				echowithlog $value /data/data/pd_vcm_30cm_diff.txt
+				echo 1
+			;;
+			6)
+				#save LaserAF bestpos and check DAC diff
+				value=`$path $1 36`
+				echowithlog $value /data/data/laser_vcm_30cm_diff.txt
+				echo 1
+			;;
+			7)
+				#move VCM to Contrast AF BestPos
+				value=`$path $1 46`
+				
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param2 "$value"
+				setprop media.camera.debug.param1 0
+				polling $timeout_short
+				checkresult
+			;;
+			8)
+				#save Laser bestpos
+				$path $1 56
+				echo 1			
+			;;
+			9)
+				#save PDAF bestpos
+				$path $1 52
+				echo 1			
+			;;
+			*)
+				echo "Invalid argument!!(par2 : commandID = 0~9)"
+			;;
+		esac
+	;;
+	4)
+		case $3 in
+			0)
+				# record fifty best focused VCM position
+				$path $1 8
+				echo 1			
+			;;
+			1)		
+				lockae
+				# move VCM to OTP macro and search short range
+				value=`$path $1 58`
+				#echo value = $value
+				range=`$path $1 11`
+				#echo range = $range
+				coarse_dac=`$path $1 13`
+				#echo coarse_dac = $coarse_dac
+				fine_dac=`$path $1 14`
+				#echo fine_dac = $fine_dac
+				runcali
+				
+				unlockae
+			;;
+			2)		
+				lockae
+				# full search near OTP macro
+				value=`$path $1 58`
+				#echo value = $value
+				range=`$path $1 12`
+				#echo range = $range
+				coarse_dac=`$path $1 13`
+				#echo coarse_dac = $coarse_dac
+				fine_dac=`$path $1 14`
+				#echo fine_dac = $fine_dac
+				runcali
+
+				unlockae
+			;;
+			3)
+				# move VCM from bestPos
+				value=`$path $1 48`
+				
+				PD_dac=`$path $1 25`
+				
+				echowithlog $PD_dac /data/data/pd_shift_50cm.txt
+								
+				value=$(($value + $PD_dac));
+				
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param2 "$value"
+				setprop media.camera.debug.param1 0
+				polling $timeout_short
+				
+				if [ "$result" == "0" ]; then
+						echo 0
+						exit 0
+				fi
+				#delay for PD converge
+				usleep 200000
+				
+				# read PD data and save to file
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param1 43
+				polling $timeout_short
+				
+				fiftypd=`$path $1 49`
+				echowithlog $value $fiftypd
+				
+				#get PD diff data and check in testplan
+				value=`$path $1 21`
+				
+				echowithlog $value /data/data/pd_50cm_diff.txt
+				checkresult
+
+			;;
+			5)
+				#save PDAF bestpos and check DAC diff
+				value=`$path $1 31`
+				echowithlog $value /data/data/pd_vcm_50cm_diff.txt
+				echo 1
+
+			;;
+			6)
+				#save PDAF bestpos and check DAC diff
+				value=`$path $1 35`
+				echowithlog $value /data/data/laser_vcm_50cm_diff.txt
+				echo 1
+			;;
+			7)
+				#move VCM to Contrast AF BestPos
+				fiftypath=`$path $1 49`
+				value=`cat $fiftypath`
+				setprop media.camera.debug.return "$default"
+				setprop media.camera.debug.param2 "$value"
+				setprop media.camera.debug.param1 0
+				polling $timeout_short
+				checkresult
+			;;
+			8)
+				#save Laser bestpos
+				$path $1 57
+				echo 1			
+			;;
+			9)
+				#save PDAF bestpos
+				$path $1 53
+				echo 1			
+			;;
+			*)
+				echo "Invalid argument!!(par2 : commandID = 0~9)"
+			;;
+		esac
+	;;
+	8)
+		# set laser ON/OFF
+		# echo cmd = $2 ON/OFF = $3
+		setprop media.camera.debug.return "$default"
+		setprop media.camera.debug.param2 "$3"
+		setprop media.camera.debug.param1 "$2"
+		polling $timeout_short
+		checkresult	
+	;;
+	9)
+		# set PD ON/OFF
+		# echo cmd = $2 ON/OFF = $3
+		setprop media.camera.debug.return "$default"
+		setprop media.camera.debug.param2 "$3"
+		setprop media.camera.debug.param1 "$2"
+		polling $timeout_short
+		checkresult	
+	;;
+	*)
+	    echo "Invalid argument!!(par2 : commandID = 0~9)"
+	;;
+esac
+printlog "dit_af_cali done"
+exit 0

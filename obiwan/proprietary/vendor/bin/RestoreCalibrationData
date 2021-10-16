@@ -1,0 +1,144 @@
+DATADATA="/data/data/"
+FACTORY_FOLDER="/vendor/factory"
+DEBUG=0
+
+fail()
+{
+  if [ $DEBUG -eq 1 ]; then
+    echo "FAIL: wrong input Parameter"
+  fi
+
+  echo "FAIL"
+  exit 0
+}
+
+copyfile()
+{
+  cp $1/* $2
+  return 0
+}
+
+checkfile()
+{
+
+  if [ -e $1 ]; then
+	return 0
+  else
+  	if [ $DEBUG -eq 1 ]; then
+    	  echo FAIL: $1 is miss.
+  	fi
+	return 1
+  fi
+
+}
+
+checkDirectory()
+{
+
+  if [ ! -d $1 ]; then
+      if [ $DEBUG -eq 1 ]; then
+        echo $1 does not exist.
+      fi
+	return 1
+  fi
+	return 0
+}
+
+
+UnTarOTPData()
+{   
+	# filter 1st folder name
+	foldername=$(echo $2| awk -F"_" '{print $2}'| awk -F".tar" '{print $1}')
+	if [ $DEBUG -eq 1 ]; then
+		echo "temp folder:" $foldername
+	fi
+	# create folder
+	if [ ! -d "$DATADATA$foldername" ]; then
+		mkdir "$DATADATA$foldername/"
+	fi
+	if [ $DEBUG -eq 1 ]; then
+		echo "temp folder path:" $DATADATA$foldername
+	fi
+	# copy tar file to temp folder
+	cp "$DATADATA$2" "$DATADATA$foldername/"
+	# untar 
+	cd $DATADATA$foldername && tar -zxf "$DATADATA$foldername/$2"
+	
+	#remove tar file in temp folder
+	if [ $DEBUG -eq 1 ]; then
+		echo "remove tar file in temp folder path:" $DATADATA$foldername/$2
+	fi
+	if [ -e "$DATADATA$foldername/$2" ]; then
+		cd $DATADATA$foldername/ && rm -rf $2
+	fi
+	if [ $DEBUG -eq 1 ]; then
+		ls $DATADATA$foldername/
+		echo "head -${1:-1}:"
+		ls $DATADATA$foldername/ |head -${1:-1}
+	fi
+	# filter 2nd folder name
+	TarFolderName=`ls $DATADATA$foldername/ |head -${1:-1}`
+	if [ "$TarFolderName" == "" ]; then
+		if [ $DEBUG -eq 1 ]; then
+			echo TarFolderName filter1 is NULL.
+		fi
+		TarFolderName=`ls $DATADATA$foldername/`
+	fi
+	if [ $DEBUG -eq 1 ]; then
+		echo "2nd folder name:" $TarFolderName
+	fi
+	
+	#if option is 2, remove RGB data 
+	if [ $1 -eq 2 ]; then		
+		if [ $DEBUG -eq 1 ]; then
+			ls $DATADATA$foldername/$TarFolderName/*
+		fi
+		rm $DATADATA$foldername/$TarFolderName/*_rgb.db
+		if [ $DEBUG -eq 1 ]; then
+			ls $DATADATA$foldername/$TarFolderName/*
+		fi
+    fi
+	
+	# copy files to factory folder
+	copyfile $DATADATA$foldername/$TarFolderName $FACTORY_FOLDER/
+    
+	# remove tar file in /data/data/ & temp folder
+	if [ $DEBUG -eq 1 ]; then
+		echo "rm [" $DATADATA$2 "] & [ " $DATADATA$foldername"/ ]" 
+	fi
+	if [ -e "$DATADATA$2" ]; then
+		cd $DATADATA && rm -rf $2
+	fi
+	if [ -d "$DATADATA$foldername" ]; then
+		cd $DATADATA && rm -rf $foldername
+	fi
+    return 0
+    
+}
+
+if [ $# -eq 3 ]; then
+    DEBUG=1
+fi
+
+case $1 in
+	0 | 1 | 2)
+		checkDirectory $FACTORY_FOLDER
+		if [ $? -eq 0 ]; then
+			UnTarOTPData $1 $2
+			if [ $? -eq 0 ]; then
+				echo "PASS"
+			else
+				echo "FAIL"
+				exit 0
+			fi
+		else
+			echo "FAIL"
+			exit 0
+		fi
+   ;;
+  
+  *)
+	# echo Command ID wrong: 
+    fail
+    ;;
+esac

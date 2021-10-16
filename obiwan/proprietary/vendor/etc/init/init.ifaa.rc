@@ -1,0 +1,15 @@
+#
+# rc file for ifaa service
+#
+
+on post-fs-data
+    symlink /vendor/bin/ifaa_product /data/data/IFAA
+
+on boot
+
+on property:vendor.ifaa.verify.key=1
+    write /vendor/factory/IFAA 1
+
+on property:vendor.ifaa.verify.key=0
+    write /vendor/factory/IFAA 0
+

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2015 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<favorites>
+
+    <!-- screen [1] -->
+
+    <!-- WeatherTime -->
+    <appwidget
+        className="com.asus.weathertime.WeatherWidgetProviderPhone"
+        packageName="com.asus.weathertime"
+        screen="1"
+        spanX="3"
+        spanY="2"
+        x="1"
+        y="0" />
+
+    <!-- Gallery -->
+    <favorite
+		className="com.tencent.southpole.appstore.activity.SplashActivity"
+        packageName="com.tencent.southpole.appstore"
+		screen="1"
+        x="0"
+        y="5" />
+
+    <!-- Contacts -->
+    <favorite
+		className="com.asus.deskclock.DeskClock"
+        packageName="com.asus.deskclock"
+        screen="1"
+        x="1"
+        y="5" />
+
+    <!-- Calendar -->
+    <favorite
+		className="com.asus.weathertime.WeatherTimeSettings"
+        packageName="com.asus.weathertime"
+        screen="1"
+        x="2"
+        y="5" />
+
+    <!-- Settings -->
+    <favorite
+		className="com.asus.smartcalendar.HomeActivity"
+        packageName="com.asus.smartcalendar"
+        screen="1"
+        x="3"
+        y="5" />
+
+
+    <!-- MobileManager -->
+	<favorite
+		className="com.asus.gallery.app.EPhotoActivity"
+        packageName="com.asus.gallery"
+        screen="1"
+        x="4"
+        y="5" />
+
+    <!-- screen [2] -->
+	<favorite
+		className="com.android.settings.Settings"
+        packageName="com.android.settings"
+        screen="2"
+        x="0"
+        y="0" />
+		
+	<favorite
+		className="com.asus.mobilemanager.FunctionActivity"
+		packageName="com.asus.mobilemanager"
+        screen="2"
+        x="1"
+        y="0" />
+	
+	<favorite
+		className="com.asus.filemanager.activity.FileManagerActivity"
+        packageName="com.asus.filemanager"
+        screen="2"
+        x="2"
+        y="0" />
+		
+	<favorite
+		className="com.futuredial.asusdatatransfer.DefaultLauncherActivity"
+        packageName="com.futuredial.asusdatatransfer"
+        screen="2"
+        x="3"
+        y="0" />
+		
+	<folder
+        screen="2"
+        x="4"
+        y="0"
+        title="系统工具" >
+        <favorite
+            className="com.android.contacts.activities.PeopleActivity"
+            packageName="com.asus.contacts" />
+		<favorite
+            className="com.asus.soundrecorder.AsusRecorder"
+			packageName="com.asus.soundrecorder" />
+		<favorite
+            className="com.tencent.southpole.note.activity.NoteListActivity"
+            packageName="com.tencent.southpole.note" />
+		<favorite
+            className="com.asus.cnmusic.ui.activity.MainActivity"
+            packageName="com.asus.cnmusic" />
+		<favorite
+            className="com.iflytek.inputmethod.LauncherActivity"
+            packageName="com.iflytek.inputmethod.custom" />
+		<favorite
+            className="com.android.stk.StkMain"
+            packageName="com.android.stk" />
+    </folder>
+	
+	<favorite
+		className="com.asus.calculator.Calculator"
+        packageName="com.asus.calculator"
+        screen="2"
+        x="0"
+        y="1" />
+		
+	<favorite
+		className="com.tencent.map.WelcomeActivity"
+        packageName="com.tencent.map"
+        screen="2"
+        x="1"
+        y="1" />
+		
+	<folder
+        screen="2"
+        x="2"
+        y="1"
+        title="热门应用" >
+        <favorite
+            className="com.tencent.mm.ui.LauncherUI"
+			packageName="com.tencent.mm" />
+		<favorite
+            className="com.tencent.news.activity.SplashActivity"
+			packageName="com.tencent.news" />	
+		<favorite
+            className="com.tencent.oscar.module.splash.SplashActivity"
+			packageName="com.tencent.weishi" />
+		<favorite
+            className="com.tencent.qqlive.ona.activity.SplashHomeActivity"
+            packageName="com.tencent.qqlive" />
+		<favorite
+            className="com.jingdong.app.mall.main.MainActivity"
+			packageName="com.jingdong.app.mall" />
+		<favorite
+            className="com.sina.weibo.SplashActivity"
+			packageName="com.sina.weibo" />
+    </folder>
+	
+	<folder
+        screen="2"
+        x="3"
+        y="1"
+        title="recommended game folder" >
+	</folder>
+	
+	<favorite
+		className="com.zhiyicx.thinksnsplus.modules.guide.GuideActivity"
+        packageName="com.asus.rogforum"
+        screen="2"
+        x="4"
+        y="1" />
+
+        <favorite
+		className="com.tencent.southpole.gamecenter.activity.SplashActivity"
+		packageName="com.tencent.southpole.gamecenter"
+        screen="2"
+        x="0"
+        y="2" />
+    <!-- Hotseat (We use the screen as the position of the item in the hotseat) -->
+
+    <!-- Phone -->
+    <favorite
+        className="com.android.contacts.activities.DialtactsActivity"
+        packageName="com.asus.dialer"
+        container="-101"
+        screen="0"
+        x="0"
+        y="0" />
+
+    <!-- Messaging -->
+    <favorite
+        className="com.android.mms.ui.ConversationList"
+        packageName="com.asus.cnmessage"
+        container="-101"
+        screen="1"
+        x="1"
+        y="0" />
+
+    <!-- GameCenter -->
+    <favorite
+        className="com.asus.gamecenter.GameCenterActivity"
+        packageName="com.asus.gamecenter"
+        container="-101"
+        screen="2"
+        x="2"
+        y="0" />
+
+    <!-- AppStore -->
+    <favorite
+        className="com.opera.android.OperaStartActivity"
+        packageName="com.android.browser"
+        container="-101"
+        screen="3"
+        x="3"
+        y="0" />
+
+    <!-- Camera -->
+    <favorite
+        className="com.asus.camera.CameraApp"
+        packageName="com.asus.camera"
+        container="-101"
+        screen="4"
+        x="4"
+        y="0" />
+</favorites>

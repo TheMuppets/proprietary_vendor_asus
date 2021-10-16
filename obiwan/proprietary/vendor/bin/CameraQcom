@@ -1,0 +1,1024 @@
+#!/system/bin/sh
+#echo "$0 $*"> /proc/fac_printklog
+
+#Author:Sheldon_Li@asus.com
+ATD_Interface_VERSION="V1.1.13"
+#Camera solution: XXXXXX XXXXXXX
+
+VERSION="V0.2"
+
+#Debug message switch
+DEBUG=0
+
+#App name
+APP="com.asus.cameratest"
+
+#unset variables
+unset flow id title value ret
+
+#test if $2 is a substring of $1
+in_str() {
+	echo $1 | grep $2 &> /dev/null
+}
+
+#Set camer id
+cameraID=0
+
+#Set DualCamera CameraID & Picture size
+FirstCameraID=-1
+SecondCameraID=-1
+jpegWidth_2=0
+jpegHeight_2=0
+
+#DualCamera
+is_dual() {
+	in_str $0 Dual
+}
+
+#Qcom flow
+is_qcom() {
+	in_str $0 Qcom
+}
+
+syslog() {
+	log -t CameraTest -p I "$@"
+	#echo "$@" >> $LOGCAT_LOG_FILE
+}
+
+enable_touch() {
+	if [ "$1" -eq "0" ]; then
+		title="Disable touch"
+		value=0
+	else
+		title="Enable touch"
+		value=1
+	fi
+
+	syslog "==================$title================="
+	if [ -x "/data/data/touch_function" ]; then
+		/data/data/touch_function $value &> /dev/null
+	fi
+
+	if [ $value -eq 0 -a -x "/data/data/touch_function" ]; then
+		/data/data/LedTest 0 &> /dev/null
+	fi
+
+	if [ -x "/data/data/capsensor_function" ]; then
+		/data/data/capsensor_function $value &> /dev/null
+	fi
+
+	#disable thermal-engine for dualcamera
+	if is_dual; then
+		test $value -eq 1 && start thermal-engine || stop thermal-engine
+	fi
+}
+
+_log() {
+	echo "`date` $@" >> $SCRIPT_LOG_FILE
+	test "$DEBUG" -eq "1" && echo "`date +%H:%M:%S` $@"
+}
+
+logi() {
+	_log I $@
+}
+
+logd() {
+	_log D $@
+}
+
+loge() {
+	_log E $@
+}
+
+#log success/fail message and show processing result on the consol
+#$1:success/fail $2:return string
+my_exit() {
+	rm -f $APK_LOG_FILE
+	if [ "$1" == "success" ]
+	then
+		shift 1
+		syslog "================== CameraTest command executed success, $@ ================="
+		logi "<== return success(1)"
+		ATD_ret="1"
+		ret=0
+	else
+		shift 1
+		syslog "================== CameraTest command executed failed, $@ ================="
+		loge "<### return fail(0)"
+		ATD_ret="0"
+		ret=1
+	fi
+
+	echo $ATD_ret
+	exit $ret
+}
+
+check_log() {
+	for i in `seq 10`; do
+		syslog "================== CameraTest command check_log "$APK_LOG_FILE" ================="
+		if [ -f "$APK_LOG_FILE" ]; then
+			grep -w "$1" $APK_LOG_FILE &> /dev/null
+		syslog "================== CameraTest command check_log ok ================="
+			break
+		else
+		  sleep 0.1
+		fi
+	done
+}
+
+close_camera() {
+	syslog "================== CameraTest command close_camera  E================="
+	name="$APP org.codeaurora.snapcam com.android.camera2"
+	for i in `seq 10`; do
+		syslog "================== CameraTest command close_camera  E1================="
+		#am broadcast -a asus.camera.close -f 0x10000000 &> /dev/null
+		pid=`pidof $name`
+		if [ "$pid" ]; then
+			su -0 kill -9 $pid
+			sleep 0.5
+		else
+			syslog "================== CameraTest command close_camera  E2================="
+			break
+		fi
+	done
+	setprop vendor.camera.StreamModeIndex -1
+	setprop camera.test.cameramode ''
+	#enable_touch 1
+	syslog "================== CameraTest command close_camera X================="
+}
+
+open_camera() {
+	syslog "================== CameraTest command open_camera E================="
+	name=$APP
+	rawneed=2
+
+	#enable CameraTest permission
+	pm grant $APP android.permission.CAMERA
+	pm grant $APP android.permission.READ_EXTERNAL_STORAGE
+	pm grant $APP android.permission.WRITE_EXTERNAL_STORAGE
+	syslog "================== CameraTest command open_camera E11================="
+	if [ "$1" -eq 0 ]; then
+        setprop vendor.camera.StreamModeIndex 2
+        cameraID=$1
+        jpegWidth=4576
+        jpegHeight=3432
+	fi
+	if [ "$1" -eq 1 ]; then
+        setprop vendor.camera.StreamModeIndex 2
+        cameraID=$1
+        jpegWidth=5632
+        jpegHeight=4224
+	fi
+	if [ "$1" -eq 2 ]; then
+        setprop vendor.camera.StreamModeIndex 2
+        cameraID=$1
+        jpegWidth=4224
+        jpegHeight=3136
+	fi
+	if [ "$1" -eq 3 ]; then
+        setprop vendor.camera.StreamModeIndex 0
+        cameraID=$1
+        jpegWidth=2592
+        jpegHeight=1944
+	fi
+	if [ "$1" -eq 4 ]; then
+        setprop persist.vendor.camera.StreamModeIndex 2
+        cameraID=$1
+        jpegWidth=4576
+        jpegHeight=3432
+        FirstCameraID=0
+        SecondCameraID=2
+        jpegWidth_2=4224
+        jpegHeight_2=3136
+	fi
+	#enable_touch 0
+	for i in `seq 10`; do
+		syslog "================== CameraTest command open_camera E12================="
+		pid=`pidof $name`
+		syslog "================== CameraTest command open_camera E13================="
+		if [ -z "$pid" ]; then
+                        try_count=0
+                        while [ true ]
+                        do
+                                time=`date +%T.%s`
+                                seq_id=$(date +%s)
+				syslog "================== CameraTest open cameramode=$1, picsize $jpegWidth,$jpegHeight, raw=$rawneed, logpath=$APK_LOG_FILE, time=$time, seq_id=$seq_id ================="
+				am start -S -W -n $name/.MainActivity --ei cameramode $cameraID --esa picsize $jpegWidth,$jpegHeight,$jpegWidth_2,$jpegHeight_2 --ei rawneed "$rawneed" --es logpath "$APK_LOG_FILE" --es time "$time" --es seq_id "$seq_id" --es FirstCameraID $FirstCameraID --es SecondCameraID $SecondCameraID > /dev/null
+                                if check_log "$seq_id" ; then
+                                    syslog "============= Get app seq id $seq_id, Open Done ==========================="
+                                    break
+                                else
+                                    rm -f $APK_LOG_FILE
+                                    (( try_count++ ))
+                                    syslog "============= App intent is not correct, restart it ... retry $try_count ============="
+                                    if [ $try_count -gt 5 ]; then
+                                        break
+                                    fi
+                                fi
+				syslog "============= CameraTest open cameramode=$1  1==========================="
+			done
+		else
+			break
+	fi
+		syslog "============= CameraTest open cameramode=$1  2==========================="
+	done
+	syslog "============= CameraTest open cameramode=$1  3==========================="
+	setprop camera.test.cameramode $1
+	syslog "============= CameraTest open cameramode=$1  4==========================="
+}
+
+#$1 ... break condition
+#$2 timeout vale (decimal seconds, default 10s)
+set_timeout() {
+	syslog "============= CameraTest command  set_timeout============="
+	if [ -z "$2" ]; then
+		let TimeOutValue=10*10
+	else
+		let TimeOutValue=$2*10
+	fi
+	logd "> set_timeout($TimeOutValue)"
+	echo time out value is $TimeOutValue >> $SCRIPT_LOG_FILE
+	for i in `seq $TimeOutValue`; do
+		if [ "$1" == "finish startPreview4" ]; then
+			if check_log "finish startPreview0" && check_log "finish startPreview2"; then
+				my_exit success "for msg \"$1\""
+			fi
+		fi
+		if check_log "$1"; then
+			test "$1" == "close camera finish" && close_camera
+			my_exit success "for msg \"$1\""
+		fi
+		logd "<-time"
+		usleep 100000
+		logd "time out value now is $i"
+	done
+
+	test "$1" == "close camera finish" && close_camera
+	my_exit fail "wait msg timeout \"$1\", timeout value ${2}s"
+}
+
+#$1 command id
+#$2 picture name
+#$3 timeout vale (decimal seconds)
+set_timeout_takepic() {
+	let "TimeOutValue=$3*10"
+	logd "> set_timeout($TimeOutValue)"
+	echo time out value is $TimeOutValue >> $SCRIPT_LOG_FILE
+	if [ $1 -eq 5 ]; then
+		ext=raw
+		cond="takeRawPicture"
+	else
+		ext=jpg
+		cond="takePicture finish"
+	fi
+	filename=/sdcard/$2
+	for i in `seq $TimeOutValue`; do
+		if check_log "$cond"; then
+			if is_dual; then
+				if [ -f "${filename}_1.${ext}" -a -f "${filename}_2.${ext}" ]; then
+					my_exit success "for msg \"$cond\""
+				fi
+			elif [ -f "${filename}.${ext}" ]; then
+				my_exit success "for msg \"$cond\""
+			fi
+		fi
+		logd "<-time"
+		usleep 100000
+		logd "time out value now is $i"
+	done
+
+	my_exit fail "wait msg timeout \"$cond\", timeout value ${3}s"
+}
+
+#check all status before open camera
+check_all_status() {
+	rm -f $APK_LOG_FILE
+
+	#check phone's battery
+	battery=`cat /sys/class/power_supply/bms/capacity`
+	syslog "phone's battery left = $battery"
+}
+
+#cameramode : 0=rear0&rear1, 1=rear0, 2=rear1, 3=front
+camera_preview_switch() {
+	#0: off
+	if [ "$2" == 0 ]; then
+		syslog "================== CameraTest disable camera $1 preview start================="
+		close_camera
+		my_exit success "close camera $1"
+	fi
+	#1: on
+	if [ "$2" == 1 ]; then
+		syslog "================== CameraTest enable camera $1 preview start================="
+		#init status before open camera
+		check_all_status
+
+		close_camera
+		open_camera $1
+		syslog "================== CameraTest enable camera $1 preview end================="
+	fi
+}
+
+#check if camera id exists
+check_camera_id() {
+	DIR="/proc/driver"
+
+	NODE_NAMES=(
+RearModule
+FrontModule
+RearModule2
+FrontModule2
+)
+	test -f ${DIR}/${NODE_NAMES[$1]} || my_exit fail "node for camera $1 not exist!"
+}
+
+#check if dit is ready
+check_dit() {
+	test -f /vendor/lib64/DataSet/ispDB/ParameterDB.db || my_exit fail "ParameterDB.db not exist!"
+}
+
+af_calibration() {
+	/vendor/bin/${prefix}_af_cali $@
+	exit 0
+}
+
+ae_calibration() {
+	/vendor/bin/${prefix}_ae_cali $@
+	exit 0
+}
+
+test_qafCali() {
+	if [ "$1" == 21 ]; then
+		  /vendor/bin/test_qafCali $2 25
+	fi
+	if [ "$1" == 22 ]; then
+		if [ "$3" == 0 ]; then
+		   /vendor/bin/test_qafCali $2 6
+		fi
+
+		if [ "$3" == 1 ]; then
+		   /vendor/bin/test_qafCali $2 3
+		fi
+
+		if [ "$3" == 2 ]; then
+		   /vendor/bin/test_qafCali $2 58
+		fi
+		#No Z1Z2 in project Kirin. No need case $3 == 3
+		if [ "$3" == 4 ]; then
+		   /vendor/bin/test_qafCali $2 59
+		fi
+		if [ "$3" == 5 ]; then
+		   /vendor/bin/test_qafCali $2 60
+		fi
+	fi
+}
+
+infinity_mode_switch() {
+	#0: off
+	if [ "$1" == 0 ]; then
+		syslog "================== CameraTest enable autofocus mode start================="
+		am broadcast -a asus.camera.setparameter --ei focusmode 0 -f 0x10000000 > /dev/null
+	#1: on
+	elif [ "$1" == 1 ]; then
+		syslog "================== CameraTest enable infinity mode start================="
+		am broadcast -a asus.camera.setparameter --ei focusmode 1 -f 0x10000000 > /dev/null
+	#2: focus
+	elif [ "$1" == 2 ]; then
+		syslog "================== CameraTest enable autofocus mode start and trigger focus================="
+		am broadcast -a asus.camera.setparameter --ei focusmode 2 -f 0x10000000 > /dev/null
+	else
+		echo "0: off; 1: on; 2: focus"
+		exit 0
+	fi
+}
+
+#$1 command id
+#$2 picture file name
+take_picture() {
+	focusneed=0
+	flashmode=0
+	filename=/sdcard/$2
+	test $1 -eq 2 -o $1 -eq 9  && focusneed=1
+	test $1 -eq 9 -o $1 -eq 10 && flashmode=1
+	#rm -f /data/misc/camera/*.RAWMIPI
+	rm -f ${filename}*.jpg ${filename}*.raw
+	syslog "================== CameraTest Take picture (command=$1, flash=$flashmode, af=$focusneed) command start================="
+	am broadcast -a asus.camera.setsavepath --es savepath "${filename}" -f 0x10000000 > /dev/null
+	am broadcast -a asus.camera.setparameter --ei flashmode "$flashmode" -f 0x10000000 > /dev/null
+	am broadcast -a asus.camera.takepicture --ei focusneed "$focusneed" -f 0x10000000 > /dev/null
+}
+
+check_cal_result() {
+	for name in /data/data/$1 /data/$1; do
+		if [ -f "$name" ]; then
+			status=`cat $name`
+			if [ "$status" == 1 ]; then
+				echo "1"
+			else
+				echo "0"
+			fi
+			return
+		fi
+	done
+	echo "no $1"
+}
+
+calibration() {
+	if [ "$1" == "6" ]; then
+		syslog "================== CameraTest calibration command start================="
+	else
+		ext="_golden"
+		syslog "================== CameraTest get golden data command start================="
+	fi
+
+	if [ "$3" == "" ]; then
+		id=$2
+	else
+		id=DUAL_$2$3
+	fi
+
+	sh /vendor/bin/${prefix}_cali${ext} $@
+	if [ "$id" == 0 ]; then
+		check_cal_result cal${ext}_rear0_result.txt
+	elif [ "$id" == 1 ]; then
+		check_cal_result cal${ext}_front1_result.txt
+	elif [ "$id" == 2 ]; then
+		check_cal_result cal${ext}_rear2_result.txt
+	elif [ "$id" == 3 ]; then
+		check_cal_result cal${ext}_front3_result.txt
+	elif [ "$id" == 4 ]; then
+		check_cal_result cal${ext}_rear4_result.txt
+	elif [ "$id" == 5 ]; then
+		check_cal_result cal${ext}_front5_result.txt
+	elif [[ "$id" == "DUAL_02" || "$id" == "DUAL_20" ]]; then
+		camera_status=`check_cal_result cal${ext}_rear0_result.txt`
+		camera_status_1=`check_cal_result cal${ext}_rear2_result.txt`
+		if [ "$camera_status" == 1 -a "$camera_status_1" == 1 ]; then
+			echo "1"
+		else
+			echo "0"
+		fi
+	elif [[ "$id" == "DUAL_04" || "$id" == "DUAL_40" ]]; then
+		camera_status=`check_cal_result cal${ext}_rear0_result.txt`
+		camera_status_1=`check_cal_result cal${ext}_rear4_result.txt`
+		if [ "$camera_status" == 1 -a "$camera_status_1" == 1 ]; then
+			echo "1"
+		else
+			echo "0"
+		fi
+	elif [[ "$id" == "DUAL_24" || "$id" == "DUAL_42" ]]; then
+		camera_status=`check_cal_result cal${ext}_rear2_result.txt`
+		camera_status_1=`check_cal_result cal${ext}_rear4_result.txt`
+		if [ "$camera_status" == 1 -a "$camera_status_1" == 1 ]; then
+			echo "1"
+		else
+			echo "0"
+		fi
+	elif [[ "$id" == "DUAL_13" || "$id" == "DUAL_31" ]]; then
+		camera_status=`check_cal_result cal${ext}_front1_result.txt`
+		camera_status_1=`check_cal_result cal${ext}_front3_result.txt`
+		if [ "$camera_status" == 1 -a "$camera_status_1" == 1 ]; then
+			echo "1"
+		else
+			echo "0"
+		fi
+	elif [[ "$id" == "DUAL_15" || "$id" == "DUAL_51" ]]; then
+		camera_status=`check_cal_result cal${ext}_front1_result.txt`
+		camera_status_1=`check_cal_result cal${ext}_front5_result.txt`
+		if [ "$camera_status" == 1 -a "$camera_status_1" == 1 ]; then
+			echo "1"
+		else
+			echo "0"
+		fi
+	elif [[ "$id" == "DUAL_35" || "$id" == "DUAL_53" ]]; then
+		camera_status=`check_cal_result cal${ext}_front3_result.txt`
+		camera_status_1=`check_cal_result cal${ext}_front5_result.txt`
+		if [ "$camera_status" == 1 -a "$camera_status_1" == 1 ]; then
+			echo "1"
+		else
+			echo "0"
+		fi
+	fi
+
+	exit 0
+
+	#if [ $? = 1 ]; then
+	#	my_exit fail
+	#else
+	#	my_exit success
+	#fi
+}
+
+modify_exposure_time() {
+	syslog "================== CameraTest modify_exposure_time command start================="
+	am broadcast -a asus.camera.setexptime --ei cameraId $1 --ei exposuretime $2 -f 0x10000000 > /dev/null
+}
+
+modify_camera_iso() {
+	syslog "================== CameraTest modify_camera_iso command start================="
+	am broadcast -a asus.camera.iso --ei cameraId $1 --ei iso $2 -f 0x10000000 > /dev/null
+}
+
+modify_camera_ev() {
+	syslog "================== CameraTest modify_camera_ev command start================="
+	am broadcast -a asus.camera.ev --ei cameraId $1 --ei ev $2 -f 0x10000000 > /dev/null
+}
+
+
+check_system() {
+	#wait for system ready
+	for i in `seq 300`; do
+		test "`getprop sys.boot_completed`" -eq 1 && break
+		sleep 1
+	done
+
+	#turn on panel
+	brightness=`cat /sys/class/backlight/panel0-backlight/brightness`
+	if [ "$brightness" == "0" ]; then
+		input keyevent 26
+		sleep 1
+	fi
+}
+
+help() {
+	logd "help()"
+	echo "
+Test Tool Version: $VERSION
+
+API: ATD TestCommand Interface $ATD_Interface_VERSION
+
+FORMAT: adb shell $0 para1 para2 para3 ...
+
+RETURN VALUE: 0/1 (0 = fail, 1 = pass)
+
+USAGE:
+$USAGE
+"
+	exit 0
+}
+
+check_usage() {
+	if is_qcom && is_dual; then
+		USAGE='	<6. Qcom AWB Calibration.>
+		(para1) 6
+		(para2) 0: Rear1&2, 1: Front1&2
+
+	<17. Qcom AE cali.>
+		(para1) 17
+		(para2) 0: Rear1&2, 1: Front1&2'
+	elif is_qcom; then
+		USAGE='	<6. Qcom AWB Calibration.>
+		(para1) 6
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2, 3: Front camera2
+
+	<7. Get Qcom golden data.>
+		(para1) 7
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2, 3: Front camera2
+
+	<8. Change AF setting.>
+		(para1) 8
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2, 3: Front camera2
+		(para3) 0: Laser search, 1: PD search
+		(para4) 0: close, 1: open
+
+	<11. Qcom AF Calibration>
+		(para1) 11
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2, 3: Front camera2
+		(para3) Scene
+			1: Inf
+			2: Macro
+			3: Middle(30cm)
+			4: Middle(50cm)
+		(para4) 0: record Vertical calibration
+			2: Horizon calibration and record
+			3: record PD data diff
+			4: record laser data
+			9: record PDAF result
+
+	<17. Qcom AE cali.>
+		(para1) 17
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2
+
+	<18. Modify the Camera EV.>
+		(para1) 18
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2
+		(para3) EV step, eg: -12 to 12'
+	elif is_dual; then
+		USAGE='	<0. Enable/Disable Two Rear camera.>
+		(para1) 0
+		(para2) 0:off, 1:on
+		(para3) Timeout value in decimal
+
+	<1. Enable/Disable Two Front camera.>
+		(para1) 1
+		(para2) 0:off, 1:on
+		(para3) Timeout value in decimal
+
+	<2. Take picture command.>
+		(para1) 2
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+		(para4) Default = 0 (Disable Merge Function)
+			0: Disable Merge Function
+			1: Enable Merge Function
+
+	<3. Enable infinity mode or enable auto focus mode.>
+		(para1) 3
+		(para2) 0: AF mode (Keep VCM position)
+			1: Enable infinity mode
+			2: AF mode and auto focus
+
+	<4. Take picture without af command.>
+		(para1) 4
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+		(para4) Default = 0 (Disable Merge Function)
+			0: Disable Merge Function
+			1: Enable Merge Function
+
+	<5. Take raw picture.>
+		(para1) 5
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+
+	<6. Calibration.>
+		(para1) 6
+		(para2) 0: Rear1&2, 1: Front1&2
+
+	<7. Get golden data.>
+		(para1) 7
+		(para2) 0: Rear1&2, 1: Front1&2
+
+	<9. Take picture command (flash mode).>
+		(para1) 9
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+		(para4) Default = 0 (Disable Merge Function)
+			0: Disable Merge Function
+			1: Enable Merge Function
+
+	<10. Take picture without af command (flash mode).>
+		(para1) 10
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+		(para4) Default = 0 (Disable Merge Function)
+			0: Disable Merge Function
+			1: Enable Merge Function'
+	else
+		USAGE='	<0. Enable/Disable camera preview.>
+		(para1) 0
+		(para2) 0: off, 1: on
+		(para3) Timeout value in decimal
+
+	<1. Enable/Disable VGA camera preview.>
+		(para1) 1
+		(para2) 0: off, 1: on
+		(para3) Timeout value in decimal
+
+	<2. Take picture command.>
+		(para1) 2
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+
+	<3. Enable infinity mode or enable auto focus mode.>
+		(para1) 3
+		(para2) 0: AF mode (Keep VCM position)
+			1: Enable infinity mode
+			2: AF mode and auto focus
+
+	<4. Take picture without af command.>
+		(para1) 4
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+
+	<5. Take raw picture.>
+		(para1) 5
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+
+	<6. Calibration.>
+		(para1) 6
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2, 3: Front camera2
+
+	<7. Get golden data.>
+		(para1) 7
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2, 3: Front camera2
+
+	<8. Take picture in Pad Station.>
+		(para1) 8
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+
+	<9. Take picture command (flash mode).>
+		(para1) 9
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+
+	<10. Take picture without af command (flash mode).>
+		(para1) 10
+		(para2) Saved picture file name
+		(para3) Timeout value in decimal
+
+	<11. DIT AF Calibration>
+		(para1) 11
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2
+		(para3) Scene
+			0: Generate dit_af_cali Result
+			1: Inf
+			2: Macro
+			3: Middle(30cm)
+			4: Middle(50cm)
+		(para4) 0: record Vertical calibration
+			1: OTP search
+			2: Horizon calibration and record
+			3: get PD data diff
+			4: record laser data
+			5: check PDAF result
+			6: check laser AF result
+			7: move to Calibration DAC
+
+	<12. Modify the Camera Exposure Time.>
+		(para1) 12
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2
+		(para3) 0 = Auto, 1 = 1s, 2 = 1/2s, 4 = 1/4s, 8 = 1/8s, 15 = 1/15s, 30 = 1/30s,
+			60 = 1/60s, 125 = 1/125s, 250 = 1/250s, 500 = 1/500s, 1000 = 1/1000s
+
+	<13. Modify the Camera ISO.>
+		(para1) 13
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2
+		(para3) 0 = Auto, 25 = ISO25, 50 = ISO50, 100 = ISO100,
+			200 = ISO200, 400 = ISO400, 800 = ISO800, 1600 = ISO1600
+
+	<14. Enable/Disable rear camera module2 preview.>
+		(para1) 14
+		(para2) 0: off, 1: on
+		(para3) Timeout value in decimal
+
+	<15. Enable/Disable front camera module2 preview.>
+		(para1) 15
+		(para2) 0: off, 1: on
+		(para3) Timeout value in decimal
+
+	<16. Turn On/Off camera Laser switch/PhaseDifference switch.>
+		(para1) 16
+		(para2) 0: Back camera, 1: Front camera, 2: Back camera2
+		(para3) 1: Laser switch, 2: PhaseDifference switch
+		(para4) 0: off, 1: on'
+	fi
+	if [ $# -eq 1 ] && in_str "$USAGE" "<$1\."; then
+		USAGE=`busybox awk -v RS='\n\n' -v FS='\n' "/<$1\./" << EOF
+$USAGE
+EOF`
+	fi
+	test $# -le 1 && help
+}
+
+init() {
+	#script log file
+	SCRIPT_LOG_FILE="/sdcard/CameraTest_Script.log"
+
+	#apk log file
+	APK_LOG_FILE="/sdcard/CameraTest_Apk.log"
+
+	#locat log file
+	LOGCAT_LOG_FILE="/data/logcat_log/logcat.txt"
+
+	if [ ! -d "/data/logcat_log/" ]; then
+		mkdir /data/logcat_log/
+	fi
+
+	#if [ ! -d "/data/factory/" ]; then
+	#	mkdir /data/factory/
+	#fi
+}
+
+check_cameraid_running() {
+	#check_camera_id $1
+	id=`getprop camera.test.cameramode 0`
+
+	if [ "$id" == 3 ] && [ "$1" == 4 ]; then #Back camera3 is camera id 3 for ROG3
+		return 1
+	elif [ "$id" == 4 ] && [ $1 -eq 0 -o $1 -eq 2 ]; then
+		return 1
+ 	elif [ "$1" -ne "$id" ]; then
+		my_exit fail "$1 != id $id from prop camera.test.cameramode"
+	fi
+}
+
+Check_Screen() {
+	check="$(dumpsys nfc | grep -c 'mScreenState=ON_UNLOCKED')"
+
+	if [ "$check" -ne 1 ]; then
+		syslog "================= CameraTest: Screen OFF input keyeven 26 ================="
+		input keyevent 26
+	fi
+}
+
+#===============================
+#main
+#===============================
+init
+check_usage $@
+check_system
+
+#Kirin is use QCOM 3A
+
+#if is_qcom; then
+	prefix=q
+	#flow=Q
+#else
+#	prefix=dit
+#fi
+
+#case $1$flow in
+case $1 in
+#0. Enable/Disable camera preview; DUAL: Enable/Disable Two Rear camera
+#14. Enable/Disable rear2 camera module preview  binning mode
+#19. Enable/Disable rear3 camera module3 preview
+
+#1. Enable/Disable front camera preview
+#15. Enable/Disable front2 camera module preview
+
+0 | 1 | 14 | 15 | 19)
+
+	Check_Screen
+
+	if is_dual; then
+		if [ $1 -eq 0 ]; then
+			id=4
+		else
+			my_exit fail "wrong id $1 for dual test"
+		fi
+	else
+		if [ $1 -eq 0 -o $1 -eq 1 ]; then
+			id=$1 #0 rear 16M/1 front 24M
+		elif [ $1 -eq 14 ]; then
+			id=$(($1-12)) #2 rear2 13M
+		elif [ $1 -eq 19 ]; then
+			id=$(($1-16)) #3 rear3 5M binning
+		elif [ $1 -eq 15 ]; then # front2 camera
+			echo "#ROG3 NO front2 camera"
+		fi
+
+		#check_camera_id $id
+	fi
+	camera_preview_switch $id $2
+	if [ "$2" == 0 ]; then
+		set_timeout "close camera finish" $3
+	else
+		set_timeout "finish startPreview$id" $3
+	fi
+;;
+
+#2. Take picture command
+#4. Take picture without af command
+#9. Take picture command (flash mode)
+#10. Take picture without af command (flash mode)
+#5. Take raw picture
+2 | 4 | 9 | 10 | 5)
+	take_picture $1 $2
+	set_timeout_takepic $@
+;;
+
+#3. Enable infinity mode or enable auto focus mode
+3)
+	infinity_mode_switch $2
+	set_timeout 'focus success'
+;;
+
+#6. calibration
+#7. Get golden data
+#6Q. Qcom AWB Calibration
+#7Q. Get Qcom golden data
+6 | 7 | 6Q | 7Q)
+	check_dit && calibration $@
+;;
+
+#8. Take picture in Pad Station
+8)
+	my_exit TODO "TODO test 8"
+;;
+
+#8Q. Change AF setting
+8Q)
+	my_exit TODO "TODO test 8Q"
+;;
+
+#Kirin for QCOM 3A
+
+#11. DIT AF Calibration
+#11Q. Qcom AF Calibration
+11 )
+	shift #skip $1
+	check_dit && af_calibration $@
+	exit 0
+;;
+
+#12. Modify the Camera Exposure Time
+12)
+	shift #skip $1
+
+	id=`getprop camera.test.cameramode 0`
+
+	check_cameraid_running $1
+
+	if [ "$id" == 4 ] && [ $1 -eq 0 -o $1 -eq 2 ]; then # for ROG3 dual cam
+		id=$1
+	fi
+
+	syslog "================== CameraTest: Exposure CameraID="$id", $1="$1" ================="
+
+	modify_exposure_time $id $2
+
+	set_timeout 'set_iso_exp done'
+;;
+
+#13. Modify the Camera ISO
+13)
+	shift #skip $1
+
+	id=`getprop camera.test.cameramode 0`
+
+	check_cameraid_running $1
+
+	if [ "$id" == 4 ] && [ $1 -eq 0 -o $1 -eq 2 ]; then # for ROG3 dual cam
+		id=$1
+	fi
+
+	syslog "================== CameraTest: ISO CameraID="$id", $1="$1" ================="
+
+
+	modify_camera_iso $id $2
+
+	set_timeout 'set_iso_exp done'
+;;
+
+#16. Turn On/Off camera Laser switch/PhaseDifference switch
+16)
+	#ASUS_BSP Byron porting from Ara +++
+	log -p d -t Camera "CameraTest af_calibration command 16+++"
+	##echo "command 16"
+	case $3 in
+	"1")
+		#echo "command 16 case 1"
+		log -p d -t Camera "command 16  Laser switch +++"
+		af_calibration $2 8 $4
+		#af_calibration
+		;;
+	"2")
+		#echo "command 16 case 2"
+		log -p d -t Camera "command 16 PhaseDifference switch+++"
+		af_calibration $2 9 $4
+		#af_calibration
+		;;
+	*)
+		echo "Invalid argument!!(param3=$3)"
+		log -p d -t Camera "error parameter in command 16 param3 should be 0 or 1 param3=$3 +++"
+		;;
+	esac
+		#echo "????"
+	log -p d -t Camera "CameraTest af_calibration command 16---"
+  #ASUS_BSP Byron porting from Ara ---
+;;
+
+#17. Qcom AE cali for Kirin
+17)
+	shift #skip $1
+	ae_calibration $@
+;;
+
+#18. Qcom  for Kirin
+18)
+	shift #skip $1
+
+	id=`getprop camera.test.cameramode 0`
+	check_cameraid_running $1
+
+	if [ "$id" == 4 ] && [ $1 -eq 0 -o $1 -eq 2 ]; then # for ROG3 dual cam
+		id=$1
+	fi
+
+	syslog "================== CameraTest: EV CameraID = "$id", $1="$1" ================="
+
+	modify_camera_ev $id $2
+
+	set_timeout 'set_ev done'
+;;
+
+20)
+	/vendor/bin/test_BinMerge $2
+;;
+
+21 | 22)
+	test_qafCali $@
+	exit 0
+;;
+
+
+#Print usage
+*)
+	help
+;;
+esac
+
+my_exit success "Default"

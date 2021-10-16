@@ -1,0 +1,31 @@
+
+# move to init.target.rc
+#on post-fs
+#    start asus_presp
+
+service asus_presp /vendor/bin/presp
+    user root
+    group root
+    disabled
+    oneshot
+
+on post-fs-data
+    start asus_sp
+
+service asus_sp /vendor/bin/sp
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:persist.vendor.asus.setupwizard_country=*
+    start asus_sp
+
+on property:vendor.debug.update.deviceinfo=1
+    start asus_sp
+
+on property:ro.boot.ftm=1
+    symlink /vendor/bin/UpdateDeviceName /data/data/UpdateDeviceName
+    chmod 0777 /data/data/UpdateDeviceName
+    chown system shell /data/data/UpdateDeviceName
+

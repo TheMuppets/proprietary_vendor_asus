@@ -1,0 +1,24 @@
+#!/vendor/bin/sh
+if [[ "$2" == "0" || "$2" == "2" || "$2" == "4" ]]
+then
+	camDir="rear"
+elif [[ "$2" == "1" || "$2" == "3" || "$2" == "5" ]]
+then
+	camDir="front"
+else
+	echo "Invalid argument!!(par1 : cameraID = $1)"
+	exit 0
+fi
+
+if [ "$3" == "" ]; then
+	rm /data/data/cal_$camDir$2_result.txt
+	rm /data/data/SHD_log.txt
+	test_ShadingCaliForQcom 0 $2 0 0 /sdcard/dut_$camDir$2_white.raw
+else
+	rm /data/data/cal_$camDir$2_result.txt
+	rm /data/data/cal_$camDir$3_result.txt
+	test_ShadingCaliForQcom 0 $2 0 0 /sdcard/dut_$camDir$4_white_1.raw
+	test_ShadingCaliForQcom 0 $3 0 0 /sdcard/dut_$camDir$4_white_2.raw
+fi
+
+exit 0

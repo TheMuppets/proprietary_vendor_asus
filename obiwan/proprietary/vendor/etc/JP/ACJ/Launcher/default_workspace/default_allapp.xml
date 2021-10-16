@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<allapps>
+    <folder
+        title="Google" >
+        <app
+            className="com.google.android.googlequicksearchbox.SearchActivity"
+            packageName="com.google.android.googlequicksearchbox" />
+        <app
+            className="com.google.android.gm.ConversationListActivityGmail"
+            packageName="com.google.android.gm" />
+        <app
+            className="com.google.android.maps.MapsActivity"
+            packageName="com.google.android.apps.maps" />
+        <app
+            className="com.google.android.youtube.app.honeycomb.Shell$HomeActivity"
+            packageName="com.google.android.youtube" />
+        <app
+            className="com.google.android.apps.docs.app.NewMainProxyActivity"
+            packageName="com.google.android.apps.docs" />
+        <app
+            className="com.google.android.apps.youtube.music.activities.MusicActivity"
+            packageName="com.google.android.apps.youtube.music" />
+        <app
+            className="com.google.android.youtube.videos.EntryPoint"
+            packageName="com.google.android.videos" />
+        <app
+            className="com.google.android.apps.tachyon.MainActivity"
+            packageName="com.google.android.apps.tachyon" />
+        <app
+            className="com.google.android.apps.photos.home.HomeActivity"
+            packageName="com.google.android.apps.photos" />
+        <app
+            className="com.android.calendar.AllInOneActivity"
+            packageName="com.google.android.calendar" />
+        <app
+            className="com.google.commerce.tapandpay.android.cardlist.CardListActivity"
+            packageName="com.google.android.apps.walletnfcrel" />
+    </folder>
+    <folder
+        title="Tools" >
+        <app
+            className="com.asus.calculator.Calculator"
+            packageName="com.asus.calculator" />
+        <app
+            className="com.asus.deskclock.DeskClock"
+            packageName="com.asus.deskclock" />
+        <app
+            className="com.android.contacts.activities.PeopleActivity"
+            packageName="com.asus.contacts" />
+        <app
+            className="com.asus.gallery.app.EPhotoActivity"
+            packageName="com.asus.gallery" />
+        <app
+            className="com.asus.filemanager.activity.FileManagerActivity"
+            packageName="com.asus.filemanager" />
+        <app
+            className="com.asus.soundrecorder.AsusRecorder"
+            packageName="com.asus.soundrecorder" />
+        <app
+            className="com.asus.weathertime.WeatherTimeSettings"
+            packageName="com.asus.weathertime" />
+		<app
+            className="com.futuredial.asusdatatransfer.DefaultLauncherActivity"
+            packageName="com.futuredial.asusdatatransfer" />
+    </folder>
+</allapps>

@@ -1,0 +1,26 @@
+#!/system/bin/sh
+ 
+case $1 in
+	"0")
+	# close laser
+	 echo 0 > /factory/laser_set.txt
+	 
+	if [ -e /factory/laser_set.txt ]; then
+		echo 1
+	else
+		echo 0
+	fi
+	exit 0
+	;;
+	"1")
+	# open laser	
+	rm /factory/laser_set.txt
+	 
+	if [ -e /factory/laser_set.txt ]; then
+		echo 0
+	else
+		echo 1
+	fi
+	exit 0
+	;;
+esac

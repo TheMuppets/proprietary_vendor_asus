@@ -1,0 +1,148 @@
+DATADATA="/data/data/"
+FACTORY_FOLDER="/vendor/factory"
+DEBUG=0
+
+function fail()
+{
+  if [ $DEBUG -eq 1 ]; then
+    echo "FAIL: wrong input Parameter"
+  fi
+
+  echo "FAIL"
+  exit 0
+}
+
+function copyfile()
+{
+
+  if [ -e $FACTORY_FOLDER$1 ]; then
+  	cp $FACTORY_FOLDER$1 $DATADATA$2
+	return 0
+  else
+  	if [ $DEBUG -eq 1 ]; then
+    	  echo FAIL: $1 is miss.
+  	fi
+
+	#rm -rf "$DATADATA$2"
+  	return 1
+  fi
+
+}
+
+function Q3aCopyCameraData()
+{
+    if [ ! -d $DATADATA$1 ]; then
+      mkdir "$DATADATA$1"
+    fi
+	
+	# step 1:check the bin file of the 1st cam exist or not & copy data
+	if [ ! -e  $FACTORY_FOLDER"/cali_"$CAM_TAG1"key.txt" ]; then
+		if [ $DEBUG -eq 1 ]; then
+			  echo "cali_"$CAM_TAG1"key.txt" is Null.
+		fi
+		echo "FAIL"
+		return 1
+	else
+		BIN_NAME=`sed -n "7p" $FACTORY_FOLDER"/cali_"$CAM_TAG1"key.txt"`
+		copyfile "/$BIN_NAME" $1
+		if [ $? -ne 0 ]; then
+			if [ $DEBUG -eq 1 ]; then
+					echo copy $BIN_NAME fail.
+			fi
+			echo "FAIL"
+			return 1
+		fi	
+	fi
+
+	# step 2:loop for multicam
+	while [ -e  $FACTORY_FOLDER"/cali_"$CAM_TAG1$i"key.txt" ]
+	do
+		BIN_NAME=`sed -n "7p" $FACTORY_FOLDER"/cali_"$CAM_TAG1$i"key.txt"`	
+		copyfile "/$BIN_NAME" $1
+		if [ $? -ne 0 ]; then
+			if [ $DEBUG -eq 1 ]; then
+				echo copy $BIN_NAME fail.
+			fi
+			echo "FAIL"
+			return 1
+		fi
+		i=$(($i+2))
+	done
+	if [ $DEBUG -eq 1 ]; then
+		echo "cali_"$CAM_TAG1$i"key.txt" is Null.
+	fi
+	
+    return 0
+}
+
+function TarOTPData()
+{
+    cd $DATADATA && tar -zcf "$1.tar.gz" $1
+
+  if [ ! -e "$DATADATA$1.tar.gz" ]; then
+    if [ $DEBUG -eq 1 ]; then
+      echo FAIL: "$DATADATA$1.tar.gz" does not generate.
+    fi
+    return 1
+  fi
+
+    rm -rf "$DATADATA$1"
+    return 0
+}
+
+if [ $# -eq 3 ]; then
+    DEBUG=1
+fi
+
+case "$1" in
+  #for DIT3A
+  #"0")#rear camera
+  #"1")#front camera
+  #"2")#RGB sensor only	 
+  #"3")#front2 camera
+  #"4")#rear2 camera
+  "6")
+	#rear camera for Q3a
+	CAM_TAG1="rear"
+	i=2
+  ;;
+
+  "7")
+	#front camera for Q3a
+	CAM_TAG1="front"
+	i=3
+  ;;
+    
+  *)
+  # echo Command ID wrong: 
+   fail
+  ;;
+
+esac   
+if [ "$CAM_TAG1" != "" ]; then
+	Q3aCopyCameraData $2
+	if [ $? -eq 0 ]; then
+		TarOTPData $2
+		if [ $? -eq 0 ]; then
+			echo "PASS"
+		else
+			if [ $DEBUG -eq 1 ]; then
+				echo "Tar FAIL."
+			fi			
+			echo "FAIL"
+			exit 0
+		fi
+	else
+		if [ $DEBUG -eq 1 ]; then
+			echo "Copy Data FAIL."
+		fi		
+		echo "FAIL"
+		exit 0
+	fi
+else
+	if [ $DEBUG -eq 1 ]; then
+		echo "Camera ID is Null."
+	fi	
+	echo "FAIL"
+	exit 0
+fi

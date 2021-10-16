@@ -1,0 +1,26 @@
+#!/system/bin/sh
+
+case $1 in
+	"0")
+
+if echo "$1 $2" | grep '^[01] [01]$' > /dev/null; then
+	echo 0 $2 > /proc/driver/asus_flash2
+	cat /proc/driver/flash_status
+else
+	echo "0"
+fi
+	;;
+	"1")
+
+if echo "$1 $2" | grep '^[01] [01]$' > /dev/null; then
+	echo 1 $2 > /proc/driver/asus_flash2
+	cat /proc/driver/flash_status
+else
+	echo "0"
+fi
+	;;
+	*)
+		echo "Invalid argument!!(par1 : commandID = $1)"
+	;;
+esac
+

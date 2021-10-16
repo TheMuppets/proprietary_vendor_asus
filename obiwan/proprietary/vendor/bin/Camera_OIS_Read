@@ -1,0 +1,76 @@
+#!/system/bin/sh
+
+ON="/proc/driver/ois_power"
+REG="/proc/driver/ois_i2c_rw"
+RC="/proc/driver/ois_atd_status"
+
+LOG="/proc/fac_printklog"
+
+function usage()
+{
+    echo "
+API: ATD TestCommand Interface
+
+FORMAT: adb shell /data/data/Camera_OIS_Write Para 1 Para 2
+
+USAGE:
+	register address (hex format)
+"
+}
+
+function read_value()
+{
+	echo $1 4 > $REG #byte
+	cat $REG
+}
+function cat_status()
+{
+	cat $RC
+}
+function power_on()
+{
+	echo 1 > $ON
+}
+function power_off()
+{
+	echo 0 > $ON
+}
+
+[ -e $LOG ] && echo "$0 $*"> $LOG
+
+if [ $# -ne 1 ]
+then
+	usage
+	echo "0"
+	exit 1
+fi
+
+output=$(cat $ON)
+if [ $output -eq 0 ]
+then
+	echo "Solo power up..."
+	solo=1
+	power_on
+else
+	solo=0
+fi
+
+reg=$1
+
+echo $reg|grep -Eqi "^0x[0-f]+$"
+rc=$?
+
+if [ $rc -eq 0 ]
+then
+	read_value $reg
+	#cat_status
+else
+	echo "0"
+	echo "please input legal hex format value!"
+fi
+
+if [ $solo -eq 1 ]
+then
+	echo "Solo power down..."
+	power_off
+fi

@@ -1,0 +1,31 @@
+#!/bin/sh --
+
+# Copyright (c) 2019-2020 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+ril_db="/data/vendor/radio/qcrilNr.db"
+
+help() {
+    echo "Syntax error!  Example: qtisetprop config_name config_val"
+}
+
+if [ $# -ne 2 ]; then
+    help
+    exit 1
+fi
+
+# Disable exit on non 0
+set +e
+
+query_result="0"
+if [[ -f $ril_db ]]; then
+    query_result=`echo "SELECT 1 FROM qcril_properties_table WHERE property='$1';" | sqlite3 $ril_db`
+fi
+
+if [[ $query_result == "1" ]]; then
+    echo "INSERT OR REPLACE INTO qcril_properties_table(property, value) VALUES('$1', '$2');" | sqlite3 $ril_db
+else
+    setprop $1 $2
+fi
+

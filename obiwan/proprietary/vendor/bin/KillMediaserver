@@ -1,0 +1,86 @@
+#!/system/bin/sh
+INDEX=0
+DEFAULT_TIMEOUT_S=30
+PROCESS_ALL_STOP=0
+MAX_WAITTIME=10
+
+if [ $# -eq 0 ]
+then
+	timeout_s=$DEFAULT_TIMEOUT_S
+elif [ $# -eq 1 ]
+then
+	timeout_s=$1
+else
+	echo "0"
+	usage
+	exit 1
+fi
+DELAY_INTERVAL_US=500000
+MAX_COUNT=$(( timeout_s*1000*1000/DELAY_INTERVAL_US ))
+
+count=0
+cameraserveroldPID=`pidof cameraserver`
+provideroldPID=`pidof android.hardware.camera.provider@2.4-service_64`
+while [ $count -lt $MAX_COUNT ]
+do
+	result1=`getprop init.svc.cameraserver`
+	result2=`getprop init.svc.vendor.camera-provider-2-4`
+	if [ $result1 == "running" ] && [ $result2 == "running" ] && [ $PROCESS_ALL_STOP == "0" ]; then
+		su -0 stop cameraserver
+		result1=`getprop init.svc.cameraserver`
+		su -0 stop vendor.camera-provider-2-4
+		result2=`getprop init.svc.vendor.camera-provider-2-4`
+	elif [ $result1 == "running" ] && [ $PROCESS_ALL_STOP == "0" ]; then
+		su -0 stop cameraserver
+		result1=`getprop init.svc.cameraserver`
+	elif [ $result2 == "running" ] && [ $PROCESS_ALL_STOP == "0" ]; then
+		su -0 stop vendor.camera-provider-2-4
+		result2=`getprop init.svc.vendor.camera-provider-2-4`
+	fi
+
+	if [ $result1 == "stopped" ] && [ $result2 == "stopped" ]; then
+		su -0 start cameraserver
+		su -0 start vendor.camera-provider-2-4
+		PROCESS_ALL_STOP=1
+		sleep 0.2
+		result1=`getprop init.svc.cameraserver`
+		result2=`getprop init.svc.vendor.camera-provider-2-4`
+		cameraserverPID=`pidof cameraserver`
+		providerPID=`pidof android.hardware.camera.provider@2.4-service_64`
+	fi
+
+	if [ $result1 == "running" ] && [ $result2 == "running" ] && [ $PROCESS_ALL_STOP == "1" ];then
+		log -p d -t KillMediaserver "CameraServer PID ($cameraserveroldPID)->($cameraserverPID) , CameraProvider PID ($provideroldPID)->($providerPID)"
+		waitTime=0
+		isWakeUp=0
+		while [ $waitTime -lt $MAX_WAITTIME ]
+		do
+			if [ $waitTime -lt 2 ]; then
+				sleep 3
+				isWakeUp=`logcat -d |grep --line-buffered "already registered"|awk -v pid="$cameraserverPID" 'END {FS=" "} $3 == pid{print $3 pid}'|wc -l `
+				waitTime=$(( waitTime + 3 ))
+			else
+				sleep 1
+				isWakeUp=`logcat -d |grep --line-buffered "already registered"|awk -v pid="$cameraserverPID" 'END {FS=" "} $3 == pid{print $3 pid}'|wc -l `
+				waitTime=$(( waitTime + 1 ))
+			fi
+			log -p d -t KillMediaserver "Camera provider iswakeup= $isWakeUp, waitTime= $waitTime s"
+			if [ $isWakeUp == "1" ]; then
+				break
+			fi
+		done
+		sleep 1
+		echo "1"
+		exit 0
+	fi
+	usleep $DELAY_INTERVAL_US
+	(( count++ ))
+done
+
+echo "0"
+exit 0
+
+function usage()
+{
+	echo "Please input timeout value (seconds)!"
+}

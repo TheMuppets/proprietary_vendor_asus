@@ -1,0 +1,312 @@
+<InterfaceDb>
+  <Usecases>
+    <Usecase name="USECASE_INTERNAL_POWERSOUND">
+      <Parameters>
+        <Parameter id="3" name="Tonal Balance" defaultValue="0"/>
+        <Parameter id="2" name="Stereo width" defaultValue="0"/>
+        <Parameter id="4" name="Loudness" defaultValue="0"/>
+        <Parameter id="1" name="Rotation" defaultValue="0"/>
+      </Parameters>
+      <Modes>
+        <Mode name="1">
+          <Parameter id="2" value="-1"/>
+          <Parameter id="3" value="-1"/>
+          <Parameter id="4" value="-1"/>
+        </Mode>
+        <Mode name="10">
+          <Parameter id="2" value="-0.10000000149011611938"/>
+          <Parameter id="3" value="-0.10000000149011611938"/>
+          <Parameter id="4" value="-0.10000000149011611938"/>
+        </Mode>
+        <Mode name="11">
+          <Parameter id="2" value="0"/>
+          <Parameter id="3" value="0"/>
+          <Parameter id="4" value="0"/>
+        </Mode>
+        <Mode name="12">
+          <Parameter id="2" value="0.10000000149011611938"/>
+          <Parameter id="3" value="0.10000000149011611938"/>
+          <Parameter id="4" value="0.10000000149011611938"/>
+        </Mode>
+        <Mode name="13">
+          <Parameter id="2" value="0.20000000298023223877"/>
+          <Parameter id="3" value="0.20000000298023223877"/>
+          <Parameter id="4" value="0.20000000298023223877"/>
+        </Mode>
+        <Mode name="14">
+          <Parameter id="2" value="0.30000001192092895508"/>
+          <Parameter id="3" value="0.30000001192092895508"/>
+          <Parameter id="4" value="0.30000001192092895508"/>
+        </Mode>
+        <Mode name="15">
+          <Parameter id="2" value="0.40000000596046447754"/>
+          <Parameter id="3" value="0.40000000596046447754"/>
+          <Parameter id="4" value="0.40000000596046447754"/>
+        </Mode>
+        <Mode name="16">
+          <Parameter id="2" value="0.5"/>
+          <Parameter id="3" value="0.5"/>
+          <Parameter id="4" value="0.5"/>
+        </Mode>
+        <Mode name="17">
+          <Parameter id="2" value="0.60000002384185791016"/>
+          <Parameter id="3" value="0.60000002384185791016"/>
+          <Parameter id="4" value="0.60000002384185791016"/>
+        </Mode>
+        <Mode name="18">
+          <Parameter id="2" value="0.69999998807907104492"/>
+          <Parameter id="3" value="0.69999998807907104492"/>
+          <Parameter id="4" value="0.69999998807907104492"/>
+        </Mode>
+        <Mode name="19">
+          <Parameter id="2" value="0.80000001192092895508"/>
+          <Parameter id="3" value="0.80000001192092895508"/>
+          <Parameter id="4" value="0.80000001192092895508"/>
+        </Mode>
+        <Mode name="2">
+          <Parameter id="2" value="-0.89999997615814208984"/>
+          <Parameter id="3" value="-0.89999997615814208984"/>
+          <Parameter id="4" value="-0.89999997615814208984"/>
+        </Mode>
+        <Mode name="20">
+          <Parameter id="2" value="0.89999997615814208984"/>
+          <Parameter id="3" value="0.89999997615814208984"/>
+          <Parameter id="4" value="0.89999997615814208984"/>
+        </Mode>
+        <Mode name="3">
+          <Parameter id="2" value="-0.80000001192092895508"/>
+          <Parameter id="3" value="-0.80000001192092895508"/>
+          <Parameter id="4" value="-0.80000001192092895508"/>
+        </Mode>
+        <Mode name="4">
+          <Parameter id="2" value="-0.69999998807907104492"/>
+          <Parameter id="3" value="-0.69999998807907104492"/>
+          <Parameter id="4" value="-0.69999998807907104492"/>
+        </Mode>
+        <Mode name="5">
+          <Parameter id="2" value="-0.60000002384185791016"/>
+          <Parameter id="3" value="-0.60000002384185791016"/>
+          <Parameter id="4" value="-0.60000002384185791016"/>
+        </Mode>
+        <Mode name="6">
+          <Parameter id="2" value="-0.5"/>
+          <Parameter id="3" value="-0.5"/>
+          <Parameter id="4" value="-0.5"/>
+        </Mode>
+        <Mode name="7">
+          <Parameter id="2" value="-0.40000000596046447754"/>
+          <Parameter id="3" value="-0.40000000596046447754"/>
+          <Parameter id="4" value="-0.40000000596046447754"/>
+        </Mode>
+        <Mode name="8">
+          <Parameter id="2" value="-0.30000001192092895508"/>
+          <Parameter id="3" value="-0.30000001192092895508"/>
+          <Parameter id="4" value="-0.30000001192092895508"/>
+        </Mode>
+        <Mode name="9">
+          <Parameter id="2" value="-0.20000000298023223877"/>
+          <Parameter id="3" value="-0.20000000298023223877"/>
+          <Parameter id="4" value="-0.20000000298023223877"/>
+        </Mode>
+      </Modes>
+    </Usecase>
+    <Usecase name="USECASE_INTERNAL_POWERSOUND2">
+      <Parameters>
+        <Parameter id="2" name="Stereo width" defaultValue="0"/>
+        <Parameter id="3" name="Tonal Balance" defaultValue="0"/>
+        <Parameter id="4" name="Loudness" defaultValue="0"/>
+        <Parameter id="1" name="Rotation" defaultValue="0"/>
+      </Parameters>
+      <Modes>
+        <Mode name="1">
+          <Parameter id="2" value="-1"/>
+          <Parameter id="3" value="-1"/>
+          <Parameter id="4" value="-1"/>
+        </Mode>
+        <Mode name="10">
+          <Parameter id="2" value="-0.10000000149011611938"/>
+          <Parameter id="3" value="-0.10000000149011611938"/>
+          <Parameter id="4" value="-0.10000000149011611938"/>
+        </Mode>
+        <Mode name="11">
+          <Parameter id="2" value="0"/>
+          <Parameter id="3" value="0"/>
+          <Parameter id="4" value="0"/>
+        </Mode>
+        <Mode name="12">
+          <Parameter id="2" value="0.10000000149011611938"/>
+          <Parameter id="3" value="0.10000000149011611938"/>
+          <Parameter id="4" value="0.10000000149011611938"/>
+        </Mode>
+        <Mode name="13">
+          <Parameter id="2" value="0.20000000298023223877"/>
+          <Parameter id="3" value="0.20000000298023223877"/>
+          <Parameter id="4" value="0.20000000298023223877"/>
+        </Mode>
+        <Mode name="14">
+          <Parameter id="2" value="0.30000001192092895508"/>
+          <Parameter id="3" value="0.30000001192092895508"/>
+          <Parameter id="4" value="0.30000001192092895508"/>
+        </Mode>
+        <Mode name="15">
+          <Parameter id="2" value="0.40000000596046447754"/>
+          <Parameter id="3" value="0.40000000596046447754"/>
+          <Parameter id="4" value="0.40000000596046447754"/>
+        </Mode>
+        <Mode name="16">
+          <Parameter id="2" value="0.5"/>
+          <Parameter id="3" value="0.5"/>
+          <Parameter id="4" value="0.5"/>
+        </Mode>
+        <Mode name="17">
+          <Parameter id="2" value="0.60000002384185791016"/>
+          <Parameter id="3" value="0.60000002384185791016"/>
+          <Parameter id="4" value="0.60000002384185791016"/>
+        </Mode>
+        <Mode name="18">
+          <Parameter id="2" value="0.69999998807907104492"/>
+          <Parameter id="3" value="0.69999998807907104492"/>
+          <Parameter id="4" value="0.69999998807907104492"/>
+        </Mode>
+        <Mode name="19">
+          <Parameter id="2" value="0.80000001192092895508"/>
+          <Parameter id="3" value="0.80000001192092895508"/>
+          <Parameter id="4" value="0.80000001192092895508"/>
+        </Mode>
+        <Mode name="2">
+          <Parameter id="2" value="-0.89999997615814208984"/>
+          <Parameter id="3" value="-0.89999997615814208984"/>
+          <Parameter id="4" value="-0.89999997615814208984"/>
+        </Mode>
+        <Mode name="20">
+          <Parameter id="2" value="0.89999997615814208984"/>
+          <Parameter id="3" value="0.89999997615814208984"/>
+          <Parameter id="4" value="0.89999997615814208984"/>
+        </Mode>
+        <Mode name="3">
+          <Parameter id="2" value="-0.80000001192092895508"/>
+          <Parameter id="3" value="-0.80000001192092895508"/>
+          <Parameter id="4" value="-0.80000001192092895508"/>
+        </Mode>
+        <Mode name="4">
+          <Parameter id="2" value="-0.69999998807907104492"/>
+          <Parameter id="3" value="-0.69999998807907104492"/>
+          <Parameter id="4" value="-0.69999998807907104492"/>
+        </Mode>
+        <Mode name="5">
+          <Parameter id="2" value="-0.60000002384185791016"/>
+          <Parameter id="3" value="-0.60000002384185791016"/>
+          <Parameter id="4" value="-0.60000002384185791016"/>
+        </Mode>
+        <Mode name="6">
+          <Parameter id="2" value="-0.5"/>
+          <Parameter id="3" value="-0.5"/>
+          <Parameter id="4" value="-0.5"/>
+        </Mode>
+        <Mode name="7">
+          <Parameter id="2" value="-0.40000000596046447754"/>
+          <Parameter id="3" value="-0.40000000596046447754"/>
+          <Parameter id="4" value="-0.40000000596046447754"/>
+        </Mode>
+        <Mode name="8">
+          <Parameter id="2" value="-0.30000001192092895508"/>
+          <Parameter id="3" value="-0.30000001192092895508"/>
+          <Parameter id="4" value="-0.30000001192092895508"/>
+        </Mode>
+        <Mode name="9">
+          <Parameter id="2" value="-0.20000000298023223877"/>
+          <Parameter id="3" value="-0.20000000298023223877"/>
+          <Parameter id="4" value="-0.20000000298023223877"/>
+        </Mode>
+      </Modes>
+    </Usecase>
+    <Usecase name="USECASE_EXTERNAL_HEADSET">
+      <Parameters>
+        <Parameter id="3" name="Tonal Balance" defaultValue="0"/>
+        <Parameter id="2" name="Stereo width" defaultValue="0"/>
+      </Parameters>
+      <Modes>
+        <Mode name="1">
+          <Parameter id="2" value="-1"/>
+          <Parameter id="3" value="-1"/>
+        </Mode>
+        <Mode name="10">
+          <Parameter id="2" value="-0.10000000149011611938"/>
+          <Parameter id="3" value="-0.10000000149011611938"/>
+        </Mode>
+        <Mode name="11">
+          <Parameter id="2" value="0"/>
+          <Parameter id="3" value="0"/>
+        </Mode>
+        <Mode name="12">
+          <Parameter id="2" value="0.10000000149011611938"/>
+          <Parameter id="3" value="0.10000000149011611938"/>
+        </Mode>
+        <Mode name="13">
+          <Parameter id="2" value="0.20000000298023223877"/>
+          <Parameter id="3" value="0.20000000298023223877"/>
+        </Mode>
+        <Mode name="14">
+          <Parameter id="2" value="0.30000001192092895508"/>
+          <Parameter id="3" value="0.30000001192092895508"/>
+        </Mode>
+        <Mode name="15">
+          <Parameter id="2" value="0.40000000596046447754"/>
+          <Parameter id="3" value="0.40000000596046447754"/>
+        </Mode>
+        <Mode name="16">
+          <Parameter id="2" value="0.5"/>
+          <Parameter id="3" value="0.5"/>
+        </Mode>
+        <Mode name="17">
+          <Parameter id="2" value="0.60000002384185791016"/>
+          <Parameter id="3" value="0.60000002384185791016"/>
+        </Mode>
+        <Mode name="18">
+          <Parameter id="2" value="0.69999998807907104492"/>
+          <Parameter id="3" value="0.69999998807907104492"/>
+        </Mode>
+        <Mode name="19">
+          <Parameter id="2" value="0.80000001192092895508"/>
+          <Parameter id="3" value="0.80000001192092895508"/>
+        </Mode>
+        <Mode name="2">
+          <Parameter id="2" value="-0.89999997615814208984"/>
+          <Parameter id="3" value="-0.89999997615814208984"/>
+        </Mode>
+        <Mode name="20">
+          <Parameter id="2" value="0.89999997615814208984"/>
+          <Parameter id="3" value="0.89999997615814208984"/>
+        </Mode>
+        <Mode name="3">
+          <Parameter id="2" value="-0.80000001192092895508"/>
+          <Parameter id="3" value="-0.80000001192092895508"/>
+        </Mode>
+        <Mode name="4">
+          <Parameter id="2" value="-0.69999998807907104492"/>
+          <Parameter id="3" value="-0.69999998807907104492"/>
+        </Mode>
+        <Mode name="5">
+          <Parameter id="2" value="-0.60000002384185791016"/>
+          <Parameter id="3" value="-0.60000002384185791016"/>
+        </Mode>
+        <Mode name="6">
+          <Parameter id="2" value="-0.5"/>
+          <Parameter id="3" value="-0.5"/>
+        </Mode>
+        <Mode name="7">
+          <Parameter id="2" value="-0.40000000596046447754"/>
+          <Parameter id="3" value="-0.40000000596046447754"/>
+        </Mode>
+        <Mode name="8">
+          <Parameter id="2" value="-0.30000001192092895508"/>
+          <Parameter id="3" value="-0.30000001192092895508"/>
+        </Mode>
+        <Mode name="9">
+          <Parameter id="2" value="-0.20000000298023223877"/>
+          <Parameter id="3" value="-0.20000000298023223877"/>
+        </Mode>
+      </Modes>
+    </Usecase>
+  </Usecases>
+</InterfaceDb>

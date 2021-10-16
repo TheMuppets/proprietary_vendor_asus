@@ -1,0 +1,15 @@
+on init
+    # Begin Immersion changes
+    #/dev/tspdrv 0660 system system
+    chmod 0660 /dev/tspdrv
+    chown system system /dev/tspdrv 
+    # End Immersion changes
+
+# Begin Immersion changes
+# TouchSense Player Service
+service immvibed /system/bin/immvibed -p 99 -u 1000
+    class main
+    user root
+    group root
+    ioprio rt 4
+# End Immersion changes

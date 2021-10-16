@@ -1,0 +1,42 @@
+#!/system/bin/sh
+
+single_ae_cali(){
+echo "single_ae_cali"
+rm /data/data/cal_multiae$1_result.txt
+rm /vendor/factory/dut_$camDir$1_ae.bin
+test_DualCamQcomAECali $1 0 0 /sdcard/AEWHITE_$1.raw /vendor/lib64/DataSet/ispDB/ParameterDB.db
+}
+
+dual_ae_cali(){
+echo "dual_ae_cali"
+rm /data/data/cal_multiae$1_result.txt
+rm /vendor/factory/dut_$camDir$1_ae.bin
+rm /data/data/cal_multiae$2_result.txt		
+rm /vendor/factory/dut_$camDir$2_ae.bin
+
+test_DualCamQcomAECali $1 0 0 /sdcard/DUALAEWHITE_1.raw /vendor/lib64/DataSet/ispDB/ParameterDB.db	
+test_DualCamQcomAECali $2 0 0 /sdcard/DUALAEWHITE_2.raw /vendor/lib64/DataSet/ispDB/ParameterDB.db
+mv /sdcard/DUALAEWHITE_1.raw /sdcard/AEWHITE_$1.raw
+mv /sdcard/DUALAEWHITE_2.raw /sdcard/AEWHITE_$2.raw
+}
+
+if [[ "$1" == "0" || "$1" == "2" || "$1" == "4" ]]
+then
+	camDir="rear"
+elif [[ "$1" == "1" || "$1" == "3" || "$1" == "5" ]]
+then
+	camDir="front"
+else
+	echo "Invalid argument!!(par1 : cameraID = $1)"
+	exit 0
+fi
+
+
+if [ "$2" == "" ]
+then	
+	single_ae_cali $1
+else
+	dual_ae_cali $1 $2
+fi
+
+exit 0

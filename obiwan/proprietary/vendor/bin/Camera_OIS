@@ -1,0 +1,77 @@
+#!/system/bin/sh
+
+ON="/proc/driver/ois_power"
+REG="/proc/driver/ois_i2c_rw"
+CAL="/proc/driver/ois_cali"
+MODE="/proc/driver/ois_mode"
+RC="/proc/driver/ois_atd_status"
+
+LOG="/proc/fac_printklog"
+
+function usage()
+{
+    echo "
+API: ATD TestCommand Interface
+
+FORMAT: adb shell /data/data/Camera_OIS Para1
+
+USAGE:
+	 0 = Servo off
+	 1 = operate for preview & video
+	 2 = operate for capture
+	 3 = factory test mode
+"
+}
+
+function power_on()
+{
+	echo 1 > $ON
+}
+
+function power_off()
+{
+	echo 0 > $ON
+}
+
+function switch_mode()
+{
+	echo $1 > $MODE
+}
+
+function cat_status()
+{
+	cat $RC
+}
+
+[ -e $LOG ] && echo "$0 $*"> $LOG
+
+output=$(cat $ON)
+if [ $output -eq 0 ]
+then
+	echo "OIS power down, must open camera first!"
+	echo "0"
+	exit 1
+fi
+
+case $1 in
+	"0")
+		switch_mode 0
+		cat_status
+	;;
+	"1")
+		switch_mode 1
+		cat_status
+	;;
+	"2")
+		switch_mode 2
+		cat_status
+	;;
+	"3")
+		switch_mode 3
+		cat_status
+	;;
+	*)
+		echo "0"
+		usage
+	;;
+esac
