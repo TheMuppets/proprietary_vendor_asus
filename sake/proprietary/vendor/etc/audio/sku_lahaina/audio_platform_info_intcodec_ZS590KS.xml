@@ -170,6 +170,8 @@
         <device name="SND_DEVICE_OUT_HEADPHONES_FM" acdb_id="52"/>
         <device name="SND_DEVICE_OUT_VOIP_GAME_HEADPHONES" acdb_id="711"/>
         <device name="SND_DEVICE_OUT_VOIP_GAME_HEADSET" acdb_id="711"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES_KARAOK" acdb_id="910"/>
+        <device name="SND_DEVICE_OUT_USB_HEADPHONES_KARAOK" acdb_id="945"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_MIC" acdb_id="143"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_STEREO_MIC" acdb_id="144"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_THREE_MIC" acdb_id="145"/>
@@ -204,6 +206,8 @@
         <device name="SND_DEVICE_IN_USB_HEADSET_MIC_SCREEN_RECORDER" acdb_id="54"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_GAME" acdb_id="718"/>
         <device name="SND_DEVICE_IN_USB_HEADSET_MIC_GAME" acdb_id="744"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC_KARAOK" acdb_id="901"/>
+        <device name="SND_DEVICE_IN_USB_HEADSET_MIC_KARAOK" acdb_id="908"/>
         <device name="SND_DEVICE_IN_BT_SCO_HD_440BT_MIC" acdb_id="938"/>
         <device name="SND_DEVICE_IN_BT_SCO_MI_BASIC_MIC" acdb_id="940"/>
         <device name="SND_DEVICE_IN_BT_SCO_HD_440BT_MIC_WB" acdb_id="938"/>
@@ -287,6 +291,8 @@
         <device name="SND_DEVICE_OUT_VOIP_GAME_USB_HEADPHONES" backend="usb-headphones" interface="USB_AUDIO_RX"/>
         <device name="SND_DEVICE_OUT_VOIP_GAME_HEADPHONES" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
         <device name="SND_DEVICE_OUT_VOIP_GAME_HEADSET" backend="headset" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES_KARAOK" backend="headphones" interface="RX_CDC_DMA_RX_0"/>
+        <device name="SND_DEVICE_OUT_USB_HEADPHONES_KARAOK" backend="usb-headphones" interface="USB_AUDIO_RX"/>
         <device name="SND_DEVICE_OUT_VOICE_USB_HEADSET_3RD" backend="usb-headset" interface="USB_AUDIO_RX"/>
         <device name="SND_DEVICE_OUT_VOICE_USB_HEADPHONES_3RD" backend="usb-headphones" interface="USB_AUDIO_RX"/>
         <device name="SND_DEVICE_OUT_VOIP_USB_HEADSET_3RD" backend="usb-headset" interface="USB_AUDIO_RX"/>
@@ -424,6 +430,8 @@
         <device name="SND_DEVICE_IN_USB_HEADSET_MIC_SCREEN_RECORDER" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_GAME" backend="headset-mic" interface="TX_CDC_DMA_TX_4"/>
         <device name="SND_DEVICE_IN_USB_HEADSET_MIC_GAME" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC_KARAOK" backend="headset-mic" interface="TX_CDC_DMA_TX_4"/>
+        <device name="SND_DEVICE_IN_USB_HEADSET_MIC_KARAOK" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
         <device name="SND_DEVICE_IN_VOIP_USB_HEADSET_MIC" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
         <device name="SND_DEVICE_IN_VOIP_GAME_USB_HEADSET_MIC" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
         <device name="SND_DEVICE_IN_VOIP_GAME_SPEAKER_TMIC" interface="TX_CDC_DMA_TX_3"/>
