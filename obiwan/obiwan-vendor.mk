@@ -1331,7 +1331,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/obiwan/proprietary/vendor/firmware/q6_ZS661KS_sm8250_image/adsp.b17:$(TARGET_COPY_OUT_VENDOR)/firmware/q6_ZS661KS_sm8250_image/adsp.b17 \
     vendor/asus/obiwan/proprietary/vendor/firmware/q6_ZS661KS_sm8250_image/adsp.b18:$(TARGET_COPY_OUT_VENDOR)/firmware/q6_ZS661KS_sm8250_image/adsp.b18 \
     vendor/asus/obiwan/proprietary/vendor/firmware/q6_ZS661KS_sm8250_image/adsp.b19:$(TARGET_COPY_OUT_VENDOR)/firmware/q6_ZS661KS_sm8250_image/adsp.b19 \
-    vendor/asus/obiwan/proprietary/vendor/firmware/q6_ZS661KS_sm8250_image/adsp.b20:$(TARGET_COPY_OUT_VENDOR)/firmware/q6_ZS661KS_sm8250_image/adsp.b20 \
     vendor/asus/obiwan/proprietary/vendor/firmware/q6_ZS661KS_sm8250_image/adsp.mdt:$(TARGET_COPY_OUT_VENDOR)/firmware/q6_ZS661KS_sm8250_image/adsp.mdt \
     vendor/asus/obiwan/proprietary/vendor/firmware/regdb.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/regdb.bin \
     vendor/asus/obiwan/proprietary/vendor/firmware/rog2_haptic/rog2_100.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rog2_haptic/rog2_100.bin \
