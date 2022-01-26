@@ -29,6 +29,7 @@
         <!-- ASUS BSP : OZO porting -->
         <MediaCodec name="c2.nokia.ozoaudio.encoder" type="audio/ozoaudio">
             <Alias name="OMX.nokia.ozoaudio.encoder" />
+            <Limit name="channel-count" max="4" />
             <Limit name="sample-rate" ranges="48000" />
             <Limit name="bitrate" range="128000-960000" />
         </MediaCodec>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/******************************************************************************
+ *
+ *  Copyright (c) 2020 - 2021 Qualcomm Technologies, Inc. and/or its subsidiaries.
+ *  All Rights Reserved.
+ *  Qualcomm Technologies, Inc. and/or its subsidiaries. Confidential and Proprietary.
+ *
+ ******************************************************************************/
+-->
+<permissions>
+    <privapp-permissions package="com.qualcomm.qtil.aptxals">
+        <permission name="android.permission.BLUETOOTH_PRIVILEGED"/>
+        <permission name="android.permission.DUMP"/>
+        <permission name="android.permission.REAL_GET_TASKS"/>
+        <permission name="android.permission.PACKAGE_USAGE_STATS"/>
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+        <permission name="android.permission.MODIFY_AUDIO_ROUTING"/>
+    </privapp-permissions>
+</permissions>

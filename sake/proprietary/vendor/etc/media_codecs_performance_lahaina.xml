@@ -143,7 +143,7 @@
         </MediaCodec>
         <MediaCodec name="c2.android.vp8.encoder" type="video/x-vnd.on2.vp8" update="true">
             <!-- measured 90%:6-36 med:30/29 FLAKY(mn=0.0 < 7 - 58) variance:2.5 -->
-            <Limit name="measured-frame-rate-320x180" range="105-320" /> <!-- SHOULDN'T HAVE TWEAKED N=214 -->
+            <Limit name="measured-frame-rate-320x180" range="299-429" /> <!-- SHOULDN'T HAVE TWEAKED N=214 -->
             <!-- measured 98%:3-24 med:12/12 FLAKY(mn=2.8 < 3 - 24 < mx=26.6) variance:2.8 -->
             <Limit name="measured-frame-rate-640x360" range="75-350" /> <!-- N=220 -->
             <!-- measured 98%:3-11 med:6/6 FLAKY(mn=0.0 < 3 - 12) -->

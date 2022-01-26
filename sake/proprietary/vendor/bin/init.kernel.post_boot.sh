@@ -1,5 +1,5 @@
 #=============================================================================
-# Copyright (c) 2019-2020 Qualcomm Technologies, Inc.
+# Copyright (c) 2019-2021 Qualcomm Technologies, Inc.
 # All Rights Reserved.
 # Confidential and Proprietary - Qualcomm Technologies, Inc.
 #
@@ -35,12 +35,15 @@ if [ -f /sys/devices/soc0/soc_id ]; then
 fi
 
 case "$platformid" in
-    "415"|"439"|"456")
+    "415"|"439"|"456"|"501"|"502")
 	/vendor/bin/sh /vendor/bin/init.kernel.post_boot-lahaina.sh
 	;;
 
     "450")
 	/vendor/bin/sh /vendor/bin/init.kernel.post_boot-shima.sh
+	;;
+    "475"|"499"|"487"|"488"|"498"|"497"|"515")
+	/vendor/bin/sh /vendor/bin/init.kernel.post_boot-yupik.sh
 	;;
      *)
 	echo "***WARNING***: Invalid SoC ID\n\t No postboot settings applied!!\n"

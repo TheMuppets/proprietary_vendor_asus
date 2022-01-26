@@ -398,3 +398,7 @@ echo 0 > /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq
 echo 0 > /sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq
 
 setprop vendor.post_boot.parsed 1
+
+
+user_data_sd=`ls -l /dev/block/by-name/ |grep userdata |awk '{FS = " "}{print $NF}'|cut -d"/" -f4 | tr -cd "[a-z]"`
+echo mq-deadline > /sys/block/$user_data_sd/queue/scheduler

@@ -1,0 +1,1 @@
+import /vendor/etc/init.asus.nfc.${ro.boot.product.hardware.sku}.rc

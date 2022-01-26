@@ -25,3 +25,16 @@ on property:persist.vendor.data.shsusr_load=1
 
 on property:persist.vendor.data.shsusr_load=0
     stop vendor.shsusrd
+
+on property:persist.vendor.data.shsusr_ipa=02
+    write /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus "02"
+
+on property:persist.vendor.data.shsusr_ipa=10
+    write /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus "10"
+
+on property:persist.vendor.data.shsusr_ipa=20
+    write /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus "20"
+
+on property:persist.vendor.data.shsusr_ipa=40
+    write /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus "40"
+

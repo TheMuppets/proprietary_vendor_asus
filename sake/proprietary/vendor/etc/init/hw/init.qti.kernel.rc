@@ -1,5 +1,5 @@
 #=============================================================================
-# Copyright (c) 2019-2020 Qualcomm Technologies, Inc.
+# Copyright (c) 2019-2021 Qualcomm Technologies, Inc.
 # All Rights Reserved.
 # Confidential and Proprietary - Qualcomm Technologies, Inc.
 #
@@ -45,6 +45,8 @@ on early-init
 
     write /proc/sys/kernel/sched_boost 1
 
+    write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
+
 on init
     # Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
@@ -76,9 +78,9 @@ on early-boot
     write /sys/devices/virtual/cvp/cvp/boot 1
 
 on boot
-    # Set the console loglevel to < KERN_INFO
+    # Set the console loglevel to < KERN_WARN
     # Set the default message loglevel to KERN_INFO
-    write /proc/sys/kernel/printk "6 6 1 7"
+    write /proc/sys/kernel/printk "4 6 1 7"
 
     # Allow access to emmc rawdump block partition and dload sysfs node
     chown root system /dev/block/bootdevice/by-name/rawdump
@@ -162,6 +164,7 @@ on property:sys.boot_completed=1
     write /sys/block/dm-0/queue/read_ahead_kb 512
     write /sys/block/dm-1/queue/read_ahead_kb 512
     write /sys/block/dm-2/queue/read_ahead_kb 512
+    write /proc/sys/vm/page-cluster 0
     start kernel-boot
     start kernel-post-boot
 

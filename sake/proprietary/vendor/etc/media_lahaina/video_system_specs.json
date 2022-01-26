@@ -24,7 +24,9 @@
             "perf_control_enable": false,
             // It is used to enable fastCV engine for flip support in the absence of VPSS hardware
             // support.
-            "enc_vpss_flip": true
+            "enc_vpss_flip": true,
+            // This is used to limit secure usecase buffer count. Changes dynamic to static count
+            "dec_secure_static_count": false
         },
         "Presets": {
             // this is used for secure decoding performance boost handling
@@ -96,8 +98,11 @@
             // maximum and minimum QPs for Encoders
             // default: 10 - 40
             // allowed override value: 0 - 51
-            "enc_qp_min": 10,
-            "enc_qp_max": 40,
+            "enc_bitrate_boost_qp_min": 10,
+            "enc_bitrate_boost_qp_max": 40,
+            // additional buffers to be added while computing pipeline delays
+            "pipeline_extra_output_buffers": 2,
+
             // WARNING:
             //    Please DON'T change these values, if you don't know what you are doing.
             // These are the Video HAL capabilities. Video HAL may not function properly with wrong values.
@@ -140,6 +145,7 @@
                 "c2.qti.avc.encoder",
                 // "c2.qti.avc.encoder.secure",
                 "c2.qti.hevc.encoder",
+                "c2.qti.hevc.encoder.secure",
                 "c2.qti.hevc.encoder.cq",
                 "c2.qti.heic.encoder"
             ]
