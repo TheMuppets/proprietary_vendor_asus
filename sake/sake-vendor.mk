@@ -638,15 +638,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/firmware/goodixfp64.b06:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64.b06 \
     vendor/asus/sake/proprietary/vendor/firmware/goodixfp64.b07:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64.b07 \
     vendor/asus/sake/proprietary/vendor/firmware/goodixfp64.mdt:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64.mdt \
-    vendor/asus/sake/proprietary/vendor/firmware/goodixfp64_er1.b00:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64_er1.b00 \
-    vendor/asus/sake/proprietary/vendor/firmware/goodixfp64_er1.b01:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64_er1.b01 \
-    vendor/asus/sake/proprietary/vendor/firmware/goodixfp64_er1.b02:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64_er1.b02 \
-    vendor/asus/sake/proprietary/vendor/firmware/goodixfp64_er1.b03:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64_er1.b03 \
-    vendor/asus/sake/proprietary/vendor/firmware/goodixfp64_er1.b04:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64_er1.b04 \
-    vendor/asus/sake/proprietary/vendor/firmware/goodixfp64_er1.b05:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64_er1.b05 \
-    vendor/asus/sake/proprietary/vendor/firmware/goodixfp64_er1.b06:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64_er1.b06 \
-    vendor/asus/sake/proprietary/vendor/firmware/goodixfp64_er1.b07:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64_er1.b07 \
-    vendor/asus/sake/proprietary/vendor/firmware/goodixfp64_er1.mdt:$(TARGET_COPY_OUT_VENDOR)/firmware/goodixfp64_er1.mdt \
     vendor/asus/sake/proprietary/vendor/firmware/hdcpsrm.b00:$(TARGET_COPY_OUT_VENDOR)/firmware/hdcpsrm.b00 \
     vendor/asus/sake/proprietary/vendor/firmware/hdcpsrm.b01:$(TARGET_COPY_OUT_VENDOR)/firmware/hdcpsrm.b01 \
     vendor/asus/sake/proprietary/vendor/firmware/hdcpsrm.b02:$(TARGET_COPY_OUT_VENDOR)/firmware/hdcpsrm.b02 \
@@ -1084,7 +1075,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/lib64/hw/com.dsi.ant@1.0-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/com.dsi.ant@1.0-impl.so \
     vendor/asus/sake/proprietary/vendor/lib64/hw/com.qti.chi.override.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/com.qti.chi.override.so \
     vendor/asus/sake/proprietary/vendor/lib64/hw/fingerprint.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/fingerprint.default.so \
-    vendor/asus/sake/proprietary/vendor/lib64/hw/fingerprint_er1.default.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/fingerprint_er1.default.so \
     vendor/asus/sake/proprietary/vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so \
     vendor/asus/sake/proprietary/vendor/lib64/hw/vendor.qti.gnss@4.0-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/vendor.qti.gnss@4.0-impl.so \
     vendor/asus/sake/proprietary/vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so \
@@ -1248,7 +1238,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/lib64/libgdtap.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgdtap.so \
     vendor/asus/sake/proprietary/vendor/lib64/libgeofencing.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgeofencing.so \
     vendor/asus/sake/proprietary/vendor/lib64/libgf_hal.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgf_hal.so \
-    vendor/asus/sake/proprietary/vendor/lib64/libgf_hal_er1.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgf_hal_er1.so \
     vendor/asus/sake/proprietary/vendor/lib64/libgnss.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgnss.so \
     vendor/asus/sake/proprietary/vendor/lib64/libgnsspps.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgnsspps.so \
     vendor/asus/sake/proprietary/vendor/lib64/libgplaf.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgplaf.so \
