@@ -293,73 +293,25 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/etc/init/vendor.sensors.sscrpcd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.sensors.sscrpcd.rc \
     vendor/asus/sake/proprietary/vendor/etc/init/vmmgr.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vmmgr.rc \
     vendor/asus/sake/proprietary/vendor/etc/init/vppservice.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vppservice.rc \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm1.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm1.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm20.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm20.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm21.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm21.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm22.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm22.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm23.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm23.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm30.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm30.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm31.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm31.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm32.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm32.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm33.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm33.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm4.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm4.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm5.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm5.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inParm6.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inParm6.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/VersioControl.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/VersioControl.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm1.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm1.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm2.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm2.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm20.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm20.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm21.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm21.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm22.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm22.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm23.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm23.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm3.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm3.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm30.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm30.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm31.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm31.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm32.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm32.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm33.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm33.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm4.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm4.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm5.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm5.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/inparm_anakin_pr/inParm6.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/inparm_anakin_pr/inParm6.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/mcf.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/mcf.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/iris6/pxlw_iris6.mcf:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/iris6/pxlw_iris6.mcf \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm1.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm1.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm10.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm10.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm11.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm11.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm12.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm12.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm13.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm13.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm14.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm14.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm15.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm15.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm16.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm16.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm17.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm17.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm18.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm18.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm2.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm2.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm3.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm3.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm4.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm4.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm5.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm5.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm6.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm6.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm7.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm7.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm8.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm8.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inParm9.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inParm9.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/ModifyHistory.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/ModifyHistory.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm1.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm1.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm10.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm10.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm11.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm11.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm12.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm12.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm13.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm13.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm14.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm14.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm15.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm15.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm16.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm16.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm17.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm17.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm18.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm18.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm2.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm2.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm3.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm3.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm4.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm4.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm5.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm5.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm6.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm6.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm7.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm7.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm8.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm8.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/inParm9.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/inParm9.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_anakin_pr/mcfCheck.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_anakin_pr/mcfCheck.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/Release.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/Release.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm1.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm1.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm10.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm10.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm11.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm11.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm12.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm12.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm13.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm13.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm14.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm14.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm15.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm15.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm16.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm16.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm17.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm17.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm18.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm18.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm2.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm2.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm3.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm3.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm4.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm4.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm5.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm5.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm6.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm6.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm7.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm7.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm8.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm8.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_mp/inParm9.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_mp/inParm9.txt \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_pr/Release.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_pr/Release.txt \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_pr/inParm1.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_pr/inParm1.txt \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_pr/inParm10.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_pr/inParm10.txt \
@@ -379,6 +331,25 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_pr/inParm7.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_pr/inParm7.txt \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_pr/inParm8.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_pr/inParm8.txt \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_sake_pr/inParm9.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_sake_pr/inParm9.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/Release.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/Release.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm1.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm1.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm10.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm10.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm11.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm11.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm12.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm12.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm13.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm13.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm14.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm14.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm15.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm15.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm16.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm16.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm17.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm17.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm18.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm18.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm2.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm2.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm3.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm3.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm4.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm4.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm5.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm5.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm6.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm6.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm7.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm7.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm8.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm8.txt \
+    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_mp/inParm9.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_mp/inParm9.txt \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_pr/Release.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_pr/Release.txt \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_pr/inParm1.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_pr/inParm1.txt \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_pr/inParm10.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_pr/inParm10.txt \
@@ -398,9 +369,7 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_pr/inParm7.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_pr/inParm7.txt \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_pr/inParm8.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_pr/inParm8.txt \
     vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/inparm_vodka_pr/inParm9.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/inparm_vodka_pr/inParm9.txt \
-    vendor/asus/sake/proprietary/vendor/etc/inparm/irissoft/mcfCheck.txt:$(TARGET_COPY_OUT_VENDOR)/etc/inparm/irissoft/mcfCheck.txt \
     vendor/asus/sake/proprietary/vendor/etc/irissoft.fw:$(TARGET_COPY_OUT_VENDOR)/etc/irissoft.fw \
-    vendor/asus/sake/proprietary/vendor/etc/irissoft_a.fw:$(TARGET_COPY_OUT_VENDOR)/etc/irissoft_a.fw \
     vendor/asus/sake/proprietary/vendor/etc/irissoft_s.fw:$(TARGET_COPY_OUT_VENDOR)/etc/irissoft_s.fw \
     vendor/asus/sake/proprietary/vendor/etc/irissoft_v.fw:$(TARGET_COPY_OUT_VENDOR)/etc/irissoft_v.fw \
     vendor/asus/sake/proprietary/vendor/etc/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
@@ -676,10 +645,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/firmware/ipa_fws.b04:$(TARGET_COPY_OUT_VENDOR)/firmware/ipa_fws.b04 \
     vendor/asus/sake/proprietary/vendor/firmware/ipa_fws.elf:$(TARGET_COPY_OUT_VENDOR)/firmware/ipa_fws.elf \
     vendor/asus/sake/proprietary/vendor/firmware/ipa_fws.mdt:$(TARGET_COPY_OUT_VENDOR)/firmware/ipa_fws.mdt \
-    vendor/asus/sake/proprietary/vendor/firmware/iris6.fw:$(TARGET_COPY_OUT_VENDOR)/firmware/iris6.fw \
-    vendor/asus/sake/proprietary/vendor/firmware/iris6_ccf1.fw:$(TARGET_COPY_OUT_VENDOR)/firmware/iris6_ccf1.fw \
-    vendor/asus/sake/proprietary/vendor/firmware/iris6_ccf2.fw:$(TARGET_COPY_OUT_VENDOR)/firmware/iris6_ccf2.fw \
-    vendor/asus/sake/proprietary/vendor/firmware/iris6_ccf3.fw:$(TARGET_COPY_OUT_VENDOR)/firmware/iris6_ccf3.fw \
     vendor/asus/sake/proprietary/vendor/firmware/m3.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/m3.bin \
     vendor/asus/sake/proprietary/vendor/firmware/regdb.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/regdb.bin \
     vendor/asus/sake/proprietary/vendor/firmware/slpi.b00:$(TARGET_COPY_OUT_VENDOR)/firmware/slpi.b00 \

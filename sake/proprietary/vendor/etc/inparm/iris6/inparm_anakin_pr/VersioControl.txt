@@ -1,6 +1,0 @@
-ROG5 Iris6 inaprm V1.0  2020/11/11 
-Change all inparm to 603 lines
-Update line 200 to 0.55
-
-ROG5 Iris6 inaprm V1.1  2020/11/13
-Change inparm 20~23, inparm 30~33 color temperature to 8150 and color gamut is DCIP3
