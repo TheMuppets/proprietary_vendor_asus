@@ -167,14 +167,6 @@ PRODUCT_COPY_FILES += \
     vendor/asus/sake/proprietary/vendor/etc/acdbdata/nn_vad_models/fai_3.0.0_0.0_eai_1.00.pmd:$(TARGET_COPY_OUT_VENDOR)/etc/acdbdata/nn_vad_models/fai_3.0.0_0.0_eai_1.00.pmd \
     vendor/asus/sake/proprietary/vendor/etc/acdbdata/nn_vad_models/fai__3.0.0_0.0__eai_1.10.pmd:$(TARGET_COPY_OUT_VENDOR)/etc/acdbdata/nn_vad_models/fai__3.0.0_0.0__eai_1.10.pmd \
     vendor/asus/sake/proprietary/vendor/etc/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
-    vendor/asus/sake/proprietary/vendor/etc/audio/ZS590KS/audio_io_policy_ZS590KS.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio/ZS590KS/audio_io_policy_ZS590KS.conf \
-    vendor/asus/sake/proprietary/vendor/etc/audio/ZS590KS/audio_policy_configuration_ZS590KS.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/ZS590KS/audio_policy_configuration_ZS590KS.xml \
-    vendor/asus/sake/proprietary/vendor/etc/audio/ZS590KS/audio_policy_volumes_ZS590KS.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/ZS590KS/audio_policy_volumes_ZS590KS.xml \
-    vendor/asus/sake/proprietary/vendor/etc/audio/ZS590KS/default_volume_tables_ZS590KS.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/ZS590KS/default_volume_tables_ZS590KS.xml \
-    vendor/asus/sake/proprietary/vendor/etc/audio/ZS590KS/mixer_paths_ZS590KS.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/ZS590KS/mixer_paths_ZS590KS.xml \
-    vendor/asus/sake/proprietary/vendor/etc/audio/ZS590KS/mixer_paths_ZS590KS_EU.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/ZS590KS/mixer_paths_ZS590KS_EU.xml \
-    vendor/asus/sake/proprietary/vendor/etc/audio/ZS590KS/r_submix_audio_policy_configuration_ZS590KS.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/ZS590KS/r_submix_audio_policy_configuration_ZS590KS.xml \
-    vendor/asus/sake/proprietary/vendor/etc/audio/sku_lahaina/audio_platform_info_intcodec_ZS590KS.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_lahaina/audio_platform_info_intcodec_ZS590KS.xml \
     vendor/asus/sake/proprietary/vendor/etc/camera/camxoverridesettings.txt:$(TARGET_COPY_OUT_VENDOR)/etc/camera/camxoverridesettings.txt \
     vendor/asus/sake/proprietary/vendor/etc/camera/vidhance_calibration:$(TARGET_COPY_OUT_VENDOR)/etc/camera/vidhance_calibration \
     vendor/asus/sake/proprietary/vendor/etc/charger_fstab.qti:$(TARGET_COPY_OUT_VENDOR)/etc/charger_fstab.qti \
