@@ -6,6 +6,17 @@ soong_namespace {
 }
 
 android_app_import {
+	name: "DiracAudioControlService",
+	owner: "asus",
+	apk: "proprietary/system/priv-app/DiracAudioControlService/DiracAudioControlService.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	privileged: true,
+}
+
+android_app_import {
 	name: "CACertService",
 	owner: "asus",
 	apk: "proprietary/vendor/app/CACertService/CACertService.apk",
