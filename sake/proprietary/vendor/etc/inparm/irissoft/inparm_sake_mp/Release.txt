@@ -1,6 +1,0 @@
-2020/12/18
-Update HDR maxcll line 120 setting inparm 7 1400, inparm 8 1400, inparm 9 4000
-
-2021/4/21 V1.2
-Change gamut nature and ASUS default white point to D7500 x:0.300615 y:0.3116
-Change inaprm 1/2/3/13/14/15

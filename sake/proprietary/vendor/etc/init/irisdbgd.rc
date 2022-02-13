@@ -1,5 +1,0 @@
-service irisdbgd /vendor/bin/irisdbgd 1 /dev/i2c-5 0x26
-    class late_start
-    user root
-    group root inet
-    disabled

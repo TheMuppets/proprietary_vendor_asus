@@ -302,24 +302,6 @@ prebuilt_etc_xml {
 }
 
 prebuilt_etc_xml {
-	name: "vendor.pixelworks.hardware.display.iris-service",
-	owner: "asus",
-	src: "proprietary/vendor/etc/vintf/manifest/vendor.pixelworks.hardware.display.iris-service.xml",
-	filename_from_src: true,
-	sub_dir: "vintf/manifest",
-	soc_specific: true,
-}
-
-prebuilt_etc_xml {
-	name: "vendor.pixelworks.hardware.feature.irisfeature-service",
-	owner: "asus",
-	src: "proprietary/vendor/etc/vintf/manifest/vendor.pixelworks.hardware.feature.irisfeature-service.xml",
-	filename_from_src: true,
-	sub_dir: "vintf/manifest",
-	soc_specific: true,
-}
-
-prebuilt_etc_xml {
 	name: "vendor.qti.diag.hal.service",
 	owner: "asus",
 	src: "proprietary/vendor/etc/vintf/manifest/vendor.qti.diag.hal.service.xml",
