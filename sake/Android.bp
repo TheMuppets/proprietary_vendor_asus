@@ -211,12 +211,6 @@ android_app_import {
 }
 
 dex_import {
-	name: "tcmclient",
-	owner: "asus",
-	jars: ["proprietary/system/framework/tcmclient.jar"],
-}
-
-dex_import {
 	name: "com.android.hotwordenrollment.common.util",
 	owner: "asus",
 	jars: ["proprietary/system_ext/framework/com.android.hotwordenrollment.common.util.jar"],
