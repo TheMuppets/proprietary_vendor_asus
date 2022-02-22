@@ -1435,11 +1435,11 @@ PRODUCT_PACKAGES += \
     qcrilmsgtunnel \
     tcmclient \
     com.android.hotwordenrollment.common.util \
+    com.qti.dpmframework \
     com.qti.location.sdk \
+    dpmapi \
     izat.xt.srv \
     qcrilhook \
-    com.qti.dpmframework \
-    dpmapi \
     vendor.qti.hardware.alarm-V1.0-java \
     android.hardware.gnss@2.1-service-qti \
     android.hardware.neuralnetworks@1.3-service-qti \
