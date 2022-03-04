@@ -18,3 +18,9 @@ service thermal-engine /vendor/bin/thermal-engine
 
 on property:sys.boot_completed=1
 	restart thermal-engine
+
+on property:sys.asusconfigupdater.ASUS_I006D-thermal_policy_cdn_version.cdn=*
+	restart thermal-engine
+
+on property:sys.asusconfigupdater.ASUS_I004D-thermal_policy_cdn_version.cdn=*
+	restart thermal-engine
