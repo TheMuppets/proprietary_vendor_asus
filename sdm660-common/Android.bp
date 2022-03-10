@@ -6,6 +6,26 @@ soong_namespace {
 }
 
 cc_prebuilt_library_shared {
+	name: "libqsocket",
+	owner: "asus",
+	strip: {
+		none: true,
+	},
+	target: {
+		android_arm: {
+			srcs: ["proprietary/vendor/lib/libqsocket.so"],
+		},
+		android_arm64: {
+			srcs: ["proprietary/vendor/lib64/libqsocket.so"],
+		},
+	},
+	compile_multilib: "both",
+	check_elf_files: false,
+	prefer: true,
+	soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
 	name: "vendor.qti.hardware.fm@1.0",
 	owner: "asus",
 	strip: {
@@ -183,9 +203,9 @@ prebuilt_etc_xml {
 }
 
 prebuilt_etc_xml {
-	name: "vendor.qti.gnss@3.0-service",
+	name: "vendor.qti.gnss@4.0-service",
 	owner: "asus",
-	src: "proprietary/vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml",
+	src: "proprietary/vendor/etc/vintf/manifest/vendor.qti.gnss@4.0-service.xml",
 	filename_from_src: true,
 	sub_dir: "vintf/manifest",
 	soc_specific: true,
