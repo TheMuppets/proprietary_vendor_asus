@@ -1,0 +1,145 @@
+##############################################################################
+# Copyright (c) 2016-2019 Qualcomm Technologies, Inc.
+# All Rights Reserved
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+##############################################################################
+
+# Configuration parameters for qvr service
+
+# Calibration data path
+# If device-specific calibration data is present in an alternate location
+# (typically one that wouldn't get wiped during a build update), specify
+# that path here and the VR service will attempt to load calibration data
+# from that path first before loading it from its default location.
+#calibration_path =
+
+# 6DoF warmstart polling period
+# This setting controls how often the VR service will poll 6DoF for its
+# warmstart info (value is in seconds). If it reports that the warmstart
+# info has improved, the VR service will up update the contents of the
+# warmstart binary file accordingly. Set to 0 to disable polling.
+# Regardless of this setting, the warmstart info will also be queried
+# when VR mode is stopped.
+6dof_warmstart_poll_period = 10
+
+# 6DoF Roomscale tracking
+# This setting specifies whether 6DoF uses roomscale tracking with mDSP offloading
+6dof_mdsp_roomscale_enabled = false
+
+# External Sensor related configurations
+#external_sensor_lib =
+
+# External Camera related configurations
+#external_camera_lib =
+
+# EyeTracking Plugin related configurations
+#plugin_eye_tracking_lib =
+
+# Sensor orientation: default is: 1 2 3 (Android Portrait)
+# 1 represents x, 2 represents y and 3 represents z
+# The 3DOF and 6DOF tracking algorithms require IMU data
+# to be in Android Portrait orientation. If the device's
+# default orientation is *not* Android Portrait, these values
+# are used to convert from device orientation to Android
+# Portrait orientation.
+# For Android landscape sensor orientation, use 2 -1 3
+#sensor_orientation = 2 -1 3
+sensor_orientation = 1 2 3
+
+#sensor frequency configuration in Hz
+#sensor_frequency_hz = 800
+
+# tracking camera properties
+tracking_camera_id                  = 0
+tracking_camera_sensor              = ov7251_stereo
+tracking_camera_driver              = native
+tracking_camera_res                 = 1280 480
+tracking_camera_quarter_res         = 640 240
+tracking_camera_frame_rdi_mode      = false
+tracking_camera_frame_rdi_bit_depth = 10
+tracking_camera_auto_exposure       = true
+tracking_camera_hvx_mode            = false
+tracking_camera_hvx_algo            = qvrcam_receiver
+tracking_camera_master_only         = false
+tracking_camera_control_protected   = true
+tracking_camera_privileged_client   = 0
+# camera logging (disabled, continuous, oneshot)
+tracking_camera_frame_logging_mode  = disabled
+tracking_camera_hvx_sensor          = ov7251
+tracking_camera_default_flash_mode  = off
+tracking_camera_hvx_stereo_slave_camera_id = -1
+tracking_camera_default_resolution_mode  = full
+# 6dof pose logging (disabled, continuous, oneshot)
+tracking_6dof_pose_logging_mode    = disabled
+
+
+# the service will expose display interrupts to its clients from
+# /dev/graphics/fb[display_id] (default is fb0)
+#display_id = 0
+
+# vblank off delay
+disp_vblank_off_delay = 20
+
+#force to mag sensor based drift free 3dof
+#force_drift_free_3dof = true
+
+#Received mag sensor data should be in the range of Earth's magnetic field magnitude range (0.25 to 0.65 gauss)
+#if not, then either mag is not calibrated or indicates presence of external noise
+#use (0 0) to disable this checking
+mag_validity_range_gauss = 0.25 0.65
+
+# performance: thread_attributes<_optional soc id>
+# format -> [thread type]:[cpu performance level]>[sched_policy],[priority],[cpu_affinity];[cpu performance level]>[sched_policy],[priority],[cpu_affinity];
+# cpu_affinity is given as bit mask
+performance_thread_attributes = render:0>SCHED_FIFO,48,0xFF;1>SCHED_FIFO,48,0xF0;2>SCHED_FIFO,48,0xF0;3>SCHED_FIFO,48,0xF0
+performance_thread_attributes = warp:0>SCHED_FIFO,49,0xFF;1>SCHED_FIFO,49,0xF0;2>SCHED_FIFO,49,0xF0;3>SCHED_FIFO,49,0xF0
+performance_thread_attributes = controller:0>SCHED_OTHER,0,0xFF;1>SCHED_OTHER,0,0xF;2>SCHED_OTHER,0,0xF0;3>SCHED_OTHER,0,0xF0
+performance_thread_attributes = normal:0>SCHED_OTHER,0,0xFF;1>SCHED_OTHER,0,0xF;2>SCHED_OTHER,0,0xF0;3>SCHED_OTHER,0,0xF0
+
+# moorea
+performance_thread_attributes_365 = render:0>SCHED_FIFO,48,0xFF;1>SCHED_FIFO,48,0xC0;2>SCHED_FIFO,48,0xC0;3>SCHED_FIFO,48,0xC0
+performance_thread_attributes_365 = warp:0>SCHED_FIFO,49,0xFF;1>SCHED_FIFO,49,0xC0;2>SCHED_FIFO,49,0xC0;3>SCHED_FIFO,49,0xC0
+performance_thread_attributes_365 = controller:0>SCHED_OTHER,0,0xFF;1>SCHED_OTHER,0,0xF;2>SCHED_OTHER,0,0xF0;3>SCHED_OTHER,0,0xF0
+performance_thread_attributes_365 = normal:0>SCHED_OTHER,0,0xFF;1>SCHED_OTHER,0,0xF;2>SCHED_OTHER,0,0xF0;3>SCHED_OTHER,0,0xF0
+
+# performance: hints for gpu and cpu levels
+# format -> [cpu_level gpu_level]:[hint id in powerhint.xml] [cpu_level gpu_level]:[hint id in powerhint.xml]
+# format -> [cpu_level gpu_level] - lower byte for gpu level and next higher byte for cpu_level. Max level 255
+performance_perf_hints = 0x0101:0x0000130A 0x0102:0x0000130B 0x0103:0x0000130C
+performance_perf_hints = 0x0201:0x0000130D 0x0202:0x0000130E 0x0203:0x0000130F
+performance_perf_hints = 0x0301:0x00001310 0x0302:0x00001311 0x0303:0x00001312
+
+# performance thermal rules to be enabled
+# format -> [thermal rule name]:[algo type]>[hardware type]
+performance_thermal_rules = QVR_Rule_G:monitor>gpu QVR_Rule_C:monitor>cpu
+
+# performance: temperature to temperature level mapping
+# format -> [hardware type]:[temperature]>[temperature level];[temperature]>[temperature level]
+performance_temp_levels = gpu:30000>1;32000>2;34000>3;36000>4 cpu:38000>1;41000>2;42000>3;43000>4
+
+# performance: thermal rule threshold index to mitigation actions mapping
+# format -> [thermal rule name]:[threshold index]>[mit_action1,mit_action2];[threshold index]>[mit_action1,mit_action2]
+# mit_actions: fpsup & fpsdown -> increase & decrease fps , resup & reddown -> increase & decrease eye buffer resolution
+performance_mitigation_actions = QVR_Rule_G:1>fpsdown,resup;2>fpsdown,resdown;3>fpsdown,resup;4>fpsup,resdown;5>fpsdown,resdown;6>fpsdown,resup;7>fpsup,resup QVR_Rule_C:1>fpsdown,resup;2>fpsup,resup
+
+# A hw_transform setting defines a physical transform between two hardware
+# components in the Android Portrait coordinate system. The format is as follows:
+#   hw_transform = [from] [to] [4x3 float matrix]
+# The values of the matrix are in meters and are flattened as follows:
+#   R00 R01 R02 T1
+#   R10 R11 R12 T2  --> [ R00 R01 R02 T1 R10 R11 R12 T2 R20 R21 R22 T3 ]
+#   R20 R21 R22 T3
+# Valid values for [from] and [to] are:
+#   hmd  = virtual HMD reference point
+#   imu  = IMU
+#   eyeL = left eye tracking camera
+#   eyeR = right eye tracking camera
+hw_transform = imu hmd  1.0 0.0 0.0 0.095 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0
+hw_transform = imu eyeL 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0
+hw_transform = imu eyeR 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0
+
+# Early initialization of the Tracker module
+6dof_tracker_early_init = true
+
+# Reload the service when the app closes
+reload_when_closed = true
